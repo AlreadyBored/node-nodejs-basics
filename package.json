@@ -1,0 +1,20 @@
+{
+  "name": "node-nodejs-basics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlreadyBored/node-nodejs-basics.git"
+  },
+  "keywords": ["nodejs", "assignments", "alreadybored"],
+  "author": "alreadybored",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlreadyBored/node-nodejs-basics/issues"
+  },
+  "homepage": "https://github.com/AlreadyBored/node-nodejs-basics#readme"
+}
