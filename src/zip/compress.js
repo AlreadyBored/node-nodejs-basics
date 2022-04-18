@@ -1,3 +1,3 @@
-export const compress = () => {
+export const compress = async () => {
     // Write your code here 
 };
