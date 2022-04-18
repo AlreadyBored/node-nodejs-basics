@@ -1,3 +1,3 @@
-export const rename = () => {
+export const rename = async () => {
     // Write your code here 
 };
