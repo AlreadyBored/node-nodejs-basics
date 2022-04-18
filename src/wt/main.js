@@ -1,3 +1,3 @@
-export const performCalculations = () => {
+export const performCalculations = async () => {
     // Write your code here
 };

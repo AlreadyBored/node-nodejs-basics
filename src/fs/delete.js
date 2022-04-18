@@ -1,3 +1,3 @@
-export const remove = () => {
+export const remove = async () => {
     // Write your code here 
 };
