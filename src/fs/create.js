@@ -1,6 +1,6 @@
 'use strict'
 
-const fsPromises = require( 'fs').promises
+const fsPromises = require( 'fs/promises')
 const path = require('path')
 const freshLine = `I am fresh and young`
 
