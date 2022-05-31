@@ -6,18 +6,11 @@ const filePath = path.resolve(path.dirname(''), 'src', 'fs', 'files', 'fileToRem
 
 export const remove = async () => {
     fs.access(filePath, async function (error) {
-        if (error) throwError();
+        if (error) throw new Error('FS operation failed');
         else {
             await fsPromises.unlink(filePath);
         }
     });
 };
-function throwError() {
-    try {
-        throw new Error('FS operation failed');
-    } catch (e) {
-        console.log(e.message);
-    }
-}
 
 remove();
