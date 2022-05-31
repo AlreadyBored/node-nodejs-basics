@@ -7,22 +7,15 @@ const newPath = path.resolve(path.dirname(''), 'src', 'fs', 'files', 'properFile
 
 export const rename = async () => {
     fs.access(oldPath, function (error) {
-        if (error) throwError();
+        if (error) throw new Error('FS operation failed');
         else {
             fs.access(newPath, async function (error) {
                 if (error) {
                     await fsPromises.rename(oldPath, newPath);
-                } else throwError();
+                } else throw new Error('FS operation failed');
             });
         }
     });
 };
-function throwError() {
-    try {
-        throw new Error('FS operation failed');
-    } catch (e) {
-        console.log(e.message);
-    }
-}
 
 rename();
