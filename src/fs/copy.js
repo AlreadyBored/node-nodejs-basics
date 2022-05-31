@@ -18,7 +18,7 @@ export const copy = async () => {
     if (!isFolderCreated) throw new Error(`The older ${pathTo} could not be created.`)
 
     const files = await getFileNamesFromFolder(pathFrom)
-    if (files === -1) throw new Error(`The older ${pathTo} could not be readed.`)
+    if (files === -1) throw new Error(`The folder ${pathTo} could not be read.`)
 
     for (const file of files) {
       const source = join(pathFrom, file)
