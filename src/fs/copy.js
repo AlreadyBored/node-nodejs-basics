@@ -7,13 +7,13 @@ const to = path.resolve(path.dirname(''), 'src', 'fs', 'files_copy');
 
 export const copy = async () => {
     fs.access(from, function (error) {
-        if (error) throwError();
+        if (error) throw new Error('FS operation failed');
         else {
             fs.access(to, async function (error) {
                 if (error) {
                     await fsPromises.mkdir(to).then
                     copyFiles(from, to);
-                } else throwError();
+                } else throw new Error('FS operation failed');
             });
         }
     });
@@ -34,13 +34,6 @@ async function copyFiles(source, destination) {
             }
         }
     })
-}
-function throwError() {
-    try {
-        throw new Error('FS operation failed');
-    } catch (e) {
-        console.log(e.message);
-    }
 }
 
 copy();
