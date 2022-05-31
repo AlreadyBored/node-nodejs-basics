@@ -6,7 +6,7 @@ const folder = path.resolve(path.dirname(''), 'src', 'fs', 'files');
 
 export const list = async () => {
     fs.access(folder, function (error) {
-        if (error) throwError();
+        if (error) throw new Error('FS operation failed');
         else {
             fsPromises.readdir(folder).
             then(files => {
@@ -17,12 +17,5 @@ export const list = async () => {
         }
     });
 };
-function throwError() {
-    try {
-        throw new Error('FS operation failed');
-    } catch (e) {
-        console.log(e.message);
-    }
-}
 
 list();
