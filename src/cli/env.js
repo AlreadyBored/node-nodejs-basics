@@ -1,3 +1,13 @@
+import {env} from 'process';
+
 export const parseEnv = () => {
-    // Write your code here 
+	const variables = [];
+
+    for (const variable in env) {
+		if (variable.startsWith('RSS_')) {
+			variables.push(`${variable}=${process.env[variable]}`);
+		}
+    }
+
+	console.log(variables.join('; '));;
 };
