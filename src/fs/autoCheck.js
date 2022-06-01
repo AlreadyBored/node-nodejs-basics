@@ -4,7 +4,7 @@ import { remove } from "./delete.js";
 import { read } from "./read.js";
 import { list } from "./list.js";
 import { rename } from "./rename.js";
-
+import { copy } from "./copy.js";
 import { stdout } from "process";
 
 const check = async () => {
@@ -31,7 +31,13 @@ const check = async () => {
   stdout.write(`\n ------THE LIST OF THE FILES----- \n`);
   await list();  
   stdout.write(`\n ------THE LIST OF THE FILES IN THE WRONG DIRECTORY----- \n`);
-  await list("wrongDirectory");   
+  await list("wrongDirectory");  
+  stdout.write(`\n ------COPY ALL THE FILES TO THE FILES_COPY DIRECTORY----- \n`);
+  await copy(); 
+  stdout.write(`\n ------COPY ALL THE FILES TO THE FILES_COPY DIRECTORY AGAIN----- \n`);
+  await copy(); 
+  stdout.write(`\n ------COPY FROM NOT EXISTING DIRECTORY----- \n`);
+  await copy("/notExistingDir", "notExistingDirToo");   
 }; 
 
 check();

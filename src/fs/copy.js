@@ -16,4 +16,4 @@ export const copy = async (srcPath, destPath) => {
 };
 
 //copy();
-copy("/notExistingDir", "notExistingDirToo");
+//copy("/notExistingDir", "notExistingDirToo");
