@@ -18,8 +18,8 @@ export const copy = async () => {
 
     try {
         await mkdir(pathFilesCopyFolder);
-        const filesDir = await opendir(pathFilesFolder);
-        for await (const file of filesDir) {
+        const files = await opendir(pathFilesFolder);
+        for await (const file of files) {
             await copyFile(
                 join(pathFilesFolder, file.name), 
                 join(pathFilesCopyFolder, file.name)
