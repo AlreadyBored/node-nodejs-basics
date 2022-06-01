@@ -11,7 +11,7 @@ import * as c from './files/c.js';
 
 const random = Math.random();
 
-let unknownObject = JSON.parse(
+const unknownObject = JSON.parse(
     await readFile(
         new URL(
             random > 0.5
