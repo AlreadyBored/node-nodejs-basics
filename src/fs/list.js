@@ -6,7 +6,7 @@ const path = require('path')
 const dName = path.resolve(__dirname, `files`)
 const errorText = `FS operation failed`
 
-const list = async () => {
+export const list = async () => {
     // Write your code here 
     const output = []
 
@@ -26,5 +26,3 @@ const list = async () => {
 
     console.log(output)
 };
-
-module.exports = { list }
