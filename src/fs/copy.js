@@ -41,7 +41,8 @@ async function startCopy(oldDirectory, newDirectory) {
 
 async function makeTask(newPath, oldPath) {
     createDirrectory(newPath);
-    startCopy(oldPath, newPath);
+    try{startCopy(oldPath, newPath);} catch{}
+    
 }
 
 const oldPath = 'files';
