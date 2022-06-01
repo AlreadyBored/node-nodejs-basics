@@ -1,14 +1,14 @@
 import {rename as fsRename, access} from "node:fs/promises";
-import process from 'node:process';
+import url from 'node:url';
 import path from 'node:path';
 
 export const rename = async () => {
-    const currentDir = process.cwd();
-    const subDir = '/src/fs/files'
+    const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+    const subDir = 'files'
     const oldName = 'wrongFilename.txt';
     const newName = 'properFilename.md';
-    const absoluteOldPath = path.join(currentDir, subDir, oldName);
-    const absoluteNewPath = path.join(currentDir, subDir, newName);
+    const absoluteOldPath = path.join(__dirname, subDir, oldName);
+    const absoluteNewPath = path.join(__dirname, subDir, newName);
 
     const STATUS_SUCCESS = 0;
 

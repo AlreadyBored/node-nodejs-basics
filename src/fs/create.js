@@ -1,11 +1,12 @@
-import {writeFile, access} from "node:fs/promises";
-import process from 'node:process';
+import {writeFile, access} from 'node:fs/promises';
+import url from 'node:url';
 import path from 'node:path';
 
 export const create = async () => {
+    const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
     const filename = 'fresh.txt';
     const content = 'I am fresh and young';
-    const absoluteFilePath = path.join(process.cwd(), '/src/fs/files/', filename);
+    const absoluteFilePath = path.join(__dirname, 'files', filename);
     const STATUS_SUCCESS = 0;
     const STATUS_FAILURE = 1;
 

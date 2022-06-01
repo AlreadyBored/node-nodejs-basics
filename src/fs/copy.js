@@ -1,14 +1,13 @@
-import {cp, access} from "node:fs/promises";
-import process from 'node:process';
+import {cp, access} from 'node:fs/promises';
+import url from 'node:url';
 import path from 'node:path';
 
 export const copy = async () => {
-    const currentDir = process.cwd();
-    const subDir = '/src/fs'
+    const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
     const src = '/files';
     const dest = '/files_copy';
-    const absoluteSrcPath = path.join(currentDir, subDir, src);
-    const absoluteDestPath = path.join(currentDir, subDir, dest);
+    const absoluteSrcPath = path.join(__dirname, src);
+    const absoluteDestPath = path.join(__dirname, dest);
 
     const STATUS_SUCCESS = 0;
 

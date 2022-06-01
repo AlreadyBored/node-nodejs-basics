@@ -1,12 +1,12 @@
-import {rm} from "node:fs/promises";
-import process from 'node:process';
+import {rm} from 'node:fs/promises';
+import url from 'node:url';
 import path from 'node:path';
 
 export const remove = async () => {
-    const currentDir = process.cwd();
-    const subDir = '/src/fs/files'
+    const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+    const subDir = 'files'
     const fileName = 'fileToRemove.txt';
-    const absolutePath = path.join(currentDir, subDir, fileName);
+    const absolutePath = path.join(__dirname, subDir, fileName);
 
     const STATUS_SUCCESS = 0;
 

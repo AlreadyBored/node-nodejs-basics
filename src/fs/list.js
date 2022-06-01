@@ -1,11 +1,11 @@
-import {readdir} from "node:fs/promises";
-import process from 'node:process';
+import {readdir} from 'node:fs/promises';
+import url from 'node:url';
 import path from 'node:path';
 
 export const list = async () => {
-    const currentDir = process.cwd();
-    const subDir = '/src/fs/files'
-    const absolutePath = path.join(currentDir, subDir);
+    const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+    const subDir = 'files'
+    const absolutePath = path.join(__dirname, subDir);
 
     const STATUS_SUCCESS = 0;
 
@@ -15,7 +15,7 @@ export const list = async () => {
         throw new Error('FS operation failed');
     }
 
-    console.log(listResult.join('\n'));
+    console.log(listResult);
 
     return STATUS_SUCCESS;
 };
