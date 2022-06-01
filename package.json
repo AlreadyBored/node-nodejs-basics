@@ -5,7 +5,13 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "env": "node .\\src\\cli\\env.js\n"
+    "env": "node .\\src\\cli\\env.js\n",
+    "copy": "node .\\src\\fs\\copy.js\n",
+    "create": "node .\\src\\fs\\create.js\n",
+    "delete": "node .\\src\\fs\\delete.js\n",
+    "list": "node .\\src\\fs\\list.js\n",
+    "read": "node .\\src\\fs\\read.js\n",
+    "rename": "node .\\src\\fs\\rename.js\n"
   },
   "repository": {
     "type": "git",
