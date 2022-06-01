@@ -1,19 +1,20 @@
-import {appendFile, existsSync} from 'fs';
+import {existsSync} from 'fs';
+import {appendFile} from 'fs/promises';
 import {fileURLToPath} from 'url';
 import {join} from 'path';
 
-const text = 'I am fresh and young';
-const __dirname = fileURLToPath(new URL('.', import.meta.url));
-const path = join(__dirname, 'files', 'fresh.txt');
-
 export const create = async () => {
-    if (existsSync(path)) {
+    const text = 'I am fresh and young';
+    const __dirname = fileURLToPath(new URL('.', import.meta.url));
+    const filePath = join(__dirname, 'files', 'fresh.txt');
+    
+    if (existsSync(filePath)) {
         throw new Error('FS operation failed');
     }
 
-    await appendFile(path, text, 'utf-8', (err) => {
-        if (err) {
-            throw err;
-        }
-    });
+    try {
+        await appendFile(filePath, text);
+    } catch(err) {
+        throw err;
+    }
 };
