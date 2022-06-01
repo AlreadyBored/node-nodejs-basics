@@ -14,3 +14,6 @@
 
 ## Module Modules:
 - Show inf - `npm run mjs`
+
+## Module hash: 
+- Get hash - `npm run hash`
