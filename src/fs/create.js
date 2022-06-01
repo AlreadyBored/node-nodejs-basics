@@ -16,6 +16,6 @@ export const create = async () => {
     catch (err) {
         console.error(err)
     }
-};
+}
 
 create()
