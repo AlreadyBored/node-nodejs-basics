@@ -1,7 +1,12 @@
 'use strict'
 
+import path from 'path'
+import fs from 'fs'
+import { fileURLToPath } from 'url'
+
+const fName = path.resolve(
+    path.dirname(fileURLToPath(import.meta.url)), `files`, `fileToRead.txt`)
+
 export const read = async () => {
-    // process.stdout.write('This file should be read using Streams API')
-    // process.stdout.end()
-    // Write your code here 
+    fs.createReadStream(fName).pipe(process.stdout)
 };
