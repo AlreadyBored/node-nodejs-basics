@@ -1,24 +1,30 @@
-import { mkdir, readdir, copyFile } from "fs/promises";
+import { mkdir, copyFile, readdir } from "fs/promises";
 
 export const copy = async () => {
-  const files = await readdir("./files").catch(() => {
-    console.log(`FS operation failed`);
-  });
-
+  const errMess = `FS operation failed`;
   try {
-    mkdir(`files_copy`, { recursive: false }).catch(() => {
-      console.log(`FS operation failed`);
+    try {
+      const files = await readdir("./files");
+    } catch (error) {
+      if (error) {
+        throw new Error(errMess);
+      }
+    }
+    await mkdir(`files_copy`, { recursive: false }).catch((e) => {
+      if (e) {
+        throw new Error(errMess);
+      }
     });
-
-    if (!files.length) {
-      console.log(`FS operation failed`);
-    } else {
+    try {
       for (const file of files) {
         copyFile(`./files/${file}`, `./files_copy/${file}`);
       }
+    } catch (e) {
+      throw new Error(errMess);
     }
-  } catch (e) {
-    console.error(`FS operation failed`);
+  } catch (err) {
+    const e = err;
+    console.error(e.message);
   }
 };
 copy();
