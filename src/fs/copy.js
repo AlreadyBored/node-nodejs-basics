@@ -41,14 +41,14 @@ async function startCopy(oldDirectory, newDirectory) {
 
 async function makeTask(newPath, oldPath) {
     createDirrectory(newPath);
-    try{startCopy(oldPath, newPath);} catch{}
-    
+    try { startCopy(oldPath, newPath); } catch { }
+
 }
 
 const oldPath = 'files';
 const newPath = 'files_copy';
 
-makeTask(newPath, oldPath);
+//makeTask(newPath, oldPath);
 
 export const copy = async () => {
     // Write your code here 

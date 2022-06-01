@@ -35,7 +35,7 @@ const nameDir = 'files';
 const fileText = 'I am fresh and young';
 
 //как-будто вызов функции из вне
-makeTask(nameFile, nameDir, fileText);
+//makeTask(nameFile, nameDir, fileText);
 
 export const create = async () => {
     // Write your code here 

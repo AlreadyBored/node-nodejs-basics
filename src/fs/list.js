@@ -22,14 +22,14 @@ function directoryCreated(path) {
 }
 
 function makeTask(path) {
-    try{
+    try {
         directoryCreated(path)
         printFileList(path)
-    }catch{}
+    } catch { }
 }
 
 const path = 'files';
-makeTask(path);
+//makeTask(path);
 
 export const list = async () => {
     // Write your code here 

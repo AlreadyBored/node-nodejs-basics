@@ -2,7 +2,7 @@ async function printErorr(error) {
     try {
         if (error) throw error;
     } catch (error) {
-        console.log('FS operation failed');
+        console.error('FS operation failed');
     }
 }
 

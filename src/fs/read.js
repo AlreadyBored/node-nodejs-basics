@@ -6,7 +6,7 @@ async function readFile(path) {
         printError(error)
         if (!error) console.log(data);
     });
-    
+
 }
 
 async function makeTask(path) {
@@ -15,7 +15,7 @@ async function makeTask(path) {
 
 const path = 'files/fileToRead.txt';
 
-makeTask(path);
+//makeTask(path);
 
 export const read = async () => {
     // Write your code here 
