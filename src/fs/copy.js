@@ -2,11 +2,12 @@ import { mkdir, copyFile, readdir } from "fs/promises";
 
 export const copy = async () => {
   const errMess = `FS operation failed`;
+  let files = [];
   try {
     try {
-      const files = await readdir("./files");
-    } catch (error) {
-      if (error) {
+      files = await readdir("./files");
+    } catch (e) {
+      if (e) {
         throw new Error(errMess);
       }
     }
