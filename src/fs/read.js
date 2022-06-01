@@ -5,6 +5,8 @@ const { readFile } = require('fs/promises')
 
 const fName = path.resolve(__dirname, `files`, `fileToRead.txt`)
 
+const errorText = `FS operation failed`
+
 export const read = async () => {
   let output = ''
 
