@@ -18,3 +18,5 @@ export const create = async (pathToFile) => {
     filehandle?.close();
   };
 };
+
+//create();

@@ -5,7 +5,7 @@ import { stderr, stdout } from "process";
 
 export const list = async (pathToDir = path.join(__dirname, "files")) => {
   try {
-    const filesList = await readdir(pathToDir);
+    const filesList = await readdir(path.join(__dirname, pathToDir));
     stdout.write(`\n The directory ${pathToDir} contains: \n`)
     filesList.forEach(fileName => stdout.write(`\t ${fileName} \n`))   
   }

@@ -12,3 +12,6 @@ export const remove = async (pathToFile) => {
     stderr.write(`\n ERROR>>> FS operation failed. \n ${err.message} \n`);
   }
 };
+
+//remove();
+//remove("files/notExistingFile.txt");
