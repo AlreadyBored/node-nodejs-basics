@@ -11,3 +11,6 @@
 ## Module cli:
 - Parse environment - `RSS_props=value RSS_props=value npm run env`
 - Parse arguments - `npm run args -- --propName value`
+
+## Module Modules:
+- Show inf - `npm run mjs`
