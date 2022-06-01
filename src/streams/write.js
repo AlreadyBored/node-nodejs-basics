@@ -1,3 +1,11 @@
+import fs from 'fs'
+
 export const write = async () => {
-    // Write your code here 
+    const readaBle = process.stdin
+
+    const readbleStream = fs.createWriteStream('src/streams/files/fileToWrite.txt')
+
+    readaBle.pipe(readbleStream)
 };
+
+// write()
