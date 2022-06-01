@@ -1,10 +1,12 @@
 import {env} from 'node:process';
 
 export const parseEnv = () => {
+    let result = '';
     for (let item in env) {
-        if (/^RSS_/.test(item)) console.log(`${item}=${env[item]}`);
+        if (/^RSS_/.test(item)) result += `${item}=${env[item]};`;
     }
+    return result
 };
 
-parseEnv()
+console.log(parseEnv())
 
