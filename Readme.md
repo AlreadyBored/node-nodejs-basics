@@ -9,4 +9,5 @@
 - Rename file - ***npm run rename***
 
 ## Module cli:
-Parse environment - ***npm run env***
+- Parse environment - ***RSS_propname=value node src/cli/env.js***
+- Parse arguments - ***node .\src\cli\args.js --propname value***
