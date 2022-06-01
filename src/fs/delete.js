@@ -12,3 +12,5 @@ export const remove = async (pathToFile) => {
     stderr.write(`ERROR>>> FS operation failed. \n ${err.message}`);
   }
 };
+
+remove();

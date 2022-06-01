@@ -13,3 +13,5 @@ export const read = async () => {
     stderr.write(`ERROR>>> FS operation failed. \n ${err.message}`) 
   }
 };
+
+read();
