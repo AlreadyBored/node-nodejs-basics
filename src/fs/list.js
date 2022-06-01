@@ -3,7 +3,8 @@ import { readdir } from "fs/promises";
 import path from "path";
 import { stderr, stdout } from "process";
 
-export const list = async (pathToDir = path.join(__dirname, "files")) => {
+export const list = async (dirPath) => {
+  const pathToDir = dirPath ?? "files";
   try {
     const filesList = await readdir(path.join(__dirname, pathToDir));
     stdout.write(`\n The directory ${pathToDir} contains: \n`)

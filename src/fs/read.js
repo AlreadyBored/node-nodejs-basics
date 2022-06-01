@@ -3,9 +3,9 @@ import { open } from "fs/promises" ;
 import path from "path";
 import { __dirname } from "./constants.js";
 
-export const read = async (pathToFile = path.join(__dirname, "files", "fileToRead.txt")) => {
+export const read = async (pathToFile) => {
   try {
-    const filehandle = await open(path.join(__dirname, pathToFile), "r");
+    const filehandle = await open(path.join(__dirname, pathToFile ?? "files/fileToRead.txt"), "r");
     const text = await filehandle.readFile();
     stdout.write(`\n ${text} \n`);
   }
