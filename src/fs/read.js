@@ -10,8 +10,6 @@ export const read = async () => {
     stdout.write(`\n ${text} \n`);
   }
   catch(err) {
-    stderr.write(`ERROR>>> FS operation failed. \n ${err.message}`) 
+    stderr.write(`\n ERROR>>> FS operation failed. \n ${err.message} \n`) 
   }
 };
-
-read();

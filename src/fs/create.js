@@ -5,17 +5,16 @@ import { stderr, stdout } from "process";
 const defaultPath = "files/fresh.txt";
 
 export const create = async (pathToFile) => {
+  let filehandle;
   try {
     filehandle = await open(path.join(__dirname, pathToFile ?? defaultPath), "wx");
     await filehandle.write("I am fresh and young!"); 
     stdout.write(`\n File ${pathToFile ?? defaultPath} was created succesfully. \n`);
   }
   catch(error) {
-    stderr.write(`ERROR>>> FS operation failed. \n ${error.message}`);
+    stderr.write(`\n ERROR>>> FS operation failed. \n ${error.message} \n`);
   }
   finally {
     filehandle?.close();
   };
 };
-
-create();
