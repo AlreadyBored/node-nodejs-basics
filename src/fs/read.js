@@ -4,9 +4,10 @@ import path from 'path';
 const toRead = path.resolve(path.dirname(''), 'src', 'fs', 'files', 'fileToRead.txt');
 
 export const read = async () => {
-    const stream = fs.ReadStream(toRead, 'utf8');
-    stream.on('error', () => {throw new Error ('FS operation failed');})
-    stream.on('data', data => console.log(data));
+    fs.readFile(toRead, 'utf8', function(error,data){
+        if(error) throw new Error ('FS operation failed');; 
+        console.log(data); 
+    });
 };
 
 read();
