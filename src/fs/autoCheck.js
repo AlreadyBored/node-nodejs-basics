@@ -3,6 +3,7 @@ import { create } from "./create.js";
 import { remove } from "./delete.js";
 import { read } from "./read.js";
 import { list } from "./list.js";
+import { rename } from "./rename.js";
 import { stdout } from "process";
 
 const check = async () => {
@@ -18,6 +19,14 @@ const check = async () => {
   await read(); 
   stdout.write(`\n ------READ THE NOT EXISTING FILE----- \n`);
   await read("files/notExitingFile.txt");
+  stdout.write(`\n ------RENAME THE FILE----- \n`);
+  await rename();
+  stdout.write(`\n ------RENAME THE FILE. THE NEW FILE IS ALREADY EXISTING.----- \n`);
+  await create("files/wrongFilename.txt");
+  await rename();
+  await remove("files/wrongFilename.txt");
+  stdout.write(`\n ------RENAME THE NOT EXISTING FILE----- \n`);
+  await rename("files/notExistingFile.txt", "files/renamedFile.txt"); 
   stdout.write(`\n ------THE LIST OF THE FILES----- \n`);
   await list();  
   stdout.write(`\n ------THE LIST OF THE FILES IN THE WRONG DIRECTORY----- \n`);

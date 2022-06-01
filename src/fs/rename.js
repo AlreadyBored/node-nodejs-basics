@@ -18,4 +18,5 @@ export const rename = async (oldName, newName) => {
   }; 
 };
 
-rename();
+//rename();
+//rename("files/notExistingFile.txt", "files/renamedFile.txt");
