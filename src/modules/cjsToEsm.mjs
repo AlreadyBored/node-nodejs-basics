@@ -15,7 +15,7 @@ let unknownObject = JSON.parse(
     await readFile(
         new URL(
             random > 0.5
-                ? '../files/a.json'
+                ? './files/a.json'
                 : './files/b.json'
 
             , import.meta.url)
