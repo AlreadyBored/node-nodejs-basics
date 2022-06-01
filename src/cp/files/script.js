@@ -9,4 +9,5 @@ const echoInput = (chunk) => {
     process.stdout.write(`Received from master process: ${chunk.toString()}\n`)
 };
 
-process.stdin.on('data', echoInput);
+process.stdin.on('data', echoInput(args));
+process.exit(1)
