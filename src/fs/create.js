@@ -10,7 +10,7 @@ export const create = async () => {
 
   try {
     await writeFile(filePath, content, { flag: "wx" });
-    console.log("File written successfully!")
+    console.log("File written successfully!");
   } catch {
     throw new Error("FS operation failed");
   }
