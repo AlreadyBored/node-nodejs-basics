@@ -1,15 +1,13 @@
 import fsp from 'fs/promises';
-export const create = async () => {
-    let path = './files/fresh.txt';
-    let content = 'I am fresh and young'
+
+export const create = (path,content ) => {
     fsp.readFile(path)
-        .catch(()=> fsp.writeFile(path, content))
         .then((data)=>{
-            if(data){
-                 throw new Error('FS operation failed')
+            if (data){
+              Promise.reject(new Error('dsadsa'))
             }
         })
-        .catch(e=>console.log(e))
- // Write your code here
+        .catch((e)=> fsp.writeFile(path, content))
+
 };
-create()
+create('./files/fresh.txt','I am fresh and young')
