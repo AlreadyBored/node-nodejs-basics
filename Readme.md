@@ -20,3 +20,5 @@
 
 ## Module Streams:
 - read file - `npm run read-stream`
+- write stream - `npm run write-stream`
+- transform stream - `npm run transform-stream`
