@@ -1,11 +1,11 @@
 import { access, appendFile } from 'fs/promises';
 import path from 'path';
 import { constants } from 'fs';
-
-
+import { fileURLToPath } from 'url';
 
 export const create = async () => {
-  const file = path.join(process.cwd(), 'fresh.txt');
+  const wd = path.dirname(fileURLToPath(import.meta.url));
+  const file = path.join(wd, 'files', 'fresh.txt');
   let fileExists = false;
 
   try {
@@ -20,6 +20,7 @@ export const create = async () => {
   }
 
   appendFile(file, 'FS operation failed');
+  console.log('File created sucsecfully');
 
 };
 
