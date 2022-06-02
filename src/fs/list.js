@@ -4,11 +4,11 @@ import { join } from 'path'
 
 export const list = async () => {
     try {
-        const [__filename, __dirname] = await getFileDirName(import.meta.url)
+        const { __dirname } = await getFileDirName(import.meta.url)
         const filesDirPath = join(__dirname, 'files')
         try {
             const filesFromDir = await readdir(filesDirPath)
-            console.log(filesFromDir)
+            for (let file of filesFromDir) console.log(file)
         }
         catch(err) {
             throw new Error('FS operation failed')

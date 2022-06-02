@@ -4,7 +4,7 @@ import { join } from 'path'
 
 export const rename = async () => {
     try {
-        const [__filename, __dirname] = await getFileDirName(import.meta.url)
+        const { __dirname } = await getFileDirName(import.meta.url)
         const oldFilePath = join(__dirname, 'files', 'wrongFilename.txt')
         const newFilePath = join(__dirname, 'files', 'properFilename.txt')
         try {

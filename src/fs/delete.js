@@ -4,7 +4,7 @@ import { join } from 'path'
 
 export const remove = async () => {
     try {
-        const [__filename, __dirname] = await getFileDirName(import.meta.url)
+        const { __dirname } = await getFileDirName(import.meta.url)
         const fileToRemovePath = join(__dirname, 'files', 'fileToRemove.txt')
         try { 
             await rm(fileToRemovePath) 

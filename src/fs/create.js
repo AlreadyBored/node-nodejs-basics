@@ -4,7 +4,7 @@ import { customExist, getFileDirName } from '../utils/utils.js'
 
 export const create = async () => {
     try {
-        const [__filename, __dirname] = await getFileDirName(import.meta.url)
+        const { __dirname } = await getFileDirName(import.meta.url)
         const errorMsg = 'FS operation failed'
         const textMsg = 'I am fresh and young'
         const newFilePath = join(__dirname, 'files', 'fresh.txt')

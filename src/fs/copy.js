@@ -25,7 +25,7 @@ const copyDirectoryFromTo = async (sourceDirPath, toPath) => {
 
 export const copy = async () => {
     try {
-        const [__filename, __dirname] = await getFileDirName(import.meta.url)
+        const { __dirname } = await getFileDirName(import.meta.url)
         const sourceDirPath = join(__dirname, 'files')
         const copyDirPath = join (__dirname, 'files_copy')
 

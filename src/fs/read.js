@@ -4,7 +4,7 @@ import { join } from 'path'
 
 export const read = async () => {
     try {
-        const [__filename, __dirname] = await getFileDirName(import.meta.url)
+        const { __dirname } = await getFileDirName(import.meta.url)
         const filePath = join(__dirname, 'files', 'fileToRead.txt')
         try {
             const read = await readFile(filePath, 'utf-8')
