@@ -1,3 +1,8 @@
+import { pipeline } from "stream/promises";
+import { createWriteStream } from "fs";
+import { stdin } from "process";
+
 export const write = async () => {
-    // Write your code here 
+  await pipeline(stdin, createWriteStream("./files/fileToWrite.txt"));
 };
+write().catch(console.error);
