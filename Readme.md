@@ -17,3 +17,6 @@
 
 ## Module hash: 
 - Get hash - `npm run hash`
+
+## Module Streams:
+- read file - `npm run read-stream`
