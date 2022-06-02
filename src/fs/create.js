@@ -20,7 +20,7 @@ export const create = async () => {
   }
 
   appendFile(file, 'I am fresh and young');
-  console.log('File created sucsecfully');
+  console.log('File created successfully');
 
 };
 
