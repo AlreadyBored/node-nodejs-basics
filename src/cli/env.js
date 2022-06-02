@@ -5,5 +5,3 @@ export const parseEnv = () => {
 
   console.log(...result)
 }
-
-parseEnv()
