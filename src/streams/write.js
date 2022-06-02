@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 
 export const write = async () => {
   try {
-    stdout.write(`\t\t\t-----WRITING TO THE FILE FROM THE CONSOLE WITH THE STREAMS API-----\n`)
+    stdout.write(`\t\t\t-----WRITING TO THE FILE FROM THE CONSOLE WITH THE STREAMS API-----\n`);
     const filehandle = await open(path.join(__dirname, "files/fileToWrite.txt"), "w");
     const stream = filehandle.createWriteStream({ emitClose: false });
     stream.on("end", async () => await filehandle.close());
@@ -18,4 +18,4 @@ export const write = async () => {
   };
 };
 
-//write();
+write();
