@@ -19,7 +19,7 @@ export const create = async () => {
     throw new Error('FS operation failed');
   }
 
-  appendFile(file, 'FS operation failed');
+  appendFile(file, 'I am fresh and young');
   console.log('File created sucsecfully');
 
 };
