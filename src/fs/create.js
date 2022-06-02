@@ -4,6 +4,6 @@ import { existsSync } from "fs";
 export const create = async () => {
   // Write your code here
   const dest = "files/fresh.txt";
-  if (existsSync(dest)) throw Error("FS operation failed");
+  if (existsSync(dest)) throw new Error("FS operation failed");
   await writeFile(dest, "I am fresh and young", { flag: "wx" });
 };

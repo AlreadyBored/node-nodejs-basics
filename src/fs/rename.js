@@ -6,6 +6,7 @@ export const rename = async () => {
   const source = "files/wrongFilename.txt";
   const dest = "files/properFilename.md";
   if (!existsSync(source) || existsSync(dest))
-    throw Error("FS operation failed");
+    throw new Error("FS operation failed");
   renameDir(source, dest);
 };
+rename();

@@ -5,7 +5,7 @@ import { join } from "path";
 export const copy = async () => {
   // Write your code here
   if (!existsSync("files") || existsSync("files_copy"))
-    throw Error("FS operation failed");
+    throw new Error("FS operation failed");
   await mkdir("files_copy", { recursive: true });
   let entries = await readdir("files", { withFileTypes: true });
   for (let entry of entries) {
