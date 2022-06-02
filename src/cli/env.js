@@ -1,22 +1,12 @@
 export const parseEnv = () => {
-  console.clear()
+  const data = process.env
+  return Object.keys(data)
+                  .filter(el => el.startsWith('RSS_'))
+                  .map(v => `${v}=${data[v]}`)
+                  .join('; ')
 
-  function main() {
-    try {
-      console.log(parseVariables(process.env))
-    } catch (e) {
-      console.error(e);
-    }
-  }
-  main()
-
-  function parseVariables(data) {
-    const variables = Object.keys(data)
-    const cutIndex = variables.indexOf('NODE')
-    return variables.slice(0, cutIndex)
-                    .map(variable => `RSS_${variable}=${data[variable]}`)
-                    .join('; ')
-  }
 };
 
-parseEnv()
+// for testing
+console.clear()
+console.log(parseEnv())

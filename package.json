@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "cli:args": "node ./src/cli/args --propName value --prop2Name value2",
-    "cli:env": "name1=value1 name2=value2 node ./src/cli/env"
+    "cli:env": "RSS_name1=value1 RSS_name2=value2 node ./src/cli/env"
   },
   "repository": {
     "type": "git",
