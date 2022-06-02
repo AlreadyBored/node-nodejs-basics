@@ -1,3 +1,10 @@
+import { open } from "fs/promises";
+
 export const read = async () => {
-    // Write your code here 
+  try {
+    
+  }
+  catch(err) {
+
+  } 
 };
