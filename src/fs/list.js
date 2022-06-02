@@ -1,10 +1,10 @@
 import { readdir } from 'fs';
-import { fsException, folderName } from '../constants.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { fsException, folderName } from '../constants.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const rootFolderName = `${__dirname}/${folderName}`;
+const rootFolderName = path.join(__dirname, folderName);
 
 export const list = async () => {
     readdir(rootFolderName, (err, files) => {

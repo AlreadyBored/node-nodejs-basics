@@ -1,12 +1,12 @@
 import { stat, constants, mkdir, readdir } from 'fs';
 import { copyFile } from 'fs/promises';
-import { fsException, folderName } from '../constants.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { fsException, folderName } from '../constants.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const copyFolderName = `${__dirname}/${folderName}-copy`;
-const rootFolderName = `${__dirname}/${folderName}`;
+const copyFolderName = path.join(__dirname, `${folderName}-copy`);
+const rootFolderName = path.join(__dirname, folderName);
 
 export const copy = async () => {
     stat(rootFolderName, function(err, stats) {
@@ -26,8 +26,8 @@ function copyFiles(err, stats) {
             const promises = [];
             for (let file of files) {
                 promises.push(copyFile(
-                    `${rootFolderName}/${file}`,
-                    `${copyFolderName}/${file}`,
+                    path.join(rootFolderName, file),
+                    path.join(copyFolderName, file),
                     constants.COPYFILE_EXCL
                 ));
             }
