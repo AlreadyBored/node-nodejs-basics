@@ -14,7 +14,7 @@ export const create = async () => {
     if (error) {
       fs.writeFile(filePath, "I am fresh and young", (error) => {
         if (error) {
-          console.log("Sorry ...");
+          throw new Error("Sorry ...");
         }
       });
     } else {
