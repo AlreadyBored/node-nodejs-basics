@@ -16,11 +16,10 @@ export const read = async () => {
     }
 
     const stream = fd.createReadStream({encoding: 'utf8', autoClose: false});
-    const outStream = process.stdout;
 
     stream
         .on('end', () => {stream.close()})
-        .pipe(outStream);
+        .pipe(process.stdout);
 };
 
 read();

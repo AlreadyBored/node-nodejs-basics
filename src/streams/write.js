@@ -16,9 +16,8 @@ export const write = async () => {
     }
 
     const writeStream = fd.createWriteStream({encoding: 'utf8'});
-    const inStream = process.stdin;
 
-    inStream
+    process.stdin
         .on('end', () => {
             inStream.close();
             writeStream.close();
