@@ -1,3 +1,8 @@
+import { pipeline } from "stream/promises";
+import { createReadStream } from "fs";
+import { stdout } from "process";
+
 export const read = async () => {
-    // Write your code here 
+  await pipeline(createReadStream("./files/fileToRead.txt"), stdout);
 };
+read().catch(console.error);
