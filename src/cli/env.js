@@ -7,7 +7,7 @@ export const parseEnv = () => {
             accumulator.push(`${property}=${env[property]}`)
         }
     }
-    console.log(accumulator.join('; '))
+    console.log(accumulator.length > 0 ? accumulator.join('; ') : 'There is no valid environment variables')
 }
 
 parseEnv()
