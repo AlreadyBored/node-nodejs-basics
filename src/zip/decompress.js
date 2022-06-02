@@ -7,7 +7,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 export const decompress = async () => {
   const inputPath = `${__dirname}/files/archive.gz`;
-  const outputPath = `${__dirname}/files/fileToCompress1.txt`;
+  const outputPath = `${__dirname}/files/fileToCompress.txt`;
 
   const do_unzip = async (input, output) => {
     const pipe = promisify(pipeline);
