@@ -23,7 +23,6 @@ export const performCalculations = async () => {
         .fill(10)
         .map((a, i) => calculate(a + i))
     );
-    console.log("result", result);
     return result;
   } catch (e) {
     console.error("worker error", e);
