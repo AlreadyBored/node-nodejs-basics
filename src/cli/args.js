@@ -1,4 +1,4 @@
-import { argv, stderr, stdout } from "process";
+import { stderr, stdout } from "process";
 
 export const parseArgs = () => {
   try {
