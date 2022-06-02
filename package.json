@@ -4,7 +4,8 @@
   "description": "This repository is the part of nodejs-assignments https://github.com/AlreadyBored/nodejs-assignments",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cli:args": "node ./src/cli/args --propName value --prop2Name value2",
+    "cli:env": "name1=value1 name2=value2 node ./src/cli/env"
   },
   "repository": {
     "type": "git",
