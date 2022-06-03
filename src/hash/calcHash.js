@@ -1,4 +1,4 @@
-import { createReadStream } from 'node:fs'
+import { createReadStream, readFile } from 'node:fs'
 import { resolve } from 'node:path'
 import { cwd, stdout } from 'node:process'
 import { pipeline } from 'node:stream/promises'
@@ -15,7 +15,7 @@ export const calculateHash = async () => {
   )
 
   const rs = createReadStream(fileToPath)
-  await pipeline(rs, hash.setEncoding('hex'), stdout)
+  return pipeline(rs, hash.setEncoding('hex'), stdout)
 }
 
-calculateHash()
+console.log(await calculateHash())
