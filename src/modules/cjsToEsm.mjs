@@ -30,7 +30,13 @@ console.log(`Path to current directory is ${path.dirname(fileURLToPath(import.me
 const createMyServer = createServerHttp((_, res) => {
     res.end('Request accepted');
 });
-createMyServer.listen(8000);
+createMyServer.listen(8000, (err) => {
+  if (err) {
+    console.log("Something went wrong with createMyServer, error=", err);
+  } else {
+    console.log("MyServer listens on port 8000");
+  }
+});
 
 //checking unknownObject
 console.log("unknownObject: ", unknownObject);
