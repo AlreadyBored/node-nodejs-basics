@@ -22,3 +22,7 @@
 - read file - `npm run read-stream`
 - write stream - `npm run write-stream`
 - transform stream - `npm run transform-stream`
+
+## Module Zip:
+- compress file - `npm run compress`
+- decompress file - `npm run decompress`
