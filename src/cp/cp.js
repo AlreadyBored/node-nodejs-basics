@@ -1,3 +1,7 @@
+import cp from "child_process";
 export const spawnChildProcess = async (args) => {
-    // Write your code here
+    let child = cp.fork('./files/script.js',args)
 };
+
+
+spawnChildProcess([1,2,3,4,5,6])
