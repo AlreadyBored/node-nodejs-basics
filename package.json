@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test-task": "ENV_A=1 ENV_B=2 node src/wt/main.js"
+    "test-task": "node src/wt/main.js"
   },
   "repository": {
     "type": "git",
