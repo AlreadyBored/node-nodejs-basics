@@ -1,13 +1,22 @@
+import { writeFile, access } from 'fs/promises';
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+const exists = async(path) => {
+  try {
+    await access(path)
+    return true
+  } catch {
+    return false
+  }
+}
+
+
 export const create = async () => {
-  import { writeFile, access } from 'fs/promises';
-  import { fileURLToPath } from 'url'
-  import { dirname, join } from 'path'
-
+  const PATH = join(__dirname, 'files', 'fresh.txt')
   const CONTENT = 'I am fresh and young'
-
-  const __filename = fileURLToPath(import.meta.url)
-  const __dirname = dirname(__filename)
-  const PATH = join(__dirname, 'fresh.txt')
 
   const isFileExists = await exists(PATH)
   if (isFileExists) throw new Error('FS operation failed')
@@ -18,13 +27,8 @@ export const create = async () => {
     console.error(e)
   }
 
-  async function exists(path) {
-    try {
-      await access(path)
-      return true
-    } catch {
-      return false
-    }
-  }
-
 };
+
+//test
+console.clear()
+await create()
