@@ -17,7 +17,7 @@ export const doesExist = async (path) => {
 }
 
 export const list = async () => {
-  const folderExists = doesExist(folderToListPath);
+  const folderExists = await doesExist(folderToListPath);
   const filesArray = [];
 
   if (folderExists) {
