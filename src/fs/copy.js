@@ -15,7 +15,7 @@ export const copy = async () => {
       fs.access(filesCopyPath, async (error) => {
         if (error) {
           await fs.promises.mkdir(filesCopyPath);
-          copyFiles();
+          copyFiles(filesPath, filesCopyPath);
         } else {
           throw new Error(errorMessage);
         }
@@ -23,14 +23,18 @@ export const copy = async () => {
     }
   });
 
-  const copyFiles = async () => {
-    fs.readdir(filesPath, { withFileTypes: true }, async (err, files) => {
+  const copyFiles = async (pathOld, pathNew) => {
+    fs.readdir(pathOld, { withFileTypes: true }, async (err, files) => {
       if (err) throw new Error(errorMessage);
       files.forEach(async (file) => {
-        await fs.promises.copyFile(
-          path.resolve(filesPath, file.name),
-          path.resolve(filesCopyPath, file.name)
-        );
+        const sourcePath = path.resolve(pathOld, file.name);
+        const destinationPath = path.resolve(pathNew, file.name);
+        if (file.isDirectory()) {
+          await fs.promises.mkdir(destinationPath, { recursive: true });
+          await copyFiles(sourcePath, destinationPath);
+        } else {
+          await fs.promises.copyFile(sourcePath, destinationPath);
+        }
       });
     });
   };
