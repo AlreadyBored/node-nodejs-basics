@@ -29,10 +29,9 @@ export const list = async () => {
   const files = await getFileNamesFromFolder(path)
   if (files === -1) throw new Error(`The folder ${path} could not be readed.`)
 
-  console.clear()
-  process.stdout.write(files.join('\n'))
-
+  return files.join('\n')
 };
 
 // test
-await list()
+console.clear()
+process.stdout.write(await list())

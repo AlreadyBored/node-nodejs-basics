@@ -4,8 +4,23 @@
   "description": "This repository is the part of nodejs-assignments https://github.com/AlreadyBored/nodejs-assignments",
   "type": "module",
   "scripts": {
+    "files:create": "node ./src/fs/create",
+    "files:copy": "node ./src/fs/copy",
+    "files:rename": "node ./src/fs/rename",
+    "files:delete": "node ./src/fs/delete",
+    "files:list": "node ./src/fs/list",
+    "files:read": "node ./src/fs/read",
+    "cli:env": "RSS_name1=value1 RSS_name2=value2 node ./src/cli/env",
     "cli:args": "node ./src/cli/args --propName value --prop2Name value2",
-    "cli:env": "RSS_name1=value1 RSS_name2=value2 node ./src/cli/env"
+    "modules": "node ./src/modules/cjsToEsm.mjs",
+    "hash": "node ./src/hash/calcHash",
+    "streams:read": "node ./src/streams/read",
+    "streams:transform": "node ./src/streams/transform",
+    "streams:write": "node ./src/streams/write",
+    "zip:compress": "node ./src/zip/compress",
+    "zip:decompress": "node ./src/zip/decompress",
+    "cp": "node ./src/cp/cp --propName value --prop2Name value2",
+    "wt": "node ./src/wt/main"
   },
   "repository": {
     "type": "git",

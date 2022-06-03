@@ -1,15 +1,24 @@
-export const decompress = async () => {
-  import { pipeline } from "stream";
-  import { createReadStream, createWriteStream } from "fs";
-  import { fileURLToPath } from "url";
-  import { dirname, join } from "path";
-  import { access } from "fs/promises";
-  import zlib  from 'zlib';
+import { pipeline } from "stream";
+import { createReadStream, createWriteStream } from "fs";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+import { access } from "fs/promises";
+import zlib  from 'zlib';
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
-  const __filename = fileURLToPath(import.meta.url)
-  const __dirname = dirname(__filename)
+const exists = async(path) => {
+  try {
+    await access(path)
+    return true
+  } catch {
+    return false
+  }
+}
+
+export const decompress = async () => {
   const pathArchive = join(__dirname, 'files', 'archive.gz')
-  const pathOutput = join(__dirname, 'files', 'fileToCompress.txt')
+  const pathOutput = join(__dirname, 'files', 'fileToCompress1.txt')
 
   const isFileExists = await exists(pathArchive)
   if (!isFileExists) throw new Error('File not exists')
@@ -18,7 +27,6 @@ export const decompress = async () => {
   const destination = createWriteStream(pathOutput)
   const unzip = zlib.createGunzip()
 
-  console.clear()
   pipeline(
     source,unzip, destination, (err) => {
       if (err) {
@@ -28,13 +36,8 @@ export const decompress = async () => {
     }
   )
 
-  async function exists(path) {
-    try {
-      await access(path)
-      return true
-    } catch {
-      return false
-    }
-  }
-
 };
+
+// test
+console.clear()
+await decompress()

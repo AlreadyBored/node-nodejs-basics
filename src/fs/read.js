@@ -18,16 +18,15 @@ export const read = async () => {
 
   const isFileExists = await exists(file)
   if (!isFileExists) throw new Error('FS operation failed')
-
+  let content = ''
   try {
-    const content = await readFile(file, "utf8" );
-    console.log(content)
+    content = await readFile(file, "utf8" );
   } catch {
     console.error(`The file ${file} could not be read`);
   }
-
+  return content
 };
 
 //test
 console.clear()
-await read()
+console.log(await read())

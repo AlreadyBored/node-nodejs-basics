@@ -7,6 +7,6 @@ export const parseEnv = () => {
 
 };
 
-// for testing
+// test
 console.clear()
 console.log(parseEnv())
