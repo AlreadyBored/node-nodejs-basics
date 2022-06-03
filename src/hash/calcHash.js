@@ -14,6 +14,6 @@ export const calculateHash = async () => {
         process.stdout.write(ret + '\n')
         return ret
     } catch (error) {
-        process.stderr.write('Hash error')
+        process.stderr.write('Hash error\n')
     }
 }

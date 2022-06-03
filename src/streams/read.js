@@ -12,6 +12,6 @@ export const read = async () => {
             process.stdout.write(e.toString())
         })
     } catch (error) {
-        process.stdout.write('Read stream error')
+        process.stdout.write('Read stream error\n')
     }
 }

@@ -13,6 +13,6 @@ export const write = async () => {
             stream.write(res)
         })
     } catch (error) {
-        process.stdout.write('Read stream error')
+        process.stdout.write('Read stream error\n')
     }
 }
