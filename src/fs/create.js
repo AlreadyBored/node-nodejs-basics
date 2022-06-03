@@ -11,8 +11,9 @@ export const create = async () => {
   try {
     await writeFile(filePath, content, { flag: "wx" });
     console.log("File written successfully!");
-  } catch(error) {
-    console.error(new Error("FS operation failed"));
+  } catch (err) {
+    err.message = "FS operation failed";
+    console.error(err);
   }
 };
 

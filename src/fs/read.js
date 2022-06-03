@@ -10,8 +10,9 @@ export const read = async () => {
   try {
     const content = await readFile(filePath);
     console.log(content.toString());
-  } catch(error) {
-    console.error(new Error("FS operation failed"));
+  } catch (err) {
+    err.message = "FS operation failed";
+    console.error(err);
   }
 };
 

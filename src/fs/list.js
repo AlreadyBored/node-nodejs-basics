@@ -10,8 +10,9 @@ export const list = async () => {
   try {
     const fileNames = await readdir(folderPath);
     console.log(fileNames);
-  } catch(error) {
-    console.error(new Error("FS operation failed"));
+  } catch (err) {
+    err.message = "FS operation failed";
+    console.error(err);
   }
 };
 

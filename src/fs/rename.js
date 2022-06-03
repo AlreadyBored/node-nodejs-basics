@@ -11,8 +11,9 @@ export const rename = async () => {
   try {
     await fsRename(originalFilePath, destinationFilePath);
     console.log("File renamed successfully!");
-  } catch(error) {
-    console.error(new Error("FS operation failed"));
+  } catch (err) {
+    err.message = "FS operation failed";
+    console.error(err);
   }
 };
 

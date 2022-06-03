@@ -18,8 +18,9 @@ export const copy = async () => {
       await copyFile(filePath, destinationPath);
     });
     console.log("Folder copied successfully!");
-  }catch(error) {
-    console.error(new Error("FS operation failed"));
+  } catch (err) {
+    err.message = "FS operation failed";
+    console.error(err);
   }
 };
 

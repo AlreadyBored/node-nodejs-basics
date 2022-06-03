@@ -10,8 +10,9 @@ export const remove = async () => {
   try {
     await rm(filePath);
     console.log("File removed successfully!");
-  } catch(error) {
-    console.error(new Error("FS operation failed"));
+  } catch (err) {
+    err.message = "FS operation failed";
+    console.error(err);
   }
 };
 
