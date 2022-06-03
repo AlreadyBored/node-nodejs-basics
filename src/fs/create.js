@@ -17,5 +17,3 @@ export const create = async () => {
         }
     }
 };
-
-create();
