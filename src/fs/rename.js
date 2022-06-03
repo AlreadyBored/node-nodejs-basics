@@ -7,7 +7,7 @@ import path from 'path';
 
 const __dirname = path.resolve(path.dirname(''));
 
-export const folderExists = async (path) => {
+export const doesExist = async (path) => {
   try {
     await fs.access(path);
     return true;
@@ -21,10 +21,9 @@ export const rename = async () => {
   const renamedFile = 'properFilename.md';
   const fileToRenamePath = path.join(__dirname, `files/${fileToRename}`);
   const renamedFilePath = path.join(__dirname, `files/${renamedFile}`);
-  const fileExists = await folderExists(renamedFilePath);
-  console.log(fileExists);
+  const fileExists = await doesExist(renamedFilePath);
   if (!fileExists) {
-    fs.rename(fileToRenamePath, renamedFilePath);
+    await fs.rename(fileToRenamePath, renamedFilePath);
   } else {
     throw new Error ('FS operation failed');
   }
