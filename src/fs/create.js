@@ -1,9 +1,11 @@
 import { access, open, writeFile} from "node:fs/promises";
-const fileFullPath = "./src/fs/files/fresh.txt";
+import { dirname } from "node:path";
+import { fileURLToPath } from 'node:url';
+const fileFullPath =  dirname(fileURLToPath(import.meta.url)) + "/files/fresh.txt";
 
 export const create = async () => {
     try {
-        //trying to open file< if we can - throwing exception that file existgit 
+        //trying to open file, if we can - throwing exception that file existgit 
         await open(fileFullPath,"r");
         console.log("FS operation failed, file ", fileFullPath, " exists");
         throw new Error ("FS operation failed");
