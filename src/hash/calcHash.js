@@ -10,16 +10,12 @@ export const calculateHash = async () => {
     'files/fileToCalculateHashFor.txt'
   );
   const hash = createHash('sha256');
+  const fileToHash = createReadStream(currentPath);
 
-  try {
-    const fileToHash = createReadStream(currentPath);
-    fileToHash.on('readable', () => {
-      const chunk = fileToHash.read();
-      chunk ? hash.update(chunk) : console.log(`${hash.digest('hex')}`);
-    });
-  } catch (e) {
-    console.error(e);
-  }
+  fileToHash.on('readable', () => {
+    const chunk = fileToHash.read();
+    chunk ? hash.update(chunk) : console.log(`${hash.digest('hex')}`);
+  });
 };
 
 // calculateHash();
