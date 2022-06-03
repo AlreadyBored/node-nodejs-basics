@@ -1,3 +1,6 @@
+import { sendResult, nthFibonacci } from "./worker.js";
+
 export const performCalculations = async () => {
-    // Write your code here
+  sendResult();
 };
+performCalculations();
