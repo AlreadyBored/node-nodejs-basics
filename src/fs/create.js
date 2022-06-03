@@ -9,7 +9,7 @@ export const create = async () => {
       flag: 'wx',
     })
   } catch (error) {
-    console.error('FS operation failed')
+    console.error(new Error('FS operation failed'))
   }
 }
 

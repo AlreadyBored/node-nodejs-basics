@@ -12,7 +12,7 @@ export const copy = async () => {
       force: false,
     })
   } catch (error) {
-    console.error('FS operation failed')
+    console.error(new Error('FS operation failed'))
   }
 }
 

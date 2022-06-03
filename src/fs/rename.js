@@ -16,7 +16,7 @@ export const rename = async () => {
 
     await renameFile(fileToPath, fileFromPath)
   } catch (error) {
-    console.error('FS operation failed')
+    console.error(new Error('FS operation failed'))
   }
 }
 

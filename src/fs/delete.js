@@ -7,7 +7,7 @@ export const remove = async () => {
     const fileToPath = resolve(cwd(), 'src/fs/files', 'fileToRemove.txt')
     await rm(fileToPath)
   } catch (error) {
-    console.error('FS operation failed')
+    console.error(new Error('FS operation failed'))
   }
 }
 

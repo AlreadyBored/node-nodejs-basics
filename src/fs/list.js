@@ -8,7 +8,7 @@ export const list = async () => {
     const files = await readdir(folderToPath)
     console.log(files)
   } catch (error) {
-    console.error('FS operation failed')
+    console.error(new Error('FS operation failed'))
   }
 }
 

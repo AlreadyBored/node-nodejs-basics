@@ -11,7 +11,7 @@ export const read = async () => {
     })
     await pipeline(rs, stdout)
   } catch (error) {
-    console.error('FS operation failed')
+    console.error(new Error('FS operation failed'))
   }
 }
 
