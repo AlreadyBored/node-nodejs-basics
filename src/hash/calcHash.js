@@ -1,3 +1,25 @@
+import { createHash } from 'crypto';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+import { createReadStream } from 'fs';
+
 export const calculateHash = async () => {
-    // Write your code here 
+  const filename = fileURLToPath(import.meta.url);
+  const currentPath = join(
+    dirname(filename),
+    'files/fileToCalculateHashFor.txt'
+  );
+  const hash = createHash('sha256');
+
+  try {
+    const fileToHash = createReadStream(currentPath);
+    fileToHash.on('readable', () => {
+      const chunk = fileToHash.read();
+      chunk ? hash.update(chunk) : console.log(`${hash.digest('hex')}`);
+    });
+  } catch (e) {
+    console.error(e);
+  }
 };
+
+// calculateHash();
