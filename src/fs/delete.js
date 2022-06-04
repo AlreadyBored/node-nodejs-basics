@@ -9,8 +9,6 @@ export const remove = async () => {
         await fs.rm(path.join(__dirname, "files/fileToRemove.txt"), { force: false });
         console.log('Файл удален');
     } catch (err) {
-        console.log(err);
-        console.log('FS operation failed');
         throw new Error('FS operation failed');
     }
 

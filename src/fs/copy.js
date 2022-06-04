@@ -2,7 +2,6 @@ import fs from 'fs/promises';
 import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import constants from 'constants';
 import { copyFile } from 'node:fs/promises';
 
 export const copy = async () => {
