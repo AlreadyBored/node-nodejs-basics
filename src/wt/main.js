@@ -1,6 +1,16 @@
 import { Worker } from 'worker_threads';
-const worker = new Worker('./worker.js');
+import { cpus } from 'os';
+
 
 export const performCalculations = async () => {
-    // Write your code here
+    const numberTreads = cpus().length;
+    const startNumber = 10;
+    const worker = new Worker('./worker.js');
+
+    worker.postMessage(startNumber);
+    worker.on('message', msg => {
+        console.log(msg);
+    })
 };
+
+performCalculations();
