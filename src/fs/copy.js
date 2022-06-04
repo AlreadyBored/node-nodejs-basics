@@ -38,17 +38,8 @@ export const copy = async () => {
             const writableStream = fs.createWriteStream(destFile, 'utf-8');
             readableStream.on('data', chunk => writableStream.write(chunk));
             readableStream.on('error', error => {throw error});
-
         });
-        // console.log(files);
     });
-
-
-
-
-
 };
-
-
 
 copy();
