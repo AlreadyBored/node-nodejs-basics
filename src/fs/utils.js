@@ -1,5 +1,5 @@
 import { constants } from 'fs'
-import { access } from 'fs/promises'
+import { access, readdir } from 'fs/promises'
 
 const errorMessage = ' FS operation failed.'
 
@@ -10,19 +10,34 @@ export class FileError extends Error {
   }
 }
 
-export const checkPathForExistence = async (path, isExist = false) => {
+export const checkPathForExistence = async (path, shouldExist = true) => {
   const errors = {
-    true: 'File has already been created',
-    false: 'File does not exist',
+    false: `File ${path} has already been created`,
+    true: `File ${path} does not exist`,
   }
+
   try {
-    await access(path, constants.F_OK)
-    if (isExist) {
-      throw new Error()
-    }
+    await access(path)
+    return shouldExist
+      ? { verdict: true, error: null }
+      : { verdict: false, error: errors[shouldExist] }
   } catch (error) {
-    if (error.message === '') {
-      throw new FileError(errors[isExist])
-    }
+    return shouldExist
+      ? { verdict: false, error: errors[shouldExist] }
+      : { verdict: true, error: null }
+  }
+}
+
+export const checkIsFileExistInFolder = async () => {
+  let fileList
+
+  try {
+    fileList = await readdir(FS_PATH)
+  } catch (err) {
+    throw new FileError('Error with reading direcory.')
+  }
+
+  if (fileList.includes(CREATE_FILE_NAME)) {
+    throw new FileError(`File is already exist.`)
   }
 }

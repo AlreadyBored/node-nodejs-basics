@@ -3,8 +3,16 @@ import { FileError, checkPathForExistence } from './utils.js'
 import { FOLDER_COPY_NAME_NEW, FS_PATH } from './constants.js'
 
 export const copy = async () => {
-  await checkPathForExistence(FS_PATH)
-  await checkPathForExistence(FOLDER_COPY_NAME_NEW, true)
+  const { error: errorOldFile } = await checkPathForExistence(FS_PATH)
+
+  const { error: errorNewFile } = await checkPathForExistence(
+    FOLDER_COPY_NAME_NEW,
+    false,
+  )
+
+  if (errorOldFile || errorNewFile) {
+    throw new FileError(errorOldFile || errorNewFile)
+  }
 
   let stats
   try {
