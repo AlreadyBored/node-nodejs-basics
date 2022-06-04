@@ -9,3 +9,5 @@ export const FILE_NAME_TO_RENAME = './files/wrongFilename.txt'
 export const FILE_NAME_TO_RENAME_NEW = './files/properFilename.md'
 
 export const FILE_TO_REMOVE = './files/fileToRemove.txt'
+
+export const FILE_TO_READ = './files/fileToRead.txt'
