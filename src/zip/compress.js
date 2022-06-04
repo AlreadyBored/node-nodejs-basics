@@ -18,7 +18,18 @@ export const compress = async () => {
     const compressStream = zlib.createGzip();
     const writableStream = fs.createWriteStream(pathToArchiveFileName);
 
-    readableStream.pipe(compressStream).pipe(writableStream);
+    const handleError = () => {
+        console.log('error');
+        readstream.destroy();
+        writestream.end('Finish with errors....')
+    };
+
+    readableStream
+        .on('error', handleError)
+        .pipe(compressStream)
+        .on('error', handleError)
+        .pipe(writableStream)
+        .on('error', handleError);
 };
 
 compress();
