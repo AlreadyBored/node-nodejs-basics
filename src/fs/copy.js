@@ -18,4 +18,4 @@ export const copy = async () => {
         console.log("FS operation failed");
     }
 };
-copy()
+//copy()
