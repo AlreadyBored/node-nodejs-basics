@@ -1,15 +1,18 @@
 import { Transform } from 'stream';
 
 export const transform = async () => {
-    const reverse = new Transform({
-        transform(chunk, encoding, callback) {
-            callback(chunk.toString().split('').reverse().join(''));
+    class ReverseStream extends Transform {
+        constructor() {
+            super();
         }
-    })
 
-    const readStr = process.stdin()
+        _transform(chunk, encoding, callback) {
+            this.push(/./g[Symbol.match](chunk).reverse().join(''));
+            callback();
+        }
+    }
 
-    process.stdin.pipe(process.stdout);
+    const reverseStream = new ReverseStream();
+
+    process.stdin.pipe(reverseStream).pipe(process.stdout);
 };
-
-transform();
