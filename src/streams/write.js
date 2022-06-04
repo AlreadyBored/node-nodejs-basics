@@ -9,11 +9,10 @@ export const write = async () => {
     const stream = fs.WriteStream(toWrite, 'utf8');
     const rl = readline.createInterface({ input, output });
 
-
     rl.setPrompt('input> ');
     rl.prompt();
     rl.on('line', (line) => {
-        stream.write(line);
+        stream.write(line + '\n');
         rl.prompt()
     });
 
