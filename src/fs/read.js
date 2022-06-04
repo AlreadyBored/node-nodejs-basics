@@ -12,7 +12,7 @@ export const read = async () => {
 
     fs.access(pathToReadFile, fs.constants.F_OK, (err) => {
         if (err) {
-            console.log('file exists');
+            console.log(`file "${pathToReadFile}" does not exist`);
             throw new Error('FS operation failed');
         }
     });
