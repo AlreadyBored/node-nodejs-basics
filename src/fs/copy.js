@@ -1,9 +1,6 @@
 import { stat, cp } from 'fs/promises'
 import { FileError, checkPathForExistence } from './utils.js'
-import {
-  FOLDER_COPY_NAME_NEW,
-  FS_PATH,
-} from './constants.js'
+import { FOLDER_COPY_NAME_NEW, FS_PATH } from './constants.js'
 
 export const copy = async () => {
   await checkPathForExistence(FS_PATH)
@@ -18,9 +15,9 @@ export const copy = async () => {
 
   if (stats.isDirectory()) {
     try {
-        await cp(FS_PATH, FOLDER_COPY_NAME_NEW, {recursive: true})
+      await cp(FS_PATH, FOLDER_COPY_NAME_NEW, { recursive: true })
     } catch (error) {
-        
+      throw new FileError('Error occured with copy.')
     }
   } else {
     throw new FileError('File is not a folder.')
