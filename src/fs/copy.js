@@ -1,15 +1,24 @@
-import fs from 'fs'
+import fs from 'fs';
+import path from 'path';
+import { errorMessage, fsFilePath } from '../common/constants.js';
 
 export const copy = async () => {
-    fs.readdir('./src/fs/files', (err, files) => {
-        if(err) throw new Error('failed')
+    fs.readdir(
+        path.join(fsFilePath, 'files'),
+        (err, files) => {
+        if(err) throw new Error(errorMessage);
 
-        fs.mkdir('./src/fs/files_copy', (err) => {
-            if(err) throw new Error('files_copy')
+        fs.mkdir(
+            path.join(fsFilePath, 'files_copy'),
+            (err) => {
+            if(err) throw new Error(errorMessage);
 
             files.forEach((file) => {
-                fs.copyFile(`./src/fs/files/${file}`, `./src/fs/files_copy/${file}`, (err) => {
-                    if(err) throw new Error('failed 2')
+                fs.copyFile(
+                    path.join(fsFilePath, 'files', file),
+                    path.join(fsFilePath, 'files_copy', file),
+                    (err) => {
+                    if(err) throw new Error(errorMessage);
                 })
             })
         })

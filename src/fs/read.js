@@ -1,9 +1,14 @@
-import fs from 'fs'
+import fs from 'fs';
+import path from 'path';
+import { errorMessage, fsFilePath } from '../common/constants.js';
 
 export const read = async () => {
-    fs.readFile('./src/fs/files/fileToRead.txt', 'utf-8', (err, data) => {
-        if(err) throw new Error('Failed')
-        console.log(data)
+    fs.readFile(
+        path.join(fsFilePath, 'files/fileToRead.txt'),
+        'utf-8',
+        (err, data) => {
+        if(err) throw new Error(errorMessage);
+        console.log(data);
     })
 };
 

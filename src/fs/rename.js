@@ -1,7 +1,13 @@
-import fs from 'fs'
+import fs from 'fs';
+import path from 'path';
+import { errorMessage, fsFilePath } from '../common/constants.js';
+
 export const rename = async () => {
-   fs.rename('./src/fs/files/wrongFilename.txt', './src/fs/files/properFilename.md', (err) => {
-       if(err) throw new Error('Failed rename')
+   fs.rename(
+       path.join(fsFilePath, 'files/wrongFilename.txt'),
+       path.join(fsFilePath, 'files/properFilename.txt'),
+       (err) => {
+       if(err) throw new Error(errorMessage);
    })
 };
 

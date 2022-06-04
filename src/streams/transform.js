@@ -1,11 +1,12 @@
-import { pipeline, Transform } from 'stream'
+import { pipeline, Transform } from 'stream';
+import { errorMessage } from '../common/constants.js';
 
 export const transform = async () => {
     const getCorrectStr = (chunk) => {
-        const strToArray = chunk.toString('utf-8').split('')
-        const splitedIndents = strToArray.splice(-2, 2)
-        strToArray.reverse().push(...splitedIndents)
-        return strToArray.join('')
+        const strToArray = chunk.toString('utf-8').split('');
+        const splitedIndents = strToArray.splice(-2, 2);
+        strToArray.reverse().push(...splitedIndents);
+        return strToArray.join('');
     }
 
     const transFormStream = new Transform({
@@ -18,8 +19,12 @@ export const transform = async () => {
           }
     })
 
-    pipeline(process.stdin, transFormStream, process.stdout, (err) => {
-        if(err) throw new Error('Failed')
+    pipeline(
+      process.stdin,
+      transFormStream,
+      process.stdout,
+      (err) => {
+        if(err) throw new Error(errorMessage);
     })
 };
 

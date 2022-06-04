@@ -1,14 +1,16 @@
-import fs from 'fs'
+import fs from 'fs';
+import path from 'path';
+import { errorMessage, fsFilePath } from '../common/constants.js';
 
 export const create = async () => {
     const fileContent = 'I am fresh and young';
-    const errMessage = 'FS operation failed';
+
     fs.writeFile(
-        './src/fs/files/fresh.txt',
+        path.join(fsFilePath, 'files/fresh.txt'),
         fileContent,
         {flag: 'wx'},
         (err) => {
-          if(err) throw new Error(errMessage)
+          if(err) throw new Error(errorMessage);
     })
 };
 

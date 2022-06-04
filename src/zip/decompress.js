@@ -1,18 +1,22 @@
-import fs, { createWriteStream } from 'fs'
-import zlib from 'zlib'
+import fs, { createWriteStream } from 'fs';
+import zlib from 'zlib';
+import path from 'path'
+import { errorMessage, zipFilePath } from '../common/constants.js';
 
 export const decompress = async () => {
-    const unzip = zlib.createUnzip()
-    const readStream = fs.createReadStream('./src/zip/files/archive.gz')
-    const writeStream = fs.createWriteStream('./src/zip/files/fileToCompress.txt')
+    const unzip = zlib.createUnzip();
+    const readStream = fs.createReadStream(path.join(zipFilePath, 'archive.gz'));
+    const writeStream = fs.createWriteStream(path.join(zipFilePath, 'fileToCompress.txt'));
 
     writeStream.on('close', () => {
-        fs.rm('./src/zip/files/archive.gz', (err) => {
-            if(err) throw new Error('Failde')
+        fs.rm(
+          path.join(zipFilePath, 'archive.gz'),
+          (err) => {
+          if(err) throw new Error(errorMessage);
         })  
     })
     
-    readStream.pipe(unzip).pipe(writeStream)
+    readStream.pipe(unzip).pipe(writeStream);
 };
 
 decompress()

@@ -1,10 +1,10 @@
-import path, { dirname } from 'path'
+import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { release, version } from 'os'
-import { createServer as createServerHttp } from 'http'
+import { release, version } from 'os';
+import { createServer as createServerHttp } from 'http';
 import * as a from './files/a.json' assert {type: "json"};
 import * as b from './files/b.json' assert {type: "json"};
-import './files/c.js'
+import './files/c.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

@@ -1,8 +1,12 @@
-import fs from 'fs'
+import fs from 'fs';
+import path from 'path';
+import { errorMessage, fsFilePath } from '../common/constants.js';
 
 export const remove = async () => {
-    fs.rm('./src/fs/files/fileToRemove.txt', (err) => {
-        if(err) throw new Error('Failde')
+    fs.rm(
+        path.join(fsFilePath, 'files/fileToRemove.txt'),
+        (err) => {
+        if(err) throw new Error(errorMessage);
     })    
 };
 

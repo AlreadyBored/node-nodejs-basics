@@ -1,9 +1,13 @@
-import fs from 'fs'
+import fs from 'fs';
+import path from 'path';
+import { errorMessage, fsFilePath } from '../common/constants.js';
 
 export const list = async () => {
-    fs.readdir('./src/fs/files', (err, files) => {
-        if(err) throw new Error('Failed')
-        console.log(files)
+    fs.readdir(
+        path.join(fsFilePath, 'files'),
+        (err, files) => {
+        if(err) throw new Error(errorMessage);
+        console.log(files);
     })
 };
 
