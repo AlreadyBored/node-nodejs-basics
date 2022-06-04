@@ -10,7 +10,7 @@ export const write = async () => {
     const fileName = 'fileToWrite.txt';
     const pathToWriteFile = path.join(__dirname, '/files', fileName);
 
-    const writableStream = fs.createWriteStream(pathToWriteFile, 'utf-8');
+    const writableStream = fs.createWriteStream(pathToWriteFile);
     process.stdin.on('data', chunk => writableStream.write(chunk));
     // Write your code here
 };
