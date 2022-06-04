@@ -5,7 +5,8 @@ export const rename = async () => {
         fsp.rename('files/wrongFilename.txt','files/properFilename.md')
 
     } catch(e) {
-        console.log('FS operation failed!');
+        console.log(e);
+        throw new Error('FS operation failed');
     }
 };
 rename()
