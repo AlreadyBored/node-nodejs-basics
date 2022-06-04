@@ -1,3 +1,6 @@
 export const parseEnv = () => {
-    // Write your code here 
+    const parsedEnvs = process.argv.slice(2).map((env) => `RSS_${env}`)
+    console.log(parsedEnvs)
 };
+
+parseEnv()

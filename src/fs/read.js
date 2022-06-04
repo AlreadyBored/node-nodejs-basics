@@ -1,3 +1,10 @@
+import fs from 'fs'
+
 export const read = async () => {
-    // Write your code here 
+    fs.readFile('./src/fs/files/fileToRead.txt', 'utf-8', (err, data) => {
+        if(err) throw new Error('Failed')
+        console.log(data)
+    })
 };
+
+read()
