@@ -3,7 +3,7 @@ import path from 'path';
 import zlib from 'zlib';
 import { pipeline } from 'stream';
 
-const toWrite = path.resolve(path.dirname(''), 'src', 'zip', 'files', 'fileToCompress1.txt');
+const toWrite = path.resolve(path.dirname(''), 'src', 'zip', 'files', 'fileToCompress.txt');
 const toRead = path.resolve(path.dirname(''), 'src', 'zip', 'files', 'archive.gz');
 
 export const decompress = async () => {
