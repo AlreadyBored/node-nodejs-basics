@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "fs:create": "node src/fs/create.js",
     "fs:copy": "node src/fs/copy.js",
-    "fs:rename": "node src/fs/rename.js"
+    "fs:rename": "node src/fs/rename.js",
+    "fs:delete": "node src/fs/delete.js"
   },
   "repository": {
     "type": "git",
