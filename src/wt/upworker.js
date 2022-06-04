@@ -7,7 +7,9 @@ const fName = path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'worker
 
 export const launch = num => {
   return new Promise((resolve, reject) => {
-    const worker = new Worker(fName);
+    const worker = new Worker(fName, {
+      workerData: num
+    });
     worker.on('message', resolve);
     worker.on('error', reject);
     worker.on('exit', (code) => {
