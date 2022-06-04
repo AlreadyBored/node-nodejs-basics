@@ -1,10 +1,10 @@
 # Node.js basics
 
 Scripts:
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "fs:read": "node src/fs/read.js",
-    "fs:rename": "node src/fs/rename.js",
-    "fs:copy": "node src/fs/copy.js",
+    - "test": "echo \"Error: no test specified\" && exit 1",
+    - "fs:read": "node src/fs/read.js",
+    - "fs:rename": "node src/fs/rename.js",
+    - "fs:copy": "node src/fs/copy.js",
     "fs:create": "node src/fs/create.js",
     "fs:delete": "node src/fs/delete.js",
     "fs:list": "node src/fs/list.js",
