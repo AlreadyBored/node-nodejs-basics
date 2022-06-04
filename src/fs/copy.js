@@ -25,6 +25,26 @@ export const copy = async () => {
         }
     });
 
+    fs.mkdir(pathToDestDir, { recursive: true }, (err) => {
+        if (err) throw new Error('FS operation failed');
+    });
+
+    fs.readdir(pathToSourceDir, (err, files) => {
+        if (err) throw err;
+        files.forEach(file => {
+            const sourceFile = path.join(pathToSourceDir, file);
+            const destFile = path.join(pathToDestDir, file);
+            const readableStream = fs.createReadStream(sourceFile, 'utf-8');
+            const writableStream = fs.createWriteStream(destFile, 'utf-8');
+            readableStream.on('data', chunk => writableStream.write(chunk));
+            readableStream.on('error', error => {throw error});
+
+        });
+        // console.log(files);
+    });
+
+
+
 
 
 };

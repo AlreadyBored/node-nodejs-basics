@@ -19,7 +19,7 @@ export const list = async () => {
     fs.readdir(pathToSourceDir, (err, files) => {
         if (err) throw err;
         console.log(files);
-    })
+    });
 };
 
 list();
