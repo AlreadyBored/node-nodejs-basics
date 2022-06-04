@@ -1,4 +1,4 @@
-import { access, copyFile, cp } from 'fs/promises';
+import { access, cp } from 'fs/promises';
 
 export const copy = async () => {
   // Write your code here 

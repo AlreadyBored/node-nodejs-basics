@@ -5,7 +5,7 @@ export const create = async () => {
 
   const PATH = './src/fs/files/fresh.txt';
 	const DATA = 'I am fresh and young';
-	const ERROR_MSG = 'FS operation failed'
+	const ERROR_MSG = 'FS operation failed';
 
 	try {
 		let isExistFile = false;
