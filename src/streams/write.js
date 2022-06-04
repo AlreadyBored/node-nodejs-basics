@@ -2,7 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import * as readline from 'readline';
 import { stdin as input, stdout as output } from 'process';
-import { start } from 'repl';
 
 const toWrite = path.resolve(path.dirname(''), 'src', 'streams', 'files', 'fileToWrite.txt');
 
