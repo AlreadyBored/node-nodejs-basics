@@ -10,7 +10,7 @@ export const create = async () => {
         exit(0);
     }).
     then(() => {
-        throw new Error('FS operation failed');
+        {try{throw new Error('FS operation failed')} catch(error){console.log(error.message)}}
     });
 };
 

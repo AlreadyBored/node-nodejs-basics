@@ -6,7 +6,7 @@ const filePath = path.resolve(path.dirname(''), 'src', 'fs', 'files', 'fileToRem
 
 export const remove = async () => {
     fs.access(filePath, async function (error) {
-        if (error) throw new Error('FS operation failed');
+        if (error) {try{throw new Error('FS operation failed')} catch(error){console.log(error.message)}}
         else {
             await fsPromises.unlink(filePath);
         }
