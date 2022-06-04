@@ -12,7 +12,8 @@
     "fs:list": "node src/fs/list.js",
     "fs:read": "node src/fs/read.js",
     "cli:args": "node src/cli/args.js --propName value --prop2Name value2",
-    "modules:cjsToEsm": "node src/modules/cjsToEsm.mjs"
+    "modules:cjsToEsm": "node src/modules/cjsToEsm.mjs",
+    "hash:calcHash": "node src/hash/calcHash.js"
   },
   "repository": {
     "type": "git",
