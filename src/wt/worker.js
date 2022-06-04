@@ -6,10 +6,8 @@ export const nthFibonacci = (n) => n < 2 ? n : nthFibonacci(n - 1) + nthFibonacc
 export const sendResult = () => {
     parentPort.on('message', msg => {
         parentPort.postMessage(nthFibonacci(msg));
-        // console.log(nthFibonacci(msg));
-    })
-    // console.log(nthFibonacci(workerData));
-    // This function sends result of nthFibonacci computations to main thread
+        process.exit();
+    });
 };
 
 sendResult();
