@@ -1,4 +1,4 @@
-import fs, { createReadStream, createWriteStream } from 'fs';
+import { createReadStream, createWriteStream } from 'fs';
 import { createGzip } from 'zlib';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -11,7 +11,7 @@ export const compress = async () => {
     const handleStream = createReadStream(filePath);
     handleStream
         .pipe(createGzip())
-        .pipe(createWriteStream('archive.gz'))
+        .pipe(createWriteStream('src/zip/archive.gz'))
         .on('finish', () => {
             console.log(`Compression done: archive.gz`)
         })    
