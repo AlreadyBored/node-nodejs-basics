@@ -13,3 +13,5 @@ export const rename = async () => {
     .then(Promise.reject, () => renameFS(OLD_NAME, NEW_NAME))
   .catch(() => { throw new Error('FS operation failed') })
 };
+
+rename();

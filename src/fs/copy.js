@@ -20,3 +20,5 @@ export const copy = async () => {
   .then(() => console.log('Folder copied'))
   .catch(() => { throw new Error('FS operation failed')});
   };
+
+copy();

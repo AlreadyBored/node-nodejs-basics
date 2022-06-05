@@ -18,3 +18,5 @@ export const create = async () => {
   } catch (e) {
   }
 };
+
+create();
