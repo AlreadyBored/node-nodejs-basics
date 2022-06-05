@@ -5,7 +5,22 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cli:args": "node src/cli/args.js --propName value --prop2Name value2"
+    "create": "node src/fs/create.js",
+    "copy": "node src/fs/copy.js",
+    "rename": "node src/fs/rename.js",
+    "delete": "node src/fs/delete.js",
+    "list": "node src/fs/list.js",
+    "read": "node src/fs/read.js",
+    "env": "RSS_name1=value1 RSS_name2=value2 node src/cli/env.js",
+    "args": "node src/cli/args.js --propName value --prop2Name value2",
+    "cjsToEsm": "node --no-warnings src/modules/cjsToEsm.mjs",
+    "calcHash": "node src/hash/calcHash.js",
+    "streams:read": "node src/streams/read.js",
+    "streams:write": "node src/streams/write.js",
+    "transform": "node src/streams/transform.js",
+    "compress": "node src/zip/compress.js",
+    "decompress": "node src/zip/decompress.js",
+    "cp": "node src/cp/cp.js"
   },
   "repository": {
     "type": "git",
