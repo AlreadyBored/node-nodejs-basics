@@ -13,7 +13,8 @@
     "fs:list": "node src/fs/list.js",
     "cli:env": "node src/cli/env.js",
     "cli:args": "node src/cli/args.js --propName value --prop2Name value2",
-    "modules:mjs": "node src/modules/cjsToEsm.mjs"
+    "modules:mjs": "node src/modules/cjsToEsm.mjs",
+    "hash:calcHash": "node src/hash/calcHash.js"
   },
   "repository": {
     "type": "git",
