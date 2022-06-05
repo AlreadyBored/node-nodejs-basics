@@ -1,18 +1,18 @@
 import { unlink } from "fs";
 import { _printErorr as printError } from "./printError.js"
 
-function deliteFile(path) {
-    unlink(path, function (error) {
+async function deliteFile(path) {
+    unlink(path, (error) => {
         printError(error);
     });
 }
 
-function makeTask(path) {
+async function makeTask(path) {
     deliteFile(path);
 }
 
-const path = 'files/fileToRemove.txt';
-//makeTask(path);
+const path = 'src/fs/files/fileToRemove.txt';
+makeTask(path);
 
 export const remove = async () => {
     // Write your code here

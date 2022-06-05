@@ -1,8 +1,8 @@
 async function printErorr(error) {
     try {
-        if (error) throw error;
+        if (error) throw new Error('FS operation failed');
     } catch (error) {
-        console.error('FS operation failed');
+        console.error(error.message);
     }
 }
 

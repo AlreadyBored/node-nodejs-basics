@@ -1,21 +1,15 @@
-import { readFile as _readFile } from "fs";
-import { _printErorr as printError } from "./printError.js"
-
-async function readFile(path) {
-    _readFile(path, "utf8", (error, data) => {
-        printError(error)
-        if (!error) console.log(data);
-    });
-
-}
+import { readFile } from "fs";
 
 async function makeTask(path) {
-    readFile(path);
+    readFile(path, "utf8", (error, data) => {
+        try {
+            if (error) throw new Error('FS operation failed');
+            console.log(data);
+        } catch (error) { console.error(error.message) }
+    });
 }
 
-const path = 'files/fileToRead.txt';
-
-//makeTask(path);
+const path = 'src/fs/files/fileToRead.txt';
 
 export const read = async () => {
     // Write your code here 

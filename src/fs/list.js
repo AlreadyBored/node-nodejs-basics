@@ -1,35 +1,39 @@
-import { statSync, readdirSync, stat } from "fs";
+import { readdir, stat } from "fs";
 import { _printErorr as printError } from "./printError.js"
 
-function isDirectory(path) {
-    (statSync(path).isDirectory()) ?
-        printFileList(path) :
-        console.log(path);
+async function isDirectory(path) {
+    stat(path, function (error, stat) {
+        printError(error)
+        if (!error)
+            (stat.isDirectory()) ?
+                printFileList(path) :
+                console.log(path);
+    });
 }
 
-function printFileList(path) {
-    let files = readdirSync(path);
-    for (let i in files) {
-        let newPath = path + '/' + files[i];
-        isDirectory(newPath);
-    }
+async function printFileList(oldDirectory) {
+    readdir(oldDirectory, (error, files) => {
+        printError(error);
+        if (!error)
+            for (let i in files) {
+                let newPath = path + '/' + files[i];
+                isDirectory(newPath);
+            }
+    });
 }
 
-function directoryCreated(path) {
+async function directoryCreated(path) {
     stat(path, function (error) {
         printError(error)
     });
 }
 
-function makeTask(path) {
-    try {
-        directoryCreated(path)
-        printFileList(path)
-    } catch { }
+async function makeTask(path) {
+    directoryCreated(path)
+    printFileList(path)
 }
 
-const path = 'files';
-//makeTask(path);
+const path = 'src/fs/files';
 
 export const list = async () => {
     // Write your code here 

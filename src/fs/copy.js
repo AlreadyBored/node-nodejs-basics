@@ -1,8 +1,8 @@
 import {
     copyFile,
     mkdir,
-    statSync,
-    readdirSync,
+    stat,
+    readdir,
     constants
 } from "fs";
 import { _printErorr as printError } from "./printError.js"
@@ -21,34 +21,38 @@ async function _copyFile(oldPathFile, newPathFile) {
 }
 
 async function isDirectory(oldPath, newPath) {
-    if (statSync(oldPath).isDirectory()) {
-        createDirrectory(newPath);
-        startCopy(oldPath, newPath);
-    } else {
-        console.log(newPath);
-        _copyFile(oldPath, newPath);
-    }
+    stat(oldPath, (error, stats) => {
+        printError(error);
+        if (!error);
+        if (stats.isDirectory()) {
+            createDirrectory(newPath);
+            startCopy(oldPath, newPath);
+        } else {
+            console.log(newPath);
+            _copyFile(oldPath, newPath);
+        }
+    });
 }
 
 async function startCopy(oldDirectory, newDirectory) {
-    let files = readdirSync(oldDirectory);
-    for (let i in files) {
-        let oldPath = oldDirectory + '/' + files[i];
-        let newPath = newDirectory + '/' + files[i];
-        isDirectory(oldPath, newPath);
-    }
+    readdir(oldDirectory, (error, files) => {
+        printError(error);
+        if (!error)
+            for (let i in files) {
+                let oldPath = oldDirectory + '/' + files[i];
+                let newPath = newDirectory + '/' + files[i];
+                isDirectory(oldPath, newPath);
+            }
+    });
 };
 
 async function makeTask(newPath, oldPath) {
     createDirrectory(newPath);
-    try { startCopy(oldPath, newPath); } catch { }
-
+    startCopy(oldPath, newPath);
 }
 
-const oldPath = 'files';
-const newPath = 'files_copy';
-
-//makeTask(newPath, oldPath);
+const oldPath = 'src/fs/files';
+const newPath = 'src/fs/files_copy';
 
 export const copy = async () => {
     // Write your code here 

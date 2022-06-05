@@ -4,6 +4,7 @@
   "description": "This repository is the part of nodejs-assignments https://github.com/AlreadyBored/nodejs-assignments",
   "type": "module",
   "scripts": {
+    "testFs": "node src/fs/testFs.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
