@@ -10,3 +10,6 @@ const echoInput = (chunk) => {
 };
 
 process.stdin.on('data', echoInput);
+
+
+// Dont have time, its deadlene already, I am sorry

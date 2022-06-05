@@ -1,3 +1,9 @@
+import * as fs from 'fs';
+
 export const read = async () => {
-    // Write your code here 
+   fs.ReadStream("files/fileToRead.txt").on('data', function(d) {
+       process.stdout.write(d.toString()+ " \r\n")
+    })
 };
+
+read()
