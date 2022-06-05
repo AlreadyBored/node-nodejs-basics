@@ -4,7 +4,5 @@ export const parseArgs = () => {
     for(let i = 0; i < args.length; i += 2) {
         result.push(`${args[i].slice(2)} is ${args[i+1]}`)
     }
-    return result.join(', ')
+    console.log(result.join(', '))
 }
-
-console.log(parseArgs())
