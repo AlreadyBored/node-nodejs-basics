@@ -5,3 +5,5 @@ export const parseEnv = () => {
     console.log(`${prefix}${envKey}=${process.env[envKey]}`);
   }
 };
+
+parseEnv(process.env);

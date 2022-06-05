@@ -15,3 +15,5 @@ export const parseArgs = () => {
     console.log(`${prop} is ${values[index]}`);
   });
 };
+
+parseArgs(process.argv);

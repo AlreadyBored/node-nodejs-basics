@@ -10,3 +10,5 @@ export const write = async () => {
     writableStream.write(JSON.stringify(process.stdin));
   });
 };
+
+write();

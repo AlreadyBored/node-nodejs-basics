@@ -6,3 +6,5 @@ export const spawnChildProcess = async (args) => {
   const filePath = `${__dirname}files/script.js`;
   child_process.fork(filePath, args);
 };
+
+spawnChildProcess(process.argv);

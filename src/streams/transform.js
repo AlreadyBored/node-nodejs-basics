@@ -17,3 +17,6 @@ export const transform = async () => {
   myTransform.on('data', (chunk) => process.stdout.write(chunk));
   myTransform.write(JSON.stringify(process.stdin));
 };
+
+transform();
+

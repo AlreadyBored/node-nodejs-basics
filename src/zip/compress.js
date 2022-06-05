@@ -23,3 +23,5 @@ export const compress = async () => {
       process.exitCode = 1;
     });
 };
+
+compress();

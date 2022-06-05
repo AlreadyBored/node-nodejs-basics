@@ -21,3 +21,5 @@ export const calculateHash = async () => {
   console.log(hexCode);
   return hexCode;
 };
+
+calculateHash();

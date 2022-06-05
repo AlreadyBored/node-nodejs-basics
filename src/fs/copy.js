@@ -27,3 +27,5 @@ export const copy = async () => {
     throw new Error('FS operation failed');
   }
 };
+
+copy();

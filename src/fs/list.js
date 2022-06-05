@@ -12,3 +12,5 @@ export const list = async () => {
     throw new Error('FS operation failed');
   }
 };
+
+list();
