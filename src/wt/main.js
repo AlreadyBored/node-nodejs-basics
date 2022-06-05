@@ -12,7 +12,7 @@ export const performCalculations = async () => {
   Promise.all(
     arr.map((_, idx) => {
       const w = new Worker(workerPath, { workerData: 10 + idx });
-      return new Promise((resolve, rej) => {
+      return new Promise((resolve) => {
         w.on('message', (res) => {
           resolve({
             status: 'resolved',
