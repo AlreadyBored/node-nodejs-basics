@@ -8,5 +8,3 @@ export const read = async () => {
     throw new Error("FS operation failed");
   }
 };
-
-read();
