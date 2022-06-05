@@ -4,7 +4,23 @@
   "description": "This repository is the part of nodejs-assignments https://github.com/AlreadyBored/nodejs-assignments",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cli:args": "node ./src/cli/args.js --firstProp 1 --secondProp 2",
+    "cli:env": "set RSS_something='my new varable'&&set RSS_onemorevarable='one more varable'&&node ./src/cli/env.js",
+    "cp": "node ./src/cp/cp.js 1 2 3 5 find new",
+    "fs:copy": "node ./src/fs/copy.js",
+    "fs:create": "node ./src/fs/create.js",
+    "fs:delete": "node ./src/fs/delete.js",
+    "fs:list": "node ./src/fs/list.js",
+    "fs:read": "node ./src/fs/read.js",
+    "fs:rename": "node ./src/fs/rename.js",
+    "hash": "node ./src/hash/calcHash.js",
+    "modules": "node ./src/modules/cjsToEsm.mjs",
+    "s:read": "node ./src/streams/read.js",
+    "s:transform": "node ./src/streams/transform.js",
+    "s:write": "node ./src/streams/write.js",
+    "wt": "node ./src/wt/main.js",
+    "zip:compress": "node ./src/zip/compress.js",
+    "zip:decompress": "node ./src/zip/decompress.js"
   },
   "repository": {
     "type": "git",
