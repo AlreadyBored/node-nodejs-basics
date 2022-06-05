@@ -1,11 +1,22 @@
-import { path } from 'node:path';
+import { sep } from 'node:path';
+import { readFile } from 'node:fs/promises';
 import { release, version } from 'node:os';
 import { createServer as createServerHttp } from 'node:http';
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
-import c from './files/c';
-import aJSON from '././files/a.json';
-import bJSON from '././files/b.json';
+import * as c from './files/c.js';
+
+const aJSON = JSON.parse(
+    await readFile(
+        new URL('./files/a.json', import.meta.url)
+    )
+);
+
+const bJSON = JSON.parse(
+    await readFile(
+        new URL('./files/b.json', import.meta.url)
+    )
+);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -21,7 +32,7 @@ if (random > 0.5) {
 
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
-console.log(`Path segment separator is "${path.sep}"`);
+console.log(`Path segment separator is "${sep}"`);
 
 console.log(`Path to current file is ${__filename}`);
 console.log(`Path to current directory is ${__dirname}`);

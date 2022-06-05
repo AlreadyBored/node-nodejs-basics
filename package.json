@@ -12,7 +12,8 @@
     "fs:delete": "node src/fs/delete.js",
     "fs:list": "node src/fs/list.js",
     "cli:env": "node src/cli/env.js",
-    "cli:args": "node src/cli/args.js --propName value --prop2Name value2"
+    "cli:args": "node src/cli/args.js --propName value --prop2Name value2",
+    "modules:mjs": "node src/modules/cjsToEsm.mjs"
   },
   "repository": {
     "type": "git",
