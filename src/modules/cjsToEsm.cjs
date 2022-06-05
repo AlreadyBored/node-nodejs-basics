@@ -44,9 +44,3 @@ const createMyServer = createServerHttp((_, res) => {
     res.end('Request accepted');
 });
 
-// module.exports = {
-//     unknownObject,
-//     createMyServer,
-// };
-export default unknownObject
-export default unknownObject

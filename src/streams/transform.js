@@ -9,4 +9,4 @@ export const transform = async () => {
     });
     stdin.pipe(revers).pipe(stdout);
 };
-transform()
+

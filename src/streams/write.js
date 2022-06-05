@@ -8,5 +8,4 @@ export const write = async () => {
     stdin.pipe(writeStream)
 };
 
-write()
 

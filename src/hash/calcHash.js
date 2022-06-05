@@ -12,4 +12,4 @@ export const calculateHash = async () => {
     });
 };
 
-calculateHash()
+
