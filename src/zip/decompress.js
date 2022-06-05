@@ -7,14 +7,3 @@ export const decompress = async () => {
         .pipe(zlib.createUnzip())
         .pipe(fs.createWriteStream('./files/fileToCompress.txt'))
 }
-
-
-(async () => {
-    try {
-        console.log('result:' + await decompress())
-    } catch (e) {
-        // Deal with the fact the chain failed
-        console.log('error:')
-        console.log(e)
-    }
-})()
