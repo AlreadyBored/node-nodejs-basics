@@ -8,4 +8,3 @@ export const parseEnv = () => {
   }
 };
 parseEnv();
-// RSS_name1=value1 RSS_name=value2 node cli/env.js

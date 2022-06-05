@@ -3,9 +3,8 @@ import { constants } from "fs";
 
 export const list = async () => {
   try {
-    await access("./files", constants.R_OK | constants.W_OK);
-    const files = await readdir("./files");
-    // console.log(files)
+    await access("./src/fs/files", constants.R_OK | constants.W_OK);
+    const files = await readdir("./src/fs/files");
     for (let file of files) {
       console.log(file);
     }
@@ -15,3 +14,5 @@ export const list = async () => {
     }
   }
 };
+
+list();

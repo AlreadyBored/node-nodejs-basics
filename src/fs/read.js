@@ -3,8 +3,8 @@ import { constants } from "fs";
 
 export const read = async () => {
   try {
-    await access("./files/fileToRead.txt", constants.R_OK | constants.W_OK);
-    let content = await readFile("./files/fileToRead.txt", "utf8");
+    await access("./src/fs/files/fileToRead.txt", constants.R_OK | constants.W_OK);
+    let content = await readFile("./src/fs/files/fileToRead.txt", "utf8");
     console.log(content);
   } catch (err) {
     if (err?.code === "ENOENT") {
@@ -12,3 +12,4 @@ export const read = async () => {
     }
   }
 };
+read();

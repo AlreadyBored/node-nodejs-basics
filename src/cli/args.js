@@ -9,4 +9,3 @@ export const parseArgs = () => {
 };
 
 parseArgs();
-// node cli/args.js --prop1name value1 --prop2name value2 
