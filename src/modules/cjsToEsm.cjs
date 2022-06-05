@@ -1,30 +1,37 @@
-const path = require('path');
-const { release, version } = require('os');
-const { createServer: createServerHttp } = require('http');
-require('./files/c');
+import path from 'path';
+import {dirname} from 'path';
+import {fileURLToPath} from 'url';
+import { release, version } from 'os';
+import { createServer as createServerHttp } from 'http';
+import('./files/c');
+import a from './files/a.json' assert {type: 'json'}
+import b from './files/b.json' assert {type: 'json'}
 
 const random = Math.random();
 
 let unknownObject;
 
 if (random > 0.5) {
-    unknownObject = require('./files/a.json');
+    unknownObject = a;
 } else {
-    unknownObject = require('./files/b.json');
+    unknownObject = b;
 }
 
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
 console.log(`Path segment separator is "${path.sep}"`);
 
-console.log(`Path to current file is ${__filename}`);
-console.log(`Path to current directory is ${__dirname}`);
+const filename = fileURLToPath(import.meta.url);
+const directory = dirname(filename)
+
+console.log(`Path to current file is ${filename}`);
+console.log(`Path to current directory is ${directory}`);
 
 const createMyServer = createServerHttp((_, res) => {
     res.end('Request accepted');
 });
 
-module.exports = {
+export {
     unknownObject,
     createMyServer,
 };
