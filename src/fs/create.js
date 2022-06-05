@@ -8,7 +8,7 @@ const freshFilePath = path.join(__dirname, 'files', 'fresh.txt');
 
 export const create = async () => {
     fs.writeFile(freshFilePath, "I am fresh and young", { flag: 'wx' }, function(err) {
-        if(err) {
+        if (err) {
             throw Error('FS operation failed')
         }
     }); 
