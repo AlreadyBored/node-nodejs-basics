@@ -7,12 +7,7 @@ const toRead = path.resolve(path.dirname(''), 'src', 'hash', 'files', 'fileToCal
 export const calculateHash = async () => {
     await fs.promises.readFile(toRead)
         .then(fileBuffer => {
-            const hashSum = crypto.createHash('sha256');
-            hashSum.update(fileBuffer);
-
-            const hex = hashSum.digest('hex');
-
-            console.log(hex);
+            console.log(crypto.createHash('sha256').update(fileBuffer).digest('hex'));
         })
 };
 
