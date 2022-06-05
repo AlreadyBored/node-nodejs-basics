@@ -11,7 +11,8 @@
     "fs:rename": "node src/fs/rename.js",
 
     "cli:args": "node src/cli/args.js --propName value --prop2Name value2",
-    "cli:env": "set RSS_name1=value1 RSS_name2=value2 && node src/cli/env.js",
+    "cli:env-window": "set RSS_name1=value1 RSS_name2=value2 && node src/cli/env.js",
+    "cli:env-linux": "RSS_name1=value1 RSS_name2=value2 node src/cli/env.js",
 
     "cp": "node src/cp/cp.js",
 
