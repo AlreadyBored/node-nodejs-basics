@@ -10,9 +10,7 @@ export const create = async () => {
     throw new Error('FS operation failed')
   }
 
-  fs.writeFileSync(file, 'I am fresh and young')
-
-  fs.writeFileSync(path.join(__dirname, 'jai.txt'), 'Zhai zat qoi')
+  fs.writeFileSync(file, 'I am fresh and young');
 };
 
 create()
