@@ -13,4 +13,4 @@ export const remove = async () => {
   }
 };
 
-// remove();
+remove();
