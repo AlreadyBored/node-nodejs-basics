@@ -8,4 +8,4 @@ export const parseEnv = () => {
     console.log(result.join('; '));
 };
 
-await parseEnv();
+parseEnv();
