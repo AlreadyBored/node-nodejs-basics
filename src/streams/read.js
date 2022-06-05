@@ -1,3 +1,12 @@
+import fs from 'fs'
+
 export const read = async () => {
-    // Write your code here 
+  try {
+    const stream = fs.createReadStream("./files/fileToRead.txt");
+    stream.on("data", (chunk) => {
+        stdout.write(chunk);
+    });
+  } catch (err){
+      throw new Error('Error')
+  }
 };
