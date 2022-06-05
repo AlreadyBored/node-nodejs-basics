@@ -1,3 +1,9 @@
+import { createReadStream } from 'fs'
+import { stdout } from 'process'
+
+const FILE_PATH = 'files/fileToRead.txt'
+
 export const read = async () => {
-    // Write your code here 
+    createReadStream(FILE_PATH)
+    .pipe(stdout);
 };
