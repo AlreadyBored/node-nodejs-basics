@@ -7,7 +7,7 @@ export const create = async () => {
                 throw new Error('FS operation failed');
             } else {
                 fs.writeFile('./src/fs/files/fresh.txt', 'I am fresh and young', (err) => {
-                    if(err) {
+                    if (err) {
                         throw err;
                     }
                 });
@@ -17,3 +17,5 @@ export const create = async () => {
         console.log(e);
     }
 };
+
+await create();
