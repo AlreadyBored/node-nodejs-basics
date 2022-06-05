@@ -6,6 +6,7 @@
   "scripts": {
     "testFs": "node src/fs/testFs.js",
     "testCli": "node src/cli/testcli.js --propName value --prop2Name value2",
+    "testStream": "node src/streams/testStream.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
