@@ -5,13 +5,11 @@ class AppUserError extends Error {
     constructor(_message, _code) {
         super(_message); //конструктор предка
         this.name = "AppUserError"; //переопределение имени типа
-        this.Code = _code || 0; //поле с кодом ошибки
+        this.Code = _code || 1; //поле с кодом ошибки
     }
 }
 
 import { open } from 'fs/promises';
-//const fs = require('fs').promises;
-//const pf =require('path');
 const PATH_FILE = '.\\src\\fs\\files\\my-test.txt'; //путь к файлу
 const OPENING_MODE = 'w+'; //режим в котором будем открывать файл, при данном режиме при отсутствии файла он создается
 
@@ -27,10 +25,10 @@ export const create = async () => {
             console.log(`     file created.Path - ${PATH_FILE}`);
     } catch (error) {
             console.log(error);
-                throw new AppUserError('Failed to create a file !', 1);       
+                throw new AppUserError('Failed to create a file !', 1);
     }
 };
-/***************************СЕКЦИЯ RUN ДЛЯ ПРОВЕРКИ****************** */
+/***************************СЕКЦИЯ RUN ДЛЯ ПРОВЕРКИ*********************/
 create();
 
 
