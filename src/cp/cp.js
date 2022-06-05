@@ -1,3 +1,8 @@
-export const spawnChildProcess = async (args) => {
-    // Write your code here
+const spawnChildProcess = async (args) => {
+  const { sayHi } = require('./files/script');
+
+  return sayHi(args);
 };
+
+spawnChildProcess(process.argv.slice(2));
+
