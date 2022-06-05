@@ -10,6 +10,6 @@ export const create = async () => {
     try {
         await fs.writeFile(freshFilePath, "I am fresh and young", { flag: 'wx' })
     } catch {
-        throw Error('FS operation failed')
+        throw Error('FS operation failed');
     }
 };

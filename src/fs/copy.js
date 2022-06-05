@@ -19,7 +19,7 @@ export const copy = async () => {
             fs.copyFile(path.join(src, file), path.join(dest, file), err => {
                 if (err){
                     throw Error('FS operation failed');
-                  }
+                }
             });
         });
     });
