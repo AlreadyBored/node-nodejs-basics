@@ -1,3 +1,12 @@
+import fs from "fs"
+
 export const write = async () => {
-    // Write your code here 
+    const path = ('./files/fileToWrite.txt')
+    const writeStream = fs.createWriteStream(path)
+    process.stdin.on('data', data => {
+        writeStream.write(data.toString())
+        process.exit();
+      });
 };
+
+write()
