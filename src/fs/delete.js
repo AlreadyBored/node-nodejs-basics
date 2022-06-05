@@ -1,3 +1,16 @@
+import fs from 'fs/promises'
+import path, {resolve} from 'path'
+
 export const remove = async () => {
-    // Write your code here 
+    fs.access(path.resolve('src','fs','files','fileToRemove.txt'))
+    .then(()=>{
+        fs.rm(resolve('src','fs','files','fileToRemove.txt'))
+            .then(()=>{
+                console.log('deleted file fileToRemove.txt')
+            })
+    })
+    .catch(err=>{
+        console.log(new Error('FS operation failed'))
+    })
 };
+remove()
