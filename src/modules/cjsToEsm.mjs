@@ -1,16 +1,23 @@
-const path = require('path');
-const { release, version } = require('os');
-const { createServer: createServerHttp } = require('http');
-require('./files/c');
+import path from 'path';
+import { release, version }from 'os';
+import { createServer as createServerHttp } from 'http';
+import './files/c.js';
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const random = Math.random();
 
 let unknownObject;
 
+import filesA from './files/a.json';
+import filesB from './files/b.json';
+
 if (random > 0.5) {
-    unknownObject = require('./files/a.json');
+    unknownObject = filesA;
 } else {
-    unknownObject = require('./files/b.json');
+    unknownObject = filesB;
 }
 
 console.log(`Release ${release()}`);
