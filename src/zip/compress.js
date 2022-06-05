@@ -3,7 +3,7 @@ import { pipeline } from 'stream'
 import { join } from 'path';
 import { promisify } from 'util';
 import { createGzip } from 'zlib';
-import { getDirAndFilePath } from '../helpers';
+import { getDirAndFilePath } from '../helpers.js';
 
 const { __dirname } = getDirAndFilePath(import.meta);
 

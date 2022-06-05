@@ -1,6 +1,6 @@
 import { readFile } from 'fs/promises';
 import { join } from 'path';
-import { getDirAndFilePath, isExist, FS_ERROR_MESSAGE } from '../helpers';
+import { getDirAndFilePath, isExist, FS_ERROR_MESSAGE } from '../helpers.js';
 
 const { __dirname } = getDirAndFilePath(import.meta);
 

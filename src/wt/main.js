@@ -1,7 +1,7 @@
 import { Worker } from 'worker_threads';
 import { join } from 'path';
 import { cpus } from 'os';
-import { getDirAndFilePath } from '../helpers';
+import { getDirAndFilePath } from '../helpers.js';
 
 const { __dirname } = getDirAndFilePath(import.meta);
 

@@ -1,6 +1,6 @@
 import { createWriteStream } from 'fs';
 import { join } from 'path';
-import { getDirAndFilePath } from '../helpers';
+import { getDirAndFilePath } from '../helpers.js';
 import { pipeline } from 'stream';
 import { promisify } from 'util';
 
