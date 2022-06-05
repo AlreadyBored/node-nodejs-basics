@@ -1,15 +1,16 @@
-import {existsSync} from 'fs';
-import {rm} from 'fs/promises';
-import {fileURLToPath} from 'url';
-import {join} from 'path';
+import { rm } from 'fs/promises';
+import { join } from 'path';
+import { getDirAndFilePath, isExist, FS_ERROR_MESSAGE } from '../helpers';
 
-const __dirname = fileURLToPath(new URL('.', import.meta.url));
+const { __dirname } = getDirAndFilePath(import.meta);
 
 export const remove = async () => {
     const pathFile = join(__dirname, 'files', 'fileToRemove.txt');
 
-    if (!existsSync(pathFile)) {
-        throw new Error('FS operation failed');
+    const fileIsExist = await isExist(pathFile);
+
+    if (!fileIsExist) {
+        throw new Error(FS_ERROR_MESSAGE);
     }
 
     try {
@@ -18,3 +19,5 @@ export const remove = async () => {
         throw err;
     }
 };
+
+remove();

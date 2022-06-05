@@ -1,19 +1,21 @@
-import {existsSync} from 'fs';
-import {rename as renameFs} from 'fs/promises';
-import {fileURLToPath} from 'url';
-import {join} from 'path';
+import { rename as renameFs } from 'fs/promises';
+import { join } from 'path';
+import { getDirAndFilePath, isExist, FS_ERROR_MESSAGE } from '../helpers';
 
-const __dirname = fileURLToPath(new URL('.', import.meta.url));
+const { __dirname } = getDirAndFilePath(import.meta);
 
 export const rename = async () => {
     const pathWrongFile = join(__dirname, 'files', 'wrongFilename.txt');
     const pathProperFile = join(__dirname, 'files', 'properFilename.md');
 
+    const wrongFileIsExist = await isExist(pathWrongFile);
+    const properFileIsExist = await isExist(pathProperFile);
+
     if (
-        !existsSync(pathWrongFile) ||
-        existsSync(pathProperFile)
+        !wrongFileIsExist ||
+        properFileIsExist
     ) {
-        throw new Error('FS operation failed');
+        throw new Error(FS_ERROR_MESSAGE);
     }
 
     try {
@@ -22,3 +24,5 @@ export const rename = async () => {
         throw err;
     }
 };
+
+rename();

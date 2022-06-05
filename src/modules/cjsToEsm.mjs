@@ -1,11 +1,10 @@
 import path  from 'path';
-import { fileURLToPath } from 'url';
 import { release, version } from 'os';
 import { createServer as createServerHttp } from 'http';
 import './files/c.js';
+import { getDirAndFilePath } from '../helpers.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const { __dirname, __filename } = getDirAndFilePath(import.meta);
 
 const random = Math.random();
 

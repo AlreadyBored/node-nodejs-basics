@@ -1,11 +1,11 @@
-import {createReadStream, createWriteStream} from 'fs';
-import {pipeline} from 'stream'
-import {join} from 'path';
-import {fileURLToPath} from 'url';
-import {promisify} from 'util';
-import {createUnzip} from 'zlib';
+import { createReadStream, createWriteStream } from 'fs';
+import { pipeline } from 'stream'
+import { join } from 'path';
+import { promisify } from 'util';
+import { createUnzip } from 'zlib';
+import { getDirAndFilePath } from '../helpers';
 
-const __dirname = fileURLToPath(new URL('.', import.meta.url));
+const { __dirname } = getDirAndFilePath(import.meta);
 
 const pipe = promisify(pipeline);
 
@@ -16,3 +16,5 @@ export const decompress = async () => {
 
     await pipe(source, gzip, dest);
 };
+
+decompress();

@@ -1,15 +1,16 @@
-import {existsSync} from 'fs';
-import {opendir} from 'fs/promises';
-import {fileURLToPath} from 'url';
-import {join} from 'path';
+import { opendir } from 'fs/promises';
+import { join } from 'path';
+import { getDirAndFilePath, isExist, FS_ERROR_MESSAGE } from '../helpers';
 
-const __dirname = fileURLToPath(new URL('.', import.meta.url));
+const { __dirname } = getDirAndFilePath(import.meta);
 
 export const list = async () => {
     const pathDir = join(__dirname, 'files');
 
-    if (!existsSync(pathDir)) {
-        throw new Error('FS operation failed');
+    const dirIsExist = await isExist(pathDir);
+
+    if (!dirIsExist) {
+        throw new Error(FS_ERROR_MESSAGE);
     }
 
     try {
@@ -21,3 +22,5 @@ export const list = async () => {
         throw err;
     }
 };
+
+list();

@@ -1,19 +1,21 @@
-import {existsSync} from 'fs';
-import {mkdir, opendir, copyFile} from 'fs/promises';
-import {fileURLToPath} from 'url';
-import {join} from 'path';
+import { mkdir, opendir, copyFile } from 'fs/promises';
+import { join } from 'path';
+import { getDirAndFilePath, isExist, FS_ERROR_MESSAGE } from '../helpers';
 
-const __dirname = fileURLToPath(new URL('.', import.meta.url));
+const { __dirname } = getDirAndFilePath(import.meta);
 
 export const copy = async () => {
     const pathFilesFolder = join(__dirname, 'files');
     const pathFilesCopyFolder = join(__dirname, 'files_copy');
 
+    const filesFolderIsExist = await isExist(pathFilesFolder);
+    const filesFilesCopyFolderIsExist = await isExist(pathFilesCopyFolder);
+
     if (
-        !existsSync(pathFilesFolder) ||
-        existsSync(pathFilesCopyFolder)
+        !filesFolderIsExist ||
+        filesFilesCopyFolderIsExist
     ) {
-        throw new Error('FS operation failed');
+        throw new Error(FS_ERROR_MESSAGE);
     }
 
     try {
@@ -24,8 +26,10 @@ export const copy = async () => {
                 join(pathFilesFolder, file.name), 
                 join(pathFilesCopyFolder, file.name)
             );
-        }
+        };
     } catch(err) {
         throw err;
     }
 };
+
+copy();

@@ -1,9 +1,9 @@
-import {Worker} from 'worker_threads';
-import {join} from 'path';
-import {fileURLToPath} from 'url';
-import {cpus} from 'os';
+import { Worker } from 'worker_threads';
+import { join } from 'path';
+import { cpus } from 'os';
+import { getDirAndFilePath } from '../helpers';
 
-const __dirname = fileURLToPath(new URL('.', import.meta.url));
+const { __dirname } = getDirAndFilePath(import.meta);
 
 const STARTS_WITH = 10;
 

@@ -1,8 +1,8 @@
-import {spawn} from 'child_process';
-import {join} from 'path';
+import { spawn } from 'child_process';
+import { join } from 'path';
 import { getDirAndFilePath } from '../helpers.js';
 
-const {__dirname} = getDirAndFilePath(import.meta);
+const { __dirname } = getDirAndFilePath(import.meta);
 
 export const spawnChildProcess = async (args) => {
     const childProcess = spawn(

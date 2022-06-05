@@ -1,4 +1,7 @@
-import {Transform} from 'stream';
+import { Transform, pipeline } from 'stream';
+import { promisify } from 'util';
+
+const pipe = promisify(pipeline);
 
 export const transform = async () => {
     const transformStream = new Transform({
@@ -7,7 +10,7 @@ export const transform = async () => {
         }
     });
     
-    process.stdin
-        .pipe(transformStream)
-        .pipe(process.stdout);
+    await pipe(process.stdin, transformStream, process.stdout);
 };
+
+transform();
