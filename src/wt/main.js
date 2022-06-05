@@ -52,8 +52,8 @@ class WorkerPool extends EventEmitter {
 
 export const performCalculations = async () => {
     const pool = new WorkerPool(path.join(__dirname, 'worker.js'));
-    pool.run(10);
     pool.on('completed', data => console.log(data));
+    pool.run(10);
 };
 
 performCalculations();
