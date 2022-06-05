@@ -7,7 +7,7 @@ export const read = async () => {
         path.join(__dirname, 'files', 'fileToRead.txt'),
         function (err, data) {
             if (err) {
-                console.log ( 'FS operation failed must be thrown' )
+                throw new Error("FS operation failed")
             } else {
                 console.log (data.toString())
             }

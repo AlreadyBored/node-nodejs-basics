@@ -7,7 +7,7 @@ export const remove = async () => {
         path.join(__dirname, 'files', 'fileToRemove.txt'),
         (err) => {
             if (err) {
-                console.log ( 'FS operation failed' )
+                throw new Error("FS operation failed")
             }
         })
 };

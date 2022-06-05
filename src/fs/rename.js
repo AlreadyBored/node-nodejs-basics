@@ -13,13 +13,13 @@ export const rename = async () => {
                     path.join(__dirname, 'files', 'properFilename.md'),
                     (err) => {
                         if (err) {
-                            console.log ( 'FS operation failed must be thrown' )
+                            throw new Error("FS operation failed")
                         }
                     }
                 )
             }
             else {
-                console.log('FS operation failed must be thrown');
+                throw new Error("FS operation failed")
             }
         });
 };
