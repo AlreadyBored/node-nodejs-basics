@@ -4,7 +4,19 @@
   "description": "This repository is the part of nodejs-assignments https://github.com/AlreadyBored/nodejs-assignments",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "copy": "node src/fs/copy",
+    "create": "node src/fs/create",
+    "delete": "node src/fs/delete",
+    "list":  "node src/fs/list",
+    "read": "node src/fs/read",
+    "rename":  "node src/fs/rename",
+    "calcHash": "node src/hash/calcHash",
+    "cjsToEsm": "node src/modules/cjsToEsm.mjs",
+    "read_stream": "node src/streams/read",
+    "transform_stream": "node src/streams/transform",
+    "write_stream": "node src/streams/write",
+    "compress": "node src/zip/compress",
+    "decompress": "node src/zip/decompress"
   },
   "repository": {
     "type": "git",
