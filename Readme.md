@@ -26,3 +26,6 @@
 ## Module Zip:
 - compress file - `npm run compress`
 - decompress file - `npm run decompress`
+
+## Module Worker Threads:
+- worker - `npm run worker`
