@@ -29,7 +29,7 @@ export const performCalculations = async () => {
     promises.push(promise);
   }
 
-  const result = await Promise.all(promises);
+  const result = await Promise.allSettled(promises);
 
   return result;
 };
