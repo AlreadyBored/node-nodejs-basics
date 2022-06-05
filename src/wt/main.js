@@ -21,7 +21,7 @@ const createWorker = (num) => {
 export const performCalculations = async () => {
   try {
     const coresNum = cpus().length;
-    stdout.write(`\t\t\t-----WAS CREATED ${coresNum} WORKERS-----\n`)
+    stdout.write(`\t\t\t-----WAS CREATED ${coresNum} WORKERS-----\n`);
     let num = 10;
     let res = [];
     for (let i = 0; i < coresNum; i += 1) {
@@ -43,4 +43,4 @@ export const performCalculations = async () => {
   };
 };
 
-performCalculations();
+//performCalculations();

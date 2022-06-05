@@ -20,4 +20,4 @@ export const transform = async () => {
     stdin.pipe(stream).pipe(stdout); 
 };
 
-transform();
+//transform();

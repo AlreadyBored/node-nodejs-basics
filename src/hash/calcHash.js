@@ -21,4 +21,4 @@ export const calculateHash = async () => {
   };  
 };
 
-calculateHash();
+//calculateHash();

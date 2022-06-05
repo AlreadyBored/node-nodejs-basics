@@ -24,4 +24,4 @@ export const compress = async () => {
   }; 
 };
 
-compress();
+//compress();

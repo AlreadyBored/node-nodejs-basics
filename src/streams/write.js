@@ -19,4 +19,4 @@ export const write = async () => {
   };
 };
 
-write();
+//write();
