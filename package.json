@@ -19,7 +19,9 @@
     "writeStream": "node src/streams/write.js",
     "transformStream": "node src/streams/transform.js",
     "compress": "node src/zip/compress.js",
-    "decompress": "node src/zip/decompress.js"
+    "decompress": "node src/zip/decompress.js",
+    "worker": "node src/wt/main.js",
+    "childProcess": "node src/cp/cp.js some args for test"
   },
   "repository": {
     "type": "git",

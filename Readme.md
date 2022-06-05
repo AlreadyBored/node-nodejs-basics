@@ -1,95 +1,62 @@
 # Node.js basics
 
-How to use:
+## How to use:
 
-to test possibilities of node-basics you can use npm scripts
+To test possibilities of node-basics you can use npm scripts:
 
-1. Create txt file
+### Filesystem block
 
-```
-npm run create
-```
+| Command discription                        | Command            |
+| ------------------------------------------ | ------------------ |
+| Create txt file                            | **npm run create** |
+| Copy folder with files                     | **npm run copy**   |
+| Delete file                                | **npm run delete** |
+| Print into the console list of files names | **npm run list**   |
+| Read file content                          | **npm run read**   |
+| Rename file name                           | **npm run rename** |
 
-2. Copy folder with files
+### Cli block
 
-```
-npm run copy
-```
+| Command discription              | Command          |
+| -------------------------------- | ---------------- |
+| Refactor env variables using cli | **npm run env**  |
+| Refactor arguments using cli     | **npm run args** |
 
-3. Delete file
+### Hash block
 
-```
-npm run delete
-```
+| Command discription | Command          |
+| ------------------- | ---------------- |
+| Calculate file hash | **npm run hash** |
 
-4. Print into the console list of files names
+### Refactor file block
 
-```
-npm run list
-```
+| Command discription                   | Command              |
+| ------------------------------------- | -------------------- |
+| Refactor .cjs file to .mjs and run it | **npm run cjsToEsm** |
 
-5. Read file content
+### Streams block
 
-```
-npm run read
-```
+| Command discription  | Command                     |
+| -------------------- | --------------------------- |
+| Run read stream      | **npm run readStream**      |
+| Run write stream     | **npm run writeStream**     |
+| Run transform stream | **npm run transformStream** |
 
-6. Rename file name
+### Zip block
 
-```
-npm run rename
-```
+| Command discription      | Command                |
+| ------------------------ | ---------------------- |
+| Compress file with zip   | **npm run compress**   |
+| Decompress file with zip | **npm run decompress** |
 
-7. Refactor env variables
+### Worker thread block
 
-```
-npm run env
-```
+| Command discription                         | Command            |
+| ------------------------------------------- | ------------------ |
+| Create worker threads and shows its results | **npm run worker** |
 
-8. Refactor arguments
+### Child process block
 
-```
-npm run args
-```
-
-9. Get file hash
-
-```
-npm run hash
-```
-
-10. Refactor .cjs file and run it
-
-```
-npm run cjsToEsm
-```
-
-11. Run read stream
-
-```
-npm run readStream
-```
-
-12. Run write stream
-
-```
-npm run writeStream
-```
-
-13. Run transform stream
-
-```
-npm run transformStream
-```
-
-14. Compress file with zip
-
-```
-npm run compress
-```
-
-15. Decompress file with zip
-
-```
-npm run decompress
-```
+| Command discription          | Command                  |
+| ---------------------------- | ------------------------ |
+| Create and run child process | **npm run childProcess** |
