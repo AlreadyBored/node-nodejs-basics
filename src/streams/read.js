@@ -8,11 +8,11 @@ export const read = async () => {
         if (err !== null) {
             throw new Error(FS_OPERATION_ERROR);
         }
+
+        const stream = createReadStream(FILE_TO_READ);
+
+        stream.pipe(process.stdout);
     });
-
-    const stream = createReadStream(FILE_TO_READ);
-
-    stream.pipe(process.stdout);
 };
 
 read();

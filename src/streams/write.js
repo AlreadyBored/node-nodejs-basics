@@ -8,14 +8,14 @@ export const write = async () => {
         if (err !== null) {
             throw new Error(FS_OPERATION_ERROR);
         }
-    });
 
-    const stream = createWriteStream(FILE_TO_WRITE);
+        const stream = createWriteStream(FILE_TO_WRITE);
 
-    process.stdin.pipe(stream);
+        process.stdin.pipe(stream);
 
-    process.stdin.on('end', function() {
-        process.stdout.write('Stream ended.');
+        process.stdin.on('end', function() {
+            process.stdout.write('Stream ended.');
+        });
     });
 };
 
