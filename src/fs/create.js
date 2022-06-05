@@ -10,7 +10,8 @@ class AppUserError extends Error {
 }
 
 import { open } from 'fs/promises';
-//const PATH_FILE = 'c:\\Learn\\node-nodejs-basics\\src\\fs\\files\\my-test.txt'; //путь к файлу
+//const fs = require('fs').promises;
+//const pf =require('path');
 const PATH_FILE = '.\\src\\fs\\files\\my-test.txt'; //путь к файлу
 const OPENING_MODE = 'w+'; //режим в котором будем открывать файл, при данном режиме при отсутствии файла он создается
 
@@ -21,6 +22,7 @@ export const create = async () => {
     // Write your code here
     try {
         await open(PATH_FILE, OPENING_MODE); //создать файл
+        //await fs.open(PATH_FILE, OPENING_MODE); //создать файл
         console.log(`Debugging information: `);
             console.log(`     file created.Path - ${PATH_FILE}`);
     } catch (error) {
