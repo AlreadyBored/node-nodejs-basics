@@ -6,6 +6,7 @@ import { release, version } from 'os';
 import http from 'http';
 import module from 'module';
 
+const PORT = 3000;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -37,10 +38,18 @@ console.log(`Path segment separator is "${path.sep}"`);
 console.log(`Path to current file is ${__filename}`);
 console.log(`Path to current directory is ${__dirname}`);
 
-const createMyServer = http.createServer((_, res) => {
-    res.end('Request accepted');
+const requestHandler = (request, response) => {
+    const { method, url } = request;
+    console.log(`Получен ${method}-запрос на ${url}`);
+    response.write(JSON.stringify(unknownObject));
+    response.end('Request accepted');
+};
 
+const createMyServer = http.createServer((requestHandler));
+createMyServer.listen(PORT, 'localhost', () => {
+    console.log(`Сервер запущен на порту ${PORT}`);
 });
+
 
 module.exports = {
     unknownObject,
