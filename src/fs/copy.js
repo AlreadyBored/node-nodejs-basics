@@ -29,3 +29,5 @@ export const copy = async () => {
         throw new Error(error);
     }
 };
+
+copy();

@@ -17,3 +17,5 @@ export const create = async () => {
         throw new Error(error);
     }
 };
+
+create();

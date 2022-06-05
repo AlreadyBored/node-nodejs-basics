@@ -15,3 +15,5 @@ export const list = async () => {
         throw new Error(error);
     }
 };
+
+list();
