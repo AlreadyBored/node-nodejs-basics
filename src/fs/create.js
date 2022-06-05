@@ -1,8 +1,8 @@
+//Импорт
+const fs = require("fs");
+const path = require("path");
+
 export const create = async () => {
-    //Импорт
-    const fs = require("fs");
-    const path = require("path");
-    
     const dir = path.resolve(__dirname); //Директория
     fs.access(((dir+"/files/fresh.txt")), function(error){ //Проверяем файл на существование
         if (error) { //Если файл не существует
