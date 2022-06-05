@@ -15,8 +15,14 @@ export const performCalculations = async () => {
       return new Promise((resolve, rej) => {
         w.on('message', (res) => {
           resolve({
-            status: res ? 'resolved' : 'error',
-            data: res || null,
+            status: 'resolved',
+            data: res,
+          });
+        });
+        w.on('error', () => {
+          resolve({
+            status: 'error',
+            data: null,
           });
         });
       });
