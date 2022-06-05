@@ -12,15 +12,3 @@ export const performCalculations = async () => {
     return (await Promise.allSettled(promisedWorkers).then(res => res))
         .map(r => r.value)
 }
-
-
-(async () => {
-    try {
-        console.log('result:')
-        console.log(await performCalculations())
-    } catch (e) {
-        // Deal with the fact the chain failed
-        console.log('error:')
-        console.log(e)
-    }
-})()
