@@ -3,8 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 export const rename = async () => {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.dirname(__filename);
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
   const originalFilePath = path.join(__dirname, "files/wrongFilename.txt");
   const destinationFilePath = path.join(__dirname, "files/properFilename.md");
 

@@ -3,8 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 export const copy = async () => {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.dirname(__filename);
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
   const folderPath = path.join(__dirname, "files/");
   const destinationFolderPath = path.join(__dirname, "files_copy/");
 
