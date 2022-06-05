@@ -35,4 +35,4 @@ export const calculateHash = async () => {
   }
 };
 
-console.log('\x1b[36m', await calculateHash(), '\x1b[0m');
+calculateHash().then(res => console.log(res))
