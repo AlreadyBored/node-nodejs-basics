@@ -22,8 +22,8 @@ const bData = JSON.parse(b);
 
 const random = Math.random();
 
-let unknownObject = aData;
-console.log(unknownObject);
+let unknownObject;
+
 
 if (random > 0.5) {
     unknownObject = aData;
