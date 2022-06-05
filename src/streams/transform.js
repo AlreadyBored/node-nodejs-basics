@@ -1,3 +1,7 @@
+import { stdout, stdin } from 'process';
+ 
 export const transform = async () => {
-    // Write your code here 
+    stdin.pipe(stdout);
 };
+
+transform();
