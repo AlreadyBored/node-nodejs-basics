@@ -1,3 +1,12 @@
+import fs from "fs";
+
 export const read = async () => {
-    // Write your code here 
+  const readingStream = fs.createReadStream("./files/fileToRead.txt", "utf8");
+  readingStream.on("data", (chunk) => {   
+    process.stdout.write(chunk);
+  })
 };
+
+read();
+
+
