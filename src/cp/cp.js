@@ -1,9 +1,11 @@
 import { spawn } from 'child_process';
+import path from 'path'
+import { childProcessPath } from '../common/constants.js';
 
 export const spawnChildProcess = async (args) => {
     const child = spawn(
       'node',
-      ['./src/cp/files/script.js', ...args],
+      [path.join(childProcessPath, 'script.js'), ...args],
       {stdio: [process.stdin, 'pipe']}
     )
 

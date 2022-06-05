@@ -27,7 +27,7 @@ export const performCalculations = async () => {
         const results = values.map((value) => {
             return value.status === 'fulfilled'
             ? { status: 'resolved', data: value.value}
-            : { status: 'rejected', data: null}
+            : { status: 'error', data: null}
         })
         console.log(results);
     })
