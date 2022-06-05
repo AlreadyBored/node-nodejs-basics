@@ -27,4 +27,6 @@ export const performCalculations = async () => {
     return promises.map(promise => promise.value);
 };
 
-performCalculations().then(result => console.log(result));
+performCalculations().then(result => {
+    console.log(result);
+});
