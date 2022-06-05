@@ -1,3 +1,9 @@
 export const parseEnv = () => {
-    // Write your code here 
+    const envProps = process.env;
+
+    for (let prop in envProps) {
+        if (prop.match(/^RSS_/)) {
+            console.log(`${prop} = ${envProps[prop]}`);
+        }
+    }
 };
