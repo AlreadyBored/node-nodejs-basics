@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 'use strict'
 
 import * as c2e from './cjsToEsm.mjs'
