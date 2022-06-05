@@ -17,7 +17,9 @@
     "streams:transform": "node src/streams/transform.js",
     "hash": "node src/hash/calcHash.js",
     "zip:compress": "node src/zip/compress.js",
-    "zip:decompress": "node src/zip/decompress.js"
+    "zip:decompress": "node src/zip/decompress.js",
+    "cli:args": "node src/cli/args.js --propName value --prop2Name value2",
+    "cli:env": "node src/cli/env.js"
   },
   "repository": {
     "type": "git",

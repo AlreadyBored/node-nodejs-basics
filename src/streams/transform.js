@@ -3,7 +3,7 @@ import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import readline from 'readline';
-import { Duplex } from 'stream';
+import { Transform } from 'stream';
 const stdout = process.stdout;
 const stdin = process.stdin;
 const rl = readline.createInterface(process.stdin, process.stdout);
@@ -13,7 +13,7 @@ export const transform = async () => {
     // Write your code here 
     function reverseString(str) {
         console.log(str.split("").reverse().join(""));
-        return str.split("").reverse().join("");
+        return str.split("").reverse().join("").trim() + "\n";
     }
 
     const input = rl.question('Enter text to reverse: ', (text) => {
