@@ -1,3 +1,4 @@
+//execute: node src/streams/transform
 import { Transform, pipeline } from 'stream';
 
 export const transform = async () => {

@@ -1,3 +1,4 @@
+//execute: node src/fs/copy
 import fs from 'fs';
 import fsPromises from 'fs/promises';
 import path from 'path';

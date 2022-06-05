@@ -1,3 +1,4 @@
+//execute: node src/fs/create
 import path from 'path';
 import fsPromises from 'fs/promises';
 import { exit } from 'process';

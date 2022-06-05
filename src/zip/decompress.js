@@ -1,3 +1,4 @@
+//execute: node src/zip/decompress
 import fs from 'fs';
 import path from 'path';
 import zlib from 'zlib';

@@ -1,3 +1,4 @@
+//execute: node src/streams/read
 import fs from 'fs';
 import path from 'path';
 

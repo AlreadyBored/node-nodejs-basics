@@ -1,3 +1,4 @@
+//execute: node src/modules/cjsToEsm.mjs
 import path from 'path';
 import { release, version } from 'os';
 import { createServer as createServerHttp } from 'http';
