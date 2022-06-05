@@ -3,7 +3,7 @@ import { release, version } from "os";
 import { createRequire } from "module";
 import { createServer } from "http";
 import { consoleLog } from "./files/c.js";
-import { cwd } from "process";
+import { parse } from "path";
 
 consoleLog();
 const require = createRequire(import.meta.url);
@@ -22,7 +22,7 @@ console.log(`Version ${version}`);
 console.log(`Path segment separator is "${sep}"`);
 
 console.log(`Path to current file is ${import.meta.url}`);
-console.log(`Path to current directory is ${cwd()}`);
+console.log(`Path to current directory is ${parse(import.meta.url).dir}`);
 
 const createMyServer = createServer((_, res) => {
   res.end("Request accepted");
