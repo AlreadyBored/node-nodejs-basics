@@ -1,3 +1,11 @@
+import * as fs from 'fs';
+
+const testFolder = './files/';
+
 export const list = async () => {
-    // Write your code here 
+    fs.readdir(testFolder, (err, files) => {
+        files.forEach(file => {
+            console.log(file);
+        });
+    });
 };
