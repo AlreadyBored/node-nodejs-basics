@@ -9,6 +9,7 @@ export const copy = async () => {
     async function copier(names, path) {
       const currentDestDirectory =
         DEST_DIRECTORY + path.slice(SOURCE_DIRECTORY.length);
+      console.log(currentDestDirectory);
       await fs.mkdir(currentDestDirectory);
       names.forEach(async (name) => {
         const ItemPath = path + "/" + name;
@@ -17,7 +18,7 @@ export const copy = async () => {
           copier(await fs.readdir(ItemPath), ItemPath);
         } else if (itemStat.isFile()) {
           await fs.writeFile(
-            currentDestDirectory + name,
+            currentDestDirectory + "/" + name,
             await fs.readFile(ItemPath)
           );
         }
