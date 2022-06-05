@@ -4,7 +4,7 @@ export const transform = async () => {
     try {
         const reverse = new Transform({
             transform: (chunk, encoding, callback) => {
-                callback(null, chunk.toString().split('').reverse().join(''))
+                callback(null, chunk.toString().split('').reverse().join('') + "\n")
             }
         })
 
