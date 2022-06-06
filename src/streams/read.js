@@ -14,4 +14,3 @@ export const read = async () => {
     readStream.on('error', (error) => console.log('Error', error.message))
 };
 
-read()
