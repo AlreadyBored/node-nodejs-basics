@@ -1,3 +1,8 @@
+import * as fs from 'fs/promises';
+
 export const list = async () => {
-    // Write your code here 
+    fs.readdir('fs/files')
+        .catch(() =>  console.log(new Error("\x1b[31m FS operation failed")));
 };
+
+list()
