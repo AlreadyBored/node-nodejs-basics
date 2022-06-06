@@ -1,3 +1,12 @@
+import * as fs from 'fs';
+
+const testFolder = './files/';
+
 export const read = async () => {
-    // Write your code here 
+    fs.readFile(testFolder + "fileToRead.txt", (error, data) => {
+        if(error) {
+            throw error;
+        }
+        console.log(data.toString());
+    });
 };
