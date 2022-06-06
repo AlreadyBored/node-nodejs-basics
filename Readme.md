@@ -1,3 +1,4 @@
 # Node.js basics
 
-## !!! Please don't submit Pull Requests to this repository !!!
+## Testing
+Use package.json scripts to check task results
