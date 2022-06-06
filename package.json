@@ -10,7 +10,10 @@
     "list": "node src/fs/list.js",
     "read": "node src/fs/read.js",
     "rename": "node src/fs/rename.js",
-    "env": "node src/cli/env.js"
+    "env": "node src/cli/env.js",
+    "args": "node src/cli/args.js --propName value --prop2Name value2",
+    "compress": "node src/zip/compress.js",
+    "decompress": "node src/zip/decompress.js"
   },
   "repository": {
     "type": "git",
