@@ -4,7 +4,7 @@ import fs from 'fs/promises';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const wrongFilenamePath = path.join(__dirname, 'files', 'wrongFileName.txt');
+const wrongFilenamePath = path.join(__dirname, 'files', 'wrongFilename.txt');
 const properFilenamePath = path.join(__dirname, 'files', 'properFilename.md');
 
 export const rename = async () => {
@@ -14,3 +14,5 @@ export const rename = async () => {
         throw Error('FS operation failed')
     }
 };
+
+rename();

@@ -17,3 +17,5 @@ export const decompress = async () => {
 
     read.pipe(unzip).pipe(write);	
 };
+
+decompress();

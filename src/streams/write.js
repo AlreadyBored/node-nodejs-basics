@@ -9,3 +9,5 @@ export const write = async () => {
     const stream = fs.createWriteStream(`${__dirname}/files/fileToWrite.txt`);
     process.stdin.pipe(stream);
 };
+
+write();

@@ -18,3 +18,5 @@ export const transform = async () => {
         }
     );
 };
+
+transform();

@@ -17,3 +17,5 @@ export const compress = async () => {
 
     read.pipe(zip).pipe(write);	
 };
+
+compress();

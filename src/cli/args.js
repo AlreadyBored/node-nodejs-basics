@@ -5,3 +5,5 @@ export const parseArgs = () => {
         console.log(`${args[i].substring(2)} is ${args[i + 1]}`);
     }
 };
+
+parseArgs();

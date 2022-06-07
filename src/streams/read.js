@@ -9,3 +9,5 @@ export const read = async () => {
     const stream = fs.createReadStream(`${__dirname}/files/fileToRead.txt`);
     stream.pipe(process.stdout);
 };
+
+read();

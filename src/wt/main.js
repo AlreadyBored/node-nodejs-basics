@@ -37,3 +37,6 @@ const runWorker = workerData => {
         worker.on('error', reject);
     });
 }
+
+const nums = await performCalculations();
+console.log(nums);

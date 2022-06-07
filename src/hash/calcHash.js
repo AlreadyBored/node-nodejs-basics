@@ -12,3 +12,5 @@ export const calculateHash = async () => {
 
     console.log(hex);
 };
+
+calculateHash();

@@ -14,3 +14,5 @@ export const read = async () => {
         throw Error('FS operation failed');
     } 
 };
+
+read();

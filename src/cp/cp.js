@@ -1,6 +1,7 @@
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { fork } from 'child_process';
+import { cp } from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -13,3 +14,5 @@ export const spawnChildProcess = async (args) => {
     process.stdin.pipe(child.stdin);
     child.stdout.pipe(process.stdout);
 };
+
+spawnChildProcess(process.argv.slice(2));

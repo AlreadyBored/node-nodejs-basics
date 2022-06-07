@@ -13,3 +13,5 @@ export const create = async () => {
         throw Error('FS operation failed');
     }
 };
+
+create();
