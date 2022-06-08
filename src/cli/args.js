@@ -1,3 +1,9 @@
 export const parseArgs = () => {
-    // Write your code here 
+    const args = process.argv;
+
+    args.forEach((value, index) => {
+        console.log(`${index} is ${value},`)
+    })
 };
+
+parseArgs()
