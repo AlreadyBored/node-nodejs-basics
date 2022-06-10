@@ -9,6 +9,7 @@ let unknownObject;
 
 if (random > 0.5) {
     unknownObject = require('./files/a.json');
+
 } else {
     unknownObject = require('./files/b.json');
 }
