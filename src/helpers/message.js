@@ -2,6 +2,7 @@ const GREETING_MESSAGE = 'Welcome to the File Manager,';
 const FAREWELL_MESSAGE = 'Thank you for using File Manager,';
 const DIRECTORY_MESSAGE = 'You are currently in';
 const INVALID_INPUT_MESSAGE = 'Invalid input';
+const INVALID_POERATION_FAILED = 'Operation failed';
 
 export const printMessage = (standartPhrase, userPhrase) => {
   console.log(`${standartPhrase} ${userPhrase}!\n`);
@@ -16,4 +17,8 @@ export const printCurrentDiretory = (path_to_working_directory) => {
 
 export const printInvalidInput = () => {
   console.log(`${INVALID_INPUT_MESSAGE}\n`);
+};
+
+export const printInvalidOperation = () => {
+  console.log(`${INVALID_POERATION_FAILED}\n`);
 };
