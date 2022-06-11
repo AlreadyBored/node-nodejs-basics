@@ -6,8 +6,8 @@ import { dirname } from 'path';
 export const __filename = fileURLToPath(import.meta.url);
 export const __dirname = dirname(__filename);
 
-export const list = async () => {
-    const pathToSourceDir = path.join(__dirname, '/files');
+export const list = async (pathToSourceDir) => {
+    // const pathToSourceDir = path.join(__dirname, '/files');
 
     fs.access(pathToSourceDir, fs.constants.F_OK, (err) => {
         if (err) {
@@ -22,4 +22,4 @@ export const list = async () => {
     });
 };
 
-list();
+// list();

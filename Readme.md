@@ -13,6 +13,7 @@ Scripts:
     "cp:env": "node src/cp/cp.js",
     "hash:calcHash": "node src/hash/calcHash.js",
     "modules:cjsToEsm": "node src/modules/cjsToEsm.mjs",
+    "start": "node src/index.js",
     "streams:read": "node src/streams/read.js",
     "streams:write": "node src/streams/writed.js",
     "streams:transform": "node src/streams/transform.js",
