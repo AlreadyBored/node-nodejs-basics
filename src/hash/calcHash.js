@@ -7,9 +7,9 @@ import { createHash } from 'crypto';
 export const __filename = fileURLToPath(import.meta.url);
 export const __dirname = dirname(__filename);
 
-export const calculateHash = async () => {
-    const fileName = 'fileToCalculateHashFor.txt';
-    const pathToFileName = path.join(__dirname, '/files', fileName);
+export const calculateHash = async (pathToFileName) => {
+    // const fileName = 'fileToCalculateHashFor.txt';
+    // const pathToFileName = path.join(__dirname, '/files', fileName);
 
     const readableStream = fs.createReadStream(pathToFileName);
     readableStream.on('data', (chunk) => {
@@ -20,4 +20,4 @@ export const calculateHash = async () => {
     });
 };
 
-calculateHash();
+// calculateHash();

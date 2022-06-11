@@ -12,6 +12,7 @@ import { __dirname, list } from './fs/list.js';
 import { read } from './streams/read.js';
 import { create } from './fs/create.js';
 import { rename } from './fs/rename.js';
+import { calculateHash } from './hash/calcHash.js';
 
 const DIVIDER = '\\';
 const USER_NAME_ARGUMENT = 'username';
@@ -127,6 +128,22 @@ process.stdin.on('data', chunk => {
               printInvalidInput();
             }
           });
+        } else {
+          printInvalidInput();
+        }
+        break;
+      case 'hash':
+        if (argumnent) {
+          const pathToFile = path.join(currentDirectory, argumnent);
+          // create(pathToFile, '');
+          fs.access(pathToFile, fs.constants.F_OK, (err) => {
+            if (err) {
+              printInvalidInput();
+            } else {
+              calculateHash(pathToFile);
+            }
+          });
+
         } else {
           printInvalidInput();
         }
