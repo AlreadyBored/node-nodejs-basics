@@ -6,9 +6,9 @@ import { dirname } from 'path';
 export const __filename = fileURLToPath(import.meta.url);
 export const __dirname = dirname(__filename);
 
-export const read = async () => {
-    const fileName = 'fileToRead.txt';
-    const pathToReadFile = path.join(__dirname, '/files', fileName);
+export const read = async (pathToReadFile) => {
+    // const fileName = 'fileToRead.txt';
+    // const pathToReadFile = path.join(__dirname, '/files', fileName);
 
     fs.access(pathToReadFile, fs.constants.F_OK, (err) => {
         if (err) {
@@ -21,4 +21,4 @@ export const read = async () => {
     // Write your code here
 };
 
-read();
+// read();
