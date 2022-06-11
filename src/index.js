@@ -10,6 +10,7 @@ import {
 } from './helpers/message.js';
 import { __dirname, list } from './fs/list.js';
 import { read } from './streams/read.js';
+import { create } from './fs/create.js';
 
 const DIVIDER = '\\';
 const USER_NAME_ARGUMENT = 'username';
@@ -80,6 +81,22 @@ process.stdin.on('data', chunk => {
               printInvalidInput();
             } else {
               read(pathToFile);
+            }
+          });
+
+        } else {
+          printInvalidInput();
+        }
+        break;
+      case 'add':
+        if (argumnent) {
+          const pathToFile = path.join(currentDirectory, argumnent);
+
+          fs.access(pathToFile, fs.constants.F_OK, (err) => {
+            if (!err) {
+              printInvalidInput();
+            } else {
+              create(pathToFile, '');
             }
           });
 
