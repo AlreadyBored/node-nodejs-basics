@@ -4,6 +4,7 @@ import { cpus } from 'os';
 
 export const performCalculations = async () => {
     const numberTreads = cpus().length;
+    console.log(cpus());
     let startNumber = 10;
     // const answers = [];
 
@@ -32,12 +33,12 @@ export const performCalculations = async () => {
 
     // console.log(answers);
 
-    const worker = new Worker('./worker.js');
+    // const worker = new Worker('./worker.js');
 
-    worker.postMessage(startNumber);
-    worker.on('message', msg => {
-        console.log(msg);
-    });
+    // worker.postMessage(startNumber);
+    // worker.on('message', msg => {
+    //     console.log(msg);
+    // });
 
 };
 
