@@ -12,6 +12,7 @@ import { __dirname, list } from './fs/list.js';
 import { read } from './streams/read.js';
 import { create } from './fs/create.js';
 import { rename } from './fs/rename.js';
+import { remove } from './fs/delete.js';
 import { calculateHash } from './hash/calcHash.js';
 
 const DIVIDER = '\\';
@@ -135,12 +136,26 @@ process.stdin.on('data', chunk => {
       case 'hash':
         if (argumnent) {
           const pathToFile = path.join(currentDirectory, argumnent);
-          // create(pathToFile, '');
-          fs.access(pathToFile, fs.constants.F_OK, (err) => {
+           fs.access(pathToFile, fs.constants.F_OK, (err) => {
             if (err) {
               printInvalidInput();
             } else {
               calculateHash(pathToFile);
+            }
+          });
+
+        } else {
+          printInvalidInput();
+        }
+        break;
+      case 'rm':
+        if (argumnent) {
+          const pathToFile = path.join(currentDirectory, argumnent);
+          fs.access(pathToFile, fs.constants.F_OK, (err) => {
+            if (err) {
+              printInvalidInput();
+            } else {
+              remove(pathToFile);
             }
           });
 

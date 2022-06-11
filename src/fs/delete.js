@@ -6,9 +6,9 @@ import { dirname } from 'path';
 export const __filename = fileURLToPath(import.meta.url);
 export const __dirname = dirname(__filename);
 
-export const remove = async () => {
-    const fileName = 'fileToRemove.txt';
-    const pathToReadFile = path.join(__dirname, '/files', fileName);
+export const remove = async (pathToReadFile) => {
+    // const fileName = 'fileToRemove.txt';
+    // const pathToReadFile = path.join(__dirname, '/files', fileName);
 
     fs.access(pathToReadFile, fs.constants.F_OK, (err) => {
         if (err) {
@@ -23,4 +23,4 @@ export const remove = async () => {
       });
 };
 
-remove();
+// remove();
