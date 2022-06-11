@@ -1,17 +1,17 @@
-import {readFile,stat} from "fs";
+import {readFile} from "fs/promises";
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const read = async () => {
-    stat('./files/fileToRead.txt', (err,) => {
-        if (err == null) {
-            readFile('./files/fileToRead.txt', 'utf8', (err, data) => {
-                if (err) throw err;
-                console.log(data);
-            });
-        }else{
-            throw new Error('FS operation failed')
-        }
+const __filename =  fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+export const read = async () => {
 
-    });
+    try {
+        const text = await readFile(__dirname+'/files/fileToRead.txt','utf8');
+        console.log(text);
+    }catch (e){
+        throw new Error('FS operation failed');
+    }
 };
 
- export default read();
+read();

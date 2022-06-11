@@ -1,16 +1,10 @@
-import { stat,unlink } from 'fs';
+import { rm } from 'fs/promises';
 
-const remove = async () => {
-    stat('./files/fileToRemove.txt', (err) => {
-        if (err == null){
-            unlink('./files/fileToRemove.txt', (err) => {
-                if (err) throw new Error('FS operation failed');
-                console.log('fileToRemove.txt was deleted');
-            });
-        }else {
-            throw new Error('FS operation failed');
-        }
-
-    });
+export const remove = async () => {
+    try {
+        rm('./files/fileToRemove.txt');
+    }catch (e){
+        throw new Error('FS operation failed');
+    }
 };
-export default remove();
+ remove();

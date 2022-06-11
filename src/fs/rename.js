@@ -1,21 +1,16 @@
-import { stat,renameSync } from 'fs';
+import {rename as getRename } from 'fs/promises';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const rename = async () => {
-    stat('./files/wrongFilename.txt', (err, stats) => {
-        if (err == null){
-            console.log('файл wrongFilename.txt существует')
-            stat('./files/properFilename.md', (err, stats) => {
-                if (err == null) throw new Error('FS operation failed');
-                console.log('файл properFilename.md не существует')
-            });
-            renameSync('./files/wrongFilename.txt', './files/properFilename.md', (err) => {
-                if (err) throw err;
-                console.log('файл переименован')
+const __filename =  fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+export const rename = async () => {
 
-            });
-        }else {
-            throw new Error('FS operation failed');
-        }
-    });
+    try {
+        await getRename(__dirname+'/files/wrongFilename.txt', __dirname+'/files/properFilename.md');
+    }catch (e){
+        throw new Error('FS operation failed');
+    }
+
 }
-export default rename();
+rename();

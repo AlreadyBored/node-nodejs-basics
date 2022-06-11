@@ -1,26 +1,21 @@
-import { open,appendFile,access,constants } from 'fs';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { writeFile} from 'fs/promises';
 
-const create = async () => {
- const file ='./files/fresh.txt';
+const __filename =  fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export const create = async () => {
+
+    const src = __dirname+'/files/fresh.txt';
+    const content = 'I am fresh and young';
+    const existMsg='FS operation failed';
+
     try {
-        access(file, constants.F_OK, (err) => {
-            if(err){
-                open(file, 'w', (err) => {
-                    if (err) throw err;
-                    console.log('File created');
-                    appendFile(file, 'I am fresh and young', (err) => {
-                        if(err) throw err;
-                        console.log('Data has been added!');
-                    });
-                });
-            }else {
-                throw new Error('FS operation failed');
-            }
-
-        });
+        await writeFile(src,content,{flag:'wx'})
     } catch(err) {
-        console.log(err)
+        throw new Error(existMsg)
     }
 };
 
-export default create();
+create();
