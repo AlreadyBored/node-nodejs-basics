@@ -9,7 +9,7 @@ import { __dirname, list } from './fs/list.js';
 
 
 
-
+const DIVIDER = '\\';
 const USER_NAME_ARGUMENT = 'username';
 const args = parseArgs();
 
@@ -31,6 +31,17 @@ process.stdin.on('data', chunk => {
   switch (command) {
     case 'ls':
       list(currentDirectory);
+      break;
+    case 'up':
+      const lastIndex = currentDirectory.lastIndexOf(DIVIDER);
+      const firstIndex = currentDirectory.indexOf(DIVIDER);
+      const newDirectory = currentDirectory.slice(0, lastIndex);
+      if (lastIndex !== firstIndex) {
+        currentDirectory = newDirectory;
+      } else {
+        currentDirectory = currentDirectory.slice(0, lastIndex + 1);
+      }
+      printCurrentDiretory(currentDirectory);
       break;
 
     default:
