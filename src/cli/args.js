@@ -1,17 +1,15 @@
 export const parseArgs = () => {
-    let result='';
-    process.argv.forEach((value,index)=>{
-        if(index > 1){
-            console.log(index)
-            if(index % 2 == 0){
-                result+=value.substring(2)+" is ";
-            }else {
-                result+=value+",";
-            }
+    const userInputArgs = process.argv.slice(2);
+    const cliArguments = userInputArgs.reduce((acc,arg,index,arr)=>{
+        const valueCandidate = arr[index+1];
+        if(valueCandidate && arg.startsWith('--')){
+            const transformedArg = arg.slice(2);
+            const cliArgumentsTransformed = `${transformedArg} is ${valueCandidate}`;
+            acc.push(cliArgumentsTransformed);
         }
-
-    });
-    console.log(result.slice(0,result.length-1));
+        return acc;
+    },[]);
+    console.log(cliArguments.join(', '));
 };
 parseArgs();
 

@@ -1,12 +1,8 @@
- const parseEnv = () => {
-     const arr = process.env;
-     let result;
-     Object.keys(arr).forEach(function(key) {
-         if(key.indexOf('RSS_') + 1) {
-             result+=key+"="+this[key]+"; ";
-         }
-     }, arr);
-     console.log(result)
-
+export const parseEnv = () => {
+    const rssVar = Object.entries(process.env).reduce((acc,[key,value])=>{
+        if(key.startsWith('RSS_')) acc.push(`${key}=${value}`);
+        return acc;
+    },[]);
+    console.log(rssVar.join('; '));
 };
- export default parseEnv();
+parseEnv();

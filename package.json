@@ -9,17 +9,26 @@
     "read": "node src/fs/read.js",
     "rename": "node src/fs/rename.js",
     "list": "node src/fs/list.js",
-    "copy": "node src/fs/copy.js"
+    "copy": "node src/fs/copy.js",
+    "env": "npx cross-env RSS_first_name=Denis RSS_last_name=Zhilkin node src/cli/env.js",
+    "args": "node src/cli/args.js --first Denis --last Zhilkin"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AlreadyBored/node-nodejs-basics.git"
   },
-  "keywords": ["nodejs", "assignments", "alreadybored"],
+  "keywords": [
+    "nodejs",
+    "assignments",
+    "alreadybored"
+  ],
   "author": "alreadybored",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AlreadyBored/node-nodejs-basics/issues"
   },
-  "homepage": "https://github.com/AlreadyBored/node-nodejs-basics#readme"
+  "homepage": "https://github.com/AlreadyBored/node-nodejs-basics#readme",
+  "dependencies": {
+    "cross-env": "^7.0.3"
+  }
 }
