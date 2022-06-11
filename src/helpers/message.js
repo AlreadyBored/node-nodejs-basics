@@ -1,6 +1,7 @@
 const GREETING_MESSAGE = 'Welcome to the File Manager,';
 const FAREWELL_MESSAGE = 'Thank you for using File Manager,';
 const DIRECTORY_MESSAGE = 'You are currently in';
+const INVALID_INPUT_MESSAGE = 'Invalid input';
 
 export const printMessage = (standartPhrase, userPhrase) => {
   console.log(`${standartPhrase} ${userPhrase}!\n`);
@@ -11,4 +12,8 @@ export const printFarewell = (name) => printMessage(FAREWELL_MESSAGE, name);
 
 export const printCurrentDiretory = (path_to_working_directory) => {
   console.log(`${DIRECTORY_MESSAGE} ${path_to_working_directory}\n`);
+};
+
+export const printInvalidInput = () => {
+  console.log(`${INVALID_INPUT_MESSAGE}\n`);
 };

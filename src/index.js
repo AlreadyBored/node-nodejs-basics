@@ -2,7 +2,8 @@ import { parseArgs } from './cli/args.js';
 import {
   printGreeteing,
   printFarewell,
-  printCurrentDiretory
+  printCurrentDiretory,
+  printInvalidInput
 } from './helpers/message.js';
 import { __dirname, list } from './fs/list.js';
 
@@ -31,7 +32,9 @@ process.stdin.on('data', chunk => {
     case 'ls':
       list(currentDirectory);
       break;
+
     default:
+      printInvalidInput();
       break;
 
   }
@@ -47,13 +50,10 @@ process.stdin.on('data', chunk => {
 
 
 
-// process.exit(farewell(userName));
 process.on('exit', () => {
   printFarewell(userName);
 });
 
 process.on('SIGINT', () => {
-  printFarewell(userName);
+  process.exit();
 });
-
-// process.exit();
