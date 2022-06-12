@@ -1,16 +1,39 @@
 {
-  "name": "node-nodejs-basics",
+  "name": "rs-school-nodejs-course",
   "version": "1.0.0",
   "description": "This repository is the part of nodejs-assignments https://github.com/AlreadyBored/nodejs-assignments",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "createFile": "node ./src/fs/create",
+    "copyFile": "node ./src/fs/copy",
+    "renameFile": "node ./src/fs/rename",
+    "removeFile": "node ./src/fs/delete",
+    "listFile": "node ./src/fs/list",
+    "readFile": "node ./src/fs/read",
+    "envFile": "RSS_USER_NAME='user name' RSS_USER_SURNAME='user surname' node ./src/cli/env",
+    "argvFile": " node  ./src/cli/args --propName='value1' --propName='value2'",
+    "cjsToEsm": "node ./src/modules/cjsToEsm.mjs",
+    "calcHash": "node ./src/hash/calcHash",
+    "streamsRead": "node ./src/streams/read",
+    "streamsWrite": "node ./src/streams/write",
+    "streamsTransform": "node ./src/streams/transform",
+    "compressZip": "node ./src/zip/compress",
+    "decompressZip": "node ./src/zip/decompress",
+    "wtWorker": "node ./src/wt/worker"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AlreadyBored/node-nodejs-basics.git"
   },
-  "keywords": ["nodejs", "assignments", "alreadybored"],
+  "keywords": [
+    "nodejs",
+    "assignments",
+    "alreadybored"
+  ],
   "author": "alreadybored",
   "license": "ISC",
   "bugs": {

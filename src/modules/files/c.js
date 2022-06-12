@@ -1,1 +1,3 @@
-console.log('Hello from c.js!');
+export default ()=>{
+  console.log('Hello from c.js!');
+}
