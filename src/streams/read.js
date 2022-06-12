@@ -1,17 +1,11 @@
-
 import {createReadStream} from 'fs';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const read = async () => {
-    const reading = createReadStream('./files/fileToRead.txt')
-    const res = [];
-    reading.on('data',(chunk)=>{
-        console.log(chunk.toString());
-        res.push( chunk );
-    })
-    reading.on("end",() => {
-        console.log('end')
-        process.stdout.write( Buffer.concat(res).toString() );
-
-    })
+const __filename =  fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+export const read = async () => {
+    const readStream = createReadStream(__dirname+'/files/fileToRead.txt','utf8');
+   readStream.pipe(process.stdout);
 };
-export default read();
+read();

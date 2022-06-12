@@ -1,6 +1,6 @@
 import {createHash} from 'crypto';
 import {readFile} from 'fs';
-const calculateHash = async () => {
+export const calculateHash = async () => {
 
     readFile('./files/fileToCalculateHashFor.txt', 'utf8', (err, data) => {
         if (err) throw err;
@@ -9,4 +9,4 @@ const calculateHash = async () => {
 
 };
 
-export default calculateHash();
+ calculateHash();

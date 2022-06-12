@@ -11,7 +11,12 @@
     "list": "node src/fs/list.js",
     "copy": "node src/fs/copy.js",
     "env": "npx cross-env RSS_first_name=Denis RSS_last_name=Zhilkin node src/cli/env.js",
-    "args": "node src/cli/args.js --first Denis --last Zhilkin"
+    "args": "node src/cli/args.js --first Denis --last Zhilkin",
+    "cjs": "node src/modules/cjsToEsm.mjs",
+    "readstream": "node src/streams/read.js",
+    "writestream": "node src/streams/write.js",
+    "transform": "node src/streams/transform.js",
+    "wt": "node src/wt/main.js"
   },
   "repository": {
     "type": "git",

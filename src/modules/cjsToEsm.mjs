@@ -1,13 +1,11 @@
 import {sep} from 'path';
 import { release, version } from 'os';
 import {  createServer  } from 'http';
-import c from './files/c.js';
+import  './files/c.js';
 import a from './files/a.json' assert { type: 'json' };
 import b from './files/b.json' assert { type: 'json' };
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-
-c;
 
 const random = Math.random();
 
