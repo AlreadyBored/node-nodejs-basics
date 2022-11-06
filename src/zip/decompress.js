@@ -1,3 +1,5 @@
-export const decompress = async () => {
+const decompress = async () => {
     // Write your code here 
 };
+
+await decompress();
