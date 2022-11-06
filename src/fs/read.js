@@ -1,3 +1,5 @@
-export const read = async () => {
+const read = async () => {
     // Write your code here 
 };
+
+await read();

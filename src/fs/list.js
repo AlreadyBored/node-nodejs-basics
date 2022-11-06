@@ -1,3 +1,5 @@
-export const list = async () => {
+const list = async () => {
     // Write your code here 
 };
+
+await list();

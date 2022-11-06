@@ -1,3 +1,5 @@
-export const spawnChildProcess = async (args) => {
+const spawnChildProcess = async (args) => {
     // Write your code here
 };
+
+spawnChildProcess();

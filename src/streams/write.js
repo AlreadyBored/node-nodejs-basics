@@ -1,3 +1,5 @@
-export const write = async () => {
+const write = async () => {
     // Write your code here 
 };
+
+await write();
