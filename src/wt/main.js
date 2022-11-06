@@ -1,3 +1,5 @@
-export const performCalculations = async () => {
+const performCalculations = async () => {
     // Write your code here
 };
+
+await performCalculations();

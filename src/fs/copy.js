@@ -1,3 +1,5 @@
-export const copy = async () => {
+const copy = async () => {
     // Write your code here 
 };
+
+copy();

@@ -1,3 +1,5 @@
-export const parseArgs = () => {
+const parseArgs = () => {
     // Write your code here 
 };
+
+parseArgs();
