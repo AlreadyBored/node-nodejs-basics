@@ -6,12 +6,14 @@ const __dirname = path.dirname(__filename);
 
 
 const create = async () => {
+    const pathToFile = path.join(__dirname, 'files', 'fresh.txt')
+    if (fs.existsSync(path.join(__dirname, 'files', 'fresh.txt'))) throw Error('FS operation failed')
     fs.writeFile(
-        path.join(__dirname, 'files', 'fresh.txt'),
+        pathToFile,
         'I am fresh and young',
         (err) => {
-            if (err) throw err;
-            console.log('FS operation failed');
+            if (err) throw Error('FS operation failed');
+            console.log('File was created');
         }
     );
 };
