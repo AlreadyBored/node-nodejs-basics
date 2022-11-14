@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "cli:args": "node src/cli/args.js --some-arg value1 --other 1337 --arg2 42",
-    "cli:env": "npx cross-env SOME=any RSS_foo=bar RSS_bar=baz node src/cli/env.js",
+    "cli:env": "npx cross-env SOME=any RSS_name=Alex RSS_surname=Kochnev node src/cli/env.js",
     "cp": "node src/cp/cp.js",
     "fs:copy": "node src/fs/copy.js",
     "fs:create": "node src/fs/create.js",
