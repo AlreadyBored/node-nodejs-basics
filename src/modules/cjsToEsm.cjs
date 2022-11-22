@@ -35,6 +35,6 @@ myServer.listen(PORT, () => {
 
 module.exports = {
     unknownObject,
-    createMyServer,
+    myServer,
 };
 
