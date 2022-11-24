@@ -41,12 +41,5 @@ myServer.listen(PORT, () => {
 });
 
 export {
-    unknownObject
+    unknownObject, myServer
 };
-
-/*
-export {
-    unknownObject,
-    createMyServer,
-};
-*/
