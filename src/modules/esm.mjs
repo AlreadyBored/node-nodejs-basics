@@ -11,7 +11,6 @@ import { fileURLToPath } from 'url';
 
 
 // import c from "./files/c" ;
-import {default}  from "./files/c";
 
 const __filename = fileURLToPath(import.meta.url);
 
