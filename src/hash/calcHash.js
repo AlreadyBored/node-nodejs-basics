@@ -1,7 +1,6 @@
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { createReadStream } from 'node:fs'
-import { stdout } from 'node:process'
+import { readFile } from 'node:fs/promises'
 
 const { createHash } = await import('node:crypto')
 
@@ -13,8 +12,10 @@ const calculateHash = async () => {
     )
 
     const hash = createHash('sha256')
-    const input = createReadStream(fileToHASH)
-    input.pipe(hash).setEncoding('hex').pipe(stdout)
+    const input = await readFile(fileToHASH)
+    hash.update(input)
+    const hex = hash.digest('hex')
+    console.log(hex)
 }
 
 await calculateHash()
