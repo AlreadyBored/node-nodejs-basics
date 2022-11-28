@@ -7,22 +7,23 @@ const __dirname = path.dirname(__filename);
 
 const create = async () => {
     // Write your code here 
-    fs.readFile(
-        path.join(__dirname, 'files', 'fresh.txt'),
-        'utf-8',
-        (err, data) => {
-            if (err) {
-                fs.writeFile(
-                    path.join(__dirname, 'files', 'fresh.txt'),
-                    'I am fresh and young',
-                    (err) => {
-                        if (err) throw new Error('FS operation failed')
-                        console.log('File created')
-                    }
-                )
-            } else throw new Error('FS operation failed')
+    const file = `${__dirname}/files/fresh.txt`;
+
+    fs.access(file, fs.constants.F_OK, (err) => {
+        if (err) {
+            // console.log('File does not exist')
+            fs.writeFile(
+                path.join(__dirname, 'files', 'fresh.txt'),
+                'I am fresh and young',
+                (err) => {
+                    if (err) throw err
+                    // console.log('File created')
+                }
+            )
+        } else {
+            throw new Error('FS operation failed')
         }
-    )
+      });
 };
 
 await create();
