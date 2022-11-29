@@ -9,12 +9,12 @@ const __dirname = path.dirname(__filename);
 
 const rename = async () => {
     // Write your code here 
-    const originPath = `${__dirname}/files/wrongFilename.txt`;
+    const pathToWrongFileName = `${__dirname}/files/wrongFilename.txt`;
     const newPath = `${__dirname}/files/properFilename.md`;
     const prRename = promisify(fs.rename);
-    
+
     try {
-        await prRename(originPath, newPath)
+        await prRename(pathToWrongFileName, newPath)
     }
     catch (err) {
         throw new Error('FS operation failed')
