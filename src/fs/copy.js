@@ -31,16 +31,18 @@ const copy = async () => {
 
     try {
         await prAccess(newPath, fs.constants.F_OK);
-        console.log('files_copy exist');
-        throw new Error('FS operation failed');
+        throw new Error('FS operation failed')
     }
     catch (err) {
-        //make copy
-        const files = await prReaddir(originPath, {encoding: 'utf-8'});
-        await prMkdir(newPath);
-        files?.forEach(fileName => {
-            prCopyFile(`${originPath}${fileName}`, `${newPath}${fileName}`);
-        })
+        if (err.message === 'FS operation failed') {
+            throw err
+        } else {
+            const files = await prReaddir(originPath, {encoding: 'utf-8'});
+            await prMkdir(newPath);
+            files?.forEach(async (fileName) => {
+               await prCopyFile(`${originPath}${fileName}`, `${newPath}${fileName}`);
+            })
+        }
     }
 };
 
