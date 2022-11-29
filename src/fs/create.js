@@ -1,5 +1,7 @@
+import { writeFile } from 'node:fs/promises';
+
 const create = async () => {
-    // Write your code here 
+    await writeFile("1.txt", "I am fresh and young", {flag: "wx"});
 };
 
 await create();
