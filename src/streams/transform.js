@@ -1,10 +1,12 @@
 import { stdin, stdout } from 'node:process'
+import { Transform } from 'node:stream'
 const transform = async () => {
-    stdout.write('Please type in console\n')
-    stdin.on('data', (data) => {
-        data = data.toString().split('').reverse().join('')
-        stdout.write(data + '\n')
+    const reverser = new Transform({
+        transform(chunk, encoding, callback) {
+            callback(null, chunk.toString().split('').reverse().join('') + '\n')
+        },
     })
+    stdin.pipe(reverser).pipe(stdout)
 }
 
 await transform()
