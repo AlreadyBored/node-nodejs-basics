@@ -19,35 +19,28 @@ const copy = async () => {
 
     const prAccess = promisify(fs.access);
     const prMkdir = promisify(fs.mkdir);
+    const prReaddir = promisify(fs.readdir);
+    const prCopyFile = promisify(fs.copyFile);
 
     try {
         await prAccess(originPath, fs.constants.F_OK);
     }
     catch (err) {
-        throw new Error('FS operation failed'); 
+        throw new Error('FS operation failed');
     }
 
     try {
         await prAccess(newPath, fs.constants.F_OK);
         console.log('files_copy exist');
-        throw new Error('FS operation failed'); 
+        throw new Error('FS operation failed');
     }
     catch (err) {
-               //make copy
-               fs.readdir(originPath,{encoding: 'utf-8'}, (err, files) => {
-                if (err) {
-                    throw err 
-                }
-                else {
-                    prMkdir(newPath);
-                    files.forEach(el => {
-                        fs.copyFile(`${originPath}${el}`, `${newPath}${el}`, (err) => {
-                            if (err) throw err;
-                            console.log(`file ${el} coped`);
-                          });
-                    })
-                }
-            })
+        //make copy
+        const files = await prReaddir(originPath, {encoding: 'utf-8'});
+        await prMkdir(newPath);
+        files?.forEach(fileName => {
+            prCopyFile(`${originPath}${fileName}`, `${newPath}${fileName}`);
+        })
     }
 };
 
