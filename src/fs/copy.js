@@ -8,7 +8,7 @@ import {
     BASE_PATH,
 } from "./utils/fs.js";
 
-const duplicateFolderPath = join(__dirname, "copy_files");
+const duplicateFolderPath = join(__dirname, "fs", "copy_files");
 
 const copy = async () => {
     const isFolderExist = await isFileOrFolderExist(BASE_PATH);
