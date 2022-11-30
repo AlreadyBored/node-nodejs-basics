@@ -4,8 +4,10 @@ const parseEnv = () => {
             if (key.startsWith('RSS_')) {
                 variables.push(`${key}=${value}`)
             }
+
             return variables
         }, [])
+    
     console.log(variablesStartWithRSS.join('; '))
 };
 
