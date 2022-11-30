@@ -36,5 +36,9 @@
   "bugs": {
     "url": "https://github.com/AlreadyBored/node-nodejs-basics/issues"
   },
-  "homepage": "https://github.com/AlreadyBored/node-nodejs-basics#readme"
+  "homepage": "https://github.com/AlreadyBored/node-nodejs-basics#readme",
+  "dependencies": {
+    "g": "^2.0.1",
+    "npm": "^9.1.2"
+  }
 }
