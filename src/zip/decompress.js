@@ -8,12 +8,17 @@ const decompress = async () => {
   const pathToFile = fileURLToPath(
     new URL("./files/fileToCompress.txt", import.meta.url)
   );
+
   const pathToZip = fileURLToPath(
     new URL("./files/archive.txt.gz", import.meta.url)
   );
+
   const unZip = createUnzip();
+
   const src = createReadStream(pathToZip);
+
   const zipFile = createWriteStream(pathToFile);
+  
   pipeline(src, unZip, zipFile, (err) => {
     if (err) {
       throw new Error("Operation is failed");

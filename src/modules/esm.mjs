@@ -1,8 +1,8 @@
 import path from 'path';
 import { release, version } from 'os';
 import { createServer as createServerHttp } from 'http';
-import './files/c.js';
 import { createRequire } from 'module';
+import './files/c.js';
 
 const random = Math.random();
 
