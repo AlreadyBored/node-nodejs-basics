@@ -9,9 +9,9 @@ const __dirname = path.dirname(__filename);
 const performCalculations = async () => {
     // Write your code here
     const numCPUs = cpus().length;
-    const dataFromWorkers = [];
     const bc = new BroadcastChannel('chanel1');
     let counter = 0;
+    let dataFromWorkers = [];
 
     const printResult = () => {
         dataFromWorkers.sort((a, b) => {
@@ -37,7 +37,7 @@ const performCalculations = async () => {
                 data: null,
                 id: n + 10,
             })
-            ++counter;
+            counter+=1;
             if (counter === numCPUs) printResult();
         });
     }
@@ -48,7 +48,7 @@ const performCalculations = async () => {
             data: event.data.result || null,
             id: event.data.id,
         })
-        ++counter;
+        counter+=1;
         if (counter === numCPUs) printResult();
     };
     
