@@ -1,15 +1,7 @@
 import { appendFile, stat } from "node:fs/promises";
+import { checkFileExist } from './utils.js';
 
 const PATH = './src/fs/files/fresh.txt';
-
-const checkFileExist = async (path) => {
-  try {
-    const data = await stat(path);
-    return Boolean(data);
-  } catch (error) {
-    return false;
-  }
-};
 
 const create = async () => {
   try {
