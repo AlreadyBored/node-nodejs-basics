@@ -1,13 +1,11 @@
 const parseEnv = () => {
-    // Write your code here
-    const argument = process.argv
-    const consol = []
-    for (let i = 0; i < argument.length; i++) {
-        if(i > 1){
-            consol.push(`${argument[i]} is ${argument[i += 1]}`);
-        }
+  // Write your code here
+  const variables = process.env;
+    for(let key in variables){
+        let keyVar = key
+        keyVar = "RSS__" + keyVar
+        console.log(keyVar + `=${variables[key]}`);
     }
-    console.log(consol.join(", "));
 };
 
 parseEnv();
