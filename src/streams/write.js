@@ -1,5 +1,11 @@
+import { createWriteStream } from 'fs'
+import { getCombinedPath } from '../pathHelper.js'
+
 const write = async () => {
-    // Write your code here 
+    const pathToFile = getCombinedPath(import.meta.url, 'files', 'fileToWrite.txt')
+
+    const writableStream = createWriteStream(pathToFile)
+    process.stdin.pipe(writableStream)
 };
 
 await write();
