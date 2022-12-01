@@ -8,7 +8,7 @@ const parseArgs = () => {
         }
         return acc
     }, [])
-    console.log(output.join())
+    console.log(output.join(', '))
 };
 
 parseArgs();
