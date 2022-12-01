@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 
 const remove = async () => {
     fs.unlink(
-        path.join(__dirname, 'fresh.txt'),
+        path.join(__dirname, 'files/fresh.txt'),
         (err) => {
             if (err) throw console.error('Error: FS operation failed');
             console.log('file delete');
