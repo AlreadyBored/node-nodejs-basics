@@ -9,10 +9,11 @@ const __dirname = path.dirname(__filename);
 const write = async () => {
     // Write your code here 
     const writeStream = fs.createWriteStream(`${__dirname}/files/fileToWrite.txt`);
+    console.log('Write something, and I print it into the file: (If you are tired, press Ctrl+C)')
 
     stdin.on('data', (data) => {
-        writeStream.write(data.toString().slice(0,-1));
-        process.exit();
+        writeStream.write(data.toString());
+      //  process.exit();
     })
     stdin.on('error', (err) => {
         throw (err);
