@@ -1,11 +1,9 @@
-import process from 'node:process';
-import fs from 'node:fs';
-
 import { Transform } from 'stream';
 
 const reverseTr = new Transform({
   transform(chunk, encoding, callback) {
     this.push(chunk.toString().trim().split('').reverse().join(''));
+    this.push('\n');
     callback();
   }
 });
