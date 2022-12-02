@@ -1,5 +1,10 @@
-const decompress = async () => {
-    // Write your code here 
-};
+import fs from 'fs';
+import zlib from 'zlib';
 
-await decompress();
+
+export const decompress = async() => {
+    const input = fs.createReadStream('./files/archive.gz');
+    const output = fs.createWriteStream('./files/fileToCompress.txt');
+    input.pipe(zlib.createUnzip()).pipe(output);
+};
+decompress();
