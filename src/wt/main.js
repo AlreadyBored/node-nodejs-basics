@@ -25,6 +25,7 @@ const performCalculations = async () => {
         }));
         console.log(result)
         bc.close();
+        process.exit();
     }
 
     for (let n = 0; n < numCPUs; n++) {
