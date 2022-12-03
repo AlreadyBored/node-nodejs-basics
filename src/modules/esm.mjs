@@ -2,19 +2,20 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { release, version } from "node:os";
 import { createServer as createServerHttp } from "node:http";
+import { createRequire } from "node:module";
+import { dirname } from "node:path";
 
 await import("./files/c.js");
 
 const random = Math.random();
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = fileURLToPath(new URL(".", import.meta.url));
+const __dirname = dirname(__filename);
 
 const pathToJSON = random > 0.5 ? "./files/a.json" : "./files/b.json";
 
-const { default: unknownObject } = await import(pathToJSON, {
-  assert: { type: "json" },
-});
+const require = createRequire(import.meta.url);
+const unknownObject = require(pathToJSON);
 
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
