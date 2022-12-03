@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e5f635d-f3df-4edd-8094-29e6af51acab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/fs/shared/errors.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fs/shared/paths.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fs/utils/checkFsElementExists.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fs/utils/createCopyFromList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fs/utils/createFile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fs/utils/getDirectoryContentList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fs/copy.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/fs/copy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fs/create.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/fs/create.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fs/delete.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/fs/delete.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fs/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/fs/list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fs/read.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/fs/read.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fs/rename.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/fs/rename.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/args.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/args.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/env.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/env.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +69,7 @@
       <workItem from="1669994783523" duration="3195000" />
       <workItem from="1670067930632" duration="7708000" />
       <workItem from="1670075653614" duration="3626000" />
+      <workItem from="1670079291068" duration="5247000" />
     </task>
     <servers />
   </component>
