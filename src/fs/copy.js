@@ -1,5 +1,5 @@
 import { list } from "./list.js";
-import { access, constants, mkdir, copyFile } from 'node:fs/promises';
+import { mkdir, copyFile } from 'node:fs/promises';
 import { isTargetAccessible } from "./helpers/helperFunctions.js";
 const copy = async (targetDirectory, copyDirectory) => {
     const filesToCopy = await list(targetDirectory);
