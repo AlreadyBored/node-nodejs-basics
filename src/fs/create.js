@@ -1,18 +1,11 @@
-import { access, constants } from 'node:fs/promises';
+import { writeFile } from 'node:fs/promises';
+import { isTargetAccessible }  from "./helpers/helperFunctions.js";
+
 const FILE_PATH = './files/fresh.txt';
+const string = 'I am fresh and young';
 
-export const create = async (filePath) => {
-    const string = 'I am fresh and young';
-
-    let isFileExist;
-
-    try {
-        await access(filePath, constants.R_OK);
-        isFileExist = true;
-    } catch {
-        isFileExist = false;
-    }
-
+export const create = async (filePath, data) => {
+    const isFileExist = await isTargetAccessible(filePath);
     if (!isFileExist) {
         return writeFile(FILE_PATH, string);
     } else {
@@ -20,4 +13,4 @@ export const create = async (filePath) => {
     }
 };
 
-await create(FILE_PATH);
+await create(FILE_PATH, string);
