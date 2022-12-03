@@ -10,7 +10,6 @@ const create = async () => {
     const fileContent = 'I am fresh and young';
 
     if (fs.existsSync(fileName)) {
-        console.log('FS operation failed');
         throw 'FS operation failed';
     }
 

@@ -7,7 +7,6 @@ const list = async () => {
     const folderPath = currentPath + '/files';
 
     if (!fs.existsSync(folderPath)) {
-        console.log(1);
         throw 'FS operation failed';
     }
 
