@@ -7,12 +7,10 @@ const list = async () => {
             throw new Error('FS operation failed')
         } else {
             const readDir = await readdir(path);
-            const res = [];
             readDir.forEach(elem => {
                 const arr = elem.split('.');
-                res.push(arr[1]);
+                console.log(arr[1])
             });
-            return res
         }
     } catch (e) {
         console.log(e)
