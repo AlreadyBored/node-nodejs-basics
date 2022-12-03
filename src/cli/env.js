@@ -1,5 +1,11 @@
+import process from 'node:process';
+
 const parseEnv = () => {
-    // Write your code here 
+    Object.keys(process.env).forEach(item => {
+        if (item.includes('RSS_')){
+            console.log(`${item}=${process.env[item]}; `)
+        }
+    })
 };
 
 parseEnv();
