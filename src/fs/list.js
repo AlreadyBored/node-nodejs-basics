@@ -1,13 +1,14 @@
 import { readdir } from 'node:fs/promises';
 const DIRECTORY_PATH = './files';
 
-const list = async () => {
+export const list = async (directoryPath) => {
     try {
-        const files = await readdir(DIRECTORY_PATH);
+        const files = await readdir(directoryPath);
         files.forEach((file) => console.log(file));
+        return files;
     } catch (err) {
         throw new Error('FS operation failed');
     }
 };
 
-await list();
+await list(DIRECTORY_PATH);

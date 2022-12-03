@@ -1,13 +1,13 @@
-import { writeFile, access, constants } from 'node:fs/promises';
+import { access, constants } from 'node:fs/promises';
 const FILE_PATH = './files/fresh.txt';
 
-const create = async () => {
+export const create = async (filePath) => {
     const string = 'I am fresh and young';
 
     let isFileExist;
 
     try {
-        await access(FILE_PATH, constants.R_OK);
+        await access(filePath, constants.R_OK);
         isFileExist = true;
     } catch {
         isFileExist = false;
@@ -20,4 +20,4 @@ const create = async () => {
     }
 };
 
-await create();
+await create(FILE_PATH);
