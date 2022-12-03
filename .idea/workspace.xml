@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9e5f635d-f3df-4edd-8094-29e6af51acab" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/fs/shared/errors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fs/shared/paths.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fs/utils/checkFsElementExists.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fs/utils/createCopyFromList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fs/utils/createFile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fs/utils/getDirectoryContentList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fs/copy.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/fs/copy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fs/create.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/fs/create.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fs/delete.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/fs/delete.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fs/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/fs/list.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fs/read.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/fs/read.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fs/rename.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/fs/rename.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2IBgyhP0LP7xz1JILpne9JvOVRn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.12.1&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.11.9&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;/home/zinpolinn/.nvm/versions/node/v18.12.1/bin/node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/snap/webstorm/291/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9e5f635d-f3df-4edd-8094-29e6af51acab" name="Changes" comment="" />
+      <created>1669660648679</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669660648679</updated>
+      <workItem from="1669660651268" duration="1978000" />
+      <workItem from="1669662645416" duration="2393000" />
+      <workItem from="1669705372582" duration="4000" />
+      <workItem from="1669756124186" duration="3550000" />
+      <workItem from="1669791215285" duration="34000" />
+      <workItem from="1669994783523" duration="3195000" />
+      <workItem from="1670067930632" duration="7708000" />
+      <workItem from="1670075653614" duration="3626000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
