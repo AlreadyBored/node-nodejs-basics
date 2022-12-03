@@ -1,11 +1,7 @@
 const parseEnv = () => {
-  const allKeys = Object.keys(process.env);
+  const result = Object.keys(process.env).filter((key) => key.startsWith("RSS_")).reduce((acc, key, idx, arr) =>  acc + `${key}=${process.env[key]}${idx < arr.length - 1 ? '; ' : ''}`, '');
 
-  allKeys.forEach((key) => {
-    if (key.startsWith("RSS_")) {
-      console.log(process.env[key]);
-    }
-  });
+  console.log(result);
 };
 
 parseEnv();
