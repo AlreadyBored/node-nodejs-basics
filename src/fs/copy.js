@@ -23,6 +23,7 @@ const copy = async (targetDirectory, copyDirectory) => {
 
         // const projectFolder = new URL(newDirectory, import.meta.url); //TODO
         await Promise.all(promises);
+
         console.log('SUCCESSFULLY COPIED');
     } else {
         throw new Error('FS operation failed');

@@ -11,6 +11,8 @@ export const create = async (filePath, data) => {
     } else {
         throw new Error('FS operation failed');
     }
+
+    console.log('SUCCESSFULLY CREATED');
 };
 
 await create(FILE_PATH, string);

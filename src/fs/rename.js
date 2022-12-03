@@ -12,10 +12,11 @@ const rename = async (targetFile, fileWithNewName) => {
 
     if (isTargetFileExists && !isFileWithNewNameExist) {
         await renameFile(targetFile, fileWithNewName);
-        console.log('SUCCESSFULLY RENAMED');
     } else {
         throw new Error('FS operation failed');
     }
+
+    console.log('SUCCESSFULLY RENAMED');
 };
 
 await rename('./files/wrongFilename.txt', './files/wrongFilename.md');
