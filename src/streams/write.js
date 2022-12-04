@@ -10,9 +10,10 @@ const write = async () => {
 
   process.stdin.pipe(writeStream);
 
-  writeStream.on('error', (error) => {
-    throw error;
-})
+  writeStream.on("error", (err) => {
+    console.log(err);
+    process.exitCode = 1;
+  });
 };
 
 await write();

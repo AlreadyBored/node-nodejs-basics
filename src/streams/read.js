@@ -1,8 +1,8 @@
 import { createReadStream } from "fs";
 import path from "path";
-import * as url from "url";
+import { fileURLToPath } from "url";
 
-const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const pathToFile = path.join(__dirname, "files", "fileToRead.txt");
 
 const read = async () => {
@@ -17,7 +17,8 @@ const read = async () => {
   });
 
   readStream.on("error", (error) => {
-    throw error;
+    console.error(err);
+    process.exitCode = 1;
   });
 };
 
