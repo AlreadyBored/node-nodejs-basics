@@ -1,10 +1,10 @@
 import fs from "fs";
 import path from "path";
 
-import { getDirname } from "../helpers/getDirname.js";
+import { getPath } from "../helpers/getPath.js";
 
 const copy = async () => {
-  const __dirname = getDirname(import.meta.url);
+  const { __dirname } = getPath(import.meta.url);
   const coursePath = path.join(__dirname, "/files");
   const destinationPath = path.join(__dirname, "/files_copy");
 

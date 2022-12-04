@@ -1,10 +1,10 @@
 import fs from "fs";
 import path from "path";
 
-import { getDirname } from "../helpers/getDirname.js";
+import { getPath } from "../helpers/getPath.js";
 
 const rename = async () => {
-  const __dirname = getDirname(import.meta.url);
+  const { __dirname } = getPath(import.meta.url);
   const oldPath = path.join(__dirname, "/files/wrongFilename.txt");
   const newPath = path.join(__dirname, "/files/properFilename.md");
 
