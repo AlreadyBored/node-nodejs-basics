@@ -14,7 +14,8 @@
     "cli:env": "npx cross-env RSS_name1=value1 RSS_name2=value2 node src/cli/env.js",
     "modules:cjstoesm": "node src/modules/cjsToEsm.mjs",
     "hash": "node src/hash/calcHash.js",
-    "streams:read": "node src/streams/read.js"
+    "streams:read": "node src/streams/read.js",
+    "streams:write": "node src/streams/write.js"
   },
   "repository": {
     "type": "git",
