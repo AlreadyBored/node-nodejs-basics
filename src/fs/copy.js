@@ -23,4 +23,4 @@ const copy = async () => {
   }
 };
 
-copy();
+await copy();
