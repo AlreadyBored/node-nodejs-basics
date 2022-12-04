@@ -1,11 +1,14 @@
 import fs from "fs"
 import * as zlib from "zlib"
+import { getFilesPaths } from "../utils"
 
 const decompress = async () => {
   // Write your code here
-  const base = "src/zip/files"
-  const archive = `${base}/archive.gz`
-  const file = `${base}/fileToCompress.txt`
+  const [archive, file] = getFilesPaths(
+    import.meta.url,
+    "archive.gz",
+    "fileToCompress.txt"
+  )
   const input = fs.createReadStream(archive)
   const output = fs.createWriteStream(file)
   const decompressStream = zlib.createGunzip()

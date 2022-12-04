@@ -1,15 +1,14 @@
-import fs from "fs"
-import { exists } from "./utils.js"
+import fs from "fs/promises"
+import { exists, getFilesPath } from "../utils/index.js"
 
 const create = async () => {
   // Write your code here
-  const fileName = "fresh.txt"
   const text = "I am fresh and young"
-  const path = `src/fs/files/${fileName}`
+  const path = getFilesPath(import.meta.url, "fresh.txt")
 
   if (await exists(path)) throw Error("FS operation failed")
 
-  await fs.writeFile(path, text, () => {})
+  await fs.writeFile(path, text)
 }
 
 await create()

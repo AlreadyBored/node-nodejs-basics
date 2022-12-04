@@ -1,11 +1,14 @@
 import fs from "fs/promises"
-import { exists, applyToAllFiles } from "./utils.js"
+import { join } from "path"
+import { getPaths, exists, applyToAllFiles } from "../utils/index.js"
 
 const copy = async () => {
   // Write your code here
-  const basePath = "src/fs"
-  const copyPath = `${basePath}/files_copy`
-  const originalPath = `${basePath}/files`
+  const [copyPath, originalPath] = getPaths(
+    import.meta.url,
+    ["files_copy"],
+    ["files"]
+  )
 
   if (!(await exists(originalPath)) || (await exists(copyPath)))
     throw Error("FS operation failed")
@@ -16,8 +19,8 @@ const copy = async () => {
     dir,
     async entry =>
       await fs.copyFile(
-        `${originalPath}/${entry.name}`,
-        `${copyPath}/${entry.name}`
+        join(originalPath, entry.name),
+        join(copyPath, entry.name)
       )
   )
 }

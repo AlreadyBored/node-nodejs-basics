@@ -1,9 +1,9 @@
 import fs from "fs/promises"
-import { exists, applyToAllFiles } from "./utils.js"
+import { exists, applyToAllFiles, getPath } from "../utils/index.js"
 
 const list = async () => {
   // Write your code here
-  const path = "src/fs/files"
+  const path = getPath(import.meta.url, "files")
 
   if (!(await exists(path))) throw Error("FS operation failed")
 

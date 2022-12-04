@@ -1,11 +1,13 @@
-import exists from "./utils.js"
+import { exists, getFilesPaths } from "../utils/index.js"
 import fs from "fs/promises"
 
 const rename = async () => {
   // Write your code here
-  const basePath = "src/fs/files"
-  const wrongFilePath = `${basePath}/wrongFilename.txt`
-  const properFilePath = `${basePath}/properFilename.md`
+  const [wrongFilePath, properFilePath] = getFilesPaths(
+    import.meta.url,
+    "wrongFilename.txt",
+    "properFilename.md"
+  )
 
   if (!(await exists(wrongFilePath)) || (await exists(properFilePath)))
     throw Error("FS operation failed")

@@ -1,9 +1,9 @@
-import { exists } from "./utils.js"
 import fs from "fs/promises"
+import { getFilesPath, exists } from "../utils/index.js"
 
 const read = async () => {
   // Write your code here
-  const fileToRead = "src/fs/files/fileToRead.txt"
+  const fileToRead = getFilesPath(import.meta.url, "fileToRead.txt")
 
   if (!(await exists(fileToRead))) throw Error("FS operation failed")
 

@@ -1,11 +1,14 @@
 import fs from "fs"
 import { createGzip } from "zlib"
+import { getFilesPaths } from "../utils/index.js"
 
 const compress = async () => {
   // Write your code here
-  const basePath = "src/zip/files"
-  const file = `${basePath}/fileToCompress.txt`
-  const archive = `${basePath}/archive.gz`
+  const [file, archive] = getFilesPaths(
+    import.meta.url,
+    "fileToCompress.txt",
+    "archive.gz"
+  )
   const input = fs.createReadStream(file)
   const output = fs.createWriteStream(archive)
   const gzip = createGzip()

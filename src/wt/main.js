@@ -1,11 +1,12 @@
 import os from "os"
 import { Worker } from "worker_threads"
+import { getPath } from "../utils/index.js"
 
 const performCalculations = async () => {
   // Write your code here
   const cores = os.cpus().length
   const minNumber = 10
-  const workerPath = "./src/wt/worker.js"
+  const workerPath = getPath(import.meta.url, "worker.js")
 
   const promises = Array(cores)
     .fill()
