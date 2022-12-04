@@ -17,7 +17,8 @@
     "streams:read": "node src/streams/read.js",
     "streams:write": "node src/streams/write.js",
     "streams:transform": "node src/streams/transform.js",
-    "zip:compress": "node src/zip/compress.js"
+    "zip:compress": "node src/zip/compress.js",
+    "zip:decompress": "node src/zip/decompress.js"
   },
   "repository": {
     "type": "git",
