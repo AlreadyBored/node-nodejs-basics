@@ -2,25 +2,24 @@ import { existsSync } from "node:fs";
 import { writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 
-const DIR_NAME = "files";
-const FILE_NAME = "fresh.txt";
-const FILE_CONTENT = "I am fresh and young";
+import {
+  DIR_NAME,
+  FILE_NAME,
+  FILE_CONTENT,
+  FS_ERROR_TEXT,
+} from "./constants.js";
 
-const create = async (
-  dirName = DIR_NAME,
-  fileName = FILE_NAME,
-  data = FILE_CONTENT
-) => {
+const create = async () => {
   const [_, currentPath] = process.argv;
-  const path = resolve(currentPath, "../", dirName, fileName);
+  const path = resolve(currentPath, "../", DIR_NAME, FILE_NAME);
 
-  if (existsSync(path)) throw new Error("FS operation failed");
+  if (existsSync(path)) throw new Error(FS_ERROR_TEXT);
 
-  writeFile(path, data);
+  writeFile(path, FILE_CONTENT);
 };
 
 try {
   await create();
-} catch (e) {
-  console.log(e);
+} catch (err) {
+  console.error(err);
 }
