@@ -2,11 +2,10 @@ import { cpus } from "os";
 import { Worker } from "worker_threads";
 import { join } from "path";
 
-import { __dirname } from "./../fs/utils/fs.js";
+import { rootDir } from "./../fs/utils/fs.js";
 
 const INITIAL_NUM = 10;
-const numCPUs = cpus().length;
-const path = join(__dirname, "wt", "worker.js");
+const path = join(rootDir, "wt", "worker.js");
 const statuses = {
     fulfilled: "resolved",
     rejected: "error",

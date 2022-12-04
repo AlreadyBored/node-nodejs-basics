@@ -2,9 +2,9 @@ import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 import { access, readdir, readFile, appendFile } from "fs/promises";
 
-export const __dirname = join(dirname(fileURLToPath(import.meta.url)), "../..");
+export const rootDir = join(dirname(fileURLToPath(import.meta.url)), "../..");
 
-export const BASE_PATH = join(__dirname, "fs", "files");
+export const BASE_PATH = join(rootDir, "fs", "files");
 
 export const getAllFilesFromDirectory = async (path) => readdir(path);
 
