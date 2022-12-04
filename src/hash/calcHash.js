@@ -9,7 +9,7 @@ const pathToFile = `${dir}/files/fileToCalculateHashFor.txt`
 
 const calculateHash = async () => {
   readFile(pathToFile, 'utf-8', (err, data) => {
-    if (err) throw new Error('error')
+    if (err) throw new Error('error!')
     const hash = createHash('sha256', data).digest('hex')
     console.log(hash)
   })
