@@ -23,4 +23,4 @@ const copy = async () => {
     await copyFilesToFolder(BASE_PATH, duplicateFolderPath);
 };
 
-copy();
+await copy();
