@@ -1,6 +1,6 @@
 import fs from "fs"
 import * as zlib from "zlib"
-import { getFilesPaths } from "../utils"
+import { getFilesPaths } from "../utils/index.js"
 
 const decompress = async () => {
   // Write your code here

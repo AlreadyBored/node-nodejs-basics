@@ -1,5 +1,5 @@
 import fs from "fs"
-import { getFilesPath } from "../utils"
+import { getFilesPath } from "../utils/index.js"
 
 const write = async () => {
   // Write your code here
