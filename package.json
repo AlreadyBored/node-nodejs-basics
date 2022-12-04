@@ -10,8 +10,8 @@
     "fs:delete": "node src/fs/delete.js",
     "fs:list": "node src/fs/list.js",
     "fs:read": "node src/fs/read.js",
-    "cli:args": "node src/cli/args.js  --arg1 value --arg2 value --argwithoutvalue",
-    "cli:env": "cross-env RSS_name1=value1 RSS_name2=value2 test=value3 node src/cli/env.js"
+    "cli:args": "node src/cli/args.js --propName value --prop2Name value2",
+    "cli:env": "npx cross-env RSS_name1=value1 RSS_name2=value2 node src/cli/env.js"
   },
   "repository": {
     "type": "git",
