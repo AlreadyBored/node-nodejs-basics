@@ -15,11 +15,6 @@ const create = async () => {
       "I am fresh and young",
       { flag: "wx" }
     );
-
-    // console.log("FS operation failed");
-    // console.log("Асинхронная запись файла завершена. Содержимое файла:");
-    // let data = fs.readFileSync("fresh.txt", "utf8");
-    // console.log(data); // выводим считанные данные
   } catch (err) {
     throw new Error(errMsg);
   }
