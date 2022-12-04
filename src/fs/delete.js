@@ -1,5 +1,17 @@
-const remove = async () => {
-    // Write your code here 
-};
+import { unlink } from 'fs'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
 
-await remove();
+const dir = dirname(fileURLToPath(import.meta.url))
+
+const forRemove = `${dir}/files/fileToRemove.txt`
+
+const errMsg = 'FS operation failed'
+
+const remove = async () => {
+  unlink(forRemove, err => {
+    if (err) throw new Error(errMsg)
+  })
+}
+
+await remove()
