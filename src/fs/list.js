@@ -10,7 +10,7 @@ const list = async () => {
   const errMsg = "FS operation failed";
   try {
     const readSourceFolder = await fs.readdir(__dirname + "/files");
-    readSourceFolder.forEach((fileName) => console.log(fileName));
+    console.log(readSourceFolder);
   } catch (err) {
     throw new Error(errMsg);
   }
