@@ -1,4 +1,4 @@
-import { cp, opendir } from 'node:fs';
+import { cp, opendir } from 'fs';
 import { resolve } from 'path';
 
 const src = resolve('src', 'fs', 'files');

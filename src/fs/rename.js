@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+import fs from 'fs';
 import { resolve } from 'path';
 
 const oldPath = resolve('src', 'fs', 'files', 'wrongFilename.txt');

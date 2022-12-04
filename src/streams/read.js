@@ -1,5 +1,5 @@
 import { resolve } from 'path';
-import fs from 'node:fs';
+import fs from 'fs';
 
 const path = resolve('src', 'fs', 'files', 'fileToRead.txt');
 

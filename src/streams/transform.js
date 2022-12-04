@@ -1,4 +1,4 @@
-import { Transform } from 'node:stream';
+import { Transform } from 'stream';
 
 const reverseString = (str) => str.split('').reverse().join('')
 

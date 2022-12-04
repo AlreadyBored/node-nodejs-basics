@@ -1,4 +1,4 @@
-import { writeFile, open } from 'node:fs';
+import { writeFile, open } from 'fs';
 import { resolve } from 'path';
 
 const file = resolve('src', 'fs', 'files', 'fresh.txt');

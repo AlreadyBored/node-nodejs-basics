@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+import fs from 'fs';
 import { createHash } from 'crypto'
 import { resolve } from 'path';
 
