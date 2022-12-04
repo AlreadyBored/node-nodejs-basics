@@ -1,5 +1,9 @@
+import fs from 'fs';
 const create = async () => {
-    // Write your code here 
+  fs.appendFile('./files/fresh.txt', 'I am fresh and young', function (err) {
+    if (err) throw err;
+    console.log('Saved!');
+  });
 };
 
 await create();
