@@ -3,12 +3,12 @@ import { fileURLToPath } from 'url';
 import { fork } from 'child_process'
 
 
-const spawnChildProcess = async (args) => {
+const spawnChildProcess = async () => {
     const currentPath = path.dirname(fileURLToPath(import.meta.url));
     const filePath = currentPath + '/files/script.js';
 
-    args.splice(0, 2);
-    const child = fork(filePath, args, { silent: true });
+    const processArgs = process.argv.splice(2);
+    const child = fork(filePath, processArgs, { silent: true });
 
     process.stdin.pipe(child.stdin);
     child.stdout.pipe(process.stdout);
@@ -18,4 +18,4 @@ const spawnChildProcess = async (args) => {
     })
 };
 
-spawnChildProcess(process.argv);
+spawnChildProcess();
