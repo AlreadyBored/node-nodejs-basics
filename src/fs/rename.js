@@ -1,4 +1,4 @@
-import exists from "./exists.js"
+import exists from "./utils.js"
 import fs from "fs/promises"
 
 const rename = async () => {

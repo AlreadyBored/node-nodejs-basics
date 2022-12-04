@@ -1,5 +1,5 @@
 import fs from "fs"
-import exists from "./exists.js"
+import { exists } from "./utils.js"
 
 const create = async () => {
   // Write your code here

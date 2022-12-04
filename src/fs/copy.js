@@ -1,5 +1,5 @@
 import fs from "fs/promises"
-import exists from "./exists.js"
+import { exists, applyToAllFiles } from "./utils.js"
 
 const copy = async () => {
   // Write your code here
@@ -12,14 +12,14 @@ const copy = async () => {
 
   await fs.mkdir(copyPath)
   const dir = await fs.opendir(originalPath)
-  await copyFiles(originalPath, copyPath, dir)
-}
-
-const copyFiles = async (from, to, dir) => {
-  const entry = await dir.read()
-  if (!entry) return
-  await fs.copyFile(`${from}/${entry.name}`, `${to}/${entry.name}`)
-  return await copyFiles(from, to, dir)
+  await applyToAllFiles(
+    dir,
+    async entry =>
+      await fs.copyFile(
+        `${originalPath}/${entry.name}`,
+        `${copyPath}/${entry.name}`
+      )
+  )
 }
 
 copy()
