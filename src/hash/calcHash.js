@@ -1,9 +1,9 @@
-import { join } from "path";
 import { readFile } from "fs/promises";
 import { createHash } from "crypto";
-import { rootDir } from "./../fs/utils/fs.js";
 
-const path = join(rootDir, "hash", "files", "fileToCalculateHashFor.txt");
+import { getPath } from "./../fs/utils/fs.js";
+
+const path = getPath("hash", "files", "fileToCalculateHashFor.txt");
 
 const calculateHash = async () => {
     const content = await readFile(path, { encoding: "utf8" });

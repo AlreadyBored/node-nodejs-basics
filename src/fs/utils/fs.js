@@ -4,6 +4,8 @@ import { access, readdir, readFile, appendFile } from "fs/promises";
 
 export const rootDir = join(dirname(fileURLToPath(import.meta.url)), "../..");
 
+export const getPath = (...paths) => join(rootDir, ...paths);
+
 export const BASE_PATH = join(rootDir, "fs", "files");
 
 export const getAllFilesFromDirectory = async (path) => readdir(path);

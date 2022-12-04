@@ -1,14 +1,13 @@
 import { mkdir } from "fs/promises";
-import { join } from "path";
 import {
-    rootDir,
+    getPath,
     copyFilesToFolder,
     isFileOrFolderExist,
     throwFsError,
     BASE_PATH,
 } from "./utils/fs.js";
 
-const duplicateFolderPath = join(rootDir, "fs", "copy_files");
+const duplicateFolderPath = getPath("fs", "copy_files");
 
 const copy = async () => {
     const isFolderExist = await isFileOrFolderExist(BASE_PATH);

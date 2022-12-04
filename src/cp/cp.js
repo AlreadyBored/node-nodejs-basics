@@ -1,10 +1,9 @@
 import { fork } from "child_process";
-import { join } from "path";
 
-import { rootDir } from "./../fs/utils/fs.js";
+import { getPath } from "./../fs/utils/fs.js";
 
 const spawnChildProcess = async (args) => {
-    const path = join(rootDir, "cp", "files", "script.js");
+    const path = getPath("cp", "files", "script.js");
     fork(path, args);
 };
 

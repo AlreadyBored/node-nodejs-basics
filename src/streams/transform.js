@@ -1,5 +1,14 @@
+import { stdin, stdout } from "process";
+import { Transform, pipeline } from "stream";
+
 const transform = async () => {
-    // Write your code here 
+    const transformPipe = new Transform({
+        transform(chunk, _, cb) {
+            cb(null, chunk.toString().trim().split("").reverse().join(""));
+        },
+    });
+
+    pipeline(stdin, transformPipe, stdout, (e) => console.log(e));
 };
 
 await transform();
