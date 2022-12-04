@@ -4,7 +4,8 @@
   "description": "This repository is the part of nodejs-assignments https://github.com/AlreadyBored/nodejs-assignments",
   "type": "module",
   "scripts": {
-    "fs:create": "node src/fs/create.js"
+    "fs:create": "node src/fs/create.js",
+    "fs:copy": "node src/fs/copy.js"
   },
   "repository": {
     "type": "git",
