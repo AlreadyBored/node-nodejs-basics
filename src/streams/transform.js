@@ -1,5 +1,10 @@
+import { Transform } from 'node:stream'
+
 const transform = async () => {
-    // Write your code here 
+    process.stdin.on('data', chunk => {
+        const data = chunk.toString().split('').reverse().join('');
+        process.stdout.write(data);
+    });  
 };
 
 await transform();

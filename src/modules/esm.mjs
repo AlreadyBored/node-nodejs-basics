@@ -1,14 +1,13 @@
 import path from 'path';
 import { release, version } from 'os';
-import { createServer } from 'http';
-import unknownObjectA  from './files/a.json' assert {type: 'json'};;
-import unknownObjectB  from './files/b.json' assert {type: 'json'};;
+import { createServer as createServerHttp } from 'http';
+import unknownObjectA  from './files/a.json' assert {type: 'json'};
+import unknownObjectB  from './files/b.json' assert {type: 'json'};
 import { fileURLToPath } from 'url';
 import './files/c.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const createServerHttp = createServer;
 const random = Math.random();
 
 let unknownObject;
