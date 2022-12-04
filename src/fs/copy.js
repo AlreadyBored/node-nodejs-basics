@@ -11,7 +11,7 @@ const copy = async () => {
 			}
 		);
 	} catch (e) {
-		console.error(err);
+		console.error(e);
 	}
 };
 
