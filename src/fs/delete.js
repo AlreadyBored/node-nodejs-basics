@@ -1,5 +1,13 @@
-const remove = async () => {
-    // Write your code here 
-};
+import exists from "./exists.js"
+import fs from "fs/promises"
 
-await remove();
+const remove = async () => {
+  // Write your code here
+  const path = "src/fs/files/fileToRemove.txt"
+
+  if (!(await exists(path))) throw Error("FS operation failed")
+
+  await fs.rm(path)
+}
+
+await remove()
