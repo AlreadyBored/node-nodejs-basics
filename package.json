@@ -13,7 +13,8 @@
     "cli:args": "node src/cli/args.js --propName value --prop2Name value2",
     "cli:env": "npx cross-env RSS_name1=value1 RSS_name2=value2 node src/cli/env.js",
     "modules:cjstoesm": "node src/modules/cjsToEsm.mjs",
-    "hash": "node src/hash/calcHash.js"
+    "hash": "node src/hash/calcHash.js",
+    "streams:read": "node src/streams/read.js"
   },
   "repository": {
     "type": "git",
