@@ -11,10 +11,6 @@ class TextToEmojis extends Transform {
     this.push(transformChunk)
     callback()
   }
-
-  _flush(callback) {
-    callback()
-  }
 }
 
 const transform = async () => {
