@@ -2,4 +2,4 @@ const copy = async () => {
     // Write your code here 
 };
 
-copy();
+await copy();
