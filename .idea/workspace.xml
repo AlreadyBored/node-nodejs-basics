@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e5f635d-f3df-4edd-8094-29e6af51acab" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/modules/cjsToEsm.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli/args.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/args.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli/env.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/env.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/cjsToEsm.cjs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
