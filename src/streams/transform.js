@@ -8,7 +8,7 @@ const transform = async () => {
         },
     });
 
-    pipeline(stdin, transformPipe, stdout, (e) => console.log(e));
+    pipeline(stdin, transformPipe, stdout, (err) => err && console.log(err));
 };
 
 await transform();
