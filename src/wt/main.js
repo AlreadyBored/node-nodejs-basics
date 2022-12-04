@@ -24,17 +24,15 @@ const compute = (data) =>
     });
 
 const performCalculations = async () => {
-    const workers = [];
-    for (let workerNum = 0; workerNum < numCPUs; workerNum++) {
-        workers.push(compute(INITIAL_NUM + workerNum));
-    }
+    const workers = cpus().map((_, index) => compute(INITIAL_NUM + index));
 
-    (await Promise.allSettled(workers)).forEach(({ status, value }) =>
-        console.log({
+    const result = (await Promise.allSettled(workers)).map(
+        ({ status, value }) => ({
             status: statuses[status],
             data: value ?? null,
         })
     );
+    console.log(result);
 };
 
 await performCalculations();
