@@ -1,4 +1,4 @@
-import { cp, access, constants } from 'fs';
+import { cp as copyDir, access, constants } from 'fs';
 
 const copy = async () => {
     const source = './files';
@@ -10,7 +10,7 @@ const copy = async () => {
         };
     });
 
-    await cp(source, destination, { 'recursive': true, 'force': false, 'errorOnExist': true }, (err)=>{
+    await copyDir(source, destination, { 'recursive': true, 'force': false, 'errorOnExist': true }, (err)=>{
         if (err && err.info.code === 'EEXIST') {
             throw new Error('FS operation failed');
         };
