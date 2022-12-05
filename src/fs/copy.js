@@ -1,5 +1,14 @@
+import { mkdir } from 'node:fs/promises';
+import { cp } from 'node:fs/promises';
+const error =  new Error('FS operation failed');
+
 const copy = async () => {
-    // Write your code here 
+	try {
+		await mkdir('./fs/files_copy');
+		await cp('./fs/files', './fs/files_copy', {errorOnExist : true, force : false, recursive: true});
+	} catch (err) {
+		console.error(error);
+	}
 };
 
 copy();
