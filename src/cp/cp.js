@@ -1,5 +1,15 @@
+import { spawn } from 'node:child_process';
+
+const inputArgs = process.argv.slice(2);
+
 const spawnChildProcess = async (args) => {
-    // Write your code here
+  const child = spawn('node', ['./files/script.js', ...args]);
+
+  child.stdout.on('data', (data) => {
+    console.log(data.toString());
+  });
+
+  child.stdin.write('Hello! 🔥');
 };
 
-spawnChildProcess();
+await spawnChildProcess(inputArgs);
