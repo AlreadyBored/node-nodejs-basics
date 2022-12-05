@@ -20,8 +20,6 @@ const copy = async () => {
 
     await copyFile(filePath, newFilePath, constants.COPYFILE_EXCL);
   }
-
-  console.log("Copying completed");
 };
 
 try {
