@@ -1,5 +1,17 @@
+import * as dotenv from 'dotenv'
+
 const parseEnv = () => {
-    // Write your code here 
+    dotenv.config()
+    const list = [];
+    const prefix = 'RSS_';
+
+    Object.keys(process.env).forEach(key => {
+        if (key.includes(prefix)) {
+            list.push(key + '=' + process.env[key])
+        }
+    });
+
+    console.log(list.join('; '))
 };
 
 parseEnv();
