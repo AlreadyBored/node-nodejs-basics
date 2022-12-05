@@ -22,10 +22,10 @@ const rename = async () => {
         if(ifNewPathExists || !ifOldPathExists){
             throw Error(__errorMessage);
         }else{
-            renameFile(__oldPath, __newPath);
+            await renameFile(__oldPath, __newPath);
         }
     }catch (e) {
-        console.log(e);
+        console.log(e.message);
     }
 };
 

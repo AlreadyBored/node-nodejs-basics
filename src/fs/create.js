@@ -20,7 +20,7 @@ const create = async () => {
             await appendFile(__newFilePath, __newFileContent);
         }
     }catch (e) {
-        console.log(e);
+        console.log(e.message);
     }
 
 };

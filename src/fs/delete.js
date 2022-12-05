@@ -16,10 +16,10 @@ const remove = async () => {
         if(!ifFileExist){
             throw Error(__errorMessage);
         }else{
-            removeFile(__fileToDelete);
+            await removeFile(__fileToDelete);
         }
     }catch (e) {
-        console.log(e);
+        console.log(e.message);
     }
 };
 

@@ -20,7 +20,7 @@ const copy = async () => {
             await copyRecursive(__folderFromPath, __folderToPath);
         }
     }catch (e) {
-        console.log(e);
+        console.log(e.message);
     }
 };
 
