@@ -1,5 +1,5 @@
 const parseEnv = () => {
-    // Write your code here 
+    console.log(process.env)
 };
 
 parseEnv();
