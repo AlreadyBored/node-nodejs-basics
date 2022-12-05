@@ -5,10 +5,12 @@ import './files/c.js'
 const random = Math.random();
 
 import {fileURLToPath} from 'url'
-const __filename = fileURLToPath( import.meta.url )
+const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
-let unknownObject = random > 0.5 ? import('./files/a.json', {assert: {type: 'json'}}) : import('./files/b.json', {assert: {type: 'json'}})
+let unknownObject = random > 0.5 ?
+	await import('./files/a.json', {assert: {type: 'json'}})
+	: await import('./files/b.json', {assert: {type: 'json'}})
 
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
