@@ -1,4 +1,4 @@
-import { readdir, mkdir, copyFile, access } from "node:fs/promises";
+import { access, mkdir, readdir, copyFile } from "node:fs/promises";
 
 const copy = async () => {
     const srcPath = './src/fs/files/';
