@@ -1,4 +1,4 @@
-import { Transform } from 'stream';
+import { Transform } from 'node:stream';
 
 const reverseTr = new Transform({
   transform(chunk, encoding, callback) {

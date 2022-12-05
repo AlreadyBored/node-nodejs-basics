@@ -1,7 +1,7 @@
 import { unlink } from 'node:fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { promisify } from 'util';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { promisify } from 'node:util';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

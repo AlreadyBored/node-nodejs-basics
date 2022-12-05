@@ -5,8 +5,7 @@ const parseArgs = () => {
             return `${acc} ${cur.slice(2)} is ${process.argv[index+1]},`;
         }
         return acc
-    },
-    '')
+    }, '')
     console.log(result.slice(1, -1))
 };
 

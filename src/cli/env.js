@@ -6,8 +6,7 @@ const parseEnv = () => {
             return `${acc} ${cur[0]}=${cur[1]};`;
         }
         return acc
-    },
-    '')
+    }, '')
     console.log(result.slice(1, -1))
 };
 
