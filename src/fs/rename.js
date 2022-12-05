@@ -21,5 +21,5 @@ const rename = async () => {
 try {
   await rename();
 } catch (err) {
-  console.warn(err);
+  console.error(err);
 }
