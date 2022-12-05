@@ -1,8 +1,8 @@
-import * as url from "url";
 import path from "path";
 import fs from "fs";
+import { fileURLToPath } from "url";
 
-const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 const create = async () => {
   let filePath = path.resolve(__dirname, "./files", "fresh.txt");
