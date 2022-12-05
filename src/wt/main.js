@@ -1,11 +1,12 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { Worker } from 'node:worker_threads';
+import { cpus } from 'node:os';
 
 const __filename = fileURLToPath(import.meta.url);
 const __workerFile = path.dirname(__filename) + '/worker.js';
 
-const CORE_NUMBERS = 8;
+const CORE_NUMBERS = cpus().length;
 
 const createWorker = (coreNumber) => {
 	return new Promise((resolve, reject) => {
