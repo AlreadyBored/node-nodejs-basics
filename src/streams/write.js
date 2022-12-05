@@ -1,5 +1,9 @@
+import fs from 'node:fs'
+
 const write = async () => {
-    // Write your code here 
+  const input = fs.createWriteStream('src/streams/files/fileToWrite.txt');
+
+  input.write(JSON.stringify(process.stdin))
 };
 
-await write();
+await write().catch(err=>console.error(err));
