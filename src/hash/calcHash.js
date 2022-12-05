@@ -11,7 +11,7 @@ const calculateHash = async () => {
 		.catch((e) => {
 			console.log(e)
 		})
-	let hash = createHash('sha256').update(`${__dirname}/files/fileToCalculateHashFor.txt`).update(file).digest('hex')
+	let hash = createHash('sha256').update(file).digest('hex')
 	console.log(hash)
 };
 
