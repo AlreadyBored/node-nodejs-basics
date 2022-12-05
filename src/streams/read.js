@@ -3,8 +3,8 @@ import { resolve } from 'path';
 import { stdout } from 'node:process';
 
 const read = async () => {
-    const absolutePath = await resolve('files', 'fileToRead.txt');
-    const readableStream = createReadStream(absolutePath);
+    const absoluteFilePath = await resolve('files', 'fileToRead.txt');
+    const readableStream = createReadStream(absoluteFilePath);
     readableStream.pipe(stdout);
 };
 

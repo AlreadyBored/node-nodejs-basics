@@ -1,10 +1,10 @@
-import { writeFile } from 'fs';
-import { resolve } from 'path';
+import { writeFile } from 'node:fs';
+import { resolve } from 'node:path';
 
 const create = async () => {
-    const absolutePath = await resolve('files', 'fresh.txt');
+    const absoluteFilePath = await resolve('files', 'fresh.txt');
     const data = 'I am fresh and young';
-    await writeFile(absolutePath, data, {flag: 'wx'}, (err) => {
+    await writeFile(absoluteFilePath, data, {flag: 'wx'}, (err) => {
         if (err && err.code === 'EEXIST') {
             throw new Error('FS operation failed');
         };

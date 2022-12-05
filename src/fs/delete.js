@@ -1,15 +1,15 @@
-import { access, constants,  rm as removeFile } from 'fs';
-import { resolve } from 'path';
+import { access, constants,  rm as removeFile } from 'node:fs';
+import { resolve } from 'node:path';
 
 const remove = async () => {
-    const absolutePath = await resolve('files', 'fileToRemove.txt')
-    await access(absolutePath, constants.F_OK, (err) => {
+    const absoluteFilePath = await resolve('files', 'fileToRemove.txt')
+    await access(absoluteFilePath, constants.F_OK, (err) => {
         if(err && err.code === 'ENOENT') {
             throw new Error('FS operation failed');
         };
     });
 
-    await removeFile(absolutePath, (err) => {
+    await removeFile(absoluteFilePath, (err) => {
         if(err){
             throw new Error('FS operation failed');
         };

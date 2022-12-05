@@ -3,9 +3,9 @@ import { resolve } from 'node:path';
 import { createHash } from 'node:crypto';
 
 const calculateHash = async () => {
-    const absolutePath = await resolve('files', 'fileToCalculateHashFor.txt');
+    const absoluteFilePath = await resolve('files', 'fileToCalculateHashFor.txt');
 
-    await readFile(absolutePath, (err, data) => {
+    await readFile(absoluteFilePath, (err, data) => {
         if (err) {
             throw new Error('FS operation failed');
         };

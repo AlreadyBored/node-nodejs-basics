@@ -1,9 +1,9 @@
 import { readFile } from 'node:fs';
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 
 const read = async () => {
-    const absolutePath = await resolve('files', 'fileToRead.txt')
-    await readFile(absolutePath, 'utf8', (err, data) => {
+    const absoluteFilePath = await resolve('files', 'fileToRead.txt')
+    await readFile(absoluteFilePath, 'utf8', (err, data) => {
         if(err){
             throw new Error('FS operation failed');
         };
