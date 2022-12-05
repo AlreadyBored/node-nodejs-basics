@@ -6,8 +6,10 @@ const parseArgs = () => {
 	cliArgs.forEach((arg, i, arr) => {
 		let nextVal = arr[i + 1]
 
-		if (arr[i].startsWith('--')) {
-			res.push(`${arr[i].slice(2)} is ${nextVal}`)
+		if (nextVal) {
+			if (arr[i].startsWith('--')) {
+				res.push(`${arr[i].slice(2)} is ${nextVal}`)
+			}
 		}
 	})
 
