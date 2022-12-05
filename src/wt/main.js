@@ -18,7 +18,7 @@ const createWorker = (coreNumber) => {
 		})
 
 		worker.on('error', (error) => {
-			reject({status:'error', data:null});
+			resolve({status:'error', data:null});
 		})
 	})
 }
