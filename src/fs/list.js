@@ -1,5 +1,14 @@
+import {readdir} from "fs";
+import {error} from "./helpers/Error.js";
+
 const list = async () => {
-    // Write your code here 
+  const path = "src/fs/files"
+  readdir(path, (err,files) => {
+    if (err) {
+      error()
+    }
+    files.forEach((file) => console.log(file))
+  })
 };
 
 await list();

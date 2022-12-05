@@ -1,5 +1,8 @@
+import {readAndPrintFile} from "./helpers/readAndPrint.js";
+
 const read = async () => {
-    // Write your code here 
+  const path = "src/fs/files/fileToRead.txt"
+  await readAndPrintFile(path, console.log)
 };
 
 await read();
