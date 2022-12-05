@@ -1,10 +1,17 @@
 const parseArgs = () => {
-	let resultArr = []
-	process.argv.slice(2).forEach(arg => {
-		resultArr.push(arg.split(' '))
+
+	let cliArgs = process.argv.slice(2)
+	let res = []
+
+	cliArgs.forEach((arg, i, arr) => {
+		let nextVal = arr[i + 1]
+
+		if (arr[i].startsWith('--')) {
+			res.push(`${arr[i].slice(2)} is ${nextVal}`)
+		}
 	})
 
-	resultArr.forEach(arg => console.log(`${arg[0].slice(2)} is ${arg[1]}`))
+	console.log(res.join(', '))
 }
 
 parseArgs();
