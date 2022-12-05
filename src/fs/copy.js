@@ -1,5 +1,3 @@
-const copy = async () => {
-    // Write your code here 
-};
+const copy = async () => {};
 
 copy();
