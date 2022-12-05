@@ -2,10 +2,10 @@ import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const dirname = path.dirname(fileURLToPath(import.meta.url));
-const pathFile = path.join(dirname, 'files', 'fresh.txt');
+const dirName = path.dirname(fileURLToPath(import.meta.url));
+const pathFile = path.join(dirName, 'files', 'fresh.txt');
 const text = 'I am fresh and young';
-const error_msg = 'FS operation failed';
+const errorMsg = 'FS operation failed';
 
 const create = async () => {
   try {
@@ -14,7 +14,7 @@ const create = async () => {
     });
   } catch (err) {
     if (err.code === 'EEXIST') {
-      console.error(Error(error_msg));
+      console.error(Error(errorMsg));
     }
   }
 };
