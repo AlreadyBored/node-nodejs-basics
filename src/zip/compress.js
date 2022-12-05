@@ -4,9 +4,7 @@ import { resolve } from "node:path";
 import { createReadStream, createWriteStream } from "node:fs";
 import { fileURLToPath } from "url";
 
-const DIR_NAME = "files";
-const FILE_NAME = "fileToCompress.txt";
-const ZIP_NAME = "archive.gz";
+import { DIR_NAME, FILE_NAME, ZIP_NAME } from "./constants.js";
 
 const compress = async () => {
   const __filename = fileURLToPath(import.meta.url);
