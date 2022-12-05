@@ -1,5 +1,7 @@
+import cp from 'child_process';
+
 const spawnChildProcess = async (args) => {
-    // Write your code here
+  cp.fork('./src/cp/files/script.js', args, {stdio: 'inherit'});
 };
 
 spawnChildProcess();
