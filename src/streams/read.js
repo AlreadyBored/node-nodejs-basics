@@ -1,5 +1,5 @@
 import { createReadStream } from "node:fs";
-import fs from "node:fs/promises";
+
 import path from "path";
 import { fileURLToPath } from "url";
 
