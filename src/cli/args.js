@@ -1,5 +1,18 @@
+//6
+
 const parseArgs = () => {
-    // Write your code here 
+    let key;
+    let value;
+    let array = process.argv;
+
+    for(let index = 2; array.length >index; index++){
+        if(array[index].startsWith('--')){
+            key=array[index].replace('--', '');
+            index++;
+            value= array[index];
+            console.log(key + " is " + value);
+        }
+    }
 };
 
 parseArgs();
