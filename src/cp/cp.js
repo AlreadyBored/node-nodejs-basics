@@ -16,3 +16,4 @@ export const spawnChildProcess = async() => {
     });
 };
 spawnChildProcess();
+

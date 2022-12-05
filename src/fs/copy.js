@@ -1,5 +1,6 @@
 import { promises as fs } from 'fs'
 
+
 export const copy = async() => {
     const copy = (input, output) => {
         fs.copyFile(input, output).catch(() => {
@@ -24,3 +25,5 @@ export const copy = async() => {
         });
 };
 copy();
+
+
