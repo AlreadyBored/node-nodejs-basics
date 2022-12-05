@@ -16,7 +16,7 @@ const create = async () => {
 
   if (existsSync(path)) throw new Error(FS_ERROR_TEXT);
 
-  writeFile(path, FILE_CONTENT);
+  await writeFile(path, FILE_CONTENT);
 };
 
 try {
