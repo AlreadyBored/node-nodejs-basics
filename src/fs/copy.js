@@ -1,4 +1,5 @@
 import { cp, access, constants } from 'fs';
+
 const copy = async () => {
     const source = './files';
     const destination = './files_copy';
