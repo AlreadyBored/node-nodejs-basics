@@ -10,7 +10,7 @@ const __dirname = dirname(__filename);
 const random = Math.random();
 const pathString = random > 0.5 ? './files/a.json' : './files/b.json';
 
-const unknownObject = await import(pathString, { assert: { type: 'json' } });
+const unknownObject = path.resolve(__dirname, pathString);
 
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
