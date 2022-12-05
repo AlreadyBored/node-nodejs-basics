@@ -1,5 +1,5 @@
 import { createGzip } from "node:zlib";
-import { pipeline } from "node:stream";
+import { pipeline } from "node:stream/promises";
 import { resolve } from "node:path";
 import { createReadStream, createWriteStream } from "node:fs";
 import { fileURLToPath } from "url";
@@ -13,17 +13,10 @@ const compress = async () => {
   const filePath = resolve(__filename, "../", DIR_NAME, FILE_NAME);
   const gzPath = resolve(__filename, "../", DIR_NAME, ZIP_NAME);
 
-  pipeline(
+  await pipeline(
     createReadStream(filePath),
     createGzip(),
-    createWriteStream(gzPath),
-    (err) => {
-      if (err) {
-        console.error("Pipeline failed.", err);
-      } else {
-        console.log("Pipeline succeeded.");
-      }
-    }
+    createWriteStream(gzPath)
   );
 };
 
