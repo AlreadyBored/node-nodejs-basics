@@ -1,6 +1,6 @@
 import { existsSync } from "node:fs";
 import { writeFile } from "node:fs/promises";
-import { join, resolve } from "node:path";
+import { resolve } from "node:path";
 
 import {
   DIR_NAME,
@@ -9,6 +9,7 @@ import {
   FS_ERROR_TEXT,
 } from "./constants.js";
 
+// Don't change signature of pre-written functions (e.g. don't rename them, don't make them synchronous, etc.)
 const create = async () => {
   const [_, currentPath] = process.argv;
   const path = resolve(currentPath, "../", DIR_NAME, FILE_NAME);
