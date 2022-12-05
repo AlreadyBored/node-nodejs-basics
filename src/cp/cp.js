@@ -14,4 +14,4 @@ const spawnChildProcess = async (args = []) => {
   });
 };
 
-spawnChildProcess();
+spawnChildProcess(['Yes', 'or', 'No']);
