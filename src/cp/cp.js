@@ -7,4 +7,5 @@ const spawnChildProcess = async (args) => {
     fork(pathToFile, args)
 };
 
+
 spawnChildProcess(process.argv);
