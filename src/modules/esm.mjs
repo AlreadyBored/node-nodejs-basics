@@ -10,9 +10,13 @@ let unknownObject;
 const require = createRequire(import.meta.url);
 
 if (random > 0.5) {
-    unknownObject = require('./files/a.json');
+    unknownObject = import('./files/a.json', { assert: {
+        type: "json",
+      }});
 } else {
-    unknownObject = require('./files/b.json');
+    unknownObject = require('./files/b.json', { assert: {
+        type: "json",
+      }});
 }
 
 console.log(`Release ${release()}`);
