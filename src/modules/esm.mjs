@@ -14,7 +14,7 @@ if (random > 0.5) {
         type: "json",
       }});
 } else {
-    unknownObject = require('./files/b.json', { assert: {
+    unknownObject = import('./files/b.json', { assert: {
         type: "json",
       }});
 }
