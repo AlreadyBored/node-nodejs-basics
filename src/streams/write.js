@@ -1,26 +1,18 @@
 import path from "path";
-import fs from "fs";
 import process from "process";
 import { fileURLToPath } from "url";
+import { createWriteStream } from "fs";
+import { pipeline } from "stream";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
+const filePath = path.resolve(__dirname, "./files", "fileToWrite.txt");
 
 const write = async () => {
-  const filePath = path.resolve(__dirname, "./files", "fileToWrite.txt");
-  const writableStream = fs.createWriteStream(filePath);
+  const writableStream = createWriteStream(filePath, { flags: "a" });
 
-  writableStream.write("Written info to file", (error) => {
-    if (error) {
-      console.log("Error occured", error);
-    }
+  pipeline(process.stdin, writableStream, (err) => {
+    console.log(err);
   });
-
-  writableStream.on("finish", () => {
-    console.log("Wrote all data to file");
-  });
-
-  // close the stream
-  writableStream.end();
 };
 
 await write();

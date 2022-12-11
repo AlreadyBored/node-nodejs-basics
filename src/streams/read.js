@@ -1,19 +1,16 @@
 import path from "path";
-import fs from "fs";
-import process from "process";
+import { createReadStream } from "fs";
 import { fileURLToPath } from "url";
+import process from "process";
+import { pipeline } from "stream";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
+const filePath = path.resolve(__dirname, "./files", "fileToRead.txt");
 
 const read = async () => {
-  let chunkData = "";
-  const filePath = path.resolve(__dirname, "./files", "fileToRead.txt");
-  const readableStream = fs.createReadStream(filePath);
-
-  readableStream.on("data", (chunk) => {
-    chunkData += chunk;
+  pipeline(createReadStream(filePath), process.stdout, (err, value) => {
+    console.log("value", value);
   });
-  readableStream.on("end", () => process.stdout.write(chunkData));
 };
 
 await read();

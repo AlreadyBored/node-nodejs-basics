@@ -1,22 +1,20 @@
 import path from "path";
-import fs from "fs";
+import { readFile } from "fs/promises";
 import { createHash } from "crypto";
 import { fileURLToPath } from "url";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
+const filePath = path.resolve(
+  __dirname,
+  "./files",
+  "fileToCalculateHashFor.txt"
+);
 
 const calculateHash = async () => {
-  const filePath = path.resolve(
-    __dirname,
-    "./files",
-    "fileToCalculateHashFor.txt"
-  );
+  const content = await readFile(filePath);
+  const encodedData = createHash("sha256").update(content).digest("hex");
 
-  fs.readFile(filePath, "utf-8", (error, data) => {
-    if (data) {
-      console.log(createHash("sha256").update(data).digest("hex"));
-    } else return false;
-  });
+  console.log(encodedData);
 };
 
 await calculateHash();

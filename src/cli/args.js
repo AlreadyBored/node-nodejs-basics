@@ -1,7 +1,7 @@
 const parseArgs = (args) => {
   const [executer, file, ...rest] = args;
 
-  rest.forEach((value, index, array) => {
+  rest.forEach((value, index) => {
     if (value.startsWith("--")) {
       if (index === 0) {
         console.log(`propName is ${value}`);

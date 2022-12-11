@@ -1,16 +1,18 @@
 import process from "process";
 import { Transform } from "stream";
+import { pipeline } from "stream";
 
 const transform = async () => {
-  const stdin = process.stdin.on("data", () => {});
-
-  const reversedData = new Transform({
+  const reversedString = (str) => str.split("").reverse().join("");
+  const transformedData = new Transform({
     transform(chunk, encoding, callback) {
-      callback(null, chunk.toString().split("").reverse().join(""));
+      callback(null, reversedString(chunk.toString()));
     },
   });
 
-  stdin.pipe(reversedData).pipe(process.stdout);
+  pipeline(process.stdin, process.stdout, (err, value) =>
+    transformedData(value)
+  );
 };
 
 await transform();

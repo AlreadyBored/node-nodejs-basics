@@ -1,19 +1,19 @@
 import path from "path";
-import fs from "fs";
+import { writeFile } from "fs/promises";
 import { fileURLToPath } from "url";
 
-const __dirname = fileURLToPath(new URL(".", import.meta.url));
+const content = "I am fresh and young";
+
+const dirname = fileURLToPath(new URL(".", import.meta.url));
+const fileName = path.resolve(dirname, "./files", "fresh.txt");
 
 const create = async () => {
-  let filePath = path.resolve(__dirname, "./files", "fresh.txt");
-
-  fs.access(filePath, async (err) => {
-    if (!err) {
-      throw new Error("FS operation failed");
-    } else {
-      fs.writeFile(filePath, "I am fresh and young");
-    }
-  });
+  try {
+    await writeFile(fileName, content, { flag: "wx" });
+  } catch (error) {
+    console.log("FS operation failed");
+    throw new Error(error);
+  }
 };
 
 await create();
