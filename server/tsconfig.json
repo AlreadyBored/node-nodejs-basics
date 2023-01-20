@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "outDir": "./build",
+    "target": "es6",
+    "skipLibCheck": true,
+    "strict": true,
+    "sourceMap": true,
+    "watch": true,
+      "rootDir": "./src",
+      /* Strict Type-Checking Options */
+      "noImplicitAny": true,
+      /* Module Resolution Options */
+      "moduleResolution": "node",
+      "baseUrl": "./src",
+  },
+  "lib": ["es2015", "@types/node"],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
