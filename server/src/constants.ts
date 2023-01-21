@@ -11,3 +11,7 @@ export enum MessageCommands {
 }
 
 export const IMAGE_SIZE = 200;
+
+export const REPLACE_STRING = "data:image/png;base64,";
+
+export const IMAGE_NAME = "img.png";

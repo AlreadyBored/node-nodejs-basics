@@ -1,1 +1,0 @@
-console.log(Math.sin(Math.PI*2/180));
