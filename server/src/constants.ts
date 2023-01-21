@@ -9,3 +9,5 @@ export enum MessageCommands {
   draw_square = "draw_square",
   prnt_scrn = "prnt_scrn",
 }
+
+export const IMAGE_SIZE = 200;

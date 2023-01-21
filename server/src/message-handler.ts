@@ -6,9 +6,12 @@ import {
   down,
   Point,
   straightTo,
-  Button,
+  screen,
+  Region,
+  saveImage,
 } from "@nut-tree/nut-js";
-import { MessageCommands } from "./constants";
+import { IMAGE_SIZE, MessageCommands } from "./constants";
+import Jimp, { read } from "jimp/es";
 
 const moveMouse = async (
   callback: (px: number) => Promise<Point[]>,
@@ -27,9 +30,9 @@ const drawRectangle = async (x: number, y: number) => {
 const drawCircle = async (r: number) => {
   const position = await mouse.getPosition();
   for (let i = 0; i < 362; i = i + 5) {
-    let x = r * Math.cos((Math.PI * i) / 180);
-    let y = r * Math.sin((Math.PI * i) / 180);
-    const point = new Point(x + position.x, y + position.y);
+    let x = r * Math.cos((Math.PI * i) / 180) + position.x;
+    let y = r * Math.sin((Math.PI * i) / 180) + position.y;
+    const point = new Point(x, y);
     if (i === 0) {
       await mouse.move(straightTo(point));
     } else {
@@ -55,14 +58,7 @@ export const messageHandler = async (message: string) => {
       return `${MessageCommands.mouse_right + "_" + command[1]}`;
     case MessageCommands.mouse_position:
       const position = await mouse.getPosition();
-      return `${
-        MessageCommands.mouse_position +
-        "_" +
-        "X:" +
-        position.x +
-        "Y:" +
-        position.y
-      }`;
+      return `${MessageCommands.mouse_position} ${position.x},${position.y}`;
     case MessageCommands.draw_circle:
       drawCircle(Number(command[1]));
       return `${MessageCommands.draw_circle + "_" + command[1]}`;
@@ -75,7 +71,23 @@ export const messageHandler = async (message: string) => {
       drawRectangle(Number(command[1]), Number(command[1]));
       return `${MessageCommands.draw_square + "_" + command[1]}`;
     case MessageCommands.prnt_scrn:
-      return `${MessageCommands.prnt_scrn}`;
+      let { x, y } = await mouse.getPosition();
+      const width = await screen.width();
+      const height = await screen.height();
+      if (x > width - IMAGE_SIZE) x = width - IMAGE_SIZE;
+      if (y > height - IMAGE_SIZE) y = height - IMAGE_SIZE;
+      const r = new Region(x, y, IMAGE_SIZE, IMAGE_SIZE);
+
+      // const img = await screen.grabRegion(r);
+      const img = await screen.captureRegion("img.png", r);
+      (async () => {
+        screen.config.highlightDurationMs = 3000;
+        const highlightRegion = r;
+        await screen.highlight(highlightRegion);
+      })();
+      const jimp = await Jimp.read(img);
+      const jimpBuffer = await jimp.getBase64Async(Jimp.MIME_PNG);
+      return `prnt_scrn ${jimpBuffer.replace("data:image/png;base64,", "")}`;
     default:
       break;
   }
