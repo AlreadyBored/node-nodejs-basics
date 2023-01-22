@@ -2,3 +2,4 @@ che
 node_modules
 .env
 front
+build

@@ -9,30 +9,39 @@ export const messageHandler = async (message: string) => {
   switch (command[0]) {
     case MessageCommands.mouse_up:
       moveMouse(up, Number(command[1]));
+      console.log(MessageCommands.mouse_up);
       break;
     case MessageCommands.mouse_down:
       moveMouse(down, Number(command[1]));
+      console.log(MessageCommands.mouse_down);
       break;
     case MessageCommands.mouse_left:
       moveMouse(left, Number(command[1]));
+      console.log(MessageCommands.mouse_left);
       break;
     case MessageCommands.mouse_right:
       moveMouse(right, Number(command[1]));
+      console.log(MessageCommands.mouse_right);
       break;
     case MessageCommands.mouse_position:
       const position = await mouse.getPosition();
+      console.log(MessageCommands.mouse_position);
       return `${MessageCommands.mouse_position} ${position.x},${position.y}`;
     case MessageCommands.draw_circle:
       drawCircle(Number(command[1]));
+      console.log(MessageCommands.draw_circle);
       break;
     case MessageCommands.draw_rectangle:
       drawRectangle(Number(command[1]), Number(command[2]));
+      console.log(MessageCommands.draw_rectangle);
       break;
     case MessageCommands.draw_square:
       drawRectangle(Number(command[1]), Number(command[1]));
+      console.log(MessageCommands.draw_square);
       break;
     case MessageCommands.prnt_scrn:
       const message = await captureImage();
+      console.log(MessageCommands.prnt_scrn);
       return message;
     default:
       break;

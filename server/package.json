@@ -4,9 +4,8 @@
   "description": "Server for websocket",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "nodemon src/app.ts",
-    "start:prod": "tsc && node ./build/index.js"
+    "start": "tsc --build && node ./build/app.js"
   },
   "keywords": [
     "websocket"
@@ -22,6 +21,7 @@
   },
   "dependencies": {
     "@nut-tree/nut-js": "^3.0.1-next.20230117103019",
+    "dotenv": "^16.0.3",
     "jimp": "^0.16.2"
   }
 }
