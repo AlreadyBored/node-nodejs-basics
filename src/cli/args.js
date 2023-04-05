@@ -1,8 +1,8 @@
 const parseArgs = () => {
     
-    process.argv.forEach(function(val, index, array) {
-        if(val.match(/^--/)) {
-            console.log(val.slice(2) + ' is ' + array[index+1])
+    process.argv.forEach(function(value, index, array) {
+        if(value.match(/^--/)) {
+            console.log(value.slice(2) + ' is ' + array[index+1])
         }
     }); 
 
