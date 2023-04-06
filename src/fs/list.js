@@ -10,7 +10,7 @@ const list = async () => {
       console.log(fileName);
     });
   } catch (err) {
-    //  catch exist error
+    //  catch existence error
     if (err.code === 'ENOENT') {
       throw Error('FS operation failed');
     } else {
