@@ -1,4 +1,4 @@
-import fs, {link} from 'fs'
+import fs from 'fs'
 import readline from 'readline'
 
 import path from 'path';
