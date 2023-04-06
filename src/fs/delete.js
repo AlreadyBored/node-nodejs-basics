@@ -6,7 +6,7 @@ const remove = async () => {
     await fs.unlink('./files/fileToRemove.txt');
     console.log("'./files/fileToRemove.txt' file is removed.");
   } catch (err) {
-    // catch exist error
+    //  catch existence error
     if (err.code === 'ENOENT') {
       throw Error('FS operation failed');
     } else {

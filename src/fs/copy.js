@@ -16,7 +16,7 @@ const copy = async () => {
 
     console.log("copied all files from './files' to './files_copy'");
   } catch (err) {
-    // catch exist error
+    //  catch existence error
     if (err.code === 'EEXIST' || err.code === 'ENOENT') {
       throw Error('FS operation failed');
     } else {

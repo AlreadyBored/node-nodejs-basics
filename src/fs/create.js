@@ -10,7 +10,7 @@ const create = async () => {
       "new './files/fresh.txt' file created with the content 'I am freash and young'."
     );
   } catch (err) {
-    // catch exist error
+    //  catch existence error
     if (err.code === 'EEXIST') {
       throw Error('FS operation failed');
     } else {
