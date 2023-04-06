@@ -2,10 +2,10 @@ import fs from 'fs/promises';
 
 const list = async () => {
   try {
-    // get filenames from inside 'files' folder
+    //  get filenames from inside 'files' folder
     const fileNames = await fs.readdir('./files');
 
-    //   print filenames
+    //  print filenames
     fileNames.forEach((fileName) => {
       console.log(fileName);
     });
