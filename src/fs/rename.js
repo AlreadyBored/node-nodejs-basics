@@ -10,6 +10,8 @@ const rename = async () => {
 
     //  rename wrongFilename to properFilename
     await fs.rename('./files/wrongFilename.txt', './files/properFilename.md');
+
+    console.log('successfully renamed');
   } catch (err) {
     if (err.code === 'ENOENT' || err.code === 'EEXIST') {
       throw Error('FS operation failed');

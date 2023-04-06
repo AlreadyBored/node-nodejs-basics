@@ -6,9 +6,7 @@ const list = async () => {
     const fileNames = await fs.readdir('./files');
 
     //  print filenames
-    fileNames.forEach((fileName) => {
-      console.log(fileName);
-    });
+    fileNames.forEach((fileName) => console.log(fileName));
   } catch (err) {
     //  catch existence error
     if (err.code === 'ENOENT') {
