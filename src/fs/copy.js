@@ -8,10 +8,12 @@ const copy = async () => {
 
     // get filenames from inside 'files' folder
     const fileNames = await fs.readdir('./files');
+
+    // copy files from 'files' folder to 'files_copy' folder
     fileNames.forEach(async (fileName) => {
-      // copy files from 'files' folder to 'files_copy' folder
       await fs.copyFile(`./files/${fileName}`, `./files_copy/${fileName}`);
     });
+
     console.log("copied all files from './files' to './files_copy'");
   } catch (err) {
     // catch exist error
