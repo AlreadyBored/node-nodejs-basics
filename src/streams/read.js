@@ -11,15 +11,13 @@ const  dirName=path.dirname(scriptPath)
 const pathToReadFile=path.join(dirName, 'files', 'fileToRead.txt')
 
 const read=async () => {
-    const lineReader=readline.createInterface({
+    
+    readline.createInterface({
         input: fs.createReadStream(pathToReadFile),
         output: process.stdout,
         terminal: true
     })
 
-    lineReader.on('line',(line) => {
-        console.log(line)
-    })
 };
 
 await read();
