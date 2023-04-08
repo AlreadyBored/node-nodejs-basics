@@ -1,5 +1,14 @@
+import {Transform} from "stream";
+
 const transform = async () => {
-    // Write your code here 
+  const upperCaseTransformer = new Transform({
+    transform(chunk, encoding, callback) {
+      this.push(chunk.toString().split('').reverse().join('') + '\n\n');
+      callback();
+    }
+  });
+
+  process.stdin.pipe(upperCaseTransformer).pipe(process.stdout);
 };
 
 await transform();
