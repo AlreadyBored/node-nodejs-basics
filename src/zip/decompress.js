@@ -3,8 +3,7 @@ import fs from 'fs'
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-
-const fileName = 'fileToCompress1.txt'
+const fileName = 'fileToCompress.txt'
 const compressedFileName = 'archive.gz'
 const folder = 'files'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
