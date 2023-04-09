@@ -3,8 +3,7 @@ import path from 'path';
 import m from './messages.js';
 
 const __dirname = path.resolve();
-console.log(path.resolve())
-const newFilePath = path.join(__dirname, './files', 'fresh.txt');
+const newFilePath = path.join(__dirname, 'files', 'fresh.txt');
 
 const create = async () => {
     try {		
