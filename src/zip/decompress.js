@@ -9,20 +9,25 @@ const dirName=path.dirname(scriptPath)
 
 const pathToOriginFile=path.join(dirName,'files','archive.gz')
 
-const pathToOutuptFile = path.join(dirName, 'files', 'fileToCompress.txt')
+const pathToOutuptFile=path.join(dirName,'files','fileToCompress.txt')
 
 const decompress=async () => {
 
-        const unZip=zlib.createUnzip()
-    
-        const readFile=fs.createReadStream(pathToOriginFile)
+        try {
+                const unZip=zlib.createUnzip()
 
-        const writeFile=fs.createWriteStream(pathToOutuptFile)
-    
-        readFile.pipe(unZip).pipe(writeFile)
+                const readFile=fs.createReadStream(pathToOriginFile)
 
+                const writeFile=fs.createWriteStream(pathToOutuptFile)
 
-    
+                readFile.pipe(unZip).pipe(writeFile)
+
+                console.log('Compressed successfully!')
+
+        } catch(error) {
+                console.error(error);
+        }
+
 
 };
 

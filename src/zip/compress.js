@@ -22,6 +22,8 @@ const compress=async () => {
 
         readFile.pipe(gZip).pipe(writeFile)
 
+        console.log('Compressed successfully!')
+
     } catch(error) {
         console.log(error)
     }
