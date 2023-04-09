@@ -10,7 +10,6 @@ const scriptPath=fileURLToPath(import.meta.url)
 
 const dirName=path.dirname(scriptPath)
 
-
 import aJSON from './files/a.json' assert {type: 'json'}
 import bJSON from './files/b.json' assert {type: 'json'}
 
