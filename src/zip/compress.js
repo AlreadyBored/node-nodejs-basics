@@ -1,7 +1,7 @@
-import { createGzip } from 'node:zlib';
-import { pipeline } from 'node:stream';
+import { createGzip } from 'zlib';
+import { pipeline } from 'stream';
 import { createReadStream, createWriteStream } from 'fs';
-import { promisify } from 'node:util';
+import { promisify } from 'util';
 
 const pipe = promisify(pipeline);
 
