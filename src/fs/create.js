@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 
 const create = async () => {
     try {
-        // Creating new 'fresh.txt' file for writing
+        // Creating 'fresh.txt' file for writing
         await fs.writeFile('./files/fresh.txt', 'I am fresh and young', {
             flag: 'wx', // Fails if the file 'fresh.txt' exists
         });
