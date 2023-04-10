@@ -22,7 +22,7 @@ const performCalculations = async () => {
 
         for (let i = 0; i < numOfCPU; i++) {
             const fib = await createWorker(starter++);
-            allFibs.push(fib);
+            allFibs.push({ status: 'resolved', data: fib });
         }
 
         // 0 1 2 3 4 5 6  7  8  9 10 11  12  13
