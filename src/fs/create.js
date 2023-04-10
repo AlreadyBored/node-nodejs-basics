@@ -7,7 +7,7 @@ const create = async () => {
             flag: 'wx', // Fails if the file 'fresh.txt' exists
         });
         console.log(
-            "New 'fresh.txt' file created with the content 'I am fresh and young'"
+            "'fresh.txt' file created with the content 'I am fresh and young'"
         );
     } catch (err) {
         //  Catch existence error
