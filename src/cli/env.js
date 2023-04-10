@@ -1,9 +1,11 @@
 const parseEnv = () => {
-  const obj = process.env; // creating obj variable and assign process.env to it
-  //   itereate obj
-  for (let key in obj) {
-    console.log(`RSS_${key}=${obj[key]}`); // log to the console each key-value pair
-  }
+    // Get environment variables
+    const env = process.env;
+
+    // Print environment variables with their values
+    for (const variable in env) {
+        console.log(`RSS_${variable}=${env[variable]}`);
+    }
 };
 
 parseEnv();

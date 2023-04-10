@@ -1,14 +1,20 @@
 import fs from 'fs/promises';
 
 const list = async () => {
-  try {
-    const fileNames = await fs.readdir('./files'); // make array of filenames
-    for (let i of fileNames) {
-      console.log(i);
+    try {
+        //  Get filenames from inside 'files' directory
+        const fileNames = await fs.readdir('./files');
+
+        //  Print filenames
+        fileNames.forEach((fileName) => console.log(fileName));
+    } catch (err) {
+        //  Catch existence error
+        if (err.code === 'ENOENT') {
+            throw new Error('FS operation failed');
+        } else {
+            throw err;
+        }
     }
-  } catch (err) {
-    throw new Error('FS operation failed'); // throw an error if exists
-  }
 };
 
 await list();

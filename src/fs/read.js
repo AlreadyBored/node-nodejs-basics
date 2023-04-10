@@ -1,15 +1,22 @@
 import fs from 'fs/promises';
 
 const read = async () => {
-  try {
-    // taking data from a file
-    const data = await fs.readFile('./files/fileToRead.txt', {
-      encoding: 'utf8',
-    });
-    console.log(data); // logging data to console
-  } catch (err) {
-    throw new Error('FS operation failed'); // throw an error if exists
-  }
+    try {
+        // Read 'fileToRead.txt' file
+        const content = await fs.readFile('./files/fileToRead.txt', {
+            encoding: 'utf8',
+        });
+
+        // Print the content
+        console.log(content);
+    } catch (err) {
+        //  Catch existence error
+        if (err.code === 'ENOENT') {
+            throw new Error('FS operation failed');
+        } else {
+            throw err;
+        }
+    }
 };
 
 await read();
