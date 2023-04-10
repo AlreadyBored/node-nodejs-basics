@@ -1,12 +1,12 @@
 import fs from 'fs';
 
 const read = async () => {
-    // create readable stream
+    // Create readable stream
     const readableStream = fs.createReadStream('./files/fileToRead.txt', {
         encoding: 'utf8',
     });
 
-    // handle data event and write chunks to process.stdout
+    // Handle data event and write chunks to the console
     readableStream.on('data', (chunk) => process.stdout.write(chunk));
 };
 
