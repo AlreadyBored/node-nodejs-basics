@@ -1,5 +1,5 @@
 const transform = async () => {
-    // handle chunks from stdin and write them to stdout
+    // Handle chunks from console and write them to console
     process.stdin.on('data', (chunk) =>
         process.stdout.write(`received chunk: ${chunk}`)
     );
