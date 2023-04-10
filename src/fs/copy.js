@@ -21,7 +21,7 @@ const copy = async () => {
     } catch (err) {
         //  Catch existence error
         if (err.code === 'EEXIST' || err.code === 'ENOENT') {
-            throw Error('FS operation failed');
+            throw new Error('FS operation failed');
         } else {
             throw err;
         }
