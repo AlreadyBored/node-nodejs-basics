@@ -6,12 +6,15 @@ import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
+// Implement '__filename' and '__dirname' variables
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// Read 'a.json' and 'b.json' file contents
 const aJson = readFileSync(path.resolve(__dirname, 'files', 'a.json'), 'utf8');
 const bJson = readFileSync(path.resolve(__dirname, 'files', 'b.json'), 'utf8');
 
+// Parse them string to object
 const a = JSON.parse(aJson);
 const b = JSON.parse(bJson);
 
