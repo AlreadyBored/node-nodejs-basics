@@ -28,8 +28,10 @@ export const performCalculations = async () => {
     })
 
     const cores = cpus();
-    await Promise.all(cores.map((_, i) => createWokers(i)));
-
+    for (let i = 0; i < cores.length; i++) {
+        await createWokers(i);
+    }
+    
     console.log(workersResults);
 };
 
