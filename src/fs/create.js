@@ -13,7 +13,7 @@ const create = async () => {
       const promise = writeFile(PATH, TEXT, {});
       await promise;
     } catch (error) {
-      console.error("Error writeFile:", error);
+      throw Error("FS operation failed", err.message);
     }
   }
 };
