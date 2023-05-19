@@ -6,7 +6,7 @@ const remove = async () => {
   try {
     await unlink(fileForRemove);
   } catch (err) {
-    throw Error("FS operation failed", err.message);
+    throw Error(`\u001B[31mFS operation failed\u001B[0m ${err.message}`);
   }
 };
 

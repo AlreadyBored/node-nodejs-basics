@@ -7,13 +7,13 @@ const rename = async () => {
   try {
     try {
       await fs.access(newPath);
-      throw new Error("Файл уже существует");
+      throw Error(`\u001B[31mFS operation failed\u001B[0m ${err.message}`);
     } catch {}
 
     await fs.access(oldPath);
     fs.rename(oldPath, newPath);
   } catch (err) {
-    throw Error("FS operation failed", err.message);
+    throw Error(`\u001B[31mFS operation failed\u001B[0m ${err.message}`);
   }
 };
 

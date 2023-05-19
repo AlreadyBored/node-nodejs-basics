@@ -7,13 +7,13 @@ const PATH = "./src/fs/files/fresh.txt"
 const create = async () => {
   // Write your code here
   if (existsSync(PATH)) {
-    throw Error('FS operation failed')
+    throw Error(`\u001B[31mFS operation failed\u001B[0m`);
   } else {
     try {
       const promise = writeFile(PATH, TEXT, {});
       await promise;
     } catch (error) {
-      throw Error("FS operation failed", err.message);
+      throw Error(`\u001B[31mFS operation failed\u001B[0m ${err.message}`);
     }
   }
 };
