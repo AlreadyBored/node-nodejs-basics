@@ -1,4 +1,3 @@
-import { log } from "node:console";
 import { mkdir, access, copyFile, readdir } from "node:fs/promises";
 const projectFolder = new URL("./files/", import.meta.url);
 
