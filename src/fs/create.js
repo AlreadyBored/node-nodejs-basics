@@ -1,20 +1,14 @@
-import { writeFile } from "fs/promises";
-import { existsSync } from 'node:fs'
+import { writeFile, open } from "fs/promises";
 
 const TEXT = "I am fresh and young";
-const PATH = "./src/fs/files/fresh.txt"
+const newFilePath = new URL("./files/fresh.txt", import.meta.url);
 
 const create = async () => {
-  // Write your code here
-  if (existsSync(PATH)) {
-    throw Error(`\u001B[31mFS operation failed\u001B[0m`);
-  } else {
-    try {
-      const promise = writeFile(PATH, TEXT, {});
-      await promise;
-    } catch (error) {
-      throw Error(`\u001B[31mFS operation failed\u001B[0m ${err.message}`);
-    }
+  try {
+    const promise = writeFile(newFilePath, TEXT, { flag: "wx" });
+    await promise;
+  } catch (err) {
+    throw Error(`\u001B[31mFS operation failed\u001B[0m ${err.message}`);
   }
 };
 
