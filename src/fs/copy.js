@@ -1,17 +1,16 @@
 import { mkdir, access, copyFile, readdir } from "node:fs/promises";
-const projectFolder = new URL("./files_copy/", import.meta.url);
-const projectFolder1 = new URL("./files/", import.meta.url);
+const folderEnd = new URL("./files_copy/", import.meta.url);
+const folderStart = new URL("./files/", import.meta.url);
 
 const copy = async () => {
   // Write your code here
   try {
-    await access(projectFolder1);
-    await mkdir(projectFolder, { recursive: false });
-    const files = await readdir(projectFolder1, { withFileTypes: true });
+    await mkdir(folderEnd, { recursive: false });
+    const files = await readdir(folderStart, { withFileTypes: true });
     for (const file of files) {
       await copyFile(
-        new URL(file.name, projectFolder1),
-        new URL(file.name, projectFolder)
+        new URL(file.name, folderStart),
+        new URL(file.name, folderEnd)
       );
     }
   } catch (err) {
