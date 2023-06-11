@@ -1,7 +1,6 @@
 import { fileURLToPath } from 'node:url'
 import { dirname } from 'node:path';
-import { existsSync } from 'node:fs'
-import { rm } from 'node:fs/promises'
+import { rm, access, constants } from 'node:fs/promises'
 
 const remove = async () => {
     const errorMessage = 'FS operation failed';
@@ -10,9 +9,9 @@ const remove = async () => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = dirname(__filename);
 
-    const isFileExist = existsSync(`${__dirname}${fileToRemove}`);
-
-    if (!isFileExist) {
+    try {
+        await access(`${__dirname}${fileToRemove}`, constants.W_OK);
+    } catch {
         throw new Error(errorMessage);
     }
 

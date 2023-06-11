@@ -1,7 +1,6 @@
 import { fileURLToPath } from 'node:url'
 import { dirname } from 'node:path';
-import { existsSync } from 'node:fs'
-import { readdir } from 'node:fs/promises'
+import { readdir, access, constants } from 'node:fs/promises'
 
 const list = async () => {
     const errorMessage = 'FS operation failed';
@@ -10,9 +9,9 @@ const list = async () => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = dirname(__filename);
 
-    const isFileExist = existsSync(`${__dirname}${filesDirPath}`);
-
-    if (!isFileExist) {
+    try {
+        await access(`${__dirname}${filesDirPath}`, constants.R_OK);
+    } catch {
         throw new Error(errorMessage);
     }
 
