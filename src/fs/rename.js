@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'node:url'
 import { dirname } from 'node:path';
 import { existsSync } from 'node:fs'
-import { rename  as renameFolder } from 'node:fs/promises'
+import { rename  as renameFile } from 'node:fs/promises'
 
 const rename = async () => {
     const errorMessage = 'FS operation failed';
@@ -19,11 +19,10 @@ const rename = async () => {
     }
 
     try {
-        await renameFolder(`${__dirname}${fileToRename}`, `${__dirname}${newFileName}`)
+        await renameFile(`${__dirname}${fileToRename}`, `${__dirname}${newFileName}`)
     } catch (err) {
         throw new Error(errorMessage);
     }
-
 };
 
 await rename();
