@@ -1,36 +1,10 @@
 import fs from "fs";
 import path from "path";
 import getPath from "../helper/getPath.js";
+import getFiles from "./getFiles.js";
 
 const errorMessage = "FS operation failed";
-const dirFrom = getPath(import.meta, "files");
-const dirTo = getPath(import.meta, "files_copy");
 
-const getFiles = async () => {
-  return new Promise((resolve, reject) => {
-    fs.readdir(dirFrom, (error, files) => {
-      if (error !== null) {
-        return reject(errorMessage);
-      }
-
-      const result = files.map((file) => {
-        const extIndex = file.lastIndexOf(".");
-
-        if (extIndex === -1) {
-          return [file, ""];
-        }
-
-        return [
-          dirFrom,
-          file.substring(0, extIndex),
-          file.substring(extIndex + 1),
-        ];
-      });
-
-      resolve(result);
-    });
-  });
-};
 const createDir = async (dirPath) => {
   return new Promise((resolve, reject) => {
     fs.mkdir(dirPath, (error) => {
@@ -54,8 +28,11 @@ const copyFile = async (fileFrom, fileTo) => {
   });
 };
 
+const dirFrom = getPath(import.meta, "files");
+const dirTo = getPath(import.meta, "files_copy");
+
 const copy = async () => {
-  const files = await getFiles();
+  const files = await getFiles(dirFrom);
   await createDir(dirTo);
 
   for (const [dirPath, fileName, fileExtension] of files) {
