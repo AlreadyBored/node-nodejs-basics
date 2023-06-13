@@ -1,5 +1,16 @@
+import fs from "node:fs/promises";
+import path from "node:path";
+import { existsWrapper, joinToURL } from "../helpers.js";
+
+const crateOrThrow = existsWrapper({
+  onDoesntExists: (path) =>
+    fs.writeFile(path, "I am fresh and young", { encoding: "utf-8" }),
+});
+
 const create = async () => {
-    // Write your code here 
+  const resultFilePath = joinToURL(import.meta.url, "files", "fresh.txt");
+
+  return crateOrThrow(resultFilePath);
 };
 
 await create();

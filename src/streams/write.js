@@ -1,5 +1,14 @@
+import fs from "node:fs";
+import { joinToURL } from "../helpers.js";
+
 const write = async () => {
-    // Write your code here 
+  const filePath = joinToURL(import.meta.url, "files", "fileToWrite.txt");
+
+  const writeStream = fs.createWriteStream(filePath, {
+    encoding: "utf-8",
+  });
+
+  process.stdin.pipe(writeStream);
 };
 
 await write();
