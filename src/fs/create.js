@@ -1,9 +1,7 @@
-import url from "url";
-import path from "path";
 import fs from "fs";
+import getPath from "../helper/getPath.js";
 
-const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
-const filePath = path.join(__dirname, "files", "fresh.txt");
+const filePath = getPath(import.meta, "files", "fresh.txt");
 
 const create = async () => {
   return new Promise((resolve, reject) => {
