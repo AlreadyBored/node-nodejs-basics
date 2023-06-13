@@ -1,8 +1,9 @@
 import path from 'node:path'
 import { release, version } from 'node:os'
 import { createServer as createServerHttp} from 'node:http'
-import './files/c.js'
 import { fileURLToPath } from 'node:url'
+
+import './files/c.js'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
