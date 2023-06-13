@@ -7,7 +7,7 @@ const copy = async () => {
     const fileFolderCopy = 'files_copy';
 
     const __filename = url.fileURLToPath(import.meta.url);
-    const __dirname = path.dirname(__filename)
+    const __dirname = path.dirname(__filename);
 
     fs.access(path.join(__dirname, fileFolder), fs.constants.F_OK,(err) => {
         if (err) {
