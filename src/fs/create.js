@@ -6,18 +6,25 @@ const create = async () => {
   const dirname = path.dirname(currentFilePath);
   const folderPath = path.join(dirname, 'files');
   const filePath = path.join(folderPath, 'fresh.txt');
+  const fileContent = 'I am fresh and young';
 
-  try {
-    if (fs.existsSync(filePath)) {
-      throw new Error('FS operation failed');
+  fs.open(filePath, 'wx', (err, fileDescriptor) => {
+    if (err) {
+      throw new Error(`FS operation failed: ${err.message}`);
     }
 
-    fs.writeFile(filePath, 'I am fresh and young', () => {
-      console.log('A new file has been created');
+    fs.writeFile(fileDescriptor, fileContent, (writeErr) => {
+      if (writeErr) {
+        fs.close(fileDescriptor, () => {
+          throw new Error(`FS operation failed: ${writeErr.message}`);
+        });
+      }
+
+      fs.close(fileDescriptor, () => {
+        console.log('A new file has been created successfully.');
+      });
     });
-  } catch (err) {
-    console.error(err.message);
-  }
+  });
 };
 
 await create();
