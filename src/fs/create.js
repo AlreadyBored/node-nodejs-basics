@@ -1,6 +1,6 @@
 import { writeFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
-import { dirname } from 'node:path';
+import { dirname } from 'node:path'
 
 const create = async () => {
     const content = 'I am fresh and young';

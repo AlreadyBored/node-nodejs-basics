@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'node:url'
-import { dirname } from 'node:path';
+import { dirname } from 'node:path'
 import { existsSync } from 'node:fs'
 import { rename  as renameFile } from 'node:fs/promises'
 

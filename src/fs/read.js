@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'node:url'
-import { dirname } from 'node:path';
+import { dirname } from 'node:path'
 import { readFile, access, constants } from 'node:fs/promises'
 
 const read = async () => {
