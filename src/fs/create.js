@@ -6,10 +6,10 @@ const create = async () => {
     const __basicsDir = new URL(".", import.meta.url).pathname;
     const path = `${__basicsDir}files/fresh.txt`;
     try {
-        if (existsSync(path)) throw Error('FS operation failed')
+        if (existsSync(path)) throw Error('FS operation failed');
         await appendFile(path, 'I am fresh and young', { encoding: 'utf8' });
-    } catch (err) {
-        console.warn(err);
+    } catch (e) {
+        console.error(e);
     }
 };
 

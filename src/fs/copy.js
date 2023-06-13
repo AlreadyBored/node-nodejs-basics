@@ -16,8 +16,8 @@ const copy = async () => {
     for (const file of files) {
       await copyFile(`${filesDir}${file}`, `${filesCopyDir}${file}`);
     }
-  } catch (err) {
-    console.error(err);
+  } catch (e) {
+    console.error(e);
   }
 };
 
