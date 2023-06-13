@@ -2,8 +2,6 @@ import { joinToURL } from "../helpers.js";
 import wt from "node:worker_threads";
 import os from "node:os";
 
-os.cpus();
-
 const performCalculations = async () => {
   // Write your code here
   const workerPath = joinToURL(import.meta.url, "worker.js");
