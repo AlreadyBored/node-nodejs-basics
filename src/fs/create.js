@@ -1,5 +1,4 @@
 import fs from "node:fs/promises";
-import path from "node:path";
 import { existsWrapper, joinToURL } from "../helpers.js";
 
 const crateOrThrow = existsWrapper({
