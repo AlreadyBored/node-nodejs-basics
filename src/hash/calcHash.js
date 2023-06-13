@@ -8,7 +8,7 @@ const calculateHash = async () => {
 
   const scriptPath = fileURLToPath(import.meta.url);
   const dir = path.dirname(scriptPath);
-  const filename = path.join(dir, "files/fileToCalculateHashFor.txt");
+  const filename = path.join(dir, "files", "fileToCalculateHashFor.txt");
   const input = fs.createReadStream(filename);
   input.on("readable", () => {
     const data = input.read();

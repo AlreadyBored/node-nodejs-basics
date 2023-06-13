@@ -5,8 +5,8 @@ import { fileURLToPath } from "url";
 const rename = async () => {
   const scriptPath = fileURLToPath(import.meta.url);
   const dir = path.dirname(scriptPath);
-  const oldPath = path.join(dir, "files/wrongFilename.txt");
-  const newPath = path.join(dir, "files/properFilename.md");
+  const oldPath = path.join(dir, "files", "wrongFilename.txt");
+  const newPath = path.join(dir, "files", "properFilename.md");
   let newExists = false;
   try {
     newExists = await fs.access(newPath);

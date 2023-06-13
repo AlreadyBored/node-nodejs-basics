@@ -5,7 +5,7 @@ import { fileURLToPath } from "url";
 const remove = async () => {
   const scriptPath = fileURLToPath(import.meta.url);
   const dir = path.dirname(scriptPath);
-  const filePath = path.join(dir, "files/fileToRemove.txt");
+  const filePath = path.join(dir, "files", "fileToRemove.txt");
   try {
     await fs.rm(filePath);
   } catch {
