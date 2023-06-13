@@ -3,23 +3,18 @@ import { readdir, copyFile, mkdir } from 'node:fs/promises'
 
 const copy = async () => {
     // Write your code here
-  const __dirname = new URL(".", import.meta.url).pathname;
+  const __basicsDir = new URL(".", import.meta.url).pathname;
+  const filesDir = `${__basicsDir}files/`;
+  const filesCopyDir = `${__basicsDir}files_copy/`;
 
   try {
+    if (!existsSync(filesDir) || existsSync(filesCopyDir)) throw Error('FS operation failed');
 
-    console.log('source.txt was copied to destination.txt');
-  } catch {
-    console.error('The file could not be copied');
-  }
+    await mkdir(filesCopyDir, { recursive: true });
 
-  try {
-    if (!existsSync(`${__dirname}files`) || existsSync(`${__dirname}files_copy`)) throw Error('FS operation failed');
-
-    await mkdir(`${__dirname}files_copy`, { recursive: true });
-
-    const files = await readdir(`${__dirname}files`);
+    const files = await readdir(filesDir);
     for (const file of files) {
-      await copyFile(`${__dirname}files/${file}`, `${__dirname}files_copy/${file}`);
+      await copyFile(`${filesDir}${file}`, `${filesCopyDir}${file}`);
     }
   } catch (err) {
     console.error(err);
