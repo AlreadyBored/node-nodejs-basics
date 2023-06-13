@@ -18,7 +18,6 @@ const performCalculations = async () => {
         });
 
         worker.on("message", (workerResult) => {
-          console.log(workerResult);
           resolve({
             status: "resolved",
             data: workerResult,
