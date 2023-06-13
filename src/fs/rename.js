@@ -1,4 +1,3 @@
-import { log } from 'console';
 import * as fs from 'fs';
 import path from 'path';
 import {fileURLToPath} from 'url';
