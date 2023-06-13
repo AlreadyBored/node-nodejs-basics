@@ -1,11 +1,9 @@
 import fs from "fs";
 import getPath from "../helper/getPath.js";
 
-const filePath = getPath(import.meta, "files", "fresh.txt");
-
-const create = async () => {
+const create = async (filePath, content) => {
   return new Promise((resolve, reject) => {
-    fs.writeFile(filePath, "I am fresh and young", (error) => {
+    fs.writeFile(filePath, content, (error) => {
       if (error !== null) {
         return reject("FS operation failed");
       }
@@ -15,4 +13,5 @@ const create = async () => {
   });
 };
 
-await create();
+const freshPath = getPath(import.meta, "files", "fresh.txt");
+await create(freshPath, "I am fresh and young");
