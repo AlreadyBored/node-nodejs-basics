@@ -32,8 +32,10 @@ const copy = async () => {
             }
 
             files.forEach(item => {
-                fs.copyFile(path.join(__dirname, fileFolder, item), path.join(__dirname, fileFolderCopy, item), () => {
-
+                fs.copyFile(path.join(__dirname, fileFolder, item), path.join(__dirname, fileFolderCopy, item), (err) => {
+                    if (err) {
+                        throw new Error(err.message)
+                    }
                 });
             });
         });
