@@ -1,3 +1,4 @@
+import url from "url";
 import fs from "fs";
 import getPath from "../helper/getPath.js";
 
@@ -13,5 +14,9 @@ const read = async (filePath) => {
   });
 };
 
-const readFile = getPath(import.meta, "files", "fileToRead.txt");
-await read(readFile).then(console.log);
+if (process.argv[1] === url.fileURLToPath(import.meta.url)) {
+  const readFile = getPath(import.meta, "files", "fileToRead.txt");
+  await read(readFile).then(console.log);
+}
+
+export default read;
