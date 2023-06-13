@@ -10,9 +10,9 @@ const create = async () => {
     try {
         const data = 'I am fresh and young';
         const path = __dirname + '/files/fresh.txt';
-        fs.writeFileSync(path, data);
+        fs.writeFile(path, data);
     } catch {
-        console.log('FS operation failed');
+        return console.log('FS operation failed');
     }
 };
 
