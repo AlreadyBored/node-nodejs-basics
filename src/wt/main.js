@@ -37,6 +37,4 @@ const performCalculations = async () => {
   return await Promise.all(workerTasks);
 };
 
-const qwe = await performCalculations();
-
-console.log(qwe);
+await performCalculations();
