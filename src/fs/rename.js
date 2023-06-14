@@ -1,4 +1,4 @@
-import {rename as fsRename} from 'node:fs/promises';
+import { rename as fsRename } from 'node:fs/promises';
 import path from 'node:path';
 
 const oldPath = new URL(
