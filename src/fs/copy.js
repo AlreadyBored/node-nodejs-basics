@@ -12,13 +12,23 @@ const copy = async () => {
   const folderCopyPath = join(__dirname, destination);
 
   try {
-    const files = await readdir(folderPatch);
+    try {
+      await access(folderPatch);
+    } catch (err) {
+      throw new Error('FS operation failed');
+    }
 
     try {
-      await mkdir(folderCopyPath, { recursive: true });
+      await access(folderCopyPath);
+      throw new Error('FS operation failed files_copy already exist');
     } catch (err) {
-      console.log(err);
+      if (err.code !== 'ENOENT') {
+        throw new Error('FS operation failed');
+      }
     }
+
+    await mkdir(folderCopyPath, { recursive: true });
+    const files = await readdir(folderPatch);
 
     for (let file of files) {
       let sourcePath = join(folderPatch, file);
