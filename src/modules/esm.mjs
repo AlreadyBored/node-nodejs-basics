@@ -5,8 +5,8 @@ import { fileURLToPath } from 'node:url'
 import { readFile } from 'fs/promises';
 import './files/c.js';
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const random = Math.random();
 
