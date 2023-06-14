@@ -6,12 +6,19 @@ import {
 import { createGunzip } from 'node:zlib';
 import { fileURLToPath } from 'node:url'
 import { dirname } from 'node:path'
+import { access } from 'node:fs/promises'
 
 const decompress = async () => {
     const pathToFile = '/files/archive.gz';
 
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = dirname(__filename);
+
+    try {
+        await access(`${__dirname}${pathToFile}`);
+    } catch {
+        throw new Error('Error to access file');
+    }
 
     try {
         await pipeline(
