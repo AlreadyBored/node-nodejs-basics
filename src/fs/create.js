@@ -1,15 +1,17 @@
 import * as fsp from 'fs/promises'
-import * as fs from 'fs'
+import * as path from "path";
+import { fileURLToPath } from "url";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const file = path.join(__dirname, 'files', 'fresh.txt');
 
 const create = async () => {
   try {
-    if (fs.existsSync("files/fresh.txt")) {
-      throw new Error("FS operation failed");
-    }
-    await fsp.writeFile("files/fresh.txt", "I am fresh and young");
-  } catch(e){
-    console.error(e)
+    await fsp.writeFile(file, 'I am fresh and young', {flag: 'wx'});
+  } catch (e) {
+    console.log(e);
+    throw new Error("FS operation failed");
   }
 };
 

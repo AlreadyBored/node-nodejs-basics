@@ -14,13 +14,12 @@ const getFiled = () => { throw new Error(errorMessage) }
 const list = async () => {
     // Write your code here 
     try {
-      if(!fs.existsSync(files)) getFiled()
       const dirnets = await fsp.readdir(files, { withFileTypes: true });
       for (const dirnet of dirnets) {
         console.log(dirnet.name)
       }
-    } catch (error) {
-      console.error(error)
+    } catch  {
+      getFiled()
     }
 };
 

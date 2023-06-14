@@ -8,7 +8,7 @@ const fileToWrite = path.join(__dirname, 'files', 'fileToWrite.txt');
 
 const write = async () => {
     // Write your code here 
-    const writeStream = fs.createWriteStream(fileToWrite)
+    const writeStream = fs.createWriteStream(fileToWrite, { flags: 'a' });
     process.stdin.on('data', data => writeStream.write(data));
 };
 

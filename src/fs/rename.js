@@ -15,10 +15,10 @@ const rename = async () => {
     const nameFrom = path.join(files, 'wrongFilename.txt');
     const nameTo = path.join(files, 'properFilename.md');
     try {
-      if(!fs.existsSync(nameFrom) || fs.existsSync(nameTo)) getFiled()
+      if(fs.existsSync(nameTo)) throw new Error();
       fsp.rename(nameFrom, nameTo)
     } catch (error) {
-      console.error(error)
+        getFiled()
     }
 };
 

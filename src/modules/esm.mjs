@@ -9,13 +9,9 @@ const __dirname = path.dirname(__filename);
 
 const random = Math.random();
 
-let unknownObject;
-
-if (random > 0.5) {
-    unknownObject = await import('./files/a.json', {assert: {type: 'json'}});
-} else {
-    unknownObject = await import('./files/b.json', {assert: {type: 'json'}});
-}
+const unknownObject = random > 0.5
+    ? await import('./files/a.json', { assert: { type: 'json' } })
+    : await import('./files/b.json', { assert: { type: 'json' } });
 
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);

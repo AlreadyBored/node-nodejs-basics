@@ -9,15 +9,14 @@ const files = path.join(__dirname, "files");
 
 const errorMessage = 'FS operation failed';
 const getFiled = () => { throw new Error(errorMessage) }
+const removeFile = path.join(files, 'fileToRemove.txt');
 
 const remove = async () => {
     // Write your code here 
     try {
-      const removeFile = path.join(files, 'fileToRemove.txt');
-      if(!fs.existsSync(removeFile)) getFiled();
       await fsp.rm(removeFile)
-    } catch (error) {
-      console.error(error);
+    } catch {
+      getFiled();
     }
 };
 
