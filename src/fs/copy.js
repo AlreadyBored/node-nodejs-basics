@@ -9,14 +9,20 @@ const copy = async () => {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
   const folderPatch = join(__dirname, source);
+  const folderCopyPath = join(__dirname, destination);
 
   try {
     const files = await readdir(folderPatch);
-    await mkdir(destination, { recursive: true });
+
+    try {
+      await mkdir(folderCopyPath, { recursive: true });
+    } catch (err) {
+      console.log(err);
+    }
 
     for (let file of files) {
-      let sourcePath = join(source, file);
-      let destinationPath = join(destination, file);
+      let sourcePath = join(folderPatch, file);
+      let destinationPath = join(folderCopyPath, file);
 
       await copyFile(sourcePath, destinationPath);
     }
