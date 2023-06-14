@@ -1,4 +1,4 @@
-import { readdir, mkdir, rmdir, copyFile } from 'node:fs/promises';
+import { readdir, mkdir, copyFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 const copy = async () => {
