@@ -8,16 +8,20 @@ const remove = async () => {
   );
   const filePath = join(currentDir, "files", "fileToRemove.txt");
   try {
-    await fsPromises.access(filePath);
+    try {
+      await fsPromises.access(filePath);
 
-    await fsPromises.unlink(filePath);
-    console.log("File deleted successfully!");
-  } catch (error) {
-    if (error.code === "ENOENT") {
-      throw new Error("FS operation failed");
+      await fsPromises.unlink(filePath);
+      console.log("File deleted successfully!");
+    } catch (error) {
+      if (error.code === "ENOENT") {
+        throw new Error("FS operation failed");
+      }
     }
+  } catch (error) {
     console.error("Error:", error.message);
   }
+
   // Write your code here
 };
 
