@@ -1,11 +1,8 @@
 import { promises as fsPromises } from "fs";
-import { join, dirname } from "path";
+import { join } from "path";
+import { currentDir } from "./findCurrentDir.js";
 
 const remove = async () => {
-  const currentDir = dirname(new URL(import.meta.url).pathname).replace(
-    /^\/([A-Za-z]:)/,
-    "$1"
-  );
   const filePath = join(currentDir, "files", "fileToRemove.txt");
   try {
     try {
