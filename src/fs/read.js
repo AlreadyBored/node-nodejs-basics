@@ -2,9 +2,8 @@
 import fs from 'fs'
 const read = async () => {
     try {
-        const data = await
-            fs.promises.readFileSync('files/fileToRead.txt', 'utf-8')
-        console.log(data)
+        const data = fs.promises.readFile('./files/fileToRead.txt', 'utf-8')
+        console.log((await data).toString())
     } catch (err) {
         console.error('FS operation failed')
     }
