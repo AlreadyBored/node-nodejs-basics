@@ -1,11 +1,12 @@
-import path from "path";
+import { join } from "path";
 import { readdir } from "node:fs/promises";
-import * as url from "url";
+import { fileURLToPath } from "url";
 import { isFileExist } from "../utils/utils.js";
-const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
+
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 const list = async () => {
-  const folder = path.join(__dirname, "files");
+  const folder = join(__dirname, "files");
   isFileExist(folder);
   try {
     const files = await readdir(folder);

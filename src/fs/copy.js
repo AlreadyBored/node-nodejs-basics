@@ -1,13 +1,13 @@
 import { access, constants } from "fs";
-import path from "path";
-import * as url from "url";
+import { join } from "path";
+import { fileURLToPath } from "url";
 import { checkAccess, copySmthing, removeSmthing } from "../utils/utils.js";
 
-const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 const copy = async () => {
-  const from = path.join(__dirname, "files");
-  const to = path.join(__dirname, "files__copy");
+  const from = join(__dirname, "files");
+  const to = join(__dirname, "files__copy");
 
   checkAccess(from);
   await access(to, constants.F_OK, async (err) => {
