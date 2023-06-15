@@ -1,8 +1,9 @@
 import { promises as fsPromises } from "fs";
 import { join } from "path";
+import { currentDir } from "./findCurrentDir.js";
 
 const create = async () => {
-  const filePath = join("files", "fresh.txt");
+  const filePath = join(currentDir, "files", "fresh.txt");
   try {
     try {
       await fsPromises.access(filePath);
