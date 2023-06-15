@@ -2,6 +2,7 @@ import path from 'node:path';
 import { release, version } from 'os';
 import { createServer as createServerHttp } from 'http';
 import { readFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
 import './files/c.js';
 
 const random = Math.random();
@@ -18,8 +19,8 @@ if (random > 0.5) {
   );
 }
 
-const __filename = new URL(import.meta.url);
-const __dirname = new URL('./', import.meta.url);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
