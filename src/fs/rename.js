@@ -17,6 +17,7 @@ const rename = async () => {
       throw new Error('FS operation failed');
     } catch (err) {
       await renameFile(fileToRenamePath, renamedFilePath);
+      console.log('File renamed successfully.');
     }
   } catch (err) {
     throw new Error('FS operation failed');

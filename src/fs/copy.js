@@ -20,7 +20,7 @@ const copy = async () => {
 
     try {
       await access(folderCopyPath);
-      throw new Error('FS operation failed files_copy already exist');
+      throw new Error('FS operation failed');
     } catch (err) {
       if (err.code !== 'ENOENT') {
         throw new Error('FS operation failed');
