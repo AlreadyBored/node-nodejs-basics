@@ -1,8 +1,5 @@
 import { cp, access, constants } from "fs";
 import { rm } from "fs/promises";
-import * as url from "url";
-
-const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
 export function copySmthing(origin, destination) {
   return cp(origin, destination, { recursive: true }, (err) => {
