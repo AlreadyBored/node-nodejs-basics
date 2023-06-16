@@ -9,8 +9,12 @@ export const ERR_MSG = "FS operation failed";
 export const FILE_PATH_HASH = "./files/fileToCalculateHashFor.txt";
 
 // streams
-export const FILE_PATH_STREAM_READ = './files/fileToRead.txt';
-export const FILE_PATH_STREAM_WRITE = './files/fileToWrite.txt';
+export const FILE_PATH_STREAM_READ = "./files/fileToRead.txt";
+export const FILE_PATH_STREAM_WRITE = "./files/fileToWrite.txt";
+
+// zip
+export const FILE_TO_COMPRESS = "./src/zip/files/fileToCompress.txt";
+export const ARCHIVE = "./src/zip/files/archive.gz"
 
 // errors
 export const ERR_FILE_EXISTS = "EEXIST";
