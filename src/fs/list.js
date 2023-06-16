@@ -1,6 +1,6 @@
 import { readdir } from 'node:fs/promises';
 
-const list = async () => {
+export const list = async () => {
     const errorMessage = 'FS operation failed';
 
     try {
@@ -12,4 +12,4 @@ const list = async () => {
     }
 };
 
-await list();
+list();
