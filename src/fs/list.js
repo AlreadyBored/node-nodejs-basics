@@ -1,15 +1,22 @@
-import fs from 'fs';
+import fs from "fs/promises";
 
 const list = async () => {
-try {
-    const folderPath = 'files';
-  if (!fs.existsSync(folderPath)) {
-    throw new Error('Folder does not exist.');
-  }
-  const fileNames = fs.readdirSync(folderPath);
-  console.log(fileNames);
-} catch (error) {
-    console.error('FS operation failed:', error.message);
+  try {
+    const folderPath = "files";
+
+    const folderExists = await fs
+      .access(folderPath)
+      .then(() => true)
+      .catch(() => false);
+
+    if (!folderExists) {
+      throw new Error("Folder does not exist.");
+    }
+
+    const fileNames = await fs.readdir(folderPath);
+    console.log(fileNames);
+  } catch (error) {
+    console.error("FS operation failed:", error.message);
   }
 };
 
