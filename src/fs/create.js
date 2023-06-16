@@ -4,26 +4,15 @@
  (if file already exists "Error" with message "FS operation failed" must be thrown)
  */
 
-import fs from 'fs';
+import { writeFile } from 'fs/promises';
+import { PATH, FILE_CONTENT, ERR_MSG } from '../common/constants.js';
 
 const create = async () => {
-
-    const FILE_NAME = "fresh.txt";
-    const FILE_CONTENT = "I am fresh and young";
-    const PATH = `./src/fs/files/${FILE_NAME}`;
-    const ERR_MSG = "FS operation failed";
-
-    fs.stat(PATH, function(err, stat) {
-        if (err == null) {
-          throw new Error(ERR_MSG);
-        } else if (err.code === 'ENOENT') {
-            fs.writeFile(PATH, FILE_CONTENT, err => {
-                console.log('Error while writing: ', err.code);
-            });
-        } else {
-          console.log('Some other error: ', err.code);
-        }
-      });
+    try {
+        await writeFile(PATH, FILE_CONTENT, {flag: "wx"})
+    } catch (e) {
+        throw Error(ERR_MSG);
+    }
 };
 
 await create();
