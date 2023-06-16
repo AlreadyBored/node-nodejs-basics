@@ -1,10 +1,9 @@
 import { Writable } from 'node:stream';
 import { promises as fs } from 'node:fs';
-import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
+import { getDirname } from '../utils/index.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __dirname = getDirname(import.meta.url);
 
 class FileWriteStream extends Writable {
   constructor(fileName, options = {}) {

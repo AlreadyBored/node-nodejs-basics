@@ -1,11 +1,8 @@
 import { promises as fs } from 'node:fs';
-import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
+import { getDirname, isDirOrFileExist } from '../utils/index.js';
 
-import { isDirOrFileExist } from './../utils/index.js';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __dirname = getDirname(import.meta.url);
 
 const copy = async () => {
   const sourcePath = join(__dirname, 'files');
