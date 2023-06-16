@@ -7,10 +7,12 @@ TEST:
 2) RSS_EEE=33 dddd=33333 RSS_RRRR=2324 node env.js
 Output: RSS_EEE=33; RSS_RRRR=2324
 */
+
 const parseEnv = () => {
+    const PREFIX = "RSS_"
     const res = [];
     for (const v in process.env) {
-        if (v.startsWith("RSS_")) {
+        if (v.startsWith(PREFIX)) {
             res.push(`${v}=${process.env[v]}`);
         };
     }
