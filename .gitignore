@@ -1,0 +1,5 @@
+.idea/
+/src/fs/files_copy/
+/src/fs/files/fresh.txt
+/src/fs/files/properFilename.md
+/src/zip/files/archive.gz
