@@ -8,13 +8,15 @@ and prints them to the console in the format propName is value, prop2Name is val
 
 const parseArgs = () => {
     const PREFIX = "--";
-    const res = [];
-    for (const v in process.env) {
-        if (v.startsWith(PREFIX)) {
-            res.push(`${v} is ${process.env[v]}`);
-        };
-    }
-    console.log(res.join(", "));
+
+    const res = process.argv.reduce((acc, value, index, array) => {
+        if (value.startsWith(PREFIX)) {
+            return [...acc, `${value} is ${array[index + 1]}`];
+        }
+        return acc;
+    }, []).join(', ');
+
+    console.log(res);
 };
 
 parseArgs();

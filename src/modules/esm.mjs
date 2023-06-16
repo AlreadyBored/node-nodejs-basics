@@ -1,17 +1,24 @@
-const path = require('path');
-const { release, version } = require('os');
-const { createServer: createServerHttp } = require('http');
-require('./files/c');
+/* 
+You should refactor file (you can add additional imports if needed)
+cjsToEsm.cjs - rewrite it to it's equivalent in ECMAScript notation (and rename it to esm.mjs)
+*/
 
-const random = Math.random();
+import { path } from 'path';
+import { release, version } from 'os';
+import { createServer as createServerHttp } from 'http';
+import './files/c';
 
 let unknownObject;
+(async () => {
+    unknownObject = await import(
+        Math.random() > 0.5 ?
+            "./files/a.json" :
+            "./files/b.json"
+    );
+})();
 
-if (random > 0.5) {
-    unknownObject = require('./files/a.json');
-} else {
-    unknownObject = require('./files/b.json');
-}
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
@@ -33,8 +40,7 @@ myServer.listen(PORT, () => {
     console.log('To terminate it, use Ctrl+C combination');
 });
 
-module.exports = {
+export default {
     unknownObject,
     myServer,
 };
-
