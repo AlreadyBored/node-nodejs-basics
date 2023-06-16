@@ -5,13 +5,20 @@
  */
 
 import { writeFile } from 'fs/promises';
-import { PATH, FILE_CONTENT, ERR_MSG } from '../common/constants.js';
+import { PATH, FILE_CONTENT, ERR_MSG, ERR_FILE_EXISTS } from '../common/constants.js';
 
 const create = async () => {
     try {
-        await writeFile(PATH, FILE_CONTENT, {flag: "wx"})
+        // flag "wx" to throw an error if file exists
+        await writeFile(PATH, FILE_CONTENT, { flag: "wx" })
     } catch (e) {
-        throw Error(ERR_MSG);
+        if (e.code == ERR_FILE_EXISTS) {
+            // custom error if file exists
+            throw Error(ERR_MSG);
+        } else {
+            // log other error
+            console.log(e);
+        }
     }
 };
 
