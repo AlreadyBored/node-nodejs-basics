@@ -1,5 +1,31 @@
+import { Transform, pipeline } from 'node:stream';
+
 const transform = async () => {
-    // Write your code here 
+    const readable = process.stdin;
+    const writable = process.stdout;
+
+    const transform = new Transform({
+        transform: (chunk, encoding, callback) => {
+            const stringChunk = chunk.toString().trim();
+
+            const reverseChunk = stringChunk.split('').reverse().join('');
+
+            callback(null, reverseChunk + '\n');
+        }
+    });
+
+    pipeline(
+      readable,
+      transform,
+      writable,
+      (err) => {
+          if (err) {
+              console.error("An error occured in pipeline.", err);
+          } else {
+              console.log("Pipeline execcution successful");
+          }
+      }
+    )
 };
 
 await transform();
