@@ -1,5 +1,14 @@
+let fs = require('fs');
+let fileToRead = './src/fs/files/fileToRead.txt'
+
 const read = async () => {
-    // Write your code here 
+  if (!fs.existsSync(fileToRead)) {
+    console.log(new Error('FS operation failed'))
+  } else {
+    fs.readFile(fileToRead, 'utf8',function(err, data){
+      console.log(data)
+    });
+  }
 };
 
-await read();
+read();
