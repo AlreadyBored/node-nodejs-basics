@@ -14,7 +14,7 @@ const rename = async () => {
 
         await rm(sourceFile);
     } catch (error) {
-        console.log('FS operation failed')
+        console.log('FS operation failed');
     }     
 };
 

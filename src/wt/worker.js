@@ -8,7 +8,7 @@ const sendResult = () => {
 
     parentPort.postMessage(nthFibonacci(workerData.nth));
 
-    process.exit();
+    process.exit(); 
 };
 
 sendResult();

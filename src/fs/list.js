@@ -8,7 +8,7 @@ const list = async () => {
 
         console.log(files);
     } catch (error) {
-        console.log('FS operation failed');
+        console.log('FS operation failed'); 
     }
 
 };

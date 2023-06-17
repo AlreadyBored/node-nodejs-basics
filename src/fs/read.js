@@ -8,7 +8,7 @@ const read = async () => {
 
         console.log(data)
     } catch (error) {
-        console.log('FS operation failed')
+        console.log('FS operation failed');
     }
 };
 

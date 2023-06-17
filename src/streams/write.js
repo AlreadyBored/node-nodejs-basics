@@ -13,7 +13,7 @@ const write = async () => {
             writeStream.write(data);
         });
     } catch (error) {
-        console.log(error.message);
+        console.log(error.message); 
     }
 };
 

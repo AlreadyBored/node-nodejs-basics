@@ -12,7 +12,7 @@ const spawnChildProcess = async (args) => {
         });
 
     } catch (error) {
-        console.log(error.message)
+        console.log(error.message);
     }
 
 };

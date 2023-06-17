@@ -16,7 +16,7 @@ const transform = async () => {
         
         process.stdin.pipe(toReverse).pipe(process.stdout);
     } catch (error) {
-        console.log(error.message);
+        console.log(error.message); 
     }
 };
 

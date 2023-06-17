@@ -11,4 +11,4 @@ const echoInput = (chunk) => {
     process.send(`Sended from child process: ${chunk.toString()}\n`);
 };
 
-process.stdin.on('data', echoInput);
+process.stdin.on('data', echoInput); 
