@@ -20,9 +20,9 @@ const transform = async () => {
       writable,
       (err) => {
           if (err) {
-              console.error("An error occured in pipeline.", err);
+              console.error("An error occurred in pipeline.", err);
           } else {
-              console.log("Pipeline execcution successful");
+              console.log("Pipeline execution successful");
           }
       }
     )
