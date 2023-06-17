@@ -11,9 +11,6 @@ const write = () => {
 
     stdout.write('Введите данные для записи в файл. Для выхода Ctrl + C.\n');
     stdin.pipe(writeableStream);
-    // stdin.on('data', (data) => {
-    //     writeableStream.write(data);
-    // });
 };
 
 write();
