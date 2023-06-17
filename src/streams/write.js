@@ -1,9 +1,9 @@
 import { createWriteStream } from 'fs';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { stdin, stdout } from 'process'; 
+import { stdin, stdout } from 'process';
 
-const write = async () => {
+const write = () => {
     const __dirname = dirname(fileURLToPath(import.meta.url));
     const pathToFile = path.join(__dirname, 'files', 'fileToWrite.txt')
 
@@ -15,4 +15,4 @@ const write = async () => {
     });
 };
 
-await write();
+write();
