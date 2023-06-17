@@ -8,8 +8,12 @@
 import fs from "fs";
 
 const ERR_MSG = "FS operation failed";
+const SRC = "./src/fs/files/";
+const DEST = "./src/fs/files_copy";
 
-const checkSrc = async (dir, isDest) => {
+// looks stupid, but it works, it could be symlified and... how to avoid transactional issues?
+
+const checkSrc = async (dir) => {
     fs.access(dir, function (err) {
         if (err) {
             throw new Error(ERR_MSG);
@@ -26,9 +30,6 @@ const checkDest = async (dir) => {
 }
 
 const copy = async () => {
-    const SRC = "./src/fs/files/";
-    const DEST = "./src/fs/files_copy";
-
     checkSrc(SRC);
     checkDest(DEST);
 
