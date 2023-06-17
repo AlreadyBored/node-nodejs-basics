@@ -6,22 +6,19 @@
 
 import fs from "fs";
 
+const ERR_MSG = "FS operation failed";
+const WRONG_FILE_NAME = "./src/fs/files/wrongFilename.txt";
+const PROPER_FILE_NAME = "./src/fs/files/properFilename.md";
+
 const check = async (path, msg, hasExist) => {
     fs.stat(path, function (err, stat) {
-        if (err == null && hasExist == false) {
-            throw new Error(msg);
-        } 
-        if (err != null && err.code === "ENOENT" && hasExist == true) {
+        if ((err == null && hasExist == false) || (err != null && err.code === "ENOENT" && hasExist == true)) {
             throw new Error(msg);
         }
     });
 }
 
 const rename = async () => {
-    const ERR_MSG = "FS operation failed";
-    const WRONG_FILE_NAME = "./src/fs/files/wrongFilename.txt";
-    const PROPER_FILE_NAME = "./src/fs/files/properFilename.md";
-
     check(WRONG_FILE_NAME, ERR_MSG, true);
     check(PROPER_FILE_NAME, ERR_MSG, false);
 

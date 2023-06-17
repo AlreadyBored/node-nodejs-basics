@@ -5,6 +5,9 @@
 
 import fs from "fs";
 
+const FILE_TO_REMOVE = "./src/fs/files/fileToRemove.txt";
+const ERR_MSG = "FS operation failed";
+
 const check = async (path, errMsg) => {
         fs.access(path, function (err) {
             if (err) {
@@ -14,8 +17,6 @@ const check = async (path, errMsg) => {
 }
 
 const remove = async () => {
-    const FILE_TO_REMOVE = "./src/fs/files/fileToRemove.txt";
-    const ERR_MSG = "FS operation failed";
 
     check(FILE_TO_REMOVE, ERR_MSG);
 
