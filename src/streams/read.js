@@ -9,10 +9,7 @@ const read = () => {
 
     const readableStream = createReadStream(pathToFile, 'utf-8');
 
-    let body = '';
-    readableStream.on('data', chunk => body += chunk);
-    readableStream.on('end', () => stdout.write(body));
-    readableStream.on('error', error => console.log('Error', error.message));
+    readableStream.pipe(stdout);
 };
 
 read();

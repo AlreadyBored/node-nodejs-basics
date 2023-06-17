@@ -10,9 +10,10 @@ const write = () => {
     const writeableStream = createWriteStream(pathToFile);
 
     stdout.write('Введите данные для записи в файл. Для выхода Ctrl + C.\n');
-    stdin.on('data', (data) => {
-        writeableStream.write(data);
-    });
+    stdin.pipe(writeableStream);
+    // stdin.on('data', (data) => {
+    //     writeableStream.write(data);
+    // });
 };
 
 write();
