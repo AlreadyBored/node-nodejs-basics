@@ -1,9 +1,9 @@
 /*
  implement function that deletes file fileToRemove.txt 
- (if there's no file fileToRemove.txt Error with message FS operation failed must be thrown)
+ (if there"s no file fileToRemove.txt Error with message FS operation failed must be thrown)
 */
 
-import fs from 'fs';
+import fs from "fs";
 
 const check = async (path, errMsg) => {
         fs.access(path, function (err) {

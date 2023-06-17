@@ -4,8 +4,8 @@
  (if file already exists "Error" with message "FS operation failed" must be thrown)
  */
 
-import { writeFile } from 'fs/promises';
-import { PATH, FILE_CONTENT, ERR_MSG, ERR_FILE_EXISTS } from '../common/constants.js';
+import { writeFile } from "fs/promises";
+import { PATH, FILE_CONTENT, ERR_MSG, ERR_FILE_EXISTS } from "../common/constants.js";
 
 const create = async () => {
     try {

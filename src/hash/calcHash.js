@@ -5,8 +5,8 @@ calcHash.js - implement function that calculates SHA256 hash
 for file fileToCalculateHashFor.txt and logs it into console as hex
  */
 
-import { createHash } from 'crypto';
-import { readFile } from 'fs/promises';
+import { createHash } from "crypto";
+import { readFile } from "fs/promises";
 import { FILE_PATH_HASH } from "../common/constants.js";
 
 const calculateHash = async () => {

@@ -1,11 +1,11 @@
 /*
  implement function that copies folder files files with all its content 
  into folder "files_copy" at the same level 
- (if files folder doesn't exists or files_copy has already been created 
+ (if files folder doesn"t exists or files_copy has already been created 
  Error with message FS operation failed must be thrown)
 */
 
-import fs from 'fs';
+import fs from "fs";
 
 const ERR_MSG = "FS operation failed";
 

@@ -1,17 +1,17 @@
 /*
  implement function that renames file wrongFilename.txt to properFilename with extension .md 
- (if there's no file wrongFilename.txt or properFilename.md already exists 
+ (if there"s no file wrongFilename.txt or properFilename.md already exists 
  Error with message FS operation failed must be thrown)
 */
 
-import fs from 'fs';
+import fs from "fs";
 
 const check = async (path, msg, hasExist) => {
     fs.stat(path, function (err, stat) {
         if (err == null && hasExist == false) {
             throw new Error(msg);
         } 
-        if (err != null && err.code === 'ENOENT' && hasExist == true) {
+        if (err != null && err.code === "ENOENT" && hasExist == true) {
             throw new Error(msg);
         }
     });
