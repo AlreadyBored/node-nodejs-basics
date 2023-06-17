@@ -9,7 +9,6 @@ const rename = async () => {
       await fs.access(newPath);
       throw Error(`\u001B[31mFS operation failed\u001B[0m ${err.message}`);
     } catch {}
-
     await fs.access(oldPath);
     fs.rename(oldPath, newPath);
   } catch (err) {
