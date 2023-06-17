@@ -1,5 +1,13 @@
-const copy = async () => {
-    // Write your code here 
-};
+import { promises as fsPromises } from 'fs';
 
-await copy();
+const copy = async () => {
+  try {
+    await fsPromises.access('./files__copy');
+    await fsPromises.cp('./files', './files__copy', { recursive: true });
+    console.log('Directory was copied!');
+   } catch (error) {
+    console.error('FS operation failed');
+      }
+ };
+
+ await copy();
