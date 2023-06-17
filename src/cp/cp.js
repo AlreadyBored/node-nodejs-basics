@@ -5,8 +5,8 @@ import { spawn } from "child_process";
 const spawnChildProcess = async (args) => {
     // Write your code here
     const childProcess = spawn(`node`, ['--version'])
-    childProcess.stdout.on('data', (data) => {
-        console.log(data.toString());
+    childProcess.stdout.on('data', (args) => {
+        console.log(args.toString());
     })
 };
 
