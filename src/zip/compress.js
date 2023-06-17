@@ -9,9 +9,9 @@ const compress = async () => {
     const gzip = createGzip();
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = dirname(__filename);
-    const sourse = createReadStream(__dirname + '/files/fileToCompress.txt');
+    const source = createReadStream(__dirname + '/files/fileToCompress.txt');
     const destination = createWriteStream(__dirname + '/files/archive.gz');
-    sourse.pipe(gzip).pipe(destination)
+    source.pipe(gzip).pipe(destination)
     console.log(`file archived!!!`)
 
 };
