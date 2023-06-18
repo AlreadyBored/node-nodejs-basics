@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+import * as fsp from "fs/promises";
 import * as zlib from 'zlib';
 import * as path from "path";
 import { fileURLToPath } from "url";
@@ -17,7 +18,7 @@ const compress = async () => {
     const gzip = zlib.createGzip();
     pipeline(readStream, gzip, writeStream, (err) => {
       console.error(err);
-    });
+    }).on('close', () => fsp.rm(fileToPress))
 };
 
 await compress();

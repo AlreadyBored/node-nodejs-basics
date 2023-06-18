@@ -10,7 +10,6 @@ const create = async () => {
   try {
     await fsp.writeFile(file, 'I am fresh and young', {flag: 'wx'});
   } catch (e) {
-    console.log(e);
     throw new Error("FS operation failed");
   }
 };
