@@ -2,7 +2,7 @@ import fs from "node:fs";
 import fsPromises from "node:fs/promises";
 
 const list = async () => {
-    const folderPath = './src/fs/files';
+  const folderPath = './src/fs/files';
 
   if (!fs.existsSync(folderPath)) {
     throw new Error("FS operation failed");

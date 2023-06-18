@@ -1,24 +1,14 @@
-import fs from 'node:fs';
-import fsPromises from 'node:fs/promises';
 import path from 'path';
 import {release, version} from 'os';
 import {createServer as createServerHttp} from 'http';
+import {createRequire} from 'module';
 
-const script = fs.readFileSync('./src/modules/files/c.js').toString();
-global.eval(script);
+const require = createRequire(import.meta.url);
 
-// This variant is also possible (but with warning in console)
-// import jsonA from './files/a.json' assert { type: 'json' };
-// import jsonB from './files/b.json' assert { type: 'json' };
+import './files/c.js';
 
-const jsonA = JSON.parse(
-  await fsPromises.readFile(new URL('./files/a.json', import.meta.url))
-);
-const jsonB = JSON.parse(
-  await fsPromises.readFile(new URL('./files/b.json', import.meta.url))
-);
+import {fileURLToPath} from 'url';
 
-import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -27,9 +17,15 @@ const random = Math.random();
 let unknownObject;
 
 if (random > 0.5) {
-  unknownObject = jsonA
+  unknownObject = require('./files/a.json');
+
+  // This variant is also possible (but with warning in console)
+  // unknownObject = await import('./files/a.json', {assert: {type: 'json'}}).then((result) => result.default);
 } else {
-  unknownObject = jsonB
+  unknownObject = require('./files/b.json');
+
+  // This variant is also possible (but with warning in console)
+  // unknownObject = await import('./files/b.json', {assert: {type: 'json'}}).then((result) => result.default);
 }
 
 console.log(`Release ${release()}`);
