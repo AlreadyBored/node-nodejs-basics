@@ -9,9 +9,7 @@ const filePath = join(__dirname, "files", "fresh.txt");
 
 const create = async () => {
   access(filePath, constants.F_OK)
-    .then(() => {
-      console.log("FS operation failed");
-    })
+    .then(() => console.log("FS operation failed"))
     .catch(() => {
       appendFile(filePath, "I am fresh and young")
         .then(() => console.log("the file is created"))
