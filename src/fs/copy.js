@@ -4,19 +4,20 @@ import path from "path";
 const copy = async () => {
     const sourceFolder = './files';
     const destinationFolder = './files_copy';
-    const errorMessage = 'FS operation failed'
+    const doesNotExistErr = 'FS operation failed: The folder does not exist'
+    const alreadyExistErr = 'FS operation failed: The folder already exists'
 
 
     const accessSoursFolder = fs.existsSync(sourceFolder)
 
     if (!accessSoursFolder) {
-        throw new Error(errorMessage);
+        throw new Error(doesNotExistErr);
     }
 
     const accessDestinationFolder = fs.existsSync(destinationFolder)
 
     if (accessDestinationFolder) {
-        throw new Error(errorMessage);
+        throw new Error(alreadyExistErr);
     }
 
     await fs.promises.mkdir(destinationFolder, {recursive: true});

@@ -3,12 +3,12 @@ import path from "path";
 
 const list = async () => {
     const sourceFolder = './files';
-    const errorMessage = 'FS operation failed'
+    const doesNotExistErr = 'FS operation failed: The folder does not exist'
 
     const accessSoursFolder = fs.existsSync(sourceFolder)
 
     if (!accessSoursFolder) {
-        throw new Error(errorMessage);
+        throw new Error(doesNotExistErr);
     }
 
     const sourcePath = path.join(sourceFolder);
@@ -16,7 +16,7 @@ const list = async () => {
     await fs.readdir(sourcePath, (err, files) => {
 
         if (err) {
-            throw new Error(errorMessage)
+            throw err
         }
 
         files.forEach(file => {
