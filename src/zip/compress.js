@@ -11,8 +11,7 @@ const compress = async () => {
     const gzip = createGzip()
     const readable = createReadStream(file)
     const writable = createWriteStream(zipFile)
-    await pipeline(readable,gzip,writable, )
-
+    await pipeline(readable, gzip, writable)
 };
 
 await compress();
