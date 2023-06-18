@@ -1,5 +1,5 @@
-import * as fs from 'fs';
-import * as path from 'path';
+import fs from 'fs';
+import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
@@ -41,7 +41,7 @@ const copy = async () =>
                         // Smth scary happened.
                         throw new Error(fileErrorMessage);
                     } 
-                    
+
                     files.forEach(file => {
                         fs.copyFile(path.join(inPath, file), path.join(outPath, file), (err) => {
                             if (err) {
