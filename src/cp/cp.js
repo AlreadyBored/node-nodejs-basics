@@ -1,6 +1,19 @@
+import { spawn } from "child_process";
+
 const spawnChildProcess = async (args) => {
-    // Write your code here
+  const child = spawn("node", ["./src/cp/files/script.js"].concat(args), {
+    stdio: ["pipe", "pipe", "inherit", "ipc"],
+  });
+
+  process.stdin.pipe(child.stdin);
+
+  child.stdout.on("data", (data) => {
+    process.stdout.write(data);x
+  });
+
+  child.on("error", (error) => {
+    console.error(`ERROR: ${error.message}`);
+  });
 };
 
-// Put your arguments in function call to test this functionality
-spawnChildProcess( /* [someArgument1, someArgument2, ...] */);
+spawnChildProcess(["test1", "test2"]);
