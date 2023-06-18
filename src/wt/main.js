@@ -1,7 +1,7 @@
 import { cpus } from 'node:os';
-import { Worker, isMainThread, workerData } from 'node:worker_threads';
-import { fileURLToPath } from "node:url";
-import { dirname } from "node:path";
+import { Worker } from 'node:worker_threads';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
 
 class WorkerWrapperModel extends Worker {
   constructor(filename, options) {
