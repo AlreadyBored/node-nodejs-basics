@@ -37,6 +37,11 @@ const copy = async () =>
 
                 // Read all in-path and copy.
                 fs.readdir(inPath, (err, files) => {
+                    if (err) {
+                        // Smth scary happened.
+                        throw new Error(fileErrorMessage);
+                    } 
+                    
                     files.forEach(file => {
                         fs.copyFile(path.join(inPath, file), path.join(outPath, file), (err) => {
                             if (err) {
