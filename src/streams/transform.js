@@ -10,7 +10,7 @@ const transform = async () => {
             }
         })
         process.stdin.pipe(reverseStream).pipe(process.stdout)
-        process.stdin.on('error', (err) => {
+        process.stdin.on('end', () => {
             resolve()
         })
         process.stdout.on('error', (err) => {
