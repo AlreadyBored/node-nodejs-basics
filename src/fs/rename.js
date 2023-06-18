@@ -30,7 +30,12 @@ const rename = async () => {
 
             // Let's rename it.
 
-            fs.rename(renameFilePath, newNameFilePath, () => {
+            fs.rename(renameFilePath, newNameFilePath, (err) => {
+                if (err) {
+                    // Smth scary happened.
+                    throw new Error(fileErrorMessage);
+                } 
+                
                 // File renamed.
             });            
       });
