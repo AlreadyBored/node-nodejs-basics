@@ -1,17 +1,26 @@
 import * as fs from 'fs';
+import * as path from 'path';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const path = './files/fresh.txt';
+const filePath = 'files/fresh.txt';
 const content = 'I am fresh and young';
 const fileErrorMessage = 'FS operation failed';
 
 const create = async () => {
 
-    fs.access(path, fs.F_OK, (err) => {
+    const __dirname = dirname(fileURLToPath(import.meta.url));
+    const fullPath = path.join(__dirname, filePath);
+
+    // check out-file presence
+    fs.access(fullPath, fs.F_OK, (err) => {
         if (!err) {
+            // file is found, it's an error.
             throw new Error(fileErrorMessage);
         }
       
-        fs.writeFile(path, content, function (err) {
+        // Write the content.
+        fs.writeFile(fullPath, content, function (err) {
             if (err) {
                 throw new Error(fileErrorMessage);
             }
