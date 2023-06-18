@@ -17,14 +17,14 @@ const copy = async () =>
     // Check in-path presence.
     fs.access(inPath, err => {
         if (err) {
-            throw new Error(fileErrorMessage + ":'" + inPath + "' does not exists");
+            throw new Error(fileErrorMessage);
         }
 
         // in-path found.
         // Check out-path ansence.
         fs.access(outPath, err => {
             if (!err) {
-                throw new Error(fileErrorMessage + ":'" + outPath + "' exists");
+                throw new Error(fileErrorMessage);
             }
             // Out-path not found.
     
