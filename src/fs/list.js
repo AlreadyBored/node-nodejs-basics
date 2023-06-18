@@ -3,9 +3,13 @@
  */
 import * as fs from 'fs/promises';
 import {FsError} from './fs-error.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const list = async () => {
-    const path = 'src/fs/files2'
+    const path = `${__dirname}/files`;
     try {
         const files = await fs.readdir(path);
         for (const file of files) {

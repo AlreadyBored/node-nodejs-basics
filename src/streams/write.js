@@ -1,9 +1,14 @@
-import { open } from 'fs/promises';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const write = async () => {
-    const fd = await open('src/streams/files/fileToWrite.txt', 'w');
+    const path = `${__dirname}/files/fileToWrite.txt`
+    const fd = await open(path, 'w');
+    const writeStream = fd.createWriteStream({ encoding: 'utf-8' });
 
-    const writeStream = fd.createWriteStream({encoding: 'utf-8'});
     process.stdin.on('data', (data) => {
         writeStream.write(data);
     });

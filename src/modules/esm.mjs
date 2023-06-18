@@ -9,7 +9,6 @@ const __dirname = dirname(__filename);
 const random = Math.random();
 
 const importPath = random > 0.5 ? './files/a.json' : './files/b.json';
-
 const jsonModule = await import(importPath, {assert: {type: 'json'}});
 const unknownObject = jsonModule.default;
 

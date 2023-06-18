@@ -1,36 +1,31 @@
-/**
- * copy.js - implement function that copies folder files files with all its content into folder files_copy at the same level (if files folder doesn't exists
- * or files_copy has already been created Error with message FS operation failed must be thrown)
- */
-
-/**
- * create.js - implement function that creates new file fresh.txt with content I am fresh and young inside of the files folder (if file already exists Error with message FS operation failed must be thrown)
- * copy.js - implement function that copies folder files files with all its content into folder files_copy at the same level (if files folder doesn't exists or files_copy has already been created Error with message FS operation failed must be thrown)
- *
- * read.js - implement function that prints content of the fileToRead.txt into console (if there's no file fileToRead.txt Error with message FS operation failed must be thrown)
- */
-
 import * as fs from 'fs/promises';
 import { exist } from './exist.js';
 import { FsError } from './fs-error.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const copy = async () => {
-    const sourcePath = 'src/fs/files';
-    const destPath = 'src/fs/files_copy';
+    const sourcePath = `${__dirname}/files`;
+    const destPath = `${__dirname}/files_copy`;
 
-    const sourceExist = await exist(sourcePath)
-    const destExist = await exist(destPath)
+    const sourceExist = await exist(sourcePath);
 
-    if(!sourceExist || destExist) {
+    if(!sourceExist) {
         throw new FsError()
     }
 
-    await fs.mkdir(destPath);
+    try {
+        await fs.mkdir(destPath);
+        const files = await fs.readdir(sourcePath);
+        await Promise.all(files.map((file) => {
+            fs.copyFile(`${sourcePath}/${file}`, `${destPath}/${file}`, fs.constants.COPYFILE_EXCL)
+        }))
+    } catch (er) {
+        throw new FsError();
+    }
 
-    const files = await fs.readdir(sourcePath);
-    files.forEach((file) => {
-        fs.copyFile(`${sourcePath}/${file}`, `${destPath}/${file}`, fs.constants.COPYFILE_EXCL);
-    });
 };
 
 await copy();

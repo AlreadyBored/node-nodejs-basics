@@ -1,10 +1,12 @@
-/** delete.js - implement function that deletes file fileToRemove.txt (if there's no file fileToRemove.txt Error with message
- FS operation failed must be thrown)*/
 import * as fs from 'fs/promises';
 import { FsError } from './fs-error.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const remove = async () => {
-    const path = 'src/fs/files/fileToRemove.txt';
+    const path = `${__dirname}/files/fileToRemove.txt`;
     try {
         await fs.rm(path)
     } catch (e) {

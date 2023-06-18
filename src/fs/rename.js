@@ -5,10 +5,15 @@
 import * as fs from 'fs/promises';
 import { exist } from './exist.js';
 import { FsError } from './fs-error.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 
 const rename = async () => {
-    const oldPath = 'src/fs/files/wrongFilename.txt';
-    const newPath = 'src/fs/files/properFilename.md';
+    const oldPath = `${__dirname}/files/wrongFilename.txt`;
+    const newPath = `${__dirname}/files/properFilename.md`;
 
     const oldPathExists = await exist(oldPath);
     if (!oldPathExists) {
