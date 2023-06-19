@@ -4,10 +4,10 @@ import { dirname } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-// ['-lh', '/usr']
+
 const spawnChildProcess = async (args) => {
-    const path = `${__dirname}/script.js`;
-    const allArgs = [path, ...args];
+    const path = `${__dirname}/files/script.js`;
+    const allArgs = [path, ...args.split(' ')];
 
     const childProcess = spawn('node', allArgs);
 
@@ -16,8 +16,8 @@ const spawnChildProcess = async (args) => {
     });
 
     childProcess.stdout.on('data', (value) => {
-        process.stdout.read(value);
+        console.log(value.toString());
     });
 };
 
-await spawnChildProcess( []);
+await spawnChildProcess('--version');

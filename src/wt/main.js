@@ -11,23 +11,32 @@ const performCalculations = async () => {
     let data = 10;
     const res = [];
 
+    const printResult = () => {
+        if(res.length === cpN) {
+            const sorted = res.sort((a, b) => {
+                if (a.i > b.i) {
+                    return 1
+                }
+
+                return -1;
+            });
+            console.log(sorted.map(({ status, data }) => ({status, data})));
+        }
+    }
+
     for (let i = 0; i < cpN; i++) {
         const worker = new Worker(`${__dirname}/worker.js`, {
             workerData: data
         });
-
+        
         worker.on('message', (data) => {
-            res.push({ status: 'resolved', data })
-            if(res.length === cpN) {
-                console.log(res);
-            }
+            res.push({ status: 'resolved', data, i });
+            printResult();
         });
 
         worker.on('error', () => {
-            res.push({ status: 'error', data: null });
-            if(res.length === cpN) {
-                console.log(res);
-            }
+            res.push({ status: 'error', data: null, i });
+            printResult();
         });
 
         data++;
