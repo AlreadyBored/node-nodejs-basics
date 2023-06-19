@@ -1,5 +1,24 @@
+const prefix = 'RSS_'
 const parseEnv = () => {
-    // Write your code here 
-};
+    const rssVars = Object.entries(process.env).reduce((acc, [key, value]) => {
 
-parseEnv();
+        if(key.startsWith(prefix)){
+
+            return acc ? acc + "; " + key + '=' + value :  key + '=' + value
+
+        } else {
+
+            return acc
+
+        }
+
+        // console.log(key)
+        
+
+    }, "" )
+
+    console.log(rssVars)
+
+}
+
+parseEnv()
