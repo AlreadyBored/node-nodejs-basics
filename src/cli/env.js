@@ -12,7 +12,6 @@ const parseEnv = () => {
 
         }
 
-
     }, "" )
 
     console.log(rssVars)
