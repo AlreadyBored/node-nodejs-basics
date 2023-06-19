@@ -1,6 +1,8 @@
 const spawnChildProcess = async (args) => {
-    // Write your code here
+    args=args.slice(2);
+    const child=require('./files/script.js');
+    
 };
 
 // Put your arguments in function call to test this functionality
-spawnChildProcess( /* [someArgument1, someArgument2, ...] */);
+spawnChildProcess(process.argv);

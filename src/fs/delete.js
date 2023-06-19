@@ -1,5 +1,16 @@
 const remove = async () => {
-    // Write your code here 
+    var fs=require('fs');
+    var file="src/fs/files/fileToRemove.txt";
+    if(fs.existsSync(file)){
+        await fs.unlink(file, function (err){
+            if(err){
+                throw err;
+            }
+        });
+    }
+    else{
+        throw new Error('FS operation failed');
+    }
 };
 
-await remove();
+remove();
