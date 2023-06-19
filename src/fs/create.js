@@ -6,6 +6,8 @@ const ERROR_DESC = 'FS operation failed';
 const TEXT = 'I am fresh and young';
 
 const create = async () => {
+
+
     const dir = dirname(fileURLToPath(import.meta.url));
     const filePath = join(dir, 'files/fresh.txt');
     try {
