@@ -28,7 +28,7 @@ const performCalculations = async () => {
         const worker = new Worker(`${__dirname}/worker.js`, {
             workerData: data
         });
-        
+
         worker.on('message', (data) => {
             res.push({ status: 'resolved', data, i });
             printResult();
