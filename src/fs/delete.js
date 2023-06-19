@@ -2,7 +2,7 @@ import { unlink } from 'node:fs/promises';
 import { getPath } from "./getPath.js";
 
 const remove = async () => {
-    const src = getPath(import.meta.url, "fileToRemove.txt");
+  const src = getPath(import.meta.url, "fileToRemove.txt");
 
   try {
    await unlink(src);
