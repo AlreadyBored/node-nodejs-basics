@@ -5,7 +5,7 @@ const calculateHash = async () => {
     const pathToFile = './files/fileToCalculateHashFor.txt'
     const algorithm = 'sha256'
 
-    fs.readFile(pathToFile, (err, data) => {
+    await fs.readFile(pathToFile, (err, data) => {
         if (err) throw err
 
         const hash = crypto.createHash(algorithm)
