@@ -9,6 +9,7 @@ const errorText = "FS operation failed"
 
 const deleteFile = path.join(files, 'fileToRemove.txt');
 
+
 const remove = async () => {
     // Write your code here
     try {
