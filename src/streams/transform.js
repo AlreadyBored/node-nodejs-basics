@@ -1,5 +1,20 @@
-const transform = async () => {
-    // Write your code here 
-};
+import { pipeline as streamPipeline } from 'stream/promises'
+import { Transform } from 'stream'
 
-await transform();
+function stringReverse(chunk){
+    return chunk.toString().split('').reverse().join('')
+}
+
+const transform = async () => {
+
+    const streamTransformingProcess = new Transform({
+        transform(chunk, encoding, callback){
+            callback(null, stringReverse(chunk))
+        }
+    })
+
+    await streamPipeline(process.stdin, streamTransformingProcess, process.stdout)
+
+}
+
+await transform()
