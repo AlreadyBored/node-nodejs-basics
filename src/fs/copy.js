@@ -35,8 +35,8 @@ const copy = async () => {
     if( !!(await exists(startFolderPath)) && !(await exists(newFolderPath))){
 
         const arrayPromiseAll = await Promise.all([readdir(startFolderPath), fsMkdir(newFolderPath)])
-        const promises = arrayPromiseAll[0].map( file => fsCopyFile(pathJoin(startFolderPath, file), pathJoin(newFolderPath, file)))
-        await Promise.all(promises)
+        const copyingPromise = arrayPromiseAll[0].map( file => fsCopyFile(pathJoin(startFolderPath, file), pathJoin(newFolderPath, file)))
+        await Promise.all(copyingPromise)
 
     }else{
 
