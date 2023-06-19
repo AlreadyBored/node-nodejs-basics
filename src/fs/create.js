@@ -5,7 +5,7 @@ import path, { dirname } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const filePath = path.join(__dirname, 'files/fresh.txt');
+const filePath = path.join(__dirname, 'files', 'fresh.txt');
 
 const create = async () => {
     fs.access(filePath, fs.F_OK, (err) => {
