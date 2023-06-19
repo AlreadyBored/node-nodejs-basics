@@ -1,5 +1,44 @@
-const rename = async () => {
-    // Write your code here 
-};
+import { rename as fsRename, stat as fsStat } from 'fs/promises'
+import { join as pathJoin, dirname as pathDirname } from 'path'
+import { fileURLToPath } from 'node:url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = pathDirname(__filename);
 
-await rename();
+const currentFileName = 'wrongFilename.txt'
+const newFileName = 'properFilename.md'
+const errorMessage = 'FS operation failed'
+const currentFilePath = pathJoin(__dirname, currentFileName)
+const newFilePath = pathJoin(__dirname, newFileName)
+
+
+async function exists(path){
+
+    try{
+
+        await fsStat(path)
+        return true
+
+    }catch{
+
+        return false
+
+    }
+
+}
+
+
+const rename = async () => {
+
+    if( !!(await exists(currentFilePath)) && !(await exists(newFilePath)) ){
+
+        await fsRename(currentFilePath, newFilePath)
+
+    }else{
+
+      throw new Error(errorMessage)
+
+    }
+
+}
+
+await rename()
