@@ -9,11 +9,11 @@ const ERROR_MESSAGE = 'FS operation failed';
 const TEXT = 'I am fresh and young';
 
 const create = async () => {
-    let pathToFile = join(__dirname, '/files/fresh.txt');
+    let pathToFile = join(__dirname, 'files', 'fresh.txt');
 
     try {
-        await writeFile(pathToFile, TEXT, {flag: 'wx'});
-    } catch(err){
+        await writeFile(pathToFile, TEXT, { flag: 'wx' });
+    } catch (err) {
         throw new Error(ERROR_MESSAGE);
     }
 };
