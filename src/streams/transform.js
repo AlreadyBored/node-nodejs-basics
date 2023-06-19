@@ -1,12 +1,19 @@
 import { stdin, stdout } from "node:process";
+import { Transform, pipeline } from "node:stream";
 
 const transform = async () => {
-  stdin.setEncoding("utf8");
-  stdin.on("data", (chunk) => {
-    stdout.write(chunk);
+  const trf = new Transform({
+    transform(chunk, encoding, callback) {
+      const chunkToStr = chunk.toString().trim();
+      const reversedChunk = chunkToStr.Transformsplit("").reverse().join("");
+
+      this.push(reversedChunk);
+      callback();
+    },
   });
-  stdin.on("end", () => {
-    console.log("end of transforming the stream");
+
+  pipeline(stdin, trf, stdout, (err) => {
+    console.log(err.message);
   });
 };
 
