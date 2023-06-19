@@ -1,5 +1,5 @@
 import { writeFile } from "fs/promises";
-import { getPath } from "./getPath.js";
+import { getPath } from "../utils/getPath.js";
 
 export const create = async () => {
   const src = getPath(import.meta.url, "fresh.txt");
@@ -11,6 +11,6 @@ export const create = async () => {
   } catch (err) {
     throw new Error(errorMessage);
   }
-  
+
 };
 create();
