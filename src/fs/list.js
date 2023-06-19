@@ -20,13 +20,9 @@ const list = async () => {
         }
 
         files.forEach(file => {
-
             console.log(file)
         })
-
-
     })
-
 };
 
 await list();

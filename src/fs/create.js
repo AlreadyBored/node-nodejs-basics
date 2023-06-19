@@ -9,7 +9,6 @@ const create = async () => {
         if (!err) {
             throw new Error(alreadyExistErr);
         }
-
     })
 
     await fs.writeFile(filePath, content, (err) => {

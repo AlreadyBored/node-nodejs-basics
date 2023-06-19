@@ -16,8 +16,6 @@ const calculateHash = async () => {
 
         console.log('hexHash', hexHash);
     })
-
-
 };
 
 await calculateHash();

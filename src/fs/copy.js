@@ -7,7 +7,6 @@ const copy = async () => {
     const doesNotExistErr = 'FS operation failed: The folder does not exist'
     const alreadyExistErr = 'FS operation failed: The folder already exists'
 
-
     const accessSoursFolder = fs.existsSync(sourceFolder)
 
     if (!accessSoursFolder) {
@@ -35,7 +34,6 @@ const copy = async () => {
             });
         });
     });
-
 }
 
 await copy();

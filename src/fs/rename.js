@@ -6,7 +6,6 @@ const rename = async () => {
     const doesNotExistErr = 'FS operation failed: The file does not exist'
     const alreadyExistErr = 'FS operation failed: The folder already exists'
 
-
     const checkOriginalFileName = fs.existsSync(originalFileName)
 
     if (!checkOriginalFileName) {
@@ -22,7 +21,6 @@ const rename = async () => {
     fs.rename(originalFileName, newFileName, (err => {
         if (err) throw err
     }))
-
 };
 
 await rename();
