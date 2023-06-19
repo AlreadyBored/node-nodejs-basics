@@ -1,44 +1,27 @@
-import { rename as fsRename, stat as fsStat } from 'fs/promises'
+import { unlink as fsDeleteFile } from 'fs/promises'
 import { join as pathJoin, dirname as pathDirname } from 'path'
-import { fileURLToPath } from 'node:url';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = pathDirname(__filename);
+import { fileURLToPath } from 'node:url'
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = pathDirname(__filename)
 
-const currentFileName = 'wrongFilename.txt'
-const newFileName = 'properFilename.md'
+const currentFileName = 'fileToRemove.txt'
+const folderName = 'files'
 const errorMessage = 'FS operation failed'
-const currentFilePath = pathJoin(__dirname, currentFileName)
-const newFilePath = pathJoin(__dirname, newFileName)
+const currentFilePath = pathJoin(__dirname, folderName, currentFileName)
 
 
-async function exists(path){
+const remove = async () => {
 
     try{
 
-        await fsStat(path)
-        return true
+        await fsDeleteFile(currentFilePath)
 
     }catch{
 
-        return false
+        throw new Error(errorMessage)
 
     }
 
 }
 
-
-const rename = async () => {
-
-    if( !!(await exists(currentFilePath)) && !(await exists(newFilePath)) ){
-
-        await fsRename(currentFilePath, newFilePath)
-
-    }else{
-
-      throw new Error(errorMessage)
-
-    }
-
-}
-
-await rename()
+await remove()
