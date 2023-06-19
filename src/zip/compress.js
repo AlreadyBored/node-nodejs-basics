@@ -1,6 +1,6 @@
 import { createGzip } from "zlib";
 import { pipeline } from "stream";
-import { createReadStream, createWriteStream } from "fs";
+import { createReadStream, createWriteStream, unlink } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 
@@ -25,6 +25,14 @@ const compress = async () => {
     });
 
     console.log("File compressed successfully!");
+
+    unlink(currFile, (error) => {
+      if (error) {
+        console.error("Error deleting the source file:", error.message);
+      } else {
+        console.log("Source file deleted successfully!");
+      }
+    });
   } catch (error) {
     console.error("Error:", error.message);
   }
