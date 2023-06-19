@@ -26,3 +26,4 @@ const spawnChildProcess = (args) => {
 const output = spawnChildProcess(['Argument1', 'Argument2']);
 stdout.write(output);
 stdin.resume();
+console.log("1")
