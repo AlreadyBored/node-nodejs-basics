@@ -1,5 +1,7 @@
+import {listFiles} from './functions/fsFunctions.js';
+
 const list = async () => {
-    // Write your code here 
+    return Promise.resolve(listFiles(import.meta.url, '/files'));
 };
 
 await list();

@@ -1,0 +1,1 @@
+export const CORE_NUMBER_DEFAULT = 4;
