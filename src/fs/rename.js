@@ -1,5 +1,5 @@
 import fsProm from 'fs/promises';
-import fs from 'fs';
+import {existsSync} from 'fs';
 import path, { dirname } from 'path';
 import url from 'url';
 
@@ -10,7 +10,7 @@ const rename = async () => {
     const oldPath = path.join(__dirname, 'files', 'wrongFilename.txt' );
     const newPath = path.join(__dirname, 'files', 'properFilename.md');
 
-    if (fs.existsSync(newPath) || !fs.existsSync(oldPath)) {
+    if (existsSync(newPath) || !existsSync(oldPath)) {
       throw new Error('FS operation failed');
     }
     await fsProm.rename(oldPath, newPath)

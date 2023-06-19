@@ -1,4 +1,4 @@
-import fsProm from 'fs/promises';
+import {rm} from 'fs/promises';
 import fs from 'fs';
 import path, { dirname } from 'path';
 import url from 'url';
@@ -10,7 +10,7 @@ const remove = async () => {
   const filePath = path.join(__dirname, 'files', 'fileToRemove.txt' )
   
   
-  await fsProm.rm(filePath).catch((error)=> {
+  await rm(filePath).catch((error)=> {
     if(error) { throw new Error('FS operation failed');}
   })
   

@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+import { cp } from 'fs/promises';
 import path, { dirname } from 'path';
 import url from 'url';
 
@@ -9,7 +9,7 @@ const copy = async () => {
     const src = path.join(__dirname, 'files');
     const dest = path.join(__dirname, 'files_copy');
 
-    fs.cp( src, dest, {
+    await cp( src, dest, {
         recursive: true,
         force: false,
         errorOnExist: true,
