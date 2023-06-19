@@ -1,5 +1,9 @@
 const parseEnv = () => {
-    // Write your code here 
+    for (const prop in process.env) {
+        if (prop.includes('RSS_')) {
+            console.log(`${prop}=${process.env[prop]}`)
+        }
+    }
 };
 
 parseEnv();
