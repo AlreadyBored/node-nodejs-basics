@@ -12,8 +12,6 @@ const parseEnv = () => {
 
         }
 
-        // console.log(key)
-        
 
     }, "" )
 
