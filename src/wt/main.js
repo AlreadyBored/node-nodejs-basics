@@ -8,22 +8,32 @@ const cores = os.cpus().length;
 
 const performCalculations = async () => {
   const results = await Promise.allSettled(
-    new Array(cores).map(
+    new Array(cores).fill().map(
       (_, i) =>
-        new Promise((resolve) => {
+        new Promise((resolve, rejected) => {
           const worker = new Worker(workerPath);
 
           worker.postMessage({ action: "request", data: 10 + i });
 
-          worker.on("message", (message) => {
-            resolve(message);
+          worker.on("message", ({ data }) => {
+            resolve(data);
+            worker.terminate();
+          });
+
+          worker.on("error", (error) => {
+            rejected(error);
             worker.terminate();
           });
         })
     )
   );
 
-  console.log(results);
+  const formattedResults = results.map(({ status, value }) => ({
+    status: status === "fulfilled" ? "resolved" : "error",
+    data: status === "fulfilled" ? value : null,
+  }));
+
+  console.log(formattedResults);
 };
 
 await performCalculations();
