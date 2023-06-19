@@ -1,10 +1,12 @@
 import fs from "fs";
 
 const read = async () => {
-    fs.readFile('./src/fs/files/fileToRead.txt', 'utf-8', (err, data) => {
-        if (err) throw Error('FS operation failed');
-        console.log(data)
-    })
+    fs.stat('./src/fs/files/fileToRead.txt', (err, stats) => {
+        if (stats) {
+          throw Error("FS operation failed");
+        }
+      });
+    fs.createReadStream('./src/fs/files/fileToRead.txt').setEncoding('utf8').pipe(process.stdout)
 };
 
 await read();

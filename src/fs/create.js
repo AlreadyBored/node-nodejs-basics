@@ -1,10 +1,15 @@
-import fs from "fs";
+import fs from "node:fs/promises";
 
 const create = async () => {
-    fs.access("./src/fs/files/fresh.tx", (err) => {
-        if (!err) throw Error("FS operation failed");
-        fs.writeFile("./src/fs/files/fresh.tx", "I am fresh and young", () => {});
-      });
+  try {
+    const stats = await fs.stat("./src/fs/files/fresh.txt") 
+    
+    if (stats) {
+      throw Error("File already exists");
+    } else {
+      await fs.writeFile("./src/fs/files/fresh.txt", "I am fresh");
+    }
+  } catch (_) {}
 };
 
 await create();

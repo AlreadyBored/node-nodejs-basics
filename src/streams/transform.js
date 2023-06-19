@@ -1,20 +1,16 @@
-import { Transform } from 'stream';
-import {EOL} from 'os'
+import { Transform } from "stream";
 
 const transform = async () => {
-    const reverse = new Transform({
-        transform(chunk, _encoding, callback) {
-            this.push(
-                chunk.toString()
-                .replace(EOL, '')
-                .split('')
-                .reverse()
-                .join('') + EOL);
-            callback();
-        }
-    });
+  const reverse = new Transform({
+    transform(chunk, _encoding, callback) {
+      this.push(
+        chunk.reverse().slice(1).toString() + '\n'
+      );
+      callback();
+    },
+  });
 
-    process.stdin.pipe(reverse).pipe(process.stdout);
+  process.stdin.pipe(reverse).pipe(process.stdout);
 };
 
 await transform();

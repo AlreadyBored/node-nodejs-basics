@@ -2,10 +2,8 @@ import fs from "fs";
 
 const copy = async () => {
   fs.stat("./src/fs/files", (err, stats) => {
-    if (err) {
+    if (stats) {
       throw Error("FS operation failed");
-    } else {
-      console.log(stats);
     }
   });
   fs.mkdir("./src/fs/files_copy", (err) => {
@@ -23,7 +21,7 @@ const copy = async () => {
             "./src/fs/files_copy/" + items[i],
             (err) => {
               if (err) console.log(err);
-              console.log("Файл успешно перемещён");
+              console.log("Файл успешно копирован");
             }
           );
         }
