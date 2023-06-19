@@ -16,8 +16,8 @@ const read = async () => {
     .then(() => {
       const readableStream = createReadStream(filePath);
       readableStream.on("data", (chunk) => {
-        // console.log(chunk.toString());
-        console.log(stdout.write(chunk));
+        const dataToWrite = chunk.toString();
+        console.log(stdout.write(dataToWrite));
       });
       readableStream.on("end", () => {
         console.log("end of reading the stream");
