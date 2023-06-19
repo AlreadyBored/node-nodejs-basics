@@ -4,6 +4,6 @@ https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/nodejs-
 2.Deploy: 
 https://github.com/slava1000uk/node-nodejs-basics
 
-2.Done: 19.06.2023
+3.Done: 19.06.2023
 
 4.Score: 206/206
