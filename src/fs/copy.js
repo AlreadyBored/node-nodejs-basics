@@ -8,22 +8,23 @@ const destination = path.join(__dirname, 'files_copy');
 
 const copy = async () => {
   try {
-    const isDestExist = await checkFileExist(destination);
-    if (isDestExist) {
-      throw new Error('Destination already exists');
+    const isSrcExits = await checkFileExists(source);
+    const isDestExists = await checkFileExists(destination);
+    if (!isSrcExits || isDestExists) {
+      throw new Error("Source doesn't exits or destination already exits");
     } else {
       fs.mkdir(destination);
-    }
-    const files = await readFolder(source);
-    for (const file of files) {
-      await fs.copyFile(`${source}/${file}`, `${destination}/${file}`);
+      const files = await readFolder(source);
+      for (const file of files) {
+        await fs.copyFile(`${source}/${file}`, `${destination}/${file}`);
+      }
     }
   } catch (err) {
     throw new Error('FS operation failed');
   }
 };
 
-const checkFileExist = async (filePath) => {
+const checkFileExists = async (filePath) => {
   try {
     await fs.access(filePath);
     return true;
