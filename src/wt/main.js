@@ -9,7 +9,7 @@ class WorkerWrapperModel extends Worker {
     this.resultPromise = new Promise(this.registerListeners.bind(this));
   }
 
-  registerListeners(res, rej) {
+  registerListeners(res) {
     let data = null;
     this.on('message', message => data = message );
     this.on('exit', exitCode => {
