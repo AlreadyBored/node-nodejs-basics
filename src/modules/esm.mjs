@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// import _ from "./files/c"; // ????
+import "./files/c.js";
 import a from "./files/a.json" assert { type: "json" };
 import b from "./files/b.json" assert { type: "json" };
 
