@@ -1,7 +1,12 @@
 import * as fs from "fs";
+import path from "path";
+import url from "url";
+
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 const create = async () => {
-    const filePath = './files/fresh.txt'
+    const filePath = path.join(__dirname, './files/fresh.txt');
+
     const content = 'I am fresh and young'
     const alreadyExistErr = 'FS operation failed: The file already exists'
 

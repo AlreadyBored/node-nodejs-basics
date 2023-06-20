@@ -1,8 +1,13 @@
 import * as fs from "fs";
+import path from "path";
+import url from "url";
+
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 const rename = async () => {
-    const originalFileName = './files/wrongFilename.txt'
-    const newFileName = './files/properFilename.md'
+    const originalFileName = path.join(__dirname, './files/wrongFilename.txt')
+    const newFileName = path.join(__dirname, './files/properFilename.md')
+
     const doesNotExistErr = 'FS operation failed: The file does not exist'
     const alreadyExistErr = 'FS operation failed: The folder already exists'
 

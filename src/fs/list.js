@@ -1,8 +1,12 @@
 import * as fs from "fs";
 import path from "path";
+import url from "url";
+
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 const list = async () => {
-    const sourceFolder = './files';
+    const sourceFolder = path.join(__dirname, './files');
+
     const doesNotExistErr = 'FS operation failed: The folder does not exist'
 
     const accessSoursFolder = fs.existsSync(sourceFolder)

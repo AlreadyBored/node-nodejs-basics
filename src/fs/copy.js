@@ -1,9 +1,13 @@
 import * as fs from "fs";
 import path from "path";
+import url from "url";
+
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 const copy = async () => {
-    const sourceFolder = './files';
-    const destinationFolder = './files_copy';
+    const sourceFolder = path.join(__dirname, './files');
+    const destinationFolder = path.join(__dirname, './files_copy');
+
     const doesNotExistErr = 'FS operation failed: The folder does not exist'
     const alreadyExistErr = 'FS operation failed: The folder already exists'
 
