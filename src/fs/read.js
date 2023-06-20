@@ -8,7 +8,7 @@ const __dirname = dirname(fileName);
 
 const filePath = join(__dirname, 'files', 'fileToRead.txt');
 
-const read = async (filePath) => {
+const read = async () => {
     try {
         const contents = await readFile(filePath);
         console.log(contents.toString());
@@ -17,4 +17,4 @@ const read = async (filePath) => {
     }
 };
 
-await read(filePath);
+await read();
