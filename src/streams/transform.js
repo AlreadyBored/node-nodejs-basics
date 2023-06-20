@@ -1,5 +1,12 @@
 const transform = async () => {
-    // Write your code here 
+    var fs=require('fs');
+    var writableStream=fs.createWriteStream("src/streams/files/fileToWrite.txt");
+    await process.stdin.on('data',(data)=>{
+        writableStream.write(data.reverse());
+    });
+    process.stdin.on('end',()=>{
+        writableStream.end();
+    });
 };
 
-await transform();
+transform();
