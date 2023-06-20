@@ -16,7 +16,7 @@ const renameFile = (fileOldPath, fileNewPath) => {
     });
 }
 
-const rename = async (fileOldPath, fileNewPath) => {
+const rename = async () => {
     try {
         await renameFile(fileOldPath, fileNewPath);
     } catch (err) {
@@ -24,4 +24,4 @@ const rename = async (fileOldPath, fileNewPath) => {
     }
 };
 
-await rename(fileOldPath, fileNewPath);
+await rename();
