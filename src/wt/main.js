@@ -8,7 +8,7 @@ const performCalculations = async () => {
         workerData,
       });
       worker.on("message", (data) => resolve({ status: "resolved", data }));
-      worker.on("error", (data) => resolve({ status: "resolved", data }));
+      worker.on("error", (data) => resolve({ status: "error", data }));
     });
 
   const culculateArr = [];
