@@ -9,7 +9,7 @@ const fileName = fileURLToPath(import.meta.url);
 const __dirname = dirname(fileName);
 
 const fileToCompress = join(__dirname, 'files', 'fileToCompress.txt');
-const compressedFile = join(__dirname, 'files', 'fileToCompress.txt.gz');
+const compressedFile = join(__dirname, 'files', 'archive.gz');
 
 const compress = async () => {
     pipeline(
