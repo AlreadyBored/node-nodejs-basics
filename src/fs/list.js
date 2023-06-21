@@ -11,7 +11,8 @@ const list = async () => {
     try {
         const files = await readdir(srcFolder);
 
-        files.forEach(file => console.log(file));
+        console.log(files);
+        // files.forEach(file => console.log(file));
     } catch (err) {
         console.error('FS operation failed');
     }
