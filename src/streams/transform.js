@@ -7,7 +7,7 @@ const transform = async () => {
     const reverseTransform = new Transform ({
              
         transform(chunk, encoding, callback) {
-            const reversedData = chunk.toString().split('').reverse().join('');
+            const reversedData = chunk.toString().split('').reverse().join('') + '\n';
             this.push(reversedData);
             callback();
         }
@@ -16,7 +16,7 @@ const transform = async () => {
     pipeline(
         process.stdin,
         reverseTransform,
-        process.stdout, 
+        process.stdout,
         (err) => console.error(err.message));
 
 };
