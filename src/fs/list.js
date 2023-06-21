@@ -1,5 +1,11 @@
+import fs from "fs";
+
 const list = async () => {
-    // Write your code here 
+  fs.readdir("./src/fs/files", (err, items) => {
+      if (err) throw Error('FS operation failed');
+
+      console.log(items);
+    });
 };
 
 await list();
