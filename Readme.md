@@ -7,6 +7,5 @@ https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/nodejs-
 
 4.Score: 206/206
 
-5. Я доделаю задания, если вы не против, 
-проверьте пожалуйста с 21.06.2023
+5. Большое спасибо, что подождали. Все готово, проверьте пожалуйста.
 
