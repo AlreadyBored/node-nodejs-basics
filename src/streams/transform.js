@@ -1,4 +1,4 @@
-import { pipeline, Transform } from "stream";
+import { Transform } from "stream";
 
 const terminalIn = process.stdin;
 const terminalOut = process.stdout;
