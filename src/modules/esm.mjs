@@ -10,14 +10,18 @@ import { createServer as createServerHttp } from 'http';
 import a from './files/a.json' assert { type: 'json' };
 import b from './files/b.json' assert { type: 'json' };
 import './files/c.js';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 
 const random = Math.random();
 
 let unknownObject;
 
 if (random > 0.5) {
+	// unknownObject = require('./files/a.json'); // or
 	unknownObject = a;
 } else {
+	// unknownObject = require('./files/b.json'); // or
 	unknownObject = b;
 }
 
