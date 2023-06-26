@@ -6,29 +6,42 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const parseEnv = async () => {
-	try {
-		const envVariables = { name1: 'value1', name2: 'value2' }; // define environment variables
+	// simple variant
+	const chosenEnvVars = Object.keys(process.env).filter((envVars) =>
+		envVars.startsWith('RSS_')
+	);
 
-		const envFile = join(__dirname, '..', 'cli', 'env.js'); // path to the environment file
+	const envVariables = chosenEnvVars
+		.map((envVar) => `${envVar} = ${process.env[envVar]}`)
+		.join('; ');
 
-		const fileContent = await fs.readFile(envFile, 'utf-8'); // read the content of the file
-		const envLines = fileContent.split('\n'); // get content as array with elements key/value on its own line
+	console.log(envVariables);
+	// to check from src-directory enter npm run cli:env
 
-		// Extract environment variables with the prefix 'RSS_'
-		for (const line of envLines) {
-			if (line.startsWith('RSS_')) {
-				const [name, value] = line.split('='); // arr element key/value separated by '='
-				envVariables[name] = value; // set the obj.key due to obj.value
-			}
-		}
+	// // more complicated variant with two hardcoded envVariables
+	// try {
+	// 	const envVariables = { name1: 'value1', name2: 'value2' }; // hardcode two environment variables
 
-		// Print the environment variables in the specified format
-		for (const [name, value] of Object.entries(envVariables)) {
-			console.log(`RSS_${name}=${value}`);
-		}
-	} catch (error) {
-		console.error('FS operation failed');
-	}
+	// 	const envFile = join(__dirname, '..', 'cli', 'env.js'); // path to the environment file
+
+	// 	const fileContent = await fs.readFile(envFile, 'utf-8'); // read the content of the file
+	// 	const envLines = fileContent.split('\n'); // get content as array with elements key/value on its own line
+
+	// 	// Extract environment variables with the prefix 'RSS_'
+	// 	for (const line of envLines) {
+	// 		if (line.startsWith('RSS_')) {
+	// 			const [name, value] = line.split('='); // arr element key/value separated by '='
+	// 			envVariables[name] = value; // assign an obj.value to the appropriate obj.key
+	// 		}
+	// 	}
+
+	// 	// Print the environment variables in the specified format
+	// 	for (const [name, value] of Object.entries(envVariables)) {
+	// 		console.log(`RSS_${name}=${value}`);
+	// 	}
+	// } catch (error) {
+	// 	console.error('FS operation failed');
+	// }
 };
 
 await parseEnv();
