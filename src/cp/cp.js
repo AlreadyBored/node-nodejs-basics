@@ -18,6 +18,10 @@ const spawnChildProcess = async (args) => {
     childProcess.stdout.on('data', (value) => {
         console.log(value.toString());
     });
+
+    childProcess.on('exit', () => {
+        process.exit(0);
+    })
 };
 
 await spawnChildProcess('--version');

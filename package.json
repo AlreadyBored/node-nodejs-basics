@@ -4,7 +4,8 @@
   "description": "This repository is the part of nodejs-assignments https://github.com/AlreadyBored/nodejs-assignments",
   "type": "module",
   "scripts": {
-    "cli:args": "node src/cli/args.js --some-arg value1 --other 1337 --arg2 42",
+    "start": "node src/file_manager/main.js",
+    "cli:args": "node src/cli/args.js --some-arg=value1 --other=1337 --arg2=42",
     "cli:env": "npx cross-env SOME=any RSS_foo=bar RSS_bar=baz node src/cli/env.js",
     "cp": "node src/cp/cp.js",
     "fs:copy": "node src/fs/copy.js",

@@ -5,7 +5,11 @@ console.log(`Arguments: ${JSON.stringify(args)}`);
 
 const echoInput = (chunk) => {
     const chunkStringified = chunk.toString();
-    if (chunkStringified.includes('CLOSE')) process.exit(0);
+    console.log(chunkStringified)
+    if (chunkStringified.includes('CLOSE')) {
+        console.log('EXIT')
+        process.exit(0);
+    }
     process.stdout.write(`Received from master process: ${chunk.toString()}\n`)
 };
 
