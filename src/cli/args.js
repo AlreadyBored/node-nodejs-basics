@@ -5,25 +5,41 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+const PREFIX = '--';
+
 const parseArgs = async () => {
-	// variant via loop while
-	const args = process.argv.slice(2); // get 'pure' command line arguments in array, excluding 'node'(as first arg) and the path to the JavaScript 'args.js' (as second arg)
-	const parsedArgs = {}; // initially set of arguments. Then obtaine them from the 'process.argv' array
+	const argsParts = process.argv.reduce((acc, value, index, array) => {
+		if (value.startsWith(PREFIX)) {
+			const formatedProps = `${value.replace(PREFIX, '')} is ${
+				array[index + 1]
+			}`;
+			return [...acc, formatedProps];
+		}
+		return acc;
+	}, []);
 
-	while (args.length > 0) {
-		const propName = args.shift().slice(2);
-		const propValue = args.shift();
+	const stringifiedArgs = argsParts.join(', ');
 
-		parsedArgs[propName] = propValue;
-	}
+	console.log('The arguments are:\n', stringifiedArgs);
 
-	// convert parsed arguments in the specified format
-	const formatedArgs = Object.entries(parsedArgs)
-		.map(([key, value]) => `${key} is ${value}`)
-		.join('; ');
+	// // variant via loop while
+	// const args = process.argv.slice(2); // get 'pure' command line arguments in array, excluding 'node'(as first arg) and the path to the JavaScript 'args.js' (as second arg)
+	// const parsedArgs = {}; // initially set of arguments. Then obtaine them from the 'process.argv' array
 
-	// print parsed arguments in the specified format
-	console.log('Parsed arguments:  \n', formatedArgs);
+	// while (args.length > 0) {
+	// 	const propName = args.shift().slice(2);
+	// 	const propValue = args.shift();
+
+	// 	parsedArgs[propName] = propValue;
+	// }
+
+	// // convert parsed arguments in the specified format
+	// const formatedArgs = Object.entries(parsedArgs)
+	// 	.map(([key, value]) => `${key} is ${value}`)
+	// 	.join('; ');
+
+	// // print parsed arguments in the specified format
+	// console.log('Parsed arguments:  \n', formatedArgs);
 	// to check from src-directory enter npm run cli:args
 
 	// // more complicated variant
