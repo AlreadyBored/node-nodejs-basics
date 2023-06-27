@@ -5,27 +5,26 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const filePath = join(__dirname, 'files', 'fileToWrite.txt'); // define the file path where data will be written
+const filePath = join(__dirname, 'files', 'fileToWrite.txt');
+const writeStream = createWriteStream(filePath); // writable stream to the file
 
 const write = async () => {
-	const writeStream = createWriteStream(filePath); // create a writable stream to the file
+	process.stdin.pipe(writeStream);
 
-	const inputText = process.argv[2]; // get the input text from command line argument
-
-	writeStream.write(inputText); // write the input text to the file
-
-	writeStream.end(); // mark the end of writing
-
-	return new Promise((resolve, reject) => {
-		writeStream.on('finish', () => {
-			console.log('Writing complete.'); // when writing is complete, log a message
-			resolve();
-		});
-
-		writeStream.on('error', (error) => {
-			reject(error); // if an error occurs during writing, reject the promise with the error
-		});
-	});
+	// more complicated variant
+	// const writeStream = createWriteStream(filePath); // create a writable stream to the file
+	// const inputText = process.argv[2]; // get the input text from command line argument
+	// writeStream.write(inputText); // write the input text to the file
+	// writeStream.end(); // mark the end of writing
+	// return new Promise((resolve, reject) => {
+	// 	writeStream.on('finish', () => {
+	// 		console.log('Writing complete.'); // when writing is complete, log a message
+	// 		resolve();
+	// 	});
+	// 	writeStream.on('error', (error) => {
+	// 		reject(error); // if an error occurs during writing, reject the promise with the error
+	// 	});
+	// });
 };
 
 // to check the code I used comman: node --experimental-modules write.js 'Learn the Node is interesting and the same time complicated process'
