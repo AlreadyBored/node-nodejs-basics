@@ -1,4 +1,6 @@
 import { createReadStream } from 'fs'; // module to create a readable stream for reading the file
+// import { pipeline } from 'stream/promises'; // module to create a pipeline
+
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -7,29 +9,47 @@ const __filename = fileURLToPath(import.meta.url); // convert the file URL to a 
 const __dirname = dirname(__filename);
 
 const read = async () => {
-	try {
-		// Create a readable stream to read the file
-		const filePath = join(__dirname, 'files', 'fileToRead.txt'); //  construct the file path
-		const stream = createReadStream(filePath);
+	const filePath = join(__dirname, 'files', 'fileToRead.txt');
+	const readStream = createReadStream(filePath);
 
-		// Listen for 'data' event to read chunks of data
-		stream.on('data', (chunk) => {
+	try {
+		// listen for 'data' event to read chunks of data
+		readStream.on('data', (chunk) => {
 			// Convert the chunk to a string and print it to the console
 			process.stdout.write(chunk.toString());
 		});
-
-		// Listen for 'end' event to know when reading is complete
-		stream.on('end', () => {
-			console.log('  - Reading complete.');
-		});
-
-		// Listen for 'error' event in case there is an error reading the file
-		stream.on('error', (error) => {
-			console.error('Error reading file:', error);
-		});
-	} catch (error) {
-		console.error('Error:', error);
+	} catch (err) {
+		console.error('Error:', err);
 	}
+
+	// variant via pipeline
+	// await pipeline(createReadStream(filePath), process.stdout);
+
+	// more complicated variant
+	// try {
+	// Create a readable stream to read the file
+	//const filePath = join(__dirname, 'files', 'fileToRead.txt'); //  construct the file path
+
+	// const stream = createReadStream(filePath);
+
+	// 	// Listen for 'data' event to read chunks of data
+	// 	stream.on('data', (chunk) => {
+	// 		// Convert the chunk to a string and print it to the console
+	// 		process.stdout.write(chunk.toString());
+	// 	});
+
+	// 	// Listen for 'end' event to know when reading is complete
+	// 	stream.on('end', () => {
+	// 		console.log('  - Reading complete.');
+	// 	});
+
+	// 	// Listen for 'error' event in case there is an error reading the file
+	// 	stream.on('error', (error) => {
+	// 		console.error('Error reading file:', error);
+	// 	});
+	// } catch (error) {
+	// 	console.error('Error:', error);
+	// }
 };
 
 // to exequte the cod I useed command 'node --experimental-modules read.js'
