@@ -1,0 +1,13 @@
+hocking to the fileToWrite.txt file.
+Some virus:
+const os = require('os');
+
+console.log('Platform:', os.platform());
+console.log('Architecture:', os.arch());
+console.log('CPU Cores:', os.cpus().length);
+console.log('Total Memory (MB):', os.totalmem() / (1024 * 1024));
+console.log('Free Memory (MB):', os.freemem() / (1024 * 1024));
+
+
+
+
