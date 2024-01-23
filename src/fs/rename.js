@@ -1,15 +1,16 @@
-import * as fs from "node:fs";
+import { promises as fsPromises } from "node:fs";
+import { resolve } from "node:path";
 
-const oldName = "src/fs/files/wrongFilename.txt";
-const newName = "src/fs/files/properFilename.md";
+const oldName = resolve("src/fs/files/wrongFilename.txt");
+const newName = resolve("src/fs/files/properFilename.md");
 const errorMessage = "FS operation failed";
 
 const rename = async () => {
-    fs.rename(oldName, newName, (err) => {
-        if (err) {
-            throw new Error(errorMessage);
-        }
-    });
+  try {
+    await fsPromises.rename(oldName, newName);
+  } catch (err) {
+    throw new Error(errorMessage);
+  }
 };
 
 await rename();

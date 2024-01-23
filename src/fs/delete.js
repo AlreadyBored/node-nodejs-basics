@@ -1,14 +1,15 @@
-import * as fs from "node:fs";
+import { promises as fsPromises } from "node:fs";
+import { resolve } from "node:path";
 
-const filePath = "src/fs/files/fileToRemove.txt";
+const filePath = resolve("src/fs/files/fileToRemove.txt");
 const errorMessage = "FS operation failed";
 
 const remove = async () => {
-    fs.unlink(filePath, (err) => {
-        if (err) {
-            throw new Error(errorMessage);
-        }
-    });
+  try {
+    fsPromises.unlink(filePath);
+  } catch (err) {
+    throw new Error(errorMessage);
+  }
 };
 
 await remove();

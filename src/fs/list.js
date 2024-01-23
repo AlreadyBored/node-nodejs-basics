@@ -1,15 +1,16 @@
-import * as fs from "node:fs";
+import { promises as fsPromises } from "node:fs";
+import { resolve } from "node:path";
 
-const filePath = "src/fs/files";
+const filePath = resolve("src/fs/files");
 const errorMessage = "FS operation failed";
 
 const list = async () => {
-    fs.readdir(filePath, (err, files) => {
-        if (err) {
-            throw new Error(errorMessage);
-        }
-        console.log(files);
-    });
+  try {
+    const files = await fsPromises.readdir(filePath);
+    for (const file of files) console.log(file);
+  } catch (err) {
+    throw new Error(errorMessage);
+  }
 };
 
 await list();
