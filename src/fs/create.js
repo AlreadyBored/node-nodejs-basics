@@ -2,6 +2,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 
 const create = async () => {
+
   const filePath = path.join('files', 'fresh.txt');
 
   try {
@@ -17,5 +18,5 @@ const create = async () => {
     }
   }
 };
-
+ 
 await create();
