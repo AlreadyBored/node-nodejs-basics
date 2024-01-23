@@ -9,7 +9,7 @@ const pathToFile = join(__dirname, 'files');
 const pathToCopy = join(__dirname, 'files_copy');
 
 const copy = async () => {
-  if (!existsSync(pathToFile)) {
+  if (!existsSync(pathToFile)) {git 
     throw new Error('Source folder `files` does not exist');
   }
 
