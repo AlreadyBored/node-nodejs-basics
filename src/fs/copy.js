@@ -16,6 +16,8 @@ const copy = async () => {
   fs.cp(pathCopyFrom, pathCopyTo, { recursive: true }, (err) => {
     if (err) {
       console.error(err);
+    } else {
+      console.log("\nFile was Copied\n");
     }
   });
 };

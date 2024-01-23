@@ -1,4 +1,3 @@
-// const fs = require('node:fs/promises');
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "url";
@@ -18,7 +17,7 @@ const create = async () => {
     if (err) {
       console.error(err);
     } else {
-      console.log("file was created");
+      console.log("\nFile was Created\n");
     }
   });
 };
