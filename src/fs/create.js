@@ -4,13 +4,12 @@ import { writeFile } from 'node:fs/promises';
 
 const create = async () => {
   const __dirname = dirname(fileURLToPath(import.meta.url));
-  
+
   try {
     const fileName = 'fresh.txt';
     const data = 'I am fresh and young';
-    const newFile = writeFile(join(__dirname, 'files', fileName), data, { flag: 'wx' });
-
-    await newFile;
+    
+    await writeFile(join(__dirname, 'files', fileName), data, { flag: 'wx' });
   } catch (e) {
     throw new Error ('FS operation failed');
   }
