@@ -11,7 +11,7 @@ const create = async () => {
     // Check if the file already exists
     try {
         await fsPromises.stat(filePath);
-        throw new Error('File already exists');
+        throw new Error('FS operation failed');
     } catch (error) {
         // If the file doesn't exist, create it with the specified content
         const fileContent = 'I am fresh and young\n';
