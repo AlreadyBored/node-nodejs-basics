@@ -16,14 +16,14 @@ const rename = async () => {
 
     // Check if the source file exists
     try {
-        await fsPromises.access(oldPath, constants.R_OK);
+        await fsPromises.access(oldPath, constants.F_OK);
     } catch (error) {
         throw new Error('FS operation failed');
     }
 
     // Check if the destination file already exists
     try {
-        await fsPromises.access(newPath, constants.R_OK);
+        await fsPromises.access(newPath, constants.F_OK);
         throw new Error('FS operation failed');
     } catch (error) {
         if (error.code === 'ENOENT') {
