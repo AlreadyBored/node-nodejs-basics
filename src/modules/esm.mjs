@@ -8,9 +8,11 @@ const __filename = import.meta.filename;
 
 const file = Math.random() > 0.5 ? "./files/a.json" : "./files/b.json";
 
-export const unknownObject = await import(file, {
-  assert: { type: "json" },
-});
+export const unknownObject = (
+  await import(file, {
+    assert: { type: "json" },
+  })
+).default;
 
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
