@@ -1,5 +1,10 @@
+import { createReadStream } from 'node:fs';
+import { stdout } from 'node:process';
+import { join } from 'node:path';
+const __dirname = import.meta.dirname;
+
 const read = async () => {
-    // Write your code here 
+	createReadStream(join(__dirname, './files/fileToRead.txt')).pipe(stdout);
 };
 
 await read();
