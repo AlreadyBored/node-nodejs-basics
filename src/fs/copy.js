@@ -13,13 +13,13 @@ const copy = async () => {
     try {
         await fsPromises.access(sourceFolderPath, constants.R_OK);
     } catch (error) {
-        throw new Error('Source folder does not exist');
+        throw new Error('FS operation failed');
     }
 
     // Check if the destination folder already exists
     try {
         await fsPromises.access(destinationFolderPath, constants.R_OK);
-        throw new Error('Destination folder already exists');
+        throw new Error('FS operation failed');
     } catch (error) {
         // If the destination folder doesn't exist
 
