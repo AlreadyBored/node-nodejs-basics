@@ -1,14 +1,16 @@
 import { createServer as createServerHttp } from "http";
 import { release, version } from "os";
 import path from "path";
-import a from "./files/a.json" assert { type: "json" };
-import b from "./files/b.json" assert { type: "json" };
 import "./files/c.js";
 
 const __dirname = import.meta.dirname;
 const __filename = import.meta.filename;
 
-export const unknownObject = Math.random() > 0.5 ? a : b;
+const file = Math.random() > 0.5 ? "./files/a.json" : "./files/b.json";
+
+export const unknownObject = await import(file, {
+  assert: { type: "json" },
+});
 
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
