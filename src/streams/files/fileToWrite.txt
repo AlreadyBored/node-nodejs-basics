@@ -1,0 +1,6 @@
+multiline
+text
+example
+from process.stdin
+do not forget to push Enter after last
+console.log('Write some text and terminate the process (Ctrl+C) — text will appear in file');
