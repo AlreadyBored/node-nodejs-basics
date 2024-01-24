@@ -6,11 +6,12 @@ const copy = async () => {
 
     const errMsg = ERROR_MESSAGES.OPERATION_FAILED;
     const existMsg = ERROR_MESSAGES.DESTINATION_EXIST;
+    const copyPath = 'src/fs/files_copy';
 
     let isNotExist = false;
 
     try {
-        await fs.access('src/fs/files_copy');
+        await fs.stat(copyPath);
         throw new Error(existMsg);
     } catch (err) {
         if (err.message === existMsg) {
@@ -22,7 +23,7 @@ const copy = async () => {
 
     if (isNotExist) {
         try {
-            await fs.cp('src/fs/files', 'src/fs/files_copy', {
+            await fs.cp('src/fs/files', copyPath, {
                 recursive: true,
             });
         } catch (err) {
