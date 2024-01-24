@@ -1,0 +1,7 @@
+My content
+should
+be
+printed
+into
+console
+!
