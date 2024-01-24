@@ -4,23 +4,23 @@ import { fileURLToPath } from 'url';
 
 const create = async () => {
     // Write your code here 
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = path.dirname(__filename);
-    const freshFile = path.join(__dirname, 'files', 'fresh.txt');
-    if (fs.existsSync(freshFile)) {
-      throw new Error('FS operation failed');
-    }
-
-    fs.writeFile(freshFile, 'I am fresh and young', (err) => {
-      if (err) {
-        throw new Error(err);
+    try {
+      const __filename = fileURLToPath(import.meta.url);
+      const __dirname = path.dirname(__filename);
+      const freshFile = path.join(__dirname, 'files', 'fresh.txt');
+      if (fs.existsSync(freshFile)) {
+        throw new Error('FS operation failed');
       }
-      console.log('file created');
-    });
+
+      fs.writeFile(freshFile, 'I am fresh and young', (err) => {
+        if (err) {
+          throw new Error(err);
+        }
+        console.log('file created');
+      });
+    } catch (error) {
+      console.error(error.message);
+    }
 };
 
-try {
-  await create();  
-} catch (error) {
-  console.error(error.message);
-}
+await create();  
