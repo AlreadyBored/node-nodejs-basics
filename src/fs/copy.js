@@ -22,6 +22,9 @@ const copy = async () => {
         throw new Error('Destination folder already exists');
     } catch (error) {
         // If the destination folder doesn't exist
+
+        /*'ENOENT': This is a specific error code that stands for "Error NO ENTry".
+        It indicates that a file or directory does not exist.*/
         if (error.code === 'ENOENT') {
             await fsPromises.mkdir(destinationFolderPath);
 
