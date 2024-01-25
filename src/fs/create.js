@@ -15,9 +15,10 @@ const create = async () => {
 
     try {
         await writeFile((currentDir + '/files' + '/fresh.txt'), fileContent);
-      } catch (err) {
+    } catch (err) {
         throw new Error(err)
-      }
+    }
+
 };
 
 await create();
