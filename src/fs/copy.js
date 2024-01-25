@@ -12,10 +12,12 @@ const copy = async () => {
     
     if (!existsSync((currentDir + '/files'))) {
         console.error('source folder doesnt exist');
+        return;
     }
 
     if (existsSync((currentDir + '/files_copy'))) {
         console.error('destination folder already exist');
+        return;
     }
 
     try {
@@ -27,7 +29,7 @@ const copy = async () => {
         });
 
     } catch (err) {
-        throw new Error(err)
+        throw new Error(err);
     }    
 
 };

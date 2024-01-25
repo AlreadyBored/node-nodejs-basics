@@ -11,6 +11,7 @@ const create = async () => {
 
     if (existsSync((currentDir + '/files' + '/fresh.txt'))) {
       console.error('file already exist');
+      return;
     }
 
     try {
