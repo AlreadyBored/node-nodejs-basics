@@ -1,5 +1,21 @@
+import { fileURLToPath } from 'node:url';
+import { createGzip } from 'node:zlib';
+import { createReadStream, createWriteStream } from 'node:fs';
+import { pipeline } from 'node:stream';
+import { promisify } from 'node:util';
+import path from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const compress = async () => {
-    // Write your code here 
+  const gzip = createGzip();
+  const pipe = promisify(pipeline);
+  const pathToFile = `${__dirname}/files/fileToCompress.txt`;
+  const readStream = createReadStream(pathToFile);
+  const writeStream = createWriteStream(`${__dirname}/files/archive.gz`);
+
+  await pipe(readStream, gzip, writeStream);
 };
 
 await compress();
