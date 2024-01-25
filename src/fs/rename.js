@@ -1,6 +1,6 @@
 import { dirname } from 'path';
-import { existsSync, fileURLToPath } from 'url';
-import { renameSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { existsSync, renameSync } from 'fs';
 
 const currentPath = fileURLToPath(import.meta.url);
 const currentDir = dirname(currentPath);
