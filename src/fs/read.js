@@ -1,5 +1,5 @@
 import path from 'path';
-import fs from 'fs';
+import fs from 'fs/promises';
 import { fileURLToPath } from 'url';
 
 const read = async () => {
@@ -9,11 +9,12 @@ const read = async () => {
       const __dirname = path.dirname(__filename);
       const readFile = path.join(__dirname, 'files', 'fileToRead.txt');
 
-      if (!fs.existsSync(readFile)) {
+      try {
+        const content = await fs.readFile(readFile, 'utf-8');
+        console.log(content);
+      } catch (error) {
         throw new Error('FS operation failed');
       }
-
-      console.log(fs.readFileSync(readFile, 'utf-8'));
     } catch (error) {
       console.error(error.message);
     }
