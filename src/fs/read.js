@@ -4,14 +4,18 @@ import { getURLPath } from "../lib.js";
 
 const read = async () => {
   const contentPath = getURLPath("./fs/files/fileToRead.txt");
+  const stream = fs.createReadStream(contentPath, "utf-8");
 
-  const stream = fs.createReadStream(contentPath);
-  stream.on("data", (chunk) => {
-    console.log(chunk.toString());
-  });
-  stream.on("error", (e) => {
+  let data = "";
+  try {
+    for await (const chunk of stream) {
+      data += chunk;
+    }
+    console.log(data);
+  } catch (e) {
     if (e.code === "ENOENT") console.error("FS operation failed");
-  });
+    else console.error(e.message);
+  }
 };
 
 await read();
