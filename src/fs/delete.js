@@ -1,6 +1,7 @@
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { rmSync, existsSync } from 'fs';
+import { existsSync } from 'fs';
+import { unlink } from 'fs/promises';
 
 const currentPath = fileURLToPath(import.meta.url);
 const currentDir = dirname(currentPath);
@@ -14,7 +15,7 @@ const remove = async () => {
     }
     
     try {
-        rmSync(removeFile);
+        await unlink(removeFile);
     } catch (err) {
         throw new Error(err)
     }
