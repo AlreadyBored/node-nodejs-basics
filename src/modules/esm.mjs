@@ -1,4 +1,3 @@
-// const path = require('path');
 import path from "path";
 import { fileURLToPath } from "url";
 
