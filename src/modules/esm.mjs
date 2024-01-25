@@ -1,17 +1,26 @@
 import path from 'path';
 import { release, version } from 'os';
 import { createServer as createServerHttp } from 'http';
-import './files/c';
+import './files/c.js';
 import { fileURLToPath } from 'url';
+import { readFile } from 'fs/promises';
 
 const random = Math.random();
 
 let unknownObject;
 
 if (random > 0.5) {
-    unknownObject = await import('./files/a.json');
+    unknownObject = JSON.parse(
+        (await readFile(
+            new URL('./files/a.json', import.meta.url)
+        )).toString()
+    );
 } else {
-    unknownObject = await import('./files/b.json');
+    unknownObject = JSON.parse(
+        (await readFile(
+            new URL('./files/b.json', import.meta.url)
+        )).toString()
+    );
 }
 
 console.log(`Release ${release()}`);
