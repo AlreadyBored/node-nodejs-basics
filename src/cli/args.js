@@ -1,9 +1,10 @@
 import { argv } from 'process';
 
 const parseArgs = () => {
-    argv.forEach((name, i) => {
+    argv.forEach((val, i) => {
         if (i % 2 === 0) {
-            console.log(`${name.slice(2)} is ${argv[i + 1]},`);
+            const res = val.slice(2) + ' is ' + argv[i + 1] + '; ';
+            console.log(res);
         }
       });
 };

@@ -9,7 +9,6 @@ const read = async () => {
         const res = await readFile(
             fileToRead,
             {
-                flag: 'r',
                 encoding: 'utf-8',
             }
         );
