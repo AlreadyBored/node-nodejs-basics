@@ -1,5 +1,5 @@
 import path from 'path';
-import fs from 'fs';
+import fs from 'fs/promises';
 import { fileURLToPath } from 'url';
 
 const list = async () => {
@@ -9,16 +9,17 @@ const list = async () => {
       const __dirname = path.dirname(__filename);
 
       const mainPath = path.join(__dirname, 'files');
-      if (!fs.existsSync(mainPath)) {
+
+      try {
+        const arrOfFiles = [];
+        const files = await fs.readdir(mainPath);
+        files.forEach((file) => {
+          arrOfFiles.push(file);
+        });
+        console.log(arrOfFiles);
+      } catch (error) {
         throw new Error('FS operation failed');
       }
-
-      const arrOfFiles = [];
-      fs.readdirSync(mainPath).forEach((file) => {
-        arrOfFiles.push(file);
-      });
-    
-      console.log(arrOfFiles);
     } catch (error) {
       console.error(error.message);
     }
