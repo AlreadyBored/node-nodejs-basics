@@ -1,5 +1,5 @@
 import path from 'path';
-import fs from 'fs';
+import fs from 'fs/promises';
 import { fileURLToPath } from 'url';
 
 const rename = async () => {
@@ -10,12 +10,21 @@ const rename = async () => {
       const wrongFile = path.join(__dirname, 'files', 'wrongFilename.txt');
       const propFile = path.join(__dirname, 'files', 'properFilename.md');
 
-      if (!fs.existsSync(wrongFile) || fs.existsSync(propFile)) {
+      try {
+        let fileExist = false;
+        try {
+          await fs.access(propFile);
+          fileExist = true;
+        } catch (error) {
+          await fs.rename(wrongFile, propFile);
+          console.log('renamed');              
+        } finally {
+          if (fileExist)
+            throw new Error('FS operation failed');
+        }
+      } catch (error) {
         throw new Error('FS operation failed');
       }
-
-      fs.renameSync(wrongFile, propFile);
-      console.log('rename completed');
     } catch (error) {
       console.error(error.message);
     }
