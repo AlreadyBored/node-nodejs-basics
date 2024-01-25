@@ -1,10 +1,10 @@
 // Implement function that renames file wrongFilename.txt to properFilename with extension .md (if there's no file wrongFilename.txt or properFilename.md already exists Error with message FS operation failed must be thrown)
 import fsPromises from "node:fs/promises";
-import { getURLPath } from "./lib.js";
+import { getURLPath } from "../lib.js";
 
 const rename = async () => {
-  const wrongFilePath = getURLPath("./files/wrongFilename.txt");
-  const properFilePath = getURLPath("./files/properFilename.md");
+  const wrongFilePath = getURLPath("./fs/files/wrongFilename.txt");
+  const properFilePath = getURLPath("./fs/files/properFilename.md");
   let isExistWrongFile = false;
   let isExistProperFile = false;
 

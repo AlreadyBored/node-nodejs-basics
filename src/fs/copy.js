@@ -1,10 +1,10 @@
 // Implement function that copies folder files files with all its content into folder files_copy at the same level (if files folder doesn't exists or files_copy has already been created Error with message FS operation failed must be thrown)
 import fsPromises from "node:fs/promises";
-import { getURLPath } from "./lib.js";
+import { getURLPath } from "../lib.js";
 
 const copy = async () => {
-  const srcFolderPath = getURLPath("./files");
-  const destFolderPath = getURLPath("./files_copy");
+  const srcFolderPath = getURLPath("./fs/files");
+  const destFolderPath = getURLPath("./fs/files_copy");
 
   let isExistSourceFolder = false;
   let isExistDestinationFolder = false;
