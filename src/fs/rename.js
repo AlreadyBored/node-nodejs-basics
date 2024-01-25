@@ -21,7 +21,9 @@ const rename = async () => {
     const sourcePath = 'src/fs/files/wrongFilename.txt';
     const destinationPath = 'src/fs/files/properFilename.md';
 
-    if (await isPathExist(destinationPath)) {
+    const isDestinationPathExist = await isPathExist(destinationPath);
+
+    if (isDestinationPathExist) {
         throw new Error(errMsg);
     } else {
         try {
