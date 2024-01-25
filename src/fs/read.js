@@ -5,7 +5,7 @@ const read = async () => {
     // Write your code here
 
     const errMsg = ERROR_MESSAGES.OPERATION_FAILED;
-    const sourcePath = 'src/fs/files/fileToRead.txt';
+    const sourcePath = new URL('./files/fileToRead.txt', import.meta.url);
 
     try {
         const content = await fs.readFile(sourcePath);

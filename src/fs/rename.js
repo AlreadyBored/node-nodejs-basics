@@ -18,8 +18,8 @@ const rename = async () => {
     // Write your code here
 
     const errMsg = ERROR_MESSAGES.OPERATION_FAILED;
-    const sourcePath = 'src/fs/files/wrongFilename.txt';
-    const destinationPath = 'src/fs/files/properFilename.md';
+    const sourcePath = new URL('./files/wrongFilename.txt', import.meta.url);
+    const destinationPath = new URL('./files/properFilename.md', import.meta.url);
 
     const isDestinationPathExist = await isPathExist(destinationPath);
 

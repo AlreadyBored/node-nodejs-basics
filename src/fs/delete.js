@@ -5,9 +5,10 @@ const remove = async () => {
     // Write your code here
 
     const errMsg = ERROR_MESSAGES.OPERATION_FAILED;
+    const path = new URL('./files/fileToRemove.txt', import.meta.url);
 
     try {
-        await fs.unlink('src/fs/files/fileToRemove.txt');
+        await fs.unlink(path);
     } catch (err) {
         throw new Error(errMsg);
     }

@@ -5,7 +5,7 @@ const list = async () => {
     // Write your code here
 
     const errMsg = ERROR_MESSAGES.OPERATION_FAILED;
-    const sourcePath = 'src/fs/files';
+    const sourcePath = new URL('./files', import.meta.url);
 
     try {
         const files = await fs.readdir(sourcePath);
