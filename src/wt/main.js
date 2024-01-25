@@ -31,10 +31,10 @@ const performCalculations = async () => {
 		},
 	));
 
-	const result = (await Promise.allSettled(promises))
+	const results = (await Promise.allSettled(promises))
 		.map(({ value }) => value);
 
-	console.log(result);
+	console.log(results);
 };
 
 await performCalculations();
