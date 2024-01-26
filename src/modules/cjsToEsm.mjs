@@ -6,18 +6,6 @@ import { createRequire } from 'module';
 import { sep } from 'path';
 import './files/c.js';
 
-//const path = require('path');
-//const { release, version } = require('os');
-//const { createServer: createServerHttp } = require('http');
-//require('./files/c');
-
-/** ????
- * import { dirname, join}  from 'path';
- * import { fileURLToPath } from 'url';
- * 
- * const __dirname      = dirname(fileURLToPath(import.meta.url));
- */
-
 const require = createRequire(import.meta.url);
 
 const random = Math.random();
