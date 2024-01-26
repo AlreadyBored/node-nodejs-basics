@@ -3,22 +3,27 @@ import { release, version } from "os";
 import { createServer as createServerHttp } from "http";
 import './files/c.js';
 
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+
 const random = Math.random();
+const __filename = import.meta.url;
+const __dirname = path.dirname(import.meta.url);
 
 let unknownObject;
 
 if (random > 0.5) {
-    unknownObject = import('./files/a.json');
+    unknownObject = require('./files/a.json');
 } else {
-    unknownObject = import('./files/b.json');
+    unknownObject = require('./files/b.json');
 }
 
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
 console.log(`Path segment separator is "${path.sep}"`);
 
-console.log(`Path to current file is ${import.meta.url}`);
-console.log(`Path to current directory is ${path.dirname(import.meta.url)}`);
+console.log(`Path to current file is ${__filename}`);
+console.log(`Path to current directory is ${__dirname}`);
 
 const myServer = createServerHttp((_, res) => {
     res.end('Request accepted');
@@ -26,7 +31,7 @@ const myServer = createServerHttp((_, res) => {
 
 const PORT = 3000;
 
-console.log(unknownObject.default);
+console.log(unknownObject);
 
 myServer.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
