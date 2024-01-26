@@ -1,5 +1,12 @@
+import { writeFile } from 'fs/promises'
+import { throwError } from './error.js'
+
 const create = async () => {
-    // Write your code here 
+    try {
+        await writeFile('./files/fresh.txt', 'I am fresh and young', { flag: 'wx'})
+    } catch (error) {
+        throwError()
+    }
 };
 
 await create();
