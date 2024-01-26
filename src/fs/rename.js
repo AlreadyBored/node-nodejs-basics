@@ -10,9 +10,9 @@ const pathExists = (path) => {
 
 const rename = async () => {
   const currentDir = dirname(fileURLToPath(import.meta.url));
-  const filesDir = join(currentDir, 'files');
-  const oldPath = join(filesDir, 'wrongFilename.txt');
-  const newPath = join(filesDir, 'properFilename.md');
+  const targetDir = join(currentDir, 'files');
+  const oldPath = join(targetDir, 'wrongFilename.txt');
+  const newPath = join(targetDir, 'properFilename.md');
 
   const oldPathExists = await pathExists(oldPath);
   const newPathExists = await pathExists(newPath);
@@ -21,6 +21,7 @@ const rename = async () => {
 
   try {
     await fs.rename(oldPath, newPath);
+    console.log('File successfully renamed');
   } catch (error) {
     console.error('Failed to rename file');
   }
