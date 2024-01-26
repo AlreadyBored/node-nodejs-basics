@@ -1,5 +1,12 @@
+import { createReadStream } from "fs";
+
 const read = async () => {
-    // Write your code here 
+  const rs = createReadStream("./src/streams/files/fileToRead.txt");
+
+  rs.on("data", (chunk) => {
+    console.log(chunk.toString());
+    process.stdout.write(chunk);
+  });
 };
 
 await read();
