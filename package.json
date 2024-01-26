@@ -22,6 +22,7 @@
     "streams:transform": "node src/streams/transform.js",
     "streams:write": "node src/streams/write.js",
     "wt": "node src/wt/main.js",
+    "wt:withErrors": "node src/wt/main.js --withErrors",
     "zip:compress": "node src/zip/compress.js",
     "zip:decompress": "node src/zip/decompress.js"
   },
