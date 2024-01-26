@@ -1,5 +1,5 @@
 import { promises as fs, constants } from 'fs';
-import { join, dirname } from 'path';
+import path from 'path';
 import { fileURLToPath } from 'url';
 
 
@@ -32,8 +32,8 @@ const copy = async (sourceFolderPath, destinationFolderPath) => {
 
     await Promise.all(
       filesAndFolders.map(async (item) => {
-        const sourceItemPath = join(sourceFolderPath, item);
-        const destinationItemPath = join(destinationFolderPath, item);
+        const sourceItemPath = path.join(sourceFolderPath, item);
+        const destinationItemPath = path.join(destinationFolderPath, item);
 
         const itemStats = await fs.stat(sourceItemPath);
 
@@ -62,8 +62,8 @@ const copyFolderRecursive = async (source, destination) => {
 
   await Promise.all(
     filesAndFolders.map(async (item) => {
-      const sourceItemPath = join(source, item);
-      const destinationItemPath = join(destination, item);
+      const sourceItemPath = path.join(source, item);
+      const destinationItemPath = path.join(destination, item);
 
       
       const itemStats = await fs.stat(sourceItemPath);
@@ -79,8 +79,8 @@ const copyFolderRecursive = async (source, destination) => {
   );
 };
 
-const currentDir = dirname(fileURLToPath(import.meta.url));
-const sourceFolderPath = join(currentDir, 'files');
-const destinationFolderPath = join(currentDir, 'files_copy');
+const currentDir = path.dirname(fileURLToPath(import.meta.url));
+const sourceFolderPath = path.join(currentDir, 'files');
+const destinationFolderPath = path.join(currentDir, 'files_copy');
 
 await copy(sourceFolderPath, destinationFolderPath);
