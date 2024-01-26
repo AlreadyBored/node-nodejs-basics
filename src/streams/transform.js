@@ -1,8 +1,8 @@
-import streams from 'stream';
+import {Transform} from 'stream';
 
 
 const transform = async () => {
-  const reverseTransform = new streams.Transform({
+  const reverseTransform = new Transform({
     transform(chunk, _, callback) {
       this.push([...chunk.toString()].reverse().join(''));
       callback();
