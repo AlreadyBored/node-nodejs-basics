@@ -8,13 +8,13 @@ const compress = async () => {
   const __dirname = dirname(fileURLToPath(import.meta.url));
 
   const gzip = createGzip();
-  const src = createReadStream(join(__dirname, 'files', 'fileToCompress.txt'));
-  const dest = createWriteStream(join(__dirname, 'files', 'archive.gz'));
+  const input = createReadStream(join(__dirname, 'files', 'fileToCompress.txt'));
+  const output = createWriteStream(join(__dirname, 'files', 'archive.gz'));
 
   await pipeline(
-    src,
+    input,
     gzip,
-    dest
+    output
   );
 };
 
