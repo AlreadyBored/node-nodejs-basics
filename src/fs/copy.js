@@ -13,8 +13,13 @@ const copy = async () => {
     throw new Error('FS operation failed');
   }
 
-  fs.mkdirSync(destinationPath);
-  fs.cpSync(sourcePath, destinationPath, {recursive: true});
+  await new Promise(resolve => {
+    fs.mkdir(destinationPath, {}, resolve);
+  });
+
+  await new Promise(resolve => {
+    fs.cp(sourcePath, destinationPath, { recursive: true}, resolve);
+  });
 }
 
 await copy();
