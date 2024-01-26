@@ -1,1 +1,7 @@
-console.log('Hello from c.js!');
+
+const hello = 'Hello from c.js!'
+
+console.log(hello);
+
+
+export default hello;
