@@ -14,8 +14,6 @@ const copy = async () => {
   }
 
   fs.mkdirSync(destinationPath);
-
-
   fs.cpSync(sourcePath, destinationPath, {recursive: true});
 }
 
