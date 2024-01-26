@@ -1,18 +1,23 @@
 import { createServer as createServerHttp } from "http";
+import { createRequire } from "module";
 import { release, version } from "os";
 import path from "path";
 import "./files/c.js";
 
+const require = createRequire(import.meta.url);
 const __dirname = import.meta.dirname;
 const __filename = import.meta.filename;
 
 const file = Math.random() > 0.5 ? "./files/a.json" : "./files/b.json";
 
-export const unknownObject = (
-  await import(file, {
-    assert: { type: "json" },
-  })
-).default;
+/** this variant causes warnings in console */
+// export const unknownObject = (
+//   await import(file, {
+//     assert: { type: "json" },
+//   })
+// ).default;
+
+export const unknownObject = await require(file);
 
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
