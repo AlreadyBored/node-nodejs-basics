@@ -15,7 +15,7 @@ const decompress = async () => {
         } else {
             return createReadStream(gzfile)
                 .pipe(createGunzip())
-                .pipe(createWriteStream(platform_path('files', 'fileToCompress0.txt')))
+                .pipe(createWriteStream(platform_path('files', 'fileToCompress.txt')))
                 .on('error', () => {
                     throw new Error('FS operation failed');
                 });
