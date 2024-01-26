@@ -1,8 +1,8 @@
 import { writeFile } from 'fs/promises';
 import path from 'path';
-import { getDir } from './utils.js';
+import { getDir } from '../utils.js';
 
-const pathToCreatedFile = path.join(getDir(), 'files', 'fresh.txt')
+const pathToCreatedFile = path.join(getDir(import.meta.url), 'files', 'fresh.txt')
 
 const create = async () => {  
     try {

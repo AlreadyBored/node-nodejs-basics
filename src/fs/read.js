@@ -1,9 +1,9 @@
 import { readFile } from 'fs/promises';
-import { getDir } from './utils.js';
+import { getDir } from '../utils.js';
 import path from 'path';
 
-const fileToRead = path.join(getDir(), 'files','fileToRead.txt');
-console.log(fileToRead);
+const fileToRead = path.join(getDir(import.meta.url), 'files','fileToRead.txt');
+
 const read = async () => {
     try {
         const res = await readFile(

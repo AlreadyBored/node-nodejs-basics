@@ -1,9 +1,9 @@
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { getDir } from '../utils.js';
 
-const dir =  path.dirname(fileURLToPath(import.meta.url));
+const dir = getDir(import.meta.url);
 
 const calculateHash = async () => {
     const filePath = path.join(dir, './files/fileToCalculateHashFor.txt');

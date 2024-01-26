@@ -1,8 +1,8 @@
 import { copyFile, mkdir, readdir } from 'fs/promises';
 import path from 'path';
-import { getDir } from './utils.js';
+import { getDir } from '../utils.js';
 
-const dir = getDir();
+const dir = getDir(import.meta.url);
 const src = path.join(dir, 'files');
 const target = path.join(dir, 'files_copy');
 

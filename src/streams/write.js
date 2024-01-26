@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'node:url';
 import { stdin } from 'node:process';
 
-const dir = path.dirname(fileURLToPath(import.meta.url));
+const dir = getDir(import.meta.url);
 const pathToWrite = path.join(dir, './files/fileToWrite.txt' );
 const write = async () => {
     const writeStream = createWriteStream(pathToWrite, 'utf-8');

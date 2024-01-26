@@ -1,9 +1,9 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { getDir } from './utils.js';
+import { getDir } from '../utils.js';
 
-const wrong = path.join(getDir(), 'files','wrongFilename.txt');
-const proper = path.join(getDir(), 'files','properFilename.md');
+const wrong = path.join(getDir(import.meta.url), 'files','wrongFilename.txt');
+const proper = path.join(getDir(import.meta.url), 'files','properFilename.md');
 
 const rename = async () => {
     try {
