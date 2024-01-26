@@ -11,6 +11,8 @@ async function createFolder(where) {
     throw new Error("FS operation failed");
   }
 }
+
+//I don't like this approach, with callbacks we can do it better.
 async function isExistFolder(where) {
   try {
     //check do we have the destinationFolder, if have throw error.
