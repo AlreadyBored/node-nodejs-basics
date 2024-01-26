@@ -8,18 +8,9 @@ const __dirname = path.dirname(__filename);
 
 const write = async () => {
   const filePath = path.resolve(__dirname, './files/fileToWrite.txt');
-  const fileStream = fs.createWriteStream(filePath, {encoding: 'utf-8'});
+  const fileWriteStream = fs.createWriteStream(filePath, {encoding: 'utf-8'});
 
-  console.log('Write some text, push Enter after last symbol and terminate the process (Ctrl+C) — text will appear in file');
-
-  pipeline(process.stdin, fileStream, (err) => {
-      if (err) {
-        console.error('Pipeline failed.', err);
-      } else {
-        console.log('Pipeline succeeded.');
-      }
-    }
-  );
+  process.stdin.pipe(fileWriteStream);
 };
 
 await write();
