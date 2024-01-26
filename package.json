@@ -9,7 +9,7 @@
   "scripts": {
     "cli:args": "node src/cli/args.js --some-arg value1 --other 1337 --arg2 42",
     "cli:env": "npx cross-env SOME=any RSS_foo=bar RSS_bar=baz node src/cli/env.js",
-    "cp": "node src/cp/cp.js",
+    "cp": "node src/cp/cp.js arg1 mainArg2 arg3",
     "fs:copy": "node src/fs/copy.js",
     "fs:create": "node src/fs/create.js",
     "fs:delete": "node src/fs/delete.js",
