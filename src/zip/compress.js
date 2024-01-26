@@ -1,4 +1,4 @@
-import { pipeline } from 'node:stream';
+import { pipeline } from 'node:stream/promises';
 import { createReadStream, createWriteStream } from 'node:fs';
 import { createGzip } from 'node:zlib';
 import path from 'node:path';
@@ -10,12 +10,14 @@ const inputPath = path.join(dir, './files/fileToCompress.txt');
 const outputPath = path.join(dir, './files/archive.gz');
 
 const compress = async () => {
-    pipeline(
+    try {
+        await pipeline(
         createReadStream(inputPath),
         createGzip(),
-        createWriteStream(outputPath),
-        (err) => { console.log(err) }
-    );
+        createWriteStream(outputPath));
+    } catch (err) {
+        throw new Error('FS operation failed');
+    } 
 };
 
 await compress();
