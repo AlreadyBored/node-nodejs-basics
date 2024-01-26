@@ -14,23 +14,23 @@ const pathExists = async (path) => {
 const copyDirectory = async (srcPath, destPath) => {
   await mkdir(destPath, { recursive: true });
 
-  const files = await readdir(srcPath);
+  const items = await readdir(srcPath);
 
   await Promise.all(
-    files.map(async (file) => {
-      const sourceFile = join(srcPath, file);
-      const destFile = join(destPath, file);
+    items.map(async (item) => {
+      const sourceItem = join(srcPath, item);
+      const destItem = join(destPath, item);
 
       try {
-        const fileStat = await stat(sourceFile);
+        const itemStat = await stat(sourceItem);
 
-        if (fileStat.isFile()) {
-          await copyFile(sourceFile, destFile);
-        } else if (fileStat.isDirectory()) {
-          await copyDirectory(sourceFile, destFile);
+        if (itemStat.isFile()) {
+          await copyFile(sourceItem, destItem);
+        } else if (itemStat.isDirectory()) {
+          await copyDirectory(sourceItem, destItem);
         }
       } catch (error) {
-        console.error(`Error processing file ${file}: ${error.message}`);
+        console.error(`Error processing item ${item}: ${error.message}`);
       }
     })
   );
