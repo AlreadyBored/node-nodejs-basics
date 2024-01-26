@@ -11,9 +11,11 @@ const __dirname = path.dirname(__filename);
 const compress = async () => {
   const gzip = createGzip();
   const pipe = promisify(pipeline);
-  const pathToFile = `${__dirname}/files/fileToCompress.txt`;
+  const pathToFile = path.join(__dirname, 'files', 'fileToCompress.txt');
   const readStream = createReadStream(pathToFile);
-  const writeStream = createWriteStream(`${__dirname}/files/archive.gz`);
+  const writeStream = createWriteStream(
+    path.join(__dirname, 'files', 'archive.gz')
+  );
 
   await pipe(readStream, gzip, writeStream);
 };

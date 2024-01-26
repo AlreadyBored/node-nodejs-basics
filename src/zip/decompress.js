@@ -9,8 +9,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const decompress = async () => {
-  const pathToFile = `${__dirname}/files/archive.gz`;
-  const output = `${__dirname}/files/fileToCompress.txt`;
+  const pathToFile = path.join(__dirname, 'files', 'archive.gz');
+  const output = path.join(__dirname, 'files', 'fileToCompress.txt');
   const readStream = createReadStream(pathToFile);
   const writeStream = createWriteStream(output);
   const pipe = promisify(pipeline);

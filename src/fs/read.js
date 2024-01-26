@@ -8,7 +8,7 @@ const errorMessage = 'FS operation failed';
 
 const read = async () => {
   const fileName = 'fileToRead.txt';
-  const targetPath = `${__dirname}/files/${fileName}`;
+  const targetPath = path.join(__dirname, 'files', fileName);
   try {
     const text = await readFile(targetPath);
     console.log(text.toString());

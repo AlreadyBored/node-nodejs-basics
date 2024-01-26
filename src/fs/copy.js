@@ -7,8 +7,8 @@ const __dirname = path.dirname(__filename);
 const errorMessage = 'FS operation failed';
 
 const copy = async () => {
-  const targetDirPath = `${__dirname}/files_copy`;
-  const fromDirPath = `${__dirname}/files`;
+  const targetDirPath = path.join(__dirname, 'files_copy');
+  const fromDirPath = path.join(__dirname, 'files');
   const copyOptions = {
     recursive: true,
     force: false,

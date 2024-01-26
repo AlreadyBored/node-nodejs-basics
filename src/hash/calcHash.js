@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const calculateHash = async () => {
-  const filePath = `${__dirname}/files/fileToCalculateHashFor.txt`;
+  const filePath = path.join(__dirname, 'files', 'fileToCalculateHashFor.txt');
   const readStream = createReadStream(filePath);
   const output = process.stdout;
   const data = 'I love node js!';

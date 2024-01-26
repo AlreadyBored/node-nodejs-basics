@@ -9,8 +9,8 @@ const errorMessage = 'FS operation failed';
 const rename = async () => {
   const oldName = 'wrongFilename.txt';
   const newName = 'properFilename.md';
-  const fromPath = `${__dirname}/files/${oldName}`;
-  const targetPath = `${__dirname}/files/${newName}`;
+  const fromPath = path.join(__dirname, 'files', oldName);
+  const targetPath = path.join(__dirname, 'files', newName);
 
   try {
     await renameFileFs(fromPath, targetPath);

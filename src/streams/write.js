@@ -7,7 +7,9 @@ const __dirname = path.dirname(__filename);
 
 const write = async () => {
   const readStream = process.stdin;
-  const writeStream = createWriteStream(`${__dirname}/files/fileToWrite.txt`);
+  const writeStream = createWriteStream(
+    path.join(__dirname, 'files', 'fileToWrite.txt')
+  );
 
   readStream.pipe(writeStream);
 };
