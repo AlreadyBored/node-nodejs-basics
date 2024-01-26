@@ -1,8 +1,10 @@
 import { cp } from "node:fs/promises";
 
+const __dirname = import.meta.dirname;
+
 const copy = async () => {
   try {
-    await cp("./src/fs/files/", "./src/fs/files_copy/", {
+    await cp(__dirname + "/files/", __dirname + "/files_copy/", {
       recursive: true,
       errorOnExist: true,
       force: false,

@@ -1,7 +1,9 @@
 import { access, rename as fsRename } from "node:fs/promises";
 
+const __dirname = import.meta.dirname;
+
 const rename = async () => {
-  const target = "./src/fs/files/properFilename.md";
+  const target = __dirname + "/files/properFilename.md";
   let isFileExists = false;
 
   try {
@@ -18,7 +20,7 @@ const rename = async () => {
   }
 
   try {
-    await fsRename("./src/fs/files/wrongFilename.txt", target);
+    await fsRename(__dirname + "/files/wrongFilename.txt", target);
   } catch (e) {
     throw new Error("FS operation failed");
   }

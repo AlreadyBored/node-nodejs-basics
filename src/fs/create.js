@@ -1,8 +1,10 @@
 import { writeFile } from "node:fs/promises";
 
+const __dirname = import.meta.dirname;
+
 const create = async () => {
   try {
-    await writeFile("./src/fs/files/fresh.txt", "I am fresh and young", {
+    await writeFile(__dirname + "/files/fresh.txt", "I am fresh and young", {
       flag: "ax",
     });
   } catch (e) {

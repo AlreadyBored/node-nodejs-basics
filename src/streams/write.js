@@ -1,7 +1,9 @@
 import { createWriteStream } from "fs";
 
+const __dirname = import.meta.dirname;
+
 const write = async () => {
-  const ws = createWriteStream("./src/streams/files/fileToWrite.txt");
+  const ws = createWriteStream(__dirname + "/files/fileToWrite.txt");
 
   process.stdin.on("data", (data) => {
     ws.write(data);
