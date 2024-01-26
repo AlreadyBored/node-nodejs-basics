@@ -1,17 +1,17 @@
 import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const filesDir = 'src/fs/files';
-const fileNameToRename = 'wrongFilename.txt';
-const updatedFileName = 'properFilename.md';
+const fileNameToRenameDir = path.join(__dirname, 'files/wrongFilename.txt');
+const updatedFileNameDir = path.join(__dirname, 'files/properFilename.md');
 
 const rename = async () => {
-	const filePath = `${ filesDir }/${ fileNameToRename }`;
-	const renamedFilePath = `${ filesDir }/${ updatedFileName }`;
-	if (!fs.existsSync(filePath)) {
+	if (!fs.existsSync(fileNameToRenameDir)) {
 		throw new Error('FS operation failed');
 	}
 
-	fs.renameSync(filePath, renamedFilePath);
+	fs.renameSync(fileNameToRenameDir, updatedFileNameDir);
 };
 
 await rename();

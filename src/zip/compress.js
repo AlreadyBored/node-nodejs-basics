@@ -1,8 +1,11 @@
 import fs from 'fs';
 import zlib from 'zlib';
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const filesDir = 'src/zip/files/fileToCompress.txt';
-const archiveDir = 'src/zip/archive.gz';
+const filesDir = path.join(__dirname, 'files/fileToCompress.txt');
+const archiveDir = path.join(__dirname, 'archive.gz');
 
 const compress = async () => {
 	const gzip = zlib.createGzip();

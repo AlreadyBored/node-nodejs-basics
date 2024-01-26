@@ -1,7 +1,9 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const filesDir = 'src/fs/files';
+const filesDir = path.join(__dirname, 'files');
 
 const list = async () => {
 	if (!fs.existsSync(filesDir)) {

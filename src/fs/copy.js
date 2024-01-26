@@ -1,8 +1,10 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const filesDir = 'src/fs/files';
-const filesCopyDir = 'src/fs/files-copy';
+const filesDir = path.join(__dirname, 'files');
+const filesCopyDir = path.join(__dirname, 'files-copy');
 
 const copy = async () => {
 	if (fs.existsSync(filesCopyDir) || !fs.existsSync(filesDir)){

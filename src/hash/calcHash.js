@@ -1,9 +1,13 @@
 import { createHash } from 'node:crypto'
 import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const filePath = 'src/hash/files/fileToCalculateHashFor.txt';
+const fileDir = path.join(__dirname, 'files/fileToCalculateHashFor.txt');
+
 const calculateHash = async () => {
-	const fileContent = fs.readFileSync(filePath).toString();
+	const fileContent = fs.readFileSync(fileDir).toString();
 	const hex = createHash('sha256')
 		.update(fileContent)
 		.digest('hex');

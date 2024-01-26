@@ -1,5 +1,10 @@
 import { Worker } from 'node:worker_threads';
 import os from 'os';
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const fileDir = path.join(__dirname, 'worker.js');
 
 const threads = new Map();
 const results = new Map();
@@ -18,7 +23,7 @@ const handleResult = (workerId, result) => {
 };
 
 const createWorker = (workerId, workerData) => {
-	const worker = new Worker('./src/wt/worker.js', { workerData });
+	const worker = new Worker(fileDir, { workerData });
 	worker.on('message', (message) => handleResult(workerId, message));
 	worker.on('error', (error) => {
 		const res = {
