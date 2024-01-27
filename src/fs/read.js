@@ -1,5 +1,15 @@
+import { readFile } from "fs/promises";
+import errorHandler from "./errorHandler.js";
+
+const readPath = './files/fileToRead.txt'
+
 const read = async () => {
-    // Write your code here 
+    try {
+        const data = await readFile(readPath, {encoding: "utf-8"})
+        console.log(data)
+    } catch {
+        errorHandler()
+    }
 };
 
 await read();
