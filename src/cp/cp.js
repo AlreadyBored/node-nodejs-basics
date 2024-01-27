@@ -1,6 +1,16 @@
+import { spawn } from "child_process";
+import { getDirName } from "../utils/utils.js";
+
 const spawnChildProcess = async (args) => {
-    // Write your code here
+  const scriptPath = getDirName(import.meta.url) + "/files/script.js";
+
+  const childProcess = spawn("node", [scriptPath, ...args]);
+
+  process.stdin.pipe(childProcess.stdin);
+
+  childProcess.stdout.on("data", (data) => {
+    process.stdout.write(data.toString());
+  });
 };
 
-// Put your arguments in function call to test this functionality
-spawnChildProcess( /* [someArgument1, someArgument2, ...] */);
+spawnChildProcess(["arg1", "arg2"]);
