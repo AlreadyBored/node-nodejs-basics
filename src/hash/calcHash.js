@@ -1,21 +1,26 @@
-import { createHash } from "node:crypto";
-import { createReadStream } from "node:fs";
+import crypto from "crypto";
+import fs from "fs";
 import { fileURLToPath } from "url";
 import path from "path";
 
 const calculateHash = async () => {
+  const hash = crypto.createHash("sha256");
   // Script file.
   const __filename = fileURLToPath(import.meta.url);
   // Folder of script file.
   const __dirname = path.dirname(__filename);
   // Creates read stream for reading data from file.
-  const readStream = createReadStream(
-    path.join(__dirname, "files", "fileToCalculateHashFor.txt"),
-    "utf-8"
+  const readStream = fs.createReadStream(
+    path.join(__dirname, "files", "fileToCalculateHashFor.txt")
   );
-  // When data will be read, it will be printed to console.
+  // When data will be read, it will be added to hash object.
   readStream.on("data", (chunk) => {
-    console.log(createHash("sha256").update(chunk).digest("hex"));
+    hash.update(chunk);
+  });
+  readStream.on("end", (chunk) => {
+    let res = hash.digest("hex");
+    //Ends work on create hash.(digest method can't be used belove)
+    console.log("res", res);
   });
   // If there will be an error, it will be printed to console.
   readStream.on("error", (error) =>
