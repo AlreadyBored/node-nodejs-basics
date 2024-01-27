@@ -2,7 +2,6 @@ import fs from "fs";
 import path from "path";
 import * as url from 'url';
 import zlib from "node:zlib";
-import { pipeline } from "stream";
     
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 const srcPath = path.join(__dirname, "files", "fileToCompress.txt");

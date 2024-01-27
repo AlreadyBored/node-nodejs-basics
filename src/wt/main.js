@@ -30,8 +30,7 @@ function createWorkerThreads(number) {
                 data: null,
             }
             ));
-        }
-        )
+        })
         promises.push(promise);
     }
     return promises;
