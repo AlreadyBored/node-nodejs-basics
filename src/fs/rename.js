@@ -1,29 +1,34 @@
-/* implement function that renames file wrongFilename.txt to properFilename with extension .md 
-(if there's no file wrongFilename.txt or properFilename.md already exists Error with message 
-FS operation failed must be thrown)
+/** 
+ * implement function that renames file wrongFilename.txt to properFilename with extension .md 
+ * (if there's no file wrongFilename.txt or properFilename.md already exists Error with message 
+ * FS operation failed must be thrown)
  */
-import { copyFile, constants, unlink } from 'fs';
-import { join as platform_path } from 'path';
+import { access, rename as renameFile, constants } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, normalize } from 'path';
+const dir = dirname(fileURLToPath(import.meta.url));
 
 const rename = async () => {
     // Write your code here 
-    let src = platform_path('files', 'wrongFilename.txt');
-    let dst = platform_path('files', 'properFilename.md');
+    let src = normalize(dir + '/files/wrongFilename.txt');
+    let dst = normalize(dir + '/files/properFilename.md');
 
-    copyFile(src, dst, constants.COPYFILE_EXCL, (err) => {
-        if (err) {
-            if (err.code === 'EEXIST') {
-                throw new Error('FS operation failed');
-            } else if (err.code === 'ENOENT') {
-                throw new Error('FS operation failed');
-            }
-        } else {
-            unlink(src, (err) => {
-                if (err) throw err;
-                // console.log('OK');
+    access(dst, constants.F_OK, (err) => {
+        if (err && err.code === 'ENOENT') {
+            renameFile(src, dst, (err) => {
+                if (err) {
+                    if (err.code === 'ENOENT') {
+                        throw new Error('FS operation failed');
+                    } else {
+                        throw err;
+                    }
+                }
             });
+        } else {
+            throw new Error('FS operation failed');
         }
     });
+
 };
 
 await rename();

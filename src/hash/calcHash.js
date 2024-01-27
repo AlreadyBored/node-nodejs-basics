@@ -4,18 +4,17 @@
  */
 import { createReadStream } from 'fs';
 import { createHash } from 'crypto';
-import { join as platform_path } from 'path';
 import { stdout } from 'process';
+import { fileURLToPath } from 'url';
+import { dirname, normalize } from 'path';
+const dir = dirname(fileURLToPath(import.meta.url));
 
 const calculateHash = async () => {
     // Write your code here 
-    let src = platform_path('files', 'fileToCalculateHashFor.txt');
-
-    const hash = createHash('sha256');
-
-    const instream = createReadStream(src);
-
-    return instream.pipe(hash).setEncoding('hex').pipe(stdout);
+    return createReadStream(normalize(dir + '/files/fileToCalculateHashFor.txt'))
+    .pipe(createHash('sha256'))
+    .setEncoding('hex')
+    .pipe(stdout);
 };
 
 await calculateHash();

@@ -4,8 +4,10 @@ import { sep, dirname } from 'path';
 import { release, version } from 'os';
 import { createServer as createServerHttp } from 'http';
 import './files/c.js';
-import aObject from './files/a.json' assert {type: 'json'};
-import bObject from './files/b.json' assert {type: 'json'};
+
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -15,9 +17,19 @@ const random = Math.random();
 let unknownObject;
 
 if (random > 0.5) {
-    unknownObject = aObject;
+    // await import('./files/a.json', {
+    //     assert: {
+    //         type: "json",
+    //     },
+    // }).then( val => unknownObject = val.default);
+    unknownObject = require('./files/a.json');
 } else {
-    unknownObject = bObject
+    // await import('./files/b.json', {
+    //     assert: {
+    //         type: "json",
+    //     },
+    // }).then( val => unknownObject = val.default);
+    unknownObject = require('./files/b.json');
 }
 
 console.log(`Release ${release()}`);

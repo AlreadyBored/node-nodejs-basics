@@ -8,8 +8,10 @@
  */
 
 import { spawn } from 'child_process';
-import { join as platform_path } from 'path';
 import { argv0, stdout, stdin } from 'process';
+import { fileURLToPath } from 'url';
+import { dirname, normalize } from 'path';
+const dir = dirname(fileURLToPath(import.meta.url));
 
 const spawnChildProcess = async (args) => {
     // Write your code here
@@ -19,11 +21,11 @@ const spawnChildProcess = async (args) => {
     } else if (!args instanceof Array) {
         args = [args];
     }
-    const cp = spawn(argv0, [platform_path('files', 'script.js'), ...args]);
+    const cp = spawn(normalize(argv0), [normalize(dir + '/files/script.js'), ...args]);
     cp.stdout.pipe(stdout);
     stdin.pipe(cp.stdin);
 };
 
 // Put your arguments in function call to test this functionality
-// spawnChildProcess();
-spawnChildProcess(['someArgument1', 'someArgument2', 3, 44, 555]);
+spawnChildProcess( /* [someArgument1, someArgument2, ...] */);
+// spawnChildProcess(['someArgument1', 'someArgument2', 3, 44, 555]);

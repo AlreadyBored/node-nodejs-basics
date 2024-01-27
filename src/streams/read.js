@@ -4,12 +4,14 @@
  */
 
 import { createReadStream } from 'fs';
-import { join as platform_path } from 'path';
 import { stdout } from 'process';
+import { fileURLToPath } from 'url';
+import { dirname, normalize } from 'path';
+const dir = dirname(fileURLToPath(import.meta.url));
 
 const read = async () => {
     // Write your code here     
-    return createReadStream(platform_path('files', 'fileToRead.txt')).pipe(stdout);
+    return createReadStream(normalize(dir + '/files/fileToRead.txt')).pipe(stdout);
 };
 
 await read();

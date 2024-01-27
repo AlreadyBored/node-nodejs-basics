@@ -13,6 +13,9 @@
  */
 import { cpus } from 'os';
 import { Worker } from 'worker_threads';
+import { fileURLToPath } from 'url';
+import { dirname, normalize } from 'path';
+const dir = dirname(fileURLToPath(import.meta.url));
 
 const performCalculations = async () => {
     // Write your code here
@@ -20,7 +23,7 @@ const performCalculations = async () => {
     let p = [];
     for (let i = 0; i < n; i++) {
         p[i] = new Promise((resolve, reject) => {
-            const worker = new Worker('./worker.js');
+            const worker = new Worker(normalize(dir + '/worker.js'));
             worker.postMessage(i + 10);
             worker.on('message', resolve);
             worker.on('error', reject);

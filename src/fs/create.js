@@ -1,17 +1,21 @@
-/* create.js - implement function that creates new file fresh.txt with content 
-'I am fresh and young' inside of the files folder (if file already exists 
-Error with message 'FS operation failed' must be thrown) */
+/**
+ * create.js - implement function that creates new file fresh.txt with content 
+ * 'I am fresh and young' inside of the files folder (if file already existsError 
+ * with message 'FS operation failed' must be thrown) 
+ * */
 
 import { access, constants, writeFile } from 'fs';
-import { join as platform_path } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname, normalize } from 'path';
+const dir = dirname(fileURLToPath(import.meta.url));
 
 const create = async () => {
     // Write your code here
-    let fname = platform_path('files', 'fresh.txt'); //using posix or windows separator
+    let src = normalize(dir + '/files/fresh.txt');
 
-    access(fname, constants.F_OK, (err) => {
+    access(src, constants.F_OK, (err) => {
         if (err) {
-            writeFile(fname, 'I am fresh and young', 'utf8', (err) => {
+            writeFile(src, 'I am fresh and young', 'utf8', (err) => {
                 if (err) throw err;
             });
         } else {

@@ -3,12 +3,14 @@
  * fileToWrite.txt content using Writable Stream
  */
 import { createWriteStream } from 'fs';
-import { join as platform_path } from 'path';
 import { stdin } from 'process';
+import { fileURLToPath } from 'url';
+import { dirname, normalize } from 'path';
+const dir = dirname(fileURLToPath(import.meta.url));
 
 const write = async () => {
     // Write your code here 
-    return stdin.pipe(createWriteStream(platform_path('files', 'fileToWrite.txt'))); 
+    return stdin.pipe(createWriteStream(normalize(dir + '/files/fileToWrite.txt'))); 
 };
 
 await write();

@@ -1,14 +1,17 @@
-/* copy.js - implement function that copies folder files files with all its content into 
-folder files_copy at the same level (if files folder doesn't exists or files_copy has 
-already been created Error with message 'FS operation failed' must be thrown)
+/**
+* copy.js - implement function that copies folder files files with all its content into 
+* folder files_copy at the same level (if files folder doesn't exists or files_copy has 
+* already been created Error with message 'FS operation failed' must be thrown)
 */
 import { readdir, mkdir, copyFile } from 'fs';
-import { join as platform_path} from 'path';
+import { fileURLToPath } from 'url';
+import { dirname, normalize } from 'path';
+const dir = dirname(fileURLToPath(import.meta.url));
 
 const copy = async () => {
     // Write your code here 
-    let src = 'files';
-    let dst = 'files_copy';
+    let src = normalize(dir + '/files');
+    let dst = normalize(dir + '/files_copy');
 
     readdir(src, (err, files) => {
         if (!err) {
@@ -20,7 +23,7 @@ const copy = async () => {
                 } else {
                     if (files.length > 0) {
                         for (let f of files) {
-                            copyFile(platform_path(src, f), platform_path(dst, f), (err) => {
+                            copyFile(normalize(`${src}//${f}`), normalize(`${dst}//${f}`), (err) => {
                                 if (err) throw err;
                                 // console.log(f);
                             });

@@ -4,18 +4,17 @@
  */
 import { access, constants, createReadStream, createWriteStream } from 'fs';
 import { createGunzip } from "zlib";
-import { join as platform_path } from 'path';
 
 const decompress = async () => {
     // Write your code here 
-    let gzfile = platform_path('files', 'archive.gz');
+    let gzfile = './files/archive.gz';
     access(gzfile, constants.F_OK, (err) => {
         if (err) {
             throw new Error('FS operation failed');
         } else {
             return createReadStream(gzfile)
                 .pipe(createGunzip())
-                .pipe(createWriteStream(platform_path('files', 'fileToCompress.txt')))
+                .pipe(createWriteStream('./files/fileToCompress.txt'))
                 .on('error', () => {
                     throw new Error('FS operation failed');
                 });
