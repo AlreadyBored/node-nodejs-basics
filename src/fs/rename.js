@@ -1,5 +1,23 @@
+import * as fs from "node:fs/promises";
+import { folderPath } from "./create.js";
+
+const filePath = folderPath + "/wrongFilename.txt";
+const renamedFilePath = folderPath + "/properFilename.md";
+
 const rename = async () => {
-    // Write your code here 
+  try {
+    const files = await fs.readdir(folderPath);
+    if (
+      files.includes("properFilename.md") ||
+      !files.includes("wrongFilename.txt")
+    ) {
+      console.log("FS operation failed");
+    } else {
+      await fs.rename(filePath, renamedFilePath);
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 await rename();
