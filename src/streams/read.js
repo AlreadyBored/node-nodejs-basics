@@ -2,7 +2,7 @@ import { createReadStream } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const readFileWithStream = async () => {
+const read = async () => {
   const fileName = 'fileToRead.txt';
   const currentDir = path.dirname(fileURLToPath(import.meta.url));
   const filePath = path.join(currentDir, 'files', fileName);
@@ -22,4 +22,4 @@ const readFileWithStream = async () => {
   }
 };
 
-await readFileWithStream();
+await read();
