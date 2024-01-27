@@ -1,4 +1,5 @@
-//Implement function that writes process.stdin data into file fileToWrite.txt content using Writable Stream
+//https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/nodejs-basics/assignment.md#streams-srcstreams
+
 import fs from "node:fs";
 import { getURLPath } from "../lib.js";
 

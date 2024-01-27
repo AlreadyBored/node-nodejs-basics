@@ -1,4 +1,5 @@
-//Implement function that reads file fileToRead.txt content using Readable Stream and prints it's content into process.stdout
+//https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/nodejs-basics/assignment.md#streams-srcstreams
+
 import fs from "node:fs";
 import { getURLPath } from "../lib.js";
 

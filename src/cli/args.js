@@ -1,4 +1,5 @@
-// Implement function that parses command line arguments (given in format --propName value --prop2Name value2, you don't need to validate it) and prints them to the console in the format propName is value, prop2Name is value2
+//https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/nodejs-basics/assignment.md#command-line-interfacesrccli
+
 const parseArgs = () => {
   const cliArgs = process.argv.slice(2);
   let result = "";

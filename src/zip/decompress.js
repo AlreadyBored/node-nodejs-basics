@@ -1,4 +1,5 @@
-//Implement function that decompresses archive.gz back to the fileToCompress.txt with same content as before compression using zlib and Streams API
+//https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/nodejs-basics/assignment.md#zlib-srczip
+
 import { pipeline } from "node:stream/promises";
 import { createReadStream, createWriteStream } from "node:fs";
 import { createUnzip } from "node:zlib";

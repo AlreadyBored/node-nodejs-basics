@@ -1,4 +1,5 @@
-//You should refactor file (you can add additional imports if needed)
+//https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/nodejs-basics/assignment.md#modulessrcmodules
+
 import path from "node:path";
 import { release, version } from "node:os";
 import { createServer as createServerHttp } from "node:http";

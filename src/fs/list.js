@@ -1,4 +1,5 @@
-// Implement function that prints all array of filenames from files folder into console (if files folder doesn't exists Error with message FS operation failed must be thrown)
+//https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/nodejs-basics/assignment.md#file-system-srcfs
+
 import fsPromises from "node:fs/promises";
 import { getURLPath } from "../lib.js";
 

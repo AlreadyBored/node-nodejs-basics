@@ -1,4 +1,5 @@
-// Implement function that renames file wrongFilename.txt to properFilename with extension .md (if there's no file wrongFilename.txt or properFilename.md already exists Error with message FS operation failed must be thrown)
+//https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/nodejs-basics/assignment.md#file-system-srcfs
+
 import fsPromises from "node:fs/promises";
 import { getURLPath } from "../lib.js";
 

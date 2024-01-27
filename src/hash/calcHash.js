@@ -1,4 +1,5 @@
-//You should implement several functions in dedicated files. Implement function that calculates SHA256 hash for file fileToCalculateHashFor.txt and logs it into console as hex using Streams API
+//https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/nodejs-basics/assignment.md#hash-srchash
+
 import fs from "node:fs";
 import { createHash } from "node:crypto";
 import { getURLPath } from "../lib.js";
