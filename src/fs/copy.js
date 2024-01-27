@@ -1,33 +1,28 @@
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { access, mkdir, readdir, stat, copyFile } from 'fs/promises';
+import { mkdir, readdir, stat, copyFile } from 'fs/promises';
+import { pathExists } from './path-exists.js';
 
-const pathExists = async (path) => {
-  try {
-    await access(path);
-    return true;
-  } catch (error) {
-    return false;
-  }
-};
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const SRC_DIR = join(__dirname, 'files');
+const DEST_DIR = join(__dirname, 'files_copy');
 
-const copyDirectory = async (srcPath, destPath) => {
-  await mkdir(destPath, { recursive: true });
-
-  const items = await readdir(srcPath);
+const copyDir = async (src, dest) => {
+  await mkdir(dest, { recursive: true });
+  const items = await readdir(src);
 
   await Promise.all(
     items.map(async (item) => {
-      const sourceItem = join(srcPath, item);
-      const destItem = join(destPath, item);
+      const srcItem = join(src, item);
+      const destItem = join(dest, item);
 
       try {
-        const itemStat = await stat(sourceItem);
+        const itemStat = await stat(srcItem);
 
         if (itemStat.isFile()) {
-          await copyFile(sourceItem, destItem);
+          await copyFile(srcItem, destItem);
         } else if (itemStat.isDirectory()) {
-          await copyDirectory(sourceItem, destItem);
+          await copyDirectory(srcItem, destItem);
         }
       } catch (error) {
         console.error(`Error processing item ${item}: ${error.message}`);
@@ -37,17 +32,13 @@ const copyDirectory = async (srcPath, destPath) => {
 };
 
 const copy = async () => {
-  const currentDir = dirname(fileURLToPath(import.meta.url));
-  const srcPath = join(currentDir, 'files');
-  const destPath = join(currentDir, 'files_copy');
+  const srcDirExists = await pathExists(SRC_DIR);
+  const destDirExists = await pathExists(DEST_DIR);
 
-  const srcExists = await pathExists(srcPath);
-  const destExists = await pathExists(destPath);
-
-  if (!srcExists || destExists) throw new Error('FS operation failed');
+  if (!srcDirExists || destDirExists) throw new Error('FS operation failed');
 
   try {
-    await copyDirectory(srcPath, destPath);
+    await copyDir(SRC_DIR, DEST_DIR);
     console.log(`Directory successfully copied`);
   } catch (error) {
     console.error('Error copying directory');
