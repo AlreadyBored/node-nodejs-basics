@@ -1,6 +1,11 @@
+import { fork, spawn } from 'node:child_process';
+import path from 'node:path';
+import { getDir } from '../utils.js'
+
+const cpScriptPath = path.join(getDir(import.meta.url), 'files', 'script.js');
 const spawnChildProcess = async (args) => {
-    // Write your code here
+    fork(cpScriptPath, args);
 };
 
-// Put your arguments in function call to test this functionality
-spawnChildProcess( /* [someArgument1, someArgument2, ...] */);
+
+spawnChildProcess( [ '4', '8', '15', '16', '23', 42]);
