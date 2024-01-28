@@ -6,7 +6,6 @@ const filesPath = new URL('files', import.meta.url);
 const filesCopyPath = new URL('files_copy', import.meta.url);
 
 const copy = async () => {
-
     try{
         await mkdir(filesCopyPath);
         const filesContent = await readdir(filesPath);
@@ -20,11 +19,10 @@ const copy = async () => {
         });
 
         console.log('Folder copied');
-        
+
     } catch (err) {
         throw new Error (errorMessage);
     }
-
 };
 
 await copy();
