@@ -2,11 +2,11 @@ import { rename as changeName, existsSync } from 'node:fs';
 
 const rename = async () => {
 
-    if (existsSync('./files/properFilename.txt') || !existsSync('./files/wrongFilename.txt')) {
+    if (existsSync('./files/properFilename.md') || !existsSync('./files/wrongFilename.txt')) {
         throw 'FS operation failed';
     }
     
-    changeName('./files/wrongFilename.txt', './files/properFilename.txt', function (err) {
+    changeName('./files/wrongFilename.txt', './files/properFilename.md', function (err) {
         if (err) throw err;
     });
 };
