@@ -1,7 +1,7 @@
 import { appendFile } from 'node:fs/promises';
 
 const data = 'I am fresh and young';
-const path = 'src/fs/files/fresh.txt';
+const path = new URL('files/fresh.txt', import.meta.url);
 const errorMessage = 'FS operation failed';
 
 const create = async () => {
