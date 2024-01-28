@@ -17,9 +17,9 @@ const copy = async () => {
         console.log('Files copied successfully');
     } catch (error) {
         if (error.code === 'ENOENT') {
-            console.error('FS operation failed: Source folder does not exist');
+            throw new Error('FS operation failed: Source folder does not exist');
         } else if (error.code === 'EEXIST') {
-            console.error('FS operation failed: Destination folder already exists');
+            throw new Error('FS operation failed: Destination folder already exists');
         } else {
             console.error(`Error: ${error.message}`);
         }
