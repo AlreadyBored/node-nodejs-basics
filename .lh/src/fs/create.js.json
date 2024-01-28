@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/fs/create.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1706460699980,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1706460699980,
+            "name": "Commit-0",
+            "content": "import fs from \"fs\";\nconst create = async () => {\n    const path = \"./src/fs/files/fresh.txt\";\n\n  fs.access(path, fs.constants.F_OK, (existenceError) => {\n    try {\n      if (!existenceError) {\n        throw new Error(\"FS operation failed\");\n      }\n\n      fs.writeFile(path, \"I am fresh and young\", () => {\n        console.log(\"FS operation completed\");\n      });\n    } catch (processError) {\n      console.error(processError);\n    }\n  });\n};\n\nawait create();"
+        }
+    ]
+}
