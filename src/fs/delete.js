@@ -9,15 +9,12 @@ const remove = async () => {
       const __dirname = path.dirname(__filename);
       const removeFile = path.join(__dirname, 'files', 'fileToRemove.txt');
 
-      let fileExist = true;
       try {
         await fs.rm(removeFile);
         console.log('file removed');
       } catch (error) {
-        fileExist = false;
-      } finally {
-        if (!fileExist)
-          throw new Error('FS operation failed');
+        console.log(error.message);
+        throw new Error('FS operation failed');
       }
     } catch (error) {
       console.error(error.message);
