@@ -2,18 +2,18 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import fsPromises from 'fs/promises';
 import fs from 'fs';
+import * as utils from './utils.js';
 
 const dirName = path.dirname(fileURLToPath(import.meta.url));
 const sourcePath = path.join(dirName, "files");
 const destinationPath = path.join(dirName, "files_copy");
-const filesDirCopyErrorMsg = "FS operation failed";
 
 const copy = async () => {
     try {
       await fsPromises.access(destinationPath);
-      throw Error(filesDirCopyErrorMsg);
+      throw Error(utils.fsErrorMsg);
     } catch (error) {
-      if (error.message === filesDirCopyErrorMsg) {
+      if (error.message === utils.fsErrorMsg) {
         throw error;
       } else {
         try {
@@ -38,7 +38,7 @@ const copy = async () => {
           }
         }
         catch (error) {
-          throw Error(filesDirCopyErrorMsg);
+          throw Error(utils.fsErrorMsg);
         }
       }
     }
