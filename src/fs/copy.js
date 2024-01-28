@@ -1,5 +1,4 @@
 import fsPromises from 'node:fs/promises';
-import fs, { Stats } from 'node:fs';
 
 const folderName = 'src/fs/files';
 const newFolderName = 'src/fs/files_copy';
