@@ -1,4 +1,4 @@
-import { access, constants, readFile, readdir, unlink } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import path, { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -14,6 +14,8 @@ const read = async () => {
 
         throw new Error('FS operation failed')
     }
+
+    
 };
 
 await read();
