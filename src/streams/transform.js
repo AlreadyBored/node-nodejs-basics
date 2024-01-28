@@ -7,11 +7,11 @@ import { Transform } from 'stream';
 
 const transform = async () => {
     // Write your code here 
-    const trans = new Transform();
-    trans._transform = function (chunk, _encoding, callback) {
-        this.push(chunk.toString().split('').reverse().join(''));
-        callback();
-    }
+    const trans = new Transform({
+        transform(chunk, _encoding, callback) {
+            callback(null, chunk.toString().trim().split('').reverse().join('').concat("\n"));
+        }
+    });
 
     return stdin.pipe(trans).pipe(stdout);
 };
