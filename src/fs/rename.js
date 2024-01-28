@@ -11,7 +11,7 @@ const rename = async () => {
       files.includes("properFilename.md") ||
       !files.includes("wrongFilename.txt")
     ) {
-      console.log("FS operation failed");
+      throw new Error("FS operation failed");
     } else {
       await fs.rename(filePath, renamedFilePath);
     }

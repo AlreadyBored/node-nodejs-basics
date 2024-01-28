@@ -13,7 +13,7 @@ const copy = async () => {
       fsFolderFiles.includes("files_copy") ||
       !fsFolderFiles.includes("files")
     ) {
-      console.log("FS operation failed");
+      throw new Error("FS operation failed");
     } else {
       await fs.mkdir(createFolderPath, (err) => {
         if (err) {

@@ -10,7 +10,7 @@ const list = async () => {
     if (files.includes("files")) {
       console.log(targetFiles);
     } else {
-      console.log("FS opertaion failed");
+      throw new Error("FS operation failed");
     }
   } catch (error) {}
 };
