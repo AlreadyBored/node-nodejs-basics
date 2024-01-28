@@ -19,6 +19,7 @@ const remove = async () => {
   // check if exist file with wrong name.
   await isExist(path.join(__dirname, "files", "fileToRemove.txt"));
   //removes file fs.rm('pathTofile', options, callback).
+  // Or we can use fs.unlink() - the same async method.
   await fs.rm(path.join(__dirname, "files", "fileToRemove.txt"), {}, (err) => {
     if (err) {
       throw new Error("FS operation failed");
