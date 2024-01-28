@@ -8,6 +8,16 @@ const copy = async () => {
 
     await fs.promises.stat(sourceFolder); // Check if source folder exists
 
+    // Check if destination folder already exists
+    try {
+        await fs.promises.stat(destinationFolder);
+        throw new Error('FS operation failed');
+    } catch (err) {
+        if (err.code !== 'ENOENT') {
+            throw err; // Re-throw errors
+        }
+    }
+
     await fs.mkdir(destinationFolder, { recursive : true}); // Create destination folder
 
     await copyFolderContents(sourceFolder, destinationFolder);
@@ -15,6 +25,7 @@ const copy = async () => {
     console.log('Files copied successfully');
   } catch (error) {
     console.error(`Error: ${error.message}`);
+    // Re-throw to propagate to caller
   }
 
   // Helper function for recursively copying (nested for encapsulation)
@@ -36,6 +47,8 @@ const copy = async () => {
             }
         } catch (err) {
             console.error(`Error copying ${file}: ${err.message}`);
+            // Re-throw here to stop copying and propagate the error
+            throw err;
         }
     }
   }
