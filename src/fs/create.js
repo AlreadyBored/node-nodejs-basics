@@ -1,5 +1,5 @@
 const create = async () => {
-    const fs = require('fs'); // Importing fs module
+    const fs = require('fs').promises; // Importing fs module
     const path = require('path'); // Importing the path module for path work
     const dataToWrite = 'I am fresh and young'; // To write to fresh.txt
     const filePath = path.join(__dirname, 'files', 'fresh.txt'); // Grabs path and points to 'files'
@@ -9,7 +9,7 @@ const create = async () => {
         console.log('File "${filePath}" has been created with success!');
     } catch (error) {
         if(error.code === 'EEXIST') { // 'EEXIST' means if 'fresh.txt' already exists, in this context
-            console.error('FS operation failed')
+            throw new Error('FS operation failed')
         } else {
             console.error(`Error: ${error.message}`);
         }
