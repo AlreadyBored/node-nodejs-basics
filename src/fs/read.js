@@ -1,8 +1,8 @@
 const read = async () => {
-    const fs = require('fs');
+    const { default: fs } = await import('fs/promises'); // Dynamically importing fs.promises
 
     try {
-        const fileContent = await fs.promises.readFile('fileToRead.txt', 'utf8');
+        const fileContent = await fs.readFile('./files/fileToRead.txt', 'utf8');
         console.log(fileContent);
     } catch (error) {
         if (error.code === 'ENOENT') {
