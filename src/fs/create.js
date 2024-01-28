@@ -14,7 +14,7 @@ const create = async () => {
     if (err.code === 'EEXIST') {
       throw new Error('FS operation failed');
     } else {
-      console.error(err);
+      throw err;
     }
   }
 };
