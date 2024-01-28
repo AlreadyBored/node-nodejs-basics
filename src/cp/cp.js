@@ -21,7 +21,9 @@ const spawnChildProcess = async (args) => {
     } else if (!args instanceof Array) {
         args = [args];
     }
-    const cp = spawn(normalize(argv0), [normalize(dir + '/files/script.js'), ...args]);
+    const cp = spawn(normalize(argv0), [normalize(dir + '/files/script.js'), ...args])
+    .on('error', err => {throw err;});
+    
     cp.stdout.pipe(stdout);
     stdin.pipe(cp.stdin);
 };
