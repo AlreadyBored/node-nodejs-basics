@@ -8,11 +8,7 @@ const create = async () => {
         await fs.writeFile(filePath, data)
         console.log('File "${filePath}" has been created with success!');
     } catch (error) {
-        if(error.code === 'EEXIST') {
-            throw new Error('FS operation failed')
-        } else {
-            console.error(`Error: ${error.message}`);
-        }
+        throw new Error(`FS operation failed: ${error.message}`); // Throw all errors
     }
 };
 
