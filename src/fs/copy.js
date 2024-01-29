@@ -12,7 +12,7 @@ const copy = async () => {
     if (err) throw 'FS operation failed';
   };
 
-  fs.mkdir(destinationFolder, { recursive: true }, errorCallback);
+  fs.mkdir(destinationFolder, errorCallback);
 
   fs.readdir(sourceFolder, { recursive: true }, (err, files) => {
     if (err) throw 'FS operation failed';
