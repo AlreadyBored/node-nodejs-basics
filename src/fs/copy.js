@@ -1,28 +1,26 @@
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { readdir, mkdir } from 'node:fs/promises';
+import { readdir, mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { pipeline } from 'node:stream/promises';
-import { createReadStream, createWriteStream } from 'node:fs';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const srcPath = join(__dirname, 'files');
+const destPath = join(__dirname, 'files_copy');
 
 const copy = async () => {
-  const __dirname = dirname(fileURLToPath(import.meta.url));
-  const srcPath = join(__dirname, 'files');
-  const destPath = join(__dirname, 'files_copy');
-
   try {
-    await mkdir(destPath);
     const files = await readdir(srcPath);
+    await mkdir(destPath);
 
     for (const file of files) {
       const curSrc = resolve(srcPath, file);
       const curDest = resolve(destPath, file);
 
-      await pipeline(
-        createReadStream(curSrc),
-        createWriteStream(curDest)
-      );
+      const data = await readFile(curSrc, {encoding: 'utf8'});
+
+      await writeFile(curDest, data, {flag: 'wx'});
     }
+    console.log(`The contents of the folder 'files' was copied to the folder 'files_copy'`);
   } catch(e) {
     throw new Error ('FS operation failed');
   }

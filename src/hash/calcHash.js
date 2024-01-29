@@ -5,11 +5,10 @@ import { createHash } from 'node:crypto';
 import { stdout } from 'node:process';
 import { pipeline } from 'node:stream/promises';
 
-const calculateHash = async () => {
-  const __dirname = dirname(fileURLToPath(import.meta.url));
-  
-  const hash = createHash('sha256');
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const hash = createHash('sha256');
 
+const calculateHash = async () => {
   await pipeline(
     createReadStream(join(__dirname, 'files', 'fileToCalculateHashFor.txt')),
     hash.setEncoding('hex'),
@@ -17,4 +16,4 @@ const calculateHash = async () => {
   )
 };
 
-await calculateHash();
+await calculateHash().catch(console.error);

@@ -21,4 +21,4 @@ const transform = async () => {
   );
 };
 
-await transform();
+await transform().catch(console.error);

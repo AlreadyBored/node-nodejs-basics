@@ -4,13 +4,13 @@ import { createReadStream, createWriteStream } from 'node:fs';
 import { stdout } from 'node:process';
 import { pipeline } from 'node:stream/promises';
 
-const read = async () => {
-  const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
+const read = async () => {
   await pipeline(
     createReadStream(join(__dirname, 'files', 'fileToRead.txt')),
     stdout
   );
 };
 
-await read();
+await read().catch(console.error);

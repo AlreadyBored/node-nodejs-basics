@@ -1,6 +1,11 @@
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { spawn } from 'node:child_process';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 const spawnChildProcess = async (args) => {
-    // Write your code here
+  const childProcess = spawn('node', [`${join(__dirname, 'files', 'script.js')}`, ...args], { stdio: 'inherit' });
 };
 
-// Put your arguments in function call to test this functionality
-spawnChildProcess( /* [someArgument1, someArgument2, ...] */);
+spawnChildProcess(['value1', '1337', '42']);

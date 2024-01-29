@@ -1,11 +1,14 @@
 const parseArgs = () => {
   const args = process.argv.slice(2);
+  
+  const result = args.reduce((acc, c, i, args) => {
+    if (i % 2 !== 0) {
+      acc.push(`${args[i-1].slice(2)} is ${c}`);
+    }
+    return acc;
+  }, []);
 
-  let i = 0;
-  const result = args.map((v, i) => `prop${i+1}Name is ${v}`);
-
-  console.log(result.join(', ').replace('1', ''));
-
+  console.log(result.join(', '));
 };
 
 parseArgs();

@@ -1,20 +1,20 @@
-import os from 'os';
-import { Worker } from 'node:worker_threads';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import os from 'os';
+import { Worker } from 'node:worker_threads';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const createWorker = (n) => {
   return new Promise(( resolve, reject ) => {
-    const worker = new Worker(join(__dirname, 'worker.js'), { workerData: n });
+    const worker = new Worker(join(__dirname, 'worker.js'), {workerData: n});
 
     worker.on('message', (data) => {
-      resolve(data);
+      resolve({status: 'resolved', data});
     });
 
-    worker.on('error', (error) => {
-      reject({ status: 'error', data: null});
+    worker.on('error', () => {
+      reject({status: 'error', data: null});
     });
   });
 }
@@ -32,9 +32,13 @@ const performCalculations = async () => {
     number += 1;
   }
 
-  const thread_results = await Promise.all(workerPromises);
+  const thread_results = await Promise.allSettled(workerPromises);
 
-  console.log(thread_results);
+  const result_values = thread_results.map((result) => {
+    return (result.value) ? result.value : result.reason;
+  });
+
+  console.log(result_values);
 };
 
 await performCalculations();

@@ -4,13 +4,13 @@ import { createWriteStream } from 'node:fs';
 import { stdin } from 'node:process';
 import { pipeline } from 'node:stream/promises';
 
-const write = async () => {
-	const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
+const write = async () => {
 	await pipeline(
 		stdin,
 		createWriteStream(join(__dirname, 'files', 'fileToWrite.txt'))
 	)
 };
 
-await write();
+await write().catch(console.error);
