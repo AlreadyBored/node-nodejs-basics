@@ -1,0 +1,1 @@
+export const FILES_PATH = 'src/fs/files'
