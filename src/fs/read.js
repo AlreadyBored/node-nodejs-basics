@@ -11,7 +11,7 @@ const read = async () => {
     // Write your code here 
     // Create a path to the file to be read
     // https://stackoverflow.com/questions/46867517/how-to-read-file-with-async-await-properly
-    const filePath = join(__dirname, 'fileToRead.txt');
+    const filePath = join(__dirname, "files", 'fileToRead.txt');
     try {
         // Read the file
         const data = await readFile(filePath, 'utf8');
