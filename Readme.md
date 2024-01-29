@@ -1,5 +1,5 @@
 # Node.js basics
-For checking you need switch to '**nodejs-basics**' branch:   
+To check, you need to switch to the '**nodejs-basics**' branch:   
 1. git clone https://github.com/rahunak/node-nodejs-basics.git
 2. git checkout nodejs-basics
 3. open package.json
