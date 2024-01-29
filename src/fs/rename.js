@@ -1,5 +1,14 @@
+import fs, { existsSync } from 'fs';
+
 const rename = async () => {
-    // Write your code here 
+    try {
+        if (!fs.existsSync('./files/properFilename.md')) {
+            fs.promises.rename('./files/wrongFilename.txt', './files/properFilename.md');
+        }
+    } catch (err) {
+        console.error('Something went wrong!');
+    }
+    
 };
 
 await rename();
