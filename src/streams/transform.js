@@ -1,5 +1,19 @@
+import { Transform } from "node:stream";
+
 const transform = async () => {
-    // Write your code here 
+  const transformStream = new Transform({
+    transform(chunk, encoding, done) {
+      const str = chunk.toString().split("").reverse().join("");
+      this.push(str);
+      done();
+    },
+  });
+
+  transformStream.on("data", (data) => {
+    process.stdout.write(`${data}\n`);
+  });
+
+  process.stdin.pipe(transformStream);
 };
 
 await transform();
