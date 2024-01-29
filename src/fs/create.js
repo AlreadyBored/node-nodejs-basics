@@ -1,8 +1,6 @@
 import { existsSync, createWriteStream, mkdir } from 'node:fs';
 import { join } from 'node:path';
 
-const errorHandler = error => console.error(error.message)
-
 const create = async (folder, fileName, fileContent) => {
     await mkdir(folder, { recursive: true });
     const filePath = join(folder, fileName);
