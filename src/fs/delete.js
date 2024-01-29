@@ -14,7 +14,7 @@ const remove = async () => {
     const filePath = join(__dirname, 'files', 'fileToRemove.txt');
     try {
         // Delete the file
-        await fs.unlink(filePath);
+        await unlink(filePath);
         console.log(`File ${filePath} has been deleted.`);
     } catch (error) {
         // If there is an error, throw an error
