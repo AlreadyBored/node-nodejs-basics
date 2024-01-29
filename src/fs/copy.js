@@ -23,19 +23,6 @@ const copy = async () => {
         }
        
     } 
-    //   readdir(filesFolderCopy, (err, files) => {
-    //     if (err) console.log(err);
-    //     else {
-    //       files.forEach((file) => {
-    //         unlink(path.join(filesFolderCopy, file), (err) => {
-    //           if (err) throw err;
-    //         });
-    //       });
-    //     }
-    //   });
-      
-    
-
       try {
         const files = await readdir(filesFolder);
         files.forEach((file) => {
