@@ -1,5 +1,21 @@
+import fs from 'fs'
+import path from 'path'
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
 const read = async () => {
-    // Write your code here 
+  const fileToReadPath = path.join(__dirname, 'files', 'fileToRead.txt');
+
+  const readStream = fs.createReadStream(fileToReadPath)
+
+  readStream.on('data', (chunk) => {
+    process.stdout.write(chunk)
+  })
 };
 
 await read();
+
+// read.js - implement function that reads file fileToRead.txt content using
+// Readable Stream and prints it's content into process.stdout

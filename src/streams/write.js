@@ -1,5 +1,24 @@
+import fs from 'fs'
+import path from 'path'
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
 const write = async () => {
-    // Write your code here 
+  const fileToWritePath = path.join(__dirname, 'files', 'fileToWrite.txt');
+  
+  const writeStream = fs.createWriteStream(fileToWritePath)
+
+  process.stdin.on('data', (chunk) => {
+    writeStream.write(chunk)
+  })
+
+  process.stdin.on('end', () => {
+    writeStream.close();
+  })
 };
 
 await write();
+
+// write.js - implement function that writes process.stdin data into file fileToWrite.txt content using Writable Stream
