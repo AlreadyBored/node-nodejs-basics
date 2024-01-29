@@ -3,8 +3,6 @@ import pr from 'node:process';
 const cliArgs = pr.argv.slice(2);
 
 const parseArgs = () => {
-    console.log(cliArgs);
-
     let arrToDisplay = [];
 
     for (let i = 0; i < cliArgs.length; i += 2) {
