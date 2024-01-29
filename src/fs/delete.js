@@ -1,22 +1,20 @@
-const fs = require('fs');
-const path = require('path');
+import { promises as fsPromises, existsSync, unlink } from 'fs';
 
-const remove = async () => {
-  const fileNameToRemove = 'fileToRemove.txt';
-
+async function remove() {
   try {
-    const filePathToRemove = path.join(__dirname, fileNameToRemove);
+    const filePath = 'files/fileToRemove.txt';
 
-    if (!fs.existsSync(filePathToRemove)) {
-      throw new Error('FS operation failed: File does not exist');
+    if (!existsSync(filePath)) {
+      throw new Error(`FS operation failed: File '${filePath}' does not exist`);
     }
 
-    fs.unlinkSync(filePathToRemove);
+    await fsPromises.unlink(filePath);
 
-    console.log('File successfully deleted:', fileNameToRemove);
+    console.log('File deleted successfully!');
   } catch (error) {
-    console.error(error.message);
+    console.error(`FS operation failed: ${error.message}`);
+    throw error;
   }
-};
+}
 
 await remove();

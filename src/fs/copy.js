@@ -1,28 +1,40 @@
-const fs = require('fs');
-const path = require('path');
-const fse = require('fs-extra');
+import { promises as fsPromises, existsSync, mkdirSync } from 'fs';
+import { join } from 'path';
 
-const copy = async () => {
-  const sourceFolderPath = path.join(__dirname, 'files');
-  const destinationFolderPath = path.join(__dirname, 'files_copy');
-
+async function copy(src, dest) {
   try {
-    if (!fs.existsSync(sourceFolderPath)) {
-      throw new Error('FS operation failed: Source folder does not exist');
+    if (!existsSync(src)) {
+      throw new Error('Source folder does not exist');
     }
 
-    if (fs.existsSync(destinationFolderPath)) {
-      throw new Error('FS operation failed: Destination folder already exists');
+    if (existsSync(dest)) {
+      throw new Error('Destination folder already exists');
     }
 
-    fs.mkdirSync(destinationFolderPath);
+    mkdirSync(dest);
 
-    fse.copySync(sourceFolderPath, destinationFolderPath);
+    const files = await fsPromises.readdir(src);
 
-    console.log('Folder successfully copied:', destinationFolderPath);
+    for (const file of files) {
+      const srcPath = join(src, file);
+      const destPath = join(dest, file);
+      const isDirectory = (await fsPromises.stat(srcPath)).isDirectory();
+
+      if (isDirectory) {
+        await copyFolder(srcPath, destPath);
+      } else {
+        await fsPromises.copyFile(srcPath, destPath);
+      }
+    }
+
+    console.log('Folder copied successfully!');
   } catch (error) {
-    console.error(error.message);
+    console.error(`FS operation failed: ${error.message}`);
+    throw error;
   }
-};
+}
 
-await copy();
+const sourceFolder = 'files';
+const destinationFolder = 'files_copy';
+
+await copy(sourceFolder, destinationFolder);

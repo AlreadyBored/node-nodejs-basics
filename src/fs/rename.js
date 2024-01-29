@@ -1,28 +1,26 @@
-const fs = require('fs');
-const path = require('path');
+import { promises as fsPromises, existsSync, rename } from 'fs';
+import { join } from 'path';
 
-const rename = async () => {
-  const currentFileName = 'wrongFilename.txt';
-  const newFileName = 'properFilename.md';
-
+const renameFile = async () => {
   try {
-    const currentFilePath = path.join(__dirname, currentFileName);
-    const newFilePath = path.join(__dirname, newFileName);
+    const sourceFile = 'files/wrongFilename.txt';
+    const destinationFile = 'files/properFilename.md';
 
-    if (!fs.existsSync(currentFilePath)) {
-      throw new Error('FS operation failed: Current file does not exist');
+    if (!existsSync(sourceFile)) {
+      throw new Error(`Source file '${sourceFile}' does not exist`);
     }
 
-    if (fs.existsSync(newFilePath)) {
-      throw new Error('FS operation failed: New file already exists');
+    if (existsSync(destinationFile)) {
+      throw new Error(`Destination file '${destinationFile}' already exists`);
     }
 
-    fs.renameSync(currentFilePath, newFilePath);
+    await fsPromises.rename(sourceFile, destinationFile);
 
-    console.log('File successfully renamed:', newFilePath);
+    console.log('File renamed successfully!');
   } catch (error) {
-    console.error(error.message);
+    console.error(`FS operation failed: ${error.message}`);
+    throw error;
   }
 };
 
-await rename();
+await renameFile();

@@ -1,22 +1,24 @@
-const fs = require('fs');
-const path = require('path');
+import { promises as fsPromises, existsSync, readdir } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 
 const list = async () => {
-  const fileNameToRead = 'fileToRead.txt';
+  const currentFileUrl = import.meta.url;
+  const currentFilePath = fileURLToPath(currentFileUrl);
+  const folderPath = join(dirname(currentFilePath), 'files');
 
   try {
-    const filePathToRead = path.join(__dirname, fileNameToRead);
-
-    if (!fs.existsSync(filePathToRead)) {
-      throw new Error('FS operation failed: File does not exist');
+    if (!existsSync(folderPath)) {
+      throw new Error('FS operation failed: Folder does not exist');
     }
 
-    const fileContent = fs.readFileSync(filePathToRead, 'utf-8');
+    const fileNames = await fsPromises.readdir(folderPath);
 
-    console.log(`Content of ${fileNameToRead}:\n`, fileContent);
+    console.log('Filenames in the "files" folder:', fileNames);
   } catch (error) {
-    console.error(error.message);
+    console.error(`FS operation failed: ${error.message}`);
+    throw error;
   }
-};
+}
 
 await list();
