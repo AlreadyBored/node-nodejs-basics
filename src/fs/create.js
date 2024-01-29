@@ -2,10 +2,10 @@ import fs from 'fs';
 
 const create = async () => {
     try {
-		const dirPath = './files';
-		const filePath = `${dirPath}/fresh.txt`;
+		const dir = new URL('./files', import.meta.url).pathname;
+		const filePath = `${dir}/fresh.txt`;
 
-		const isDirExists = fs.existsSync(dirPath);
+		const isDirExists = fs.existsSync(dir);
 
 		if (!isDirExists) {
 			throw new Error('FS operation failed');

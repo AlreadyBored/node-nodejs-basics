@@ -3,7 +3,7 @@ import fs from 'fs';
 
 const list = async () => {
 	try {
-		const srcPath = './files';
+		const srcPath = new URL('./files', import.meta.url).pathname;
 
 		const isSrcExists = fs.existsSync(srcPath);
 

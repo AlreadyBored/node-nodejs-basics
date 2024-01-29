@@ -8,7 +8,7 @@ const sendResult = () => {
     // This function sends result of nthFibonacci computations to main thread
 	const result = nthFibonacci(workerData);
 
-	parentPort.postMessage(result);
+	return parentPort.postMessage(result);
 };
 
 sendResult();

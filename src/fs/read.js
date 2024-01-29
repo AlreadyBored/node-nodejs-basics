@@ -3,7 +3,7 @@ import fs from 'fs';
 
 const read = async () => {
     try {
-		const srcPath = './files';
+		const srcPath = new URL('./files', import.meta.url).pathname;
 		const filePath = `${srcPath}/fileToRead.txt`;
 
 		const isSrcExists = fs.existsSync(srcPath);

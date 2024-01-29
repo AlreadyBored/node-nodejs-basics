@@ -6,6 +6,7 @@ const promiseWorker = (workerData) => {
 		const worker = new Worker('./worker.js', {
 			workerData,
 		});
+		console.log('worker: ', worker);
 		worker.on('message', result => {
 			resolve({state: 'resolved', data: result})
 		});
@@ -26,4 +27,4 @@ const performCalculations = async () => {
 	return Promise.all(res.map((worker) => worker));
 };
 
-await performCalculations();
+console.log(await performCalculations());

@@ -3,10 +3,10 @@ import fs from 'fs';
 
 const remove = async () => {
     try {
-		const dirPath = './files';
-		const filePath = `${dirPath}/fileToRemove.txt`;
+		const dir = new URL('./files', import.meta.url).pathname;
+		const filePath = `${dir}/fileToRemove.txt`;
 
-		const isDirExists = fs.existsSync(dirPath);
+		const isDirExists = fs.existsSync(dir);
 		
 		if (!isDirExists) {
 			throw new Error('FS operation failed');
