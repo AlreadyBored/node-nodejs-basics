@@ -6,4 +6,5 @@ export {
   COPY_FOLDER_NAME,
   WRONG_FILE_NAME,
   PROPPER_FILE_NAME,
+  DELETE_FILE_NAME,
 } from "./names.js";

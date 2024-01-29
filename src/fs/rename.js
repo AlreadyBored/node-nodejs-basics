@@ -23,7 +23,7 @@ const rename = async () => {
       if (err) throw err;
     });
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 
