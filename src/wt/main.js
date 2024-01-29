@@ -1,25 +1,21 @@
+const { Worker } = require('worker_threads');
+const { promisify } = require('util');
+
 const performCalculations = async () => {
     // Write your code here
-    // const workers = [];
+    const numCPUs = require('os').cpus().length;
+    const results = [];
 
-    // const results = [];
+    for (let i = 0; i < numCPUs; i++) {
+        const worker = new Worker('./worker.js', { workerData: i + 10 });
+        const onMessage = promisify(worker.on.bind(worker, 'message'));
 
-    // for (let i = 0; i < numCPUs; i++) {
-    //     const worker = new Worker('./worker.js', { workerData: i + 10 });
+        await onMessage((result) => {
+            results.push(result);
+        });
+    }
 
-    //     workers.push(
-    //         new Promise((resolve) => {
-    //             worker.on('message', (result) => {
-    //                 results.push(result);
-    //                 resolve();
-    //             });
-    //         })
-    //     );
-    // }
-
-    // await Promise.all(workers);
-
-    // console.log('Results:', results);
+    console.log('Results:', results);
 };
 
 await performCalculations();
