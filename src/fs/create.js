@@ -1,5 +1,4 @@
-import { existsSync, createWriteStream } from 'node:fs';
-import { mkdir} from 'node:fs/promises';
+import { existsSync, createWriteStream, mkdir } from 'node:fs';
 import { join } from 'node:path';
 
 const errorHandler = error => console.error(error.message)
