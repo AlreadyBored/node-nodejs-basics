@@ -1,8 +1,20 @@
-// n should be received from main thread
-const nthFibonacci = (n) => n < 2 ? n : nthFibonacci(n - 1) + nthFibonacci(n - 2);
+const sendResult = async () => {
+	try {
+		const {
+			parentPort,
+			workerData
+		} = await import('worker_threads');
 
-const sendResult = () => {
-    // This function sends result of nthFibonacci computations to main thread
+		const nthFibonacci = (n) => n < 2 ? n : nthFibonacci(n - 1) + nthFibonacci(n - 2);
+
+		const n = workerData;
+		const result = nthFibonacci(n);
+		if (parentPort) {
+			parentPort.postMessage(result);
+		}
+	} catch (error) {
+		console.error('Error: ', error.message);
+	}
 };
 
 sendResult();

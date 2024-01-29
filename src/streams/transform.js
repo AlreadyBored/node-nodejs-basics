@@ -4,7 +4,6 @@ const transform = async () => {
 			Transform
 		} = await import('stream');
 
-		// Create a transform stream
 		const reverseTransform = new Transform({
 			transform(chunk, encoding, callback) {
 				const reversedChunk = chunk.toString().split('').reverse().join('');
@@ -21,7 +20,3 @@ const transform = async () => {
 };
 
 await transform();
-
-/* transform.js - implement function that reads data from process.stdin,
- * reverses text using Transform Stream and then writes it into
- * process.stdout */

@@ -9,15 +9,11 @@ const remove = async () => {
 		} = await import('path');
 		const filePath = join('./files', 'fileToRemove.txt');
 
-		await access(filePath); // Check if it is there
-		await unlink(filePath); // Deletes it once found
+		await access(filePath);
+		await unlink(filePath);
 	} catch (error) {
-		throw new Error('FS operation failed') // If no file found
+		throw new Error('FS operation failed')
 	}
 };
 
 await remove();
-
-/* delete.js - implement function that deletes file fileToRemove.txt
- * (if there's no file fileToRemove.txt Error with message
- * FS operation failed must be thrown) */

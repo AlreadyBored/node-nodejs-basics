@@ -14,11 +14,11 @@ const create = async () => {
 		const filePath = join(currentDirPath, './files', 'fresh.txt');
 
 		try {
-			// Check if file exists, already
+
 			await fsPromises.access(filePath);
 			throw new Error('FS operation failed');
 		} catch (error) {
-			// If file non-existent, let's create one!
+
 			try {
 				const {
 					writeFile
@@ -35,7 +35,3 @@ const create = async () => {
 };
 
 await create();
-
-/* create.js - implement function that creates new file fresh.txt
- * with content I am fresh and young inside of the files folder
- * (if file already exists Error with message FS operation failed must be thrown) */

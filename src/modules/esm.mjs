@@ -6,7 +6,7 @@ import {
     version
 } from 'os';
 import path from 'path';
-import './files/c'; // Static import for side-effects
+import './files/c';
 
 const random = Math.random();
 
@@ -14,12 +14,12 @@ let unknownObject;
 
 if (random > 0.5) {
 	import('./files/a.json').then(module => {
-		unknownObject = module.default; // Accesses the default export
+		unknownObject = module.default;
 		console.log(unknownObject);
 	});
 } else {
 	import('./files/b.json').then(module => {
-		unknownObject = module.default; // Accesses the default export
+		unknownObject = module.default;
 		console.log(unknownObject);
 	});
 }
@@ -45,4 +45,4 @@ myServer.listen(PORT, () => {
 export {
     myServer,
     unknownObject
-}; // Export named exports
+};
