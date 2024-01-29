@@ -15,8 +15,7 @@ const decompress = async () => {
     readableStream.pipe(gunzipStream).pipe(writableStream);
 
     return new Promise((resolve, reject) => {
-        writableStream.on('finish',
-            () => unlink(compressedFile, (err) => (err) ? reject(err) : resolve()));
+        writableStream.on('finish', () => resolve());
 
         writableStream.on('error', (error) => {
             reject(error);

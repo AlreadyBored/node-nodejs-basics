@@ -15,8 +15,7 @@ const compress = async () => {
     readableStream.pipe(gzipStream).pipe(writableStream);
 
     return new Promise((resolve, reject) => {
-        writableStream.on('finish',
-            () => unlink(sourceFile, (err) => (err) ? reject(err) : resolve()));
+        writableStream.on('finish', () => resolve());
 
         writableStream.on('error', (error) => reject(error));
     });
