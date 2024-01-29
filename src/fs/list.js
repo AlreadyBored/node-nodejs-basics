@@ -1,16 +1,17 @@
 const list = async () => {
-    const fs = require('fs');
-    const path = require('path');
-
-    function listFiles() {
-        const filesPath = path.join(__dirname, 'files');
-        if (!fs.existsSync(filesPath)) { // if folder doesn't exist, then: next line
-            throw new Error('FS operation failed');
-        }
-        const filenames = fs.readdirSync(filesPath);
+    try {
+        const {
+            readdirSync
+        } = await import('fs');
+        const {
+            join
+        } = await import('path');
+        const filesPath = join('.', 'files');
+        const filenames = readdirSync(filesPath);
         console.log(filenames);
+    } catch (error) {
+        throw new Error('FS operation failed');
     }
-
 };
 
 await list();
