@@ -7,10 +7,10 @@ const parseArgs = () => {
     if (firstTwoChar === "--") {
       const propName = args[index].slice(2);
       const value = args[index + 1];
-      result = `${propName} is ${value}`;
-      console.log(result);
+      result += `${propName} is ${value}; `;
     }
   }
+  console.log(result.slice(0, -2));
 };
 
 parseArgs();
