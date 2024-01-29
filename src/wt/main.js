@@ -16,12 +16,12 @@ const performCalculations = async () => {
 
     worker.on('message', (result) => {
       resultsArray[result.id] = { status: 'resolved', data: result.result }
-      if (resultsArray.length === numOfCores) console.log(resultsArray)
+      if (Object.keys(resultsArray).length === numOfCores) console.log(resultsArray)
     })
 
     worker.on('error', () => {
       resultsArray.push({ status: 'error', data: null });
-      if (resultsArray.length === numOfCores) console.log(resultsArray)
+      if (Object.keys(resultsArray).length === numOfCores) console.log(resultsArray)
     });
   }
 
