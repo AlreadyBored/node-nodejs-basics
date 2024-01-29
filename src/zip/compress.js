@@ -14,6 +14,7 @@ const compress = async () => {
   const writeStream = fs.createWriteStream(outputFilePath);
 
   await pipelineAsync(readStream, gzipStream, writeStream);
+  await fs.promises.unlink(inputFilePath);
 };
 
 await compress();
