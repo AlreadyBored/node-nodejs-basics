@@ -18,7 +18,7 @@ const performCalculations = async () => {
     
         worker.on('message', (msg) => {
             res[i] = {status: 'resolved', data: msg};
-            if (res.length === 4) {
+            if (res.length === numCores) {
                 console.log(res);
             }
         });
