@@ -6,6 +6,6 @@ export const getCurrentDirName = (importMetaUrl) => {
     return path.dirname(__filename);
 }
 
-export const getNecessaryFilePath = (importMetaUrl, path) => {
+export const getNecessaryPathInCurrentDir = (importMetaUrl, path) => {
     return getCurrentDirName(importMetaUrl) + path
 }
