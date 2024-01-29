@@ -2,15 +2,17 @@ import * as path from 'node:path'
 import { release, version } from 'node:os'
 import { createServer as createServerHttp } from 'node:http'
 import './files/c.js';
+import aJson from './files/a.json' with { type: 'json' };
+import bJson from './files/b.json' with { type: 'json' };
 
 const random = Math.random();
 
 let unknownObject;
 
 if (random > 0.5) {
-    unknownObject = import('./files/a.json', { with: { type: 'json' } });
+    unknownObject = aJson;
 } else {
-    unknownObject = import('./files/b.json', { with: { type: 'json' } });
+    unknownObject = bJson;
 }
 
 console.log(`Release ${release()}`);
