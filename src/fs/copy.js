@@ -26,7 +26,7 @@ const copy = async () => {
       }
     } catch (destError) {
       if (destError.code !== "ENOENT") {
-        throw destError;
+        throw new Error('FS operation failed');;
       }
 
       await mkdir(copyingFolder);
