@@ -1,4 +1,12 @@
 # Node.js basics
+For checking you need switch to '**nodejs-basics**' branch:   
+1. git clone https://github.com/rahunak/node-nodejs-basics.git
+2. git checkout nodejs-basics
+3. open package.json
+4. run scripts use commands or directly from folder
+
+My discord: ЕвгенийZaiko(@rahunak)  
+My telegram: https://t.me/eugeneZaiko
 
 ## Basic Scope  
 ### File system (src/fs)  
