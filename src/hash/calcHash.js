@@ -1,5 +1,20 @@
+import { createHash } from 'crypto';
+import { createReadStream } from 'fs';
+import { getNecessaryFilePath } from '../utils/helpers/path.helper.js';
+
+const path = getNecessaryFilePath(import.meta.url, '/files/fileToCalculateHashFor.txt');
+
 const calculateHash = async () => {
-    // Write your code here 
+    const hash = createHash('sha256');
+    const stream = createReadStream(path);
+
+    stream.on('data', data => hash.update(data));
+
+    stream.on('end', () => {
+        const calculatedHash = hash.digest('hex');
+
+        console.log(calculatedHash);
+    });
 };
 
 await calculateHash();
