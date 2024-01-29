@@ -11,10 +11,10 @@ const read = async () => {
     // Write your code here 
     // Create a path to the file to be read
     // https://stackoverflow.com/questions/46867517/how-to-read-file-with-async-await-properly
-    const filePath = join(__dirname, 'fileToRead.txt', 'binary');
+    const filePath = join(__dirname, 'fileToRead.txt');
     try {
         // Read the file
-        const data = await readFile(filePath, 'utf8');
+        const data = await readFile(filePath);
         console.log(data);
     } catch (error) {
         // If there is an error, throw an error
