@@ -1,16 +1,16 @@
-import { access, mkdir } from 'node:fs/promises';
-import { createWriteStream } from 'node:fs';
+import { existsSync, createWriteStream } from 'node:fs';
+import { mkdir} from 'node:fs/promises';
 import { join } from 'node:path';
 
-const create = async (folderName, fileName, fileContent) => {
-    await mkdir(folderName, { recursive: true });
-    const filePath = join(folderName, fileName);
+const errorHandler = error => console.error(error.message)
 
-    try {
-        await access(filePath);
+const create = async (folder, fileName, fileContent) => {
+    await mkdir(folder, { recursive: true });
+    const filePath = join(folder, fileName);
 
-        throw new Error('FS operation failed');
-    } catch (error) {
+    if (existsSync(filePath)) {
+        throw new Error('FS operation failed')
+    } else {
         const writeStream = createWriteStream(filePath);
 
         writeStream.on('open', () => {
@@ -19,7 +19,7 @@ const create = async (folderName, fileName, fileContent) => {
         });
 
         writeStream.on('error', (error) => {
-            console.error(`FS operation failed: ${error.message}`);
+            console.error(`Write operation failed: ${error.message}`);
         });
     }
 };
