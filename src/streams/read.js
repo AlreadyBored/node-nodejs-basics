@@ -1,5 +1,9 @@
+import { createReadStream } from 'node:fs';
+import { pipeline } from 'node:stream/promises';
+
+const filePath = new URL('files/fileToRead.txt', import.meta.url);
 const read = async () => {
-    // Write your code here 
+    await pipeline(createReadStream(filePath), process.stdout)
 };
 
 await read();
