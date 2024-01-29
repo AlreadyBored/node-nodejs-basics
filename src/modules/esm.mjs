@@ -12,10 +12,14 @@ const random = Math.random();
 
 let unknownObject;
 
+// https://stackoverflow.com/questions/70106880/err-import-assertion-type-missing-for-import-of-json-file
+// https://simonplend.com/import-json-in-es-modules/
+
+
 if (random > 0.5) {
-    unknownObject = await import('./files/a.json');
+    unknownObject = await import('./files/a.json', { assert: { type: 'json' } });
 } else {
-    unknownObject = await import('./files/b.json');
+    unknownObject = await import('./files/b.json', { assert: { type: 'json' } });
 }
 
 
