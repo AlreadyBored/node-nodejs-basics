@@ -2,11 +2,15 @@
 import { writeFile, readdir } from 'node:fs/promises';
 
 const create = async () => {
-    const files = await readdir('files')
-    if (files.includes('fresh.txt')) {
-        throw new Error('FS operation failed')
-    } else  {
-        writeFile('files/fresh.txt', 'I am fresh and young ')
+    try {
+        const files = await readdir('files');
+        if (files.includes('fresh.txt')) {
+            throw new Error('FS operation failed');
+        } else  {
+            writeFile('files/fresh.txt', 'I am fresh and young ');
+        }
+    } catch {
+        throw new Error('FS operation failed');
     }
 };
 

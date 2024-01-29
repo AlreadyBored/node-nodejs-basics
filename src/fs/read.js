@@ -3,10 +3,10 @@ import { readFile } from 'node:fs/promises';
 
 const read = async () => {
     try {
-        const content = await readFile('./files/fileToRead.txt', { encoding: 'utf-8' })
-        console.log(content)
+        const content = await readFile('./files/fileToRead.txt', { encoding: 'utf-8' });
+        console.log(content);
     } catch {
-        throw new Error('FS operation failed')
+        throw new Error('FS operation failed');
     }
 };
 
