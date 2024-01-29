@@ -1,10 +1,17 @@
 // implement function that writes process.stdin data into file fileToWrite.txt content using Writable Stream
-import { createWriteStream } from 'node:fs'
+import { appendFile } from 'node:fs'
+import { Writable } from 'node:stream'
 
 const write = async () => {
-    const file = createWriteStream('./files/fileToWrite.txt');
-    process.stdin.pipe(file);
-    process.stdin.resume();
+    const writable = new Writable({
+        write(chunk, encoding, callback) {
+            if(chunk !== null) {
+                appendFile('./files/fileToWrite.txt', chunk, (err) => err && console.log(err))
+                callback()
+            }
+        }
+    })
+    process.stdin.pipe(writable)
 };
 
 await write();
