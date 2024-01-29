@@ -1,8 +1,8 @@
-import { existsSync, createWriteStream, mkdir } from 'node:fs';
+import { existsSync, createWriteStream, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 const create = async (folder, fileName, fileContent) => {
-    await mkdir(folder, { recursive: true });
+    await mkdirSync(folder, { recursive: true });
     const filePath = join(folder, fileName);
 
     if (existsSync(filePath)) {
