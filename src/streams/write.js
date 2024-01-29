@@ -1,6 +1,6 @@
 import path from "path";
 import fs from "fs";
-import {fileURLToPath} from "url";
+import { fileURLToPath } from "url";
 
 const write = async () => {
   const filePath = path.join(path.dirname(fileURLToPath(import.meta.url)), '/files/fileToWrite.txt');

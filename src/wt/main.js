@@ -1,7 +1,7 @@
 import os from 'os';
 import { Worker } from 'worker_threads'
 import path from "path";
-import {fileURLToPath} from "url";
+import { fileURLToPath } from "url";
 
 const workerPath = path.join(path.dirname(fileURLToPath(import.meta.url)), 'worker.js');
 

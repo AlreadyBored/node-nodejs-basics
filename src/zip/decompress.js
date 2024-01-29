@@ -1,7 +1,7 @@
 import { fileURLToPath } from "url";
 import path from "path";
 import { createReadStream, createWriteStream } from "fs";
-import {createGunzip} from "zlib";
+import { createGunzip } from "zlib";
 
 const decompress = async () => {
   const unzip = createGunzip();

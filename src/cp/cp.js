@@ -1,5 +1,5 @@
 import path from "path";
-import {fileURLToPath} from "url";
+import { fileURLToPath } from "url";
 import { spawn } from 'child_process';
 
 const processScript = path.join(path.dirname(fileURLToPath(import.meta.url)), '/files/script.js');

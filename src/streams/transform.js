@@ -1,4 +1,4 @@
-import {Transform} from "stream";
+import { Transform } from "stream";
 
 const transform = async () => {
   const reverse = new Transform({

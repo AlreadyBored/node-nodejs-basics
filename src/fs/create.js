@@ -3,10 +3,10 @@ import * as fs from 'fs';
 import path from 'path';
 
 const create = async () => {
-  const pathToFile = path.join(path.dirname(fileURLToPath(import.meta.url)), '/files/fresh.txt');
+  const filePath = path.join(path.dirname(fileURLToPath(import.meta.url)), '/files/fresh.txt');
   const fileContent = 'I am fresh and young';
 
-  fs.open(pathToFile, 'wx', function(err, file) {
+  fs.open(filePath, 'wx', function(err, file) {
     if (err) {
       throw new Error("FS operation failed");
     }

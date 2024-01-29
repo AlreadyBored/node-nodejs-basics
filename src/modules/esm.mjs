@@ -4,7 +4,7 @@ import { createServer as createServerHttp } from 'http';
 import './files/c.js';
 import a from './files/a.json' assert {type: 'json'};
 import b from './files/b.json' assert {type: 'json'};
-import {fileURLToPath} from "url";
+import { fileURLToPath } from "url";
 
 
 const currentFolder = path.dirname(fileURLToPath(import.meta.url));
