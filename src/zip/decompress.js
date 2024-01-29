@@ -1,13 +1,16 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+
+const __filename = new URL(import.meta.url).pathname;
+const __dirname = path.dirname(__filename);
 
 const decompress = async () => {
     // Write your code here 
     const sourceFilePath = path.join(__dirname, 'archive.gz');
     const destinationFilePath = path.join(__dirname, 'fileToCompress.txt');
 
-    const readStream = fs.createReadStream(sourceFilePath);
-    const writeStream = fs.createWriteStream(destinationFilePath);
+    const readStream = fs.promises.createReadStream(sourceFilePath);
+    const writeStream = fs.promises.createWriteStream(destinationFilePath);
 
     const gunzip = zlib.createGunzip();
 

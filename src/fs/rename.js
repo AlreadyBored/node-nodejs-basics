@@ -1,20 +1,20 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 const rename = async () => {
     // Write your code here 
-    const MainFilePath = path.join(__dirname, 'wrongFilename.txt');
-    const destinationFilePath = path.join(__dirname, 'properFilename.md');
+    const MainFilePath = path.join("files", 'wrongFilename.txt');
+    const destinationFilePath = path.join("files", 'properFilename.md');
 
     try {
-        await fs.access(MainFilePath);
+        await fs.promises.access(MainFilePath);
 
         try {
-            await fs.access(destinationFilePath);
+            await fs.promises.access(destinationFilePath);
             throw new Error('FS operation failed');
         } catch (error) {
             if (error.code === 'ENOENT') {
-                await fs.rename(MainFilePath, destinationFilePath);
+                await fs.promises.rename(MainFilePath, destinationFilePath);
                 console.log('File renamed successfully: wrongFilename.txt -> properFilename.md');
             } else {
                 throw error;

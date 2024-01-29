@@ -1,5 +1,8 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+
+const __filename = new URL(import.meta.url).pathname;
+const __dirname = path.dirname(__filename);
 
 const copy = async () => {
     // Write your code here 
@@ -7,21 +10,21 @@ const copy = async () => {
     const CopyFolderPath = path.join(__dirname, 'files_copy');
 
     try {
-        await fs.access(MainFolderPath);
+        await fs.promises.access(MainFolderPath);
 
         try {
-            await fs.access(CopyFolderPath);
+            await fs.promises.access(CopyFolderPath);
             throw new Error('FS operation failed');
         } catch (error) {
             if (error.code === 'ENOENT') {
-                await fs.mkdir(CopyFolderPath);
+                await fs.promises.mkdir(CopyFolderPath);
 
-                const files = await fs.readdir(MainFolderPath);
+                const files = await fs.promises.readdir(MainFolderPath);
 
                 await Promise.all(files.map(async (file) => {
                     const sourceFilePath = path.join(MainFolderPath, file);
                     const destinationFilePath = path.join(CopyFolderPath, file);
-                    await fs.copyFile(sourceFilePath, destinationFilePath);
+                    await fs.promises.copyFile(sourceFilePath, destinationFilePath);
                 }));
 
                 console.log('Folder copied successfully: files -> files_copy');

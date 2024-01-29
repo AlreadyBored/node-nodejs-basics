@@ -1,14 +1,14 @@
-const fs = require('fs').promises;
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 const remove = async () => {
     // Write your code here 
-    const filePath = path.join(__dirname, 'fileToRemove.txt');
+    const filePath = path.join("files", 'fileToRemove.txt');
 
     try {
-        await fs.access(filePath);
+        await fs.promises.access(filePath);
 
-        await fs.unlink(filePath);
+        await fs.promises.unlink(filePath);
 
         console.log('File deleted successfully');
     } catch (error) {

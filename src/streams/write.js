@@ -1,11 +1,14 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+
+const __filename = new URL(import.meta.url).pathname;
+const __dirname = path.dirname(__filename);
 
 const write = async () => {
     // Write your code here 
     const filePath = path.join(__dirname, 'fileToWrite.txt');
 
-    const writableStream = fs.createWriteStream(filePath);
+    const writableStream = fs.promises.createWriteStream(filePath);
 
     process.stdin.pipe(writableStream);
 
