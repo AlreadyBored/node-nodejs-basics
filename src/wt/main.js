@@ -15,24 +15,24 @@ function runService(workerData) {
 
 const performCalculations = async () => {
   const cores = os.cpus();
-  const resultObj = {};
+  const resultArr = [];
 
   async function run(num) {
-    const result = await runService(num);
-    resultObj[num] = {
+    const result = await runService(num + 10);
+    resultArr[num] = {
       status: "resolved",
       data: result
     }
   }
 
-  await Promise.all(cores.map((core, idx) => run(idx + 10).catch(() => {
-    resultObj[idx + 10] = {
+  await Promise.all(cores.map((core, idx) => run(idx).catch(() => {
+    resultArr[idx] = {
       status: "error",
       data: null
     }
   })))
 
-  console.log(Object.values(resultObj));
+  console.log(Object.values(resultArr));
 };
 
 await performCalculations();
