@@ -1,62 +1,52 @@
 const copy = async () => {
   try {
-    const fs = require('fs');
-    const path = require('path');
+    const { promises: fsPromises } = await import('fs');
+    const { join } = await import('path');
+    const sourceFolder = join('.', 'files');
+    const destinationFolder = join('.', 'files_copy');
 
-    const sourceFolder = path.join(__dirname, 'files');
-    const destinationFolder = path.join(__dirname, 'files_copy');
-
-    await fs.promises.stat(sourceFolder); // Check if source folder exists
-
-    // Check if destination folder already exists
+    // Does 'files_copy' already exists?
     try {
-        await fs.promises.stat(destinationFolder);
-        throw new Error('FS operation failed');
-    } catch (err) {
-        if (err.code !== 'ENOENT') {
-            throw err; // Re-throw errors
-        }
+      await fsPromises.stat(destinationFolder);
+      throw new Error('FS operation failed');
+    } catch (error) {
+      if (error.code !== 'ENOENT') {
+        throw error; // propagate
+      }
     }
 
-    await fs.mkdir(destinationFolder, { recursive : true}); // Create destination folder
+     // Create destinationFolder
+     await fsPromises.mkdir(destinationFolder, { recursive: true });
 
-    await copyFolderContents(sourceFolder, destinationFolder);
+     // Copy folder data
+     const copyFolderData = async (source, dest) => {
+       const files = await fsPromises.readdir(source);
+
+       for (const file of files) {
+         const srcPath = join(source, file);
+         const destPath = join(dest, file);
+         const stats = await fsPromises.stat(srcPath);
+
+         if (stats.isDirectory()) {
+           await fsPromises.mkdir(destPath);
+           await copyFolderData(srcPath, destPath); // Recursively copy
+        } else {
+          await fsPromises.copyFile(srcPath, destPath);
+        }
+      }
+    }
+    await copyFolderData(sourceFolder, destinationFolder);
 
     console.log('Files copied successfully');
   } catch (error) {
     console.error(`Error: ${error.message}`);
-    // Re-throw to propagate to caller
-  }
-
-  // Helper function for recursively copying (nested for encapsulation)
-  async function copyFolderContents(source, dest) {
-    const files = await fs.promises.readdir(source);
-
-    for (const file of files) {
-        const srcPath = path.join(source, file);
-        const destPath = path.join(dest, file)
-
-        try {
-            const stats = await fs.promises.stat(srcPath);
-
-            if (stats.isDirectory()) {
-                await fs.promises.mkdir(destPath);
-                await copyFolderContents(srcPath, destPath); // Recursively copy directory
-            } else {
-                await fs.promises.copyFile(srcPath, destPath);
-            }
-        } catch (err) {
-            console.error(`Error copying ${file}: ${err.message}`);
-            // Re-throw here to stop copying and propagate the error
-            throw err;
-        }
-    }
+    throw error; // Propagate
   }
 };
 
 await copy();
 
-/*copy.js - implement function that copies folder files files with all
+/* copy.js - implement function that copies folder files with all
 * its content into folder files_copy at the same level
-* (if files folder doesn't exists or files_copy has already been created
+* (if files folder doesn't exist or files_copy has already been created
 * Error with message FS operation failed must be thrown) */
