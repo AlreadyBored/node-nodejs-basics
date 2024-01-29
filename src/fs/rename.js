@@ -9,17 +9,17 @@ const rename = async () => {
   const wrongFilePath = path.join(__dirname, 'files', 'wrongFilename.txt');
   const properFilePath = path.join(__dirname, 'files', 'properFilename.md');
   
-  if(fs.existsSync(properFilePath) || !fs.existsSync(wrongFilePath)) {
-    throw new Error('FS operation failed')
-  }
+  fs.access(properFilePath, (err) => {
+    if(err) {
+      fs.access(wrongFilePath, (err) => {
+        if(err) throw new Error('FS operation failed')
 
-  fs.rename(wrongFilePath, properFilePath, (err) => {
-    if(err) throw new Error('Rename error')
+        fs.rename(wrongFilePath, properFilePath, (err) => {
+          if(err) throw new Error('Rename error')
+        })
+      })
+    } else throw new Error('FS operation failed')
   })
 };
 
 await rename();
-
-// rename.js - implement function that renames file wrongFilename.txt to properFilename with extension .md 
-// (if there's no file wrongFilename.txt or properFilename.md already exists Error with message FS operation failed 
-// must be thrown)

@@ -20,5 +20,3 @@ const write = async () => {
 };
 
 await write();
-
-// write.js - implement function that writes process.stdin data into file fileToWrite.txt content using Writable Stream

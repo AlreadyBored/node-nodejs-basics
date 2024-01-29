@@ -1,9 +1,12 @@
 import path from 'path';
 import { release, version } from 'os';
 import { createServer as createServerHttp } from 'http';
-import a from './files/a.json' assert { type: "json" }
-import b from './files/b.json' assert { type: "json" }
+import { createRequire } from "module";
 import './files/c.js';
+
+const thisIsECMAScriptRequire = createRequire(import.meta.url);
+const a = thisIsECMAScriptRequire('./files/a.json');
+const b = thisIsECMAScriptRequire('./files/b.json');
 
 const random = Math.random();
 
@@ -36,5 +39,3 @@ myServer.listen(PORT, () => {
 });
 
 export { unknownObject, myServer };
-
-// cjsToEsm.cjs - rewrite it to it's equivalent in ECMAScript notation (and rename it to esm.mjs)
