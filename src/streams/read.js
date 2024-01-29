@@ -1,5 +1,10 @@
+import * as fs from 'fs';
+
 const read = async () => {
-    // Write your code here 
+    const readableStream = fs.createReadStream('src/streams/files/fileToRead.txt');
+    readableStream.on('data', (chunk) => {
+        process.stdout.write(chunk.toString());
+    })
 };
 
 await read();
