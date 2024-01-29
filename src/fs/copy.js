@@ -1,29 +1,31 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { promises } from 'node:fs';
+import { checkFileExists } from './utils.js';
 
-const { access, mkdir, readdir, copyFile } = promises;
+const { mkdir, readdir, copyFile } = promises;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const copy = async () => {
   try {
-    await access(path.join(__dirname, 'files'));
-    try {
-      await access(path.join(__dirname, 'files_copy'));
-      throw new Error('FS operation failed');
-    } catch (err) {
-      if (err.code === 'ENOENT') {
-        await mkdir(path.join(__dirname, 'files_copy'));
-        const files = await readdir(path.join(__dirname, 'files'));
-        await Promise.all(files.map((file) => copyFile(path.join(__dirname, 'files', file), path.join(__dirname, 'files_copy', file))));
+    const filesDir = path.join(__dirname, 'files');
+    const copyDir = path.join(__dirname, 'files_copy');
+
+    if (await checkFileExists(filesDir)) {
+      if (await checkFileExists(copyDir)) {
+        throw new Error('FS operation failed');
       } else {
-        throw err;
+        await mkdir(copyDir);
+        const files = await readdir(filesDir);
+        await Promise.all(files.map((file) => copyFile(path.join(filesDir, file), path.join(copyDir, file))));
       }
+    } else {
+      throw new Error('FS operation failed');
     }
   } catch (err) {
-    throw new Error('FS operation failed');
+    throw err;
   }
 };
 
