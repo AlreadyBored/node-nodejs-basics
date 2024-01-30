@@ -1,5 +1,8 @@
+import { env } from 'process';
+
+
 const parseEnv = () => {
-    // Write your code here 
+    console.log(Object.keys(env).filter(el => el.includes('RSS_')).map(el => `${el}=${env[el]}`).join('; '));
 };
 
 parseEnv();
