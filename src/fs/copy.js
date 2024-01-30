@@ -26,7 +26,6 @@ const copy = async (src, dest) => {
     const isSrcDirectoryAndExist = isDirectoryAndExist(src);
     const isDestDirectoryAndExist = isDirectoryAndExist(dest);
 
-    console.log(isDestDirectoryAndExist, !isSrcDirectoryAndExist)
     if(!isSrcDirectoryAndExist || isDestDirectoryAndExist){
         throw new Error('FS operation failed')
     } else {
