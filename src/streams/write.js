@@ -1,28 +1,35 @@
-const fs = require('fs');
+import fs from 'fs';
+import { Writable } from 'stream';
 
-const write = async () => {
-  const writeStream = fs.createWriteStream(filePath);
+const write = async (filePath) => {
+  const writableStream = fs.createWriteStream(filePath);
 
-  process.stdin.setEncoding('utf-8');
-
-  process.stdin.on('data', (chunk) => {
-    writeStream.write(chunk);
+  const stdinWritable = new Writable({
+    write(chunk, encoding, callback) {
+      writableStream.write(chunk, encoding, (err) => {
+        if (err) {
+          console.error('Error writing to file:', err);
+        }
+        callback();
+      });
+    }
   });
 
-  process.stdin.on('end', () => {
-    writeStream.end();
-    console.log(`Input from stdin written to ${filePath}`);
+  process.stdin.pipe(stdinWritable);
+
+  process.stdin.on('error', (err) => {
+    console.error('Error reading from process.stdin:', err);
   });
 
-  process.stdin.on('error', (error) => {
-    console.error(`Error reading from stdin: ${error.message}`);
+  writableStream.on('error', (err) => {
+    console.error('Error writing to file:', err);
   });
 
-  writeStream.on('error', (error) => {
-    console.error(`Error writing to file: ${error.message}`);
+  writableStream.on('finish', () => {
+    console.log(`Data written to ${filePath} successfully.`);
   });
 };
 
-const filePath = 'fileToWrite.txt';
+const filePath = 'files/fileToWrite.txt';
 
 await write(filePath);

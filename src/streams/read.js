@@ -1,21 +1,35 @@
 import fs from 'fs';
+import { Readable } from 'stream';
 
-const read = async () => {
-  const readStream = fs.createReadStream(filePath, { encoding: 'utf-8' });
-
-  readStream.on('data', (chunk) => {
-    process.stdout.write(chunk);
+const read = async (filePath) => {
+  const readableStream = new Readable({
+    read() { }
   });
 
-  readStream.on('end', () => {
-    console.log('\nFile reading complete.');
+  const fileStream = fs.createReadStream(filePath);
+
+  fileStream.on('data', (chunk) => {
+    readableStream.push(chunk);
   });
 
-  readStream.on('error', (error) => {
-    console.error(`Error reading file: ${error.message}`);
+  fileStream.on('end', () => {
+    readableStream.push(null);
   });
+
+  fileStream.on('error', (err) => {
+    console.error('Error reading file:', err);
+    readableStream.destroy(err);
+  });
+
+  readableStream.pipe(process.stdout);
+
+  readableStream.on('error', (err) => {
+    console.error('Error piping content to process.stdout:', err);
+  });
+
+  fileStream.resume();
 };
 
-const filePath = 'fileToRead.txt';
+const filePath = 'files/fileToRead.txt';
 
 await read(filePath);

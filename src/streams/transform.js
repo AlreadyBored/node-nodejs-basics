@@ -1,6 +1,10 @@
-const { Transform } = require('stream');
+import { Transform } from 'stream';
 
 class ReverseTransform extends Transform {
+  constructor() {
+    super();
+  }
+
   _transform(chunk, encoding, callback) {
     const reversedText = chunk.toString().split('').reverse().join('');
     this.push(reversedText);
@@ -13,12 +17,16 @@ const transform = async () => {
 
   process.stdin.pipe(reverseTransform).pipe(process.stdout);
 
-  process.stdin.on('error', (error) => {
-    console.error(`Error reading from stdin: ${error.message}`);
+  process.stdin.on('error', (err) => {
+    console.error('Error reading from process.stdin:', err);
   });
 
-  process.stdout.on('error', (error) => {
-    console.error(`Error writing to stdout: ${error.message}`);
+  reverseTransform.on('error', (err) => {
+    console.error('Error transforming text:', err);
+  });
+
+  process.stdout.on('error', (err) => {
+    console.error('Error writing to process.stdout:', err);
   });
 };
 
