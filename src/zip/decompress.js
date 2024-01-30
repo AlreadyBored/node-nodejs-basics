@@ -3,8 +3,8 @@ import { createUnzip } from "zlib";
 import { pipeline } from "stream";
 import { unlink } from "fs/promises";
 
-const file = './files/fileToCompress.txt'
-const archive = './files/archive.gz'
+const file = new URL('./files/fileToCompress.txt', import.meta.url)
+const archive = new URL('./files/archive.gz', import.meta.url)
 
 const decompress = async () => {
     const readStream = createReadStream(archive)

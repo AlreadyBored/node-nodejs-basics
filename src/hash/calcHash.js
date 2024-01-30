@@ -1,9 +1,10 @@
 import { createHash } from 'crypto'
 import { createReadStream } from "fs";
 
-const file = './files/fileToCalculateHashFor.txt'
+const file = new URL('./files/fileToCalculateHashFor.txt', import.meta.url)
 
 const calculateHash = async () => {
+    // Write your code here
     const readableStream = createReadStream(file)
 
     const getHash = (data) => createHash('sha256')

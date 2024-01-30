@@ -1,9 +1,11 @@
 import { Worker } from 'worker_threads'
 import { cpus } from 'os'
 
+const workerPath = new URL('./worker.js', import.meta.url)
+
 const createWorker = (index) =>
     new Promise((res) => {
-        const worker = new Worker('./worker.js')
+        const worker = new Worker(workerPath)
         worker.postMessage(10 + index)
         worker.on('message', (data) => {
             res({

@@ -1,6 +1,6 @@
 import { createWriteStream } from "fs";
 
-const file = './files/fileToWrite.txt'
+const file = new URL('./files/fileToWrite.txt', import.meta.url)
 
 const write = async () => {
     const writeStream = createWriteStream(file)

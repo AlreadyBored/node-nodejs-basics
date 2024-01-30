@@ -1,7 +1,7 @@
 import { readFile } from "fs/promises";
 import errorHandler from "./errorHandler.js";
 
-const readPath = './files/fileToRead.txt'
+const readPath = new URL('./files/fileToRead.txt', import.meta.url)
 
 const read = async () => {
     try {

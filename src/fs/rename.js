@@ -2,8 +2,8 @@ import { readFile } from "fs";
 import { rename as renameFunc} from "fs/promises";
 import errorHandler from "./errorHandler.js";
 
-const oldPath = './files/wrongFilename.txt'
-const newPath = './files/properFilename.md'
+const oldPath = new URL('./files/wrongFilename.txt', import.meta.url)
+const newPath = new URL('./files/properFilename.md', import.meta.url)
 
 const rename = async () => {
     const renameCallback = async () =>

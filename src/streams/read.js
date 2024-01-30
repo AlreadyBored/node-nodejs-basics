@@ -1,6 +1,6 @@
 import { createReadStream } from "fs";
 
-const file = './files/fileToRead.txt'
+const file = new URL('./files/fileToRead.txt', import.meta.url)
 
 const read = async () => {
     const readStream = createReadStream(file)

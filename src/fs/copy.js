@@ -2,8 +2,8 @@ import { access }  from "fs";
 import { cp } from "fs/promises";
 import errorHandler from "./errorHandler.js";
 
-const source = './files'
-const destination = './files_copy'
+const source = new URL('./files', import.meta.url)
+const destination = new URL('./files_copy', import.meta.url)
 
 const copy = async () => {
     const copyCallback = () =>
