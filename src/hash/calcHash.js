@@ -1,24 +1,21 @@
-const fs = require('fs');
-const crypto = require('crypto');
+import fs from 'fs/promises';
+import crypto from 'crypto';
 
-const calculateHash = async () => {
-  const fileStream = fs.createReadStream(filePath);
+const calculateHash = async (fileToCalculateHashFor) => {
   const hash = crypto.createHash('sha256');
 
-  fileStream.on('data', (chunk) => {
-    hash.update(chunk);
-  });
+  try {
+    const fileContents = await fs.readFile(fileToCalculateHashFor);
 
-  fileStream.on('end', () => {
+    hash.update(fileContents);
+
     const hashResult = hash.digest('hex');
-    console.log(`SHA256 hash for ${filePath}: ${hashResult}`);
-  });
-
-  fileStream.on('error', (error) => {
+    console.log(`SHA256 hash for ${fileToCalculateHashFor}: ${hashResult}`);
+  } catch (error) {
     console.error(`Error reading file: ${error.message}`);
-  });
+  }
 };
 
-const filePath = 'fileToCalculateHashFor.txt';
+const fileToCalculateHashFor = 'files/fileToCalculateHashFor.txt';
 
-await calculateHash(filePath);
+await calculateHash(fileToCalculateHashFor);

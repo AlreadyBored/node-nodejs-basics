@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs from 'fs';
 
 const read = async () => {
   const readStream = fs.createReadStream(filePath, { encoding: 'utf-8' });

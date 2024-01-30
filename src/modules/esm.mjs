@@ -1,16 +1,22 @@
 import path from 'path';
 import { release, version } from 'os';
 import { createServer as createServerHttp } from 'http';
-import './files/c';
+import './files/c.js';
 
 const random = Math.random();
 
 let unknownObject;
 
 if (random > 0.5) {
-  unknownObject = await import('./files/a.json');
+  import('./files/a.json').then((module) => {
+    unknownObject = module.default;
+    console.logModule(unknownObject);
+  });
 } else {
-  unknownObject = await import('./files/b.json');
+  import('./files/b.json').then((module) => {
+    unknownObject = module.default;
+    console.logModule(unknownObject);
+  });
 }
 
 console.log(`Release ${release()}`);
@@ -26,11 +32,12 @@ const myServer = createServerHttp((_, res) => {
 
 const PORT = 3000;
 
-console.log(unknownObject);
-
 myServer.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
   console.log('To terminate it, use Ctrl+C combination');
 });
 
-export { unknownObject, myServer };
+export {
+  unknownObject,
+  myServer,
+};
