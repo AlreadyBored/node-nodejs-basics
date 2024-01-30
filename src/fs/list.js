@@ -1,13 +1,19 @@
 import fs from "fs/promises";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
 
 const list = async () => {
-  let isFolderExists = true;
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
 
-  await fs.access("./files").catch(() => (isFolderExists = false));
+  let isFolderExists = true;
+  const pathToFolder = path.resolve(__dirname, "files")
+
+  await fs.access(pathToFolder).catch(() => (isFolderExists = false));
 
   if (!isFolderExists) throw new Error("FS operation failed");
 
-  await fs.readdir("./files").then((data) => console.log(data));
+  await fs.readdir(pathToFolder).then((data) => console.log(data));
 };
 
 await list();

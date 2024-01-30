@@ -1,9 +1,16 @@
 import { createHash } from "crypto";
 import { createReadStream } from "fs";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
 
 const calculateHash = async () => {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+
+  const pathToFile = path.resolve(__dirname, "files", "fileToCalculateHashFor.txt")
+
   const hash = createHash("sha256");
-  const fileStream = createReadStream("./files/fileToCalculateHashFor.txt");
+  const fileStream = createReadStream(pathToFile);
 
   fileStream.on("error", (err) => console.error("File Stream Error:", err));
   hash.on("error", (err) => console.error("Hash Stream Error:", err));

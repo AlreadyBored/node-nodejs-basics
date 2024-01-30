@@ -1,19 +1,27 @@
 import fs from "fs/promises";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
 
 const rename = async () => {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+
   let isFileCreated = true;
   let isFileNotExist = false;
 
+  const pathToFileForRename = path.resolve(__dirname, "files", "wrongFilename.txt")
+  const pathToNewFileName = path.resolve(__dirname, "files", "properFilename.md")
+
   await fs
-    .readFile("./files/wrongFilename.txt")
+    .readFile(pathToFileForRename)
     .catch(() => (isFileNotExist = true));
 
   await fs
-    .readFile("./files/properFilename.md")
+    .readFile(pathToNewFileName)
     .catch(() => (isFileCreated = false));
 
   if (!isFileNotExist && !isFileCreated)
-    fs.rename("./files/wrongFilename.txt", "./files/properFilename.md");
+    fs.rename(pathToFileForRename, pathToNewFileName);
   else throw new Error("FS operation failed");
 };
 
