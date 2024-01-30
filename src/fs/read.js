@@ -25,7 +25,7 @@ async function read() {
     }
 }
 
-readFileContent().catch((error) => {
+read().catch((error) => {
     console.error(error.message);
     process.exit(1);
 });
