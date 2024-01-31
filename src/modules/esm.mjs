@@ -1,7 +1,7 @@
 import path from 'path';
 import { release, version } from 'os';
+import { fileURLToPath } from 'url';
 import {createServer as createServerHttp} from 'http';
-import { dirname, basename } from 'path';
 import { createRequire } from 'module';
 import './files/c.js';
 
@@ -9,8 +9,8 @@ const PORT = 3000;
 
 const random = Math.random();
 const importFile = createRequire(import.meta.url);
-const __filename = basename(import.meta.url);
-const __dirname = dirname(import.meta.url);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 let unknownObject;
 
