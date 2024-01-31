@@ -4,24 +4,26 @@ const rename = async () => {
     const oldPathFile = 'src/fs/files/wrongFilename.txt';
     const newPathFile = 'src/fs/files/properFilename.md';
 
-    let fileExists = false;
-
     try {
         await fs.access(oldPathFile);
-        fileExists = true;
+    } catch (err) {
+        if (err.code === 'ENOENT') {
+            throw new Error('File wrongFilename.txt does not exist');
+        } else {
+            throw err;
+        }
+    }
 
+    try {
         await fs.access(newPathFile);
+        throw new Error('File properFilename.md already exists');
     } catch (err) {
         if (err.code !== 'ENOENT') {
             throw err;
         }
     }
 
-    if (fileExists) {
-        throw new Error('FS operation failed');
-    } else {
-        await fs.rename(oldPathFile, newPathFile);
-    }
+    await fs.rename(oldPathFile, newPathFile);
 };
 
 await rename();
