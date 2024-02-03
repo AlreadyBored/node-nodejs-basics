@@ -7,6 +7,7 @@
   },
   "type": "module",
   "scripts": {
+    "start": "node src/fm/fm.js",
     "cli:args": "node src/cli/args.js --some-arg value1 --other 1337 --arg2 42",
     "cli:env": "npx cross-env SOME=any RSS_foo=bar RSS_bar=baz node src/cli/env.js",
     "cp": "node src/cp/cp.js",
