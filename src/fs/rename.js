@@ -1,17 +1,23 @@
-import { promises as fsPromises, existsSync, rename } from 'fs';
-import { join } from 'path';
+import { promises as fsPromises, existsSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 
-const renameFile = async () => {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const rename = async () => {
   try {
-    const sourceFile = 'files/wrongFilename.txt';
-    const destinationFile = 'files/properFilename.md';
+    const sourceFile = join(__dirname, 'files', 'wrongFilename.txt');
+    const destinationFile = join(__dirname, 'files', 'properFilename.md');
 
     if (!existsSync(sourceFile)) {
-      throw new Error(`Source file '${sourceFile}' does not exist`);
+      console.log(`Source file '${sourceFile}' does not exist. Unable to rename.`);
+      return; // Return early, as there's no error in this case
     }
 
     if (existsSync(destinationFile)) {
-      throw new Error(`Destination file '${destinationFile}' already exists`);
+      console.log(`Destination file '${destinationFile}' already exists. Unable to rename.`);
+      return; // Return early, as there's no error in this case
     }
 
     await fsPromises.rename(sourceFile, destinationFile);
@@ -23,4 +29,4 @@ const renameFile = async () => {
   }
 };
 
-await renameFile();
+await rename();

@@ -1,8 +1,13 @@
-import { promises as fsPromises, existsSync, unlink } from 'fs';
+import { fileURLToPath } from 'url';
+import { promises as fsPromises, existsSync } from 'fs';
+import { resolve } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = resolve(__filename, '..');
 
 async function remove() {
   try {
-    const filePath = 'files/fileToRemove.txt';
+    const filePath = resolve(__dirname, 'files/fileToRemove.txt');
 
     if (!existsSync(filePath)) {
       throw new Error(`FS operation failed: File '${filePath}' does not exist`);

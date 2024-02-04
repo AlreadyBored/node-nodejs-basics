@@ -1,13 +1,11 @@
-const { parentPort, workerData } = require('worker_threads');
+import { parentPort } from 'worker_threads';
 
-// n should be received from main thread
-const nthFibonacci = (n) => n < 2 ? n : nthFibonacci(n - 1) + nthFibonacci(n - 2);
-
-const sendResult = () => {
-  const inputN = workerData;
-  const result = nthFibonacci(inputN);
-  parentPort.postMessage(result);
-
+const nthFibonacci = (n) => {
+  const result = n < 2 ? n : nthFibonacci(n - 1) + nthFibonacci(n - 2);
+  return result;
 };
 
-sendResult();
+parentPort.addEventListener('message', ({ data: n }) => {
+  const result = nthFibonacci(n);
+  self.postMessage(result);
+});

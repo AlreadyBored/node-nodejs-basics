@@ -1,29 +1,37 @@
+import { fileURLToPath } from 'url';
 import { promises as fsPromises, existsSync, mkdirSync } from 'fs';
-import { join } from 'path';
+import { join, resolve } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = resolve(__filename, '..');
 
 async function copy(src, dest) {
   try {
-    if (!existsSync(src)) {
+    const currentDir = __dirname;
+    const srcPath = resolve(currentDir, src);
+    const destPath = resolve(currentDir, dest);
+
+    if (!existsSync(srcPath)) {
       throw new Error('Source folder does not exist');
     }
 
-    if (existsSync(dest)) {
+    if (existsSync(destPath)) {
       throw new Error('Destination folder already exists');
     }
 
-    mkdirSync(dest);
+    mkdirSync(destPath);
 
-    const files = await fsPromises.readdir(src);
+    const files = await fsPromises.readdir(srcPath);
 
     for (const file of files) {
-      const srcPath = join(src, file);
-      const destPath = join(dest, file);
-      const isDirectory = (await fsPromises.stat(srcPath)).isDirectory();
+      const fileSrcPath = join(srcPath, file);
+      const fileDestPath = join(destPath, file);
+      const isDirectory = (await fsPromises.stat(fileSrcPath)).isDirectory();
 
       if (isDirectory) {
-        await copyFolder(srcPath, destPath);
+        await copyFolder(fileSrcPath, fileDestPath);
       } else {
-        await fsPromises.copyFile(srcPath, destPath);
+        await fsPromises.copyFile(fileSrcPath, fileDestPath);
       }
     }
 

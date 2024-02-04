@@ -1,12 +1,19 @@
+import { fileURLToPath } from 'url';
 import { promises as fsPromises, existsSync } from 'fs';
+import { resolve } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = resolve(__filename, '..');
 
 const read = async () => {
-  const filePath = 'files/fileToRead.txt';
+  const filePath = resolve(__dirname, 'files/fileToRead.txt');
 
   try {
     if (!existsSync(filePath)) {
-      throw new Error(`FS operation failed: File '${filePath}' does not exist`);
+      console.log(`File '${filePath}' does not exist. Unable to read.`);
+      return;
     }
+
     const fileContent = await fsPromises.readFile(filePath, 'utf-8');
     console.log('Content of "fileToRead.txt":', fileContent);
   } catch (error) {
