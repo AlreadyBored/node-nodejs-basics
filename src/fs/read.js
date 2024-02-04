@@ -1,22 +1,18 @@
-import fs from "fs";
+import fs from "fs/promises";
 import path from "path";
 import {fileURLToPath} from "url";
 
 const read = async () => {
   // Write your code here
-  const __dirname = path.dirname(fileURLToPath(import.meta.url));
-  const folderPath = path.join(__dirname, "files");
-  const fileToRead = path.join(folderPath, "fileToRead.txt");
-  if (!fs.existsSync(fileToRead)) {
-    throw new Error("File doesn't exist");
+  try {
+    const __dirname = path.dirname(fileURLToPath(import.meta.url));
+    const folderPath = path.join(__dirname, "files");
+    const fileToReadPath = path.join(folderPath, "fileToRead.txt");
+    const fileContent = await fs.readFile(fileToReadPath, "utf8");
+    console.log(fileContent);
+  } catch (e) {
+    throw new Error("FS operation failed");
   }
-  fs.readFile(fileToRead, {encoding: "utf8"}, (error, data) => {
-    if (error) {
-      console.log(err);
-    } else {
-      console.log(data);
-    }
-  });
 };
 
 await read();

@@ -13,11 +13,7 @@ const decompress = async () => {
     path.join(folderPath, "fileToCompress.txt")
   );
   const unzip = zlib.createUnzip();
-  try {
-    readStream.pipe(unzip).pipe(writeStream);
-  } catch (err) {
-    console.log(err);
-  }
+  readStream.pipe(unzip).pipe(writeStream);
 };
 
 await decompress();

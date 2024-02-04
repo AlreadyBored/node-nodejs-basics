@@ -13,13 +13,7 @@ const compress = async () => {
   const gzip = createGzip();
   const source = fs.createReadStream(filePath);
   const destination = fs.createWriteStream(fileDest);
-  try {
-    await pipeline(source, gzip, destination);
-    console.log("File successfully gzipped!");
-  } catch (err) {
-    console.error("An error occurred:", err);
-    process.exitCode = 1;
-  }
+  await pipeline(source, gzip, destination);
 };
 
 await compress();
