@@ -1,5 +1,23 @@
-const create = async () => {
-    // Write your code here 
-};
+import fs from 'fs/promises'
+import { existsSync } from 'node:fs'
+const fileName = 'fresh.txt'
+const folderPath = './src/fs/files/'
 
-await create();
+const create = async () => {
+	if (existsSync(`${folderPath}${fileName}`)) {
+		throw new Error('FS operation failed')
+	}
+	// Content of the file
+	const content = 'Some content!'
+	// Create the file and write content
+	await fs.writeFile(`${folderPath}${fileName}`, content)
+	console.log(`File "${fileName}" created successfully at "${folderPath}"`)
+}
+
+;(async () => {
+	try {
+		await create()
+	} catch (error) {
+		console.error(error.message)
+	}
+})()
