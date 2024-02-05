@@ -1,5 +1,12 @@
-const list = async () => {
-    // Write your code here 
-};
+import fs from 'fs/promises'
+import { existsSync } from 'fs'
 
-await list();
+const list = async () => {
+	if (!existsSync('./src/fs/files')) {
+		throw new Error('FS operation failed')
+	}
+	const files = await fs.readdir('./src/fs/files')
+	console.log(files)
+}
+
+await list().catch((err) => console.error(err))
