@@ -58,23 +58,23 @@ const commands = {
     console.log(`Commands ${Object.keys(commands).join(", ")}`);
   },
   //navigation
-  up: (dirname, arg) => navigationUp(dirname, arg),
-  cd: (dirname, arg) => goTo(dirname, arg),
+  up: (...args) => navigationUp(...args),
+  cd: (...args) => goTo(...args),
   ls: () => listFiles(),
   //operations
-  cat: (dirname, arg) => readFile(dirname, arg),
-  add: (dirname, arg) => create(dirname, arg),
-  rn: (dirname, arg, argTwo) => rn(dirname, arg, argTwo),
-  cp: (dirname, arg, argTwo) => copy(dirname, arg, argTwo),
-  mv: (dirname, arg, argTwo) => move(dirname, arg, argTwo),
-  rm: (dirname, arg, argTwo) => remove(dirname, arg, argTwo),
+  cat: (...args) => readFile(...args),
+  add: (...args) => create(...args),
+  rn: (...args) => rn(...args),
+  cp: (...args) => copy(...args),
+  mv: (...args) => move(...args),
+  rm: (...args) => remove(...args),
   //os
   os: (...args) => systemEol(...args),
   //hash
-  hash: (dirname, arg, argTwo) => calculateHash(dirname, arg, argTwo),
+  hash: (...args) => calculateHash(...args),
   //compress
-  compress: (dirname, arg, argTwo) => brotliCompress(dirname, arg, argTwo),
-  decompress: (dirname, arg, argTwo) => brotliDeCompress(dirname, arg, argTwo),
+  compress: (...args) => brotliCompress(...args),
+  decompress: (...args) => brotliDeCompress(...args),
   //exit
   ".exit"() {
     rl.close();
