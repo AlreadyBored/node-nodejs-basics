@@ -1,8 +1,9 @@
 // implement function that reads data from process.stdin, reverses text using Transform Stream and then writes it into process.stdout
-import { Transform, pipeline } from 'node:stream'
+import { Transform } from 'node:stream';
+import { pipeline } from 'node:stream/promises';
 
 const transform = async () => {
-    const transform = new Transform({
+    const transformStream = new Transform({
         transform(chunck, encoding, callback) {
             const reversedChunk = chunck
                 .toString()
@@ -10,16 +11,14 @@ const transform = async () => {
                 .split('')
                 .reverse()
                 .join('');
-            this.push(reversedChunk)
-            callback()
+            callback(null, reversedChunk + '\n');
         }
-    })
-    pipeline(
+    });
+    await pipeline(
         process.stdin,
-        transform,
-        process.stdout,
-        (err) => console.log(err)
-    )
+        transformStream,
+        process.stdout
+    );
 };
 
 await transform();
