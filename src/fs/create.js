@@ -14,10 +14,4 @@ const create = async () => {
 	console.log(`File "${fileName}" created successfully at "${folderPath}"`)
 }
 
-;(async () => {
-	try {
-		await create()
-	} catch (error) {
-		console.error(error.message)
-	}
-})()
+await create().catch((err) => console.error(err))
