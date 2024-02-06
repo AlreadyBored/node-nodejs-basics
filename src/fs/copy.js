@@ -1,14 +1,23 @@
 import fs from 'fs/promises'
-import { existsSync } from 'node:fs'
-const folderToCopy = './src/fs/files'
-const copyOfFolder = './src/fs/files_copy'
+import path from 'path'
+import { getFilePath } from './filepath.js'
+
 const copy = async () => {
-	if (!existsSync(`${folderToCopy}`)) {
-		throw new Error('FS operation failed')
-	} else if (existsSync(`${copyOfFolder}`)) {
+	try {
+		const { __dirname } = getFilePath(import.meta.url)
+
+		const sourceFolder = path.join(__dirname, 'files')
+		const destinationFolder = path.join(__dirname, 'files_copy')
+		await fs.mkdir(destinationFolder)
+		const files = await fs.readdir(sourceFolder)
+		for (const file of files) {
+			const sourceFile = path.join(sourceFolder, file)
+			const destinationFile = path.join(destinationFolder, file)
+			await fs.copyFile(sourceFile, destinationFile)
+		}
+	} catch {
 		throw new Error('FS operation failed')
 	}
-	await fs.cp(`${folderToCopy}`, `${copyOfFolder}`, { recursive: true })
 }
 
 await copy().catch((err) => console.error(err))
