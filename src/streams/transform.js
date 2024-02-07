@@ -1,15 +1,17 @@
-import { Transform } from 'stream'
+import { Transform } from 'stream';
+import { pipeline } from 'node:stream/promises';
 
 const transform = async () => {
     const tr = new Transform({
         transform(input, encoding, callback) {
-            callback(null,
-                input.reverse()
-            );
-        }
+            callback(null, input.reverse());
+        },
     });
 
-    process.stdin.pipe(tr).pipe(process.stdout);
+    process.stdout.write('Type here:');
+    // process.stdin.pipe(tr).pipe(process.stdout);
+
+    await pipeline(process.stdin, tr, process.stdout) // can use both variants!
 };
 
 await transform();

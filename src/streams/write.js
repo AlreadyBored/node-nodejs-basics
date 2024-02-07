@@ -6,9 +6,22 @@ const path = getNecessaryPathInCurrentDir(import.meta.url, '/files/fileToWrite.t
 const write = async () => {
     const ws = createWriteStream(path);
 
-    process.stdin.on('data', (input) => {
-        ws.write(input.toString());
-    })
+    process.stdout.write('Type here (Type .end for stop):');
+    process.stdout.write('\n');
+
+    process.stdin.on('data', (chunk) => {
+        const input = chunk.toString();
+
+        if (input.trim() === '.end') {
+            ws.end();
+        } else {
+            ws.write(input);
+        }
+    });
+
+    ws.on('finish', () => {
+        process.exit();
+    });
 };
 
 await write();

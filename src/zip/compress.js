@@ -11,6 +11,7 @@ const compress = async () => {
     const writeStream = createWriteStream(gzPath);
 
     await readStream.pipe(gzipStream).pipe(writeStream);
+    // same as in decompress
 
     console.log('Compress done');
 };

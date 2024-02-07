@@ -8,12 +8,16 @@ const calculateHash = async () => {
     const hash = createHash('sha256');
     const stream = createReadStream(path);
 
-    stream.on('data', data => hash.update(data));
+    // stream.on('data', data => hash.update(data));
+    //
+    // stream.on('end', () => {
+    //     const calculatedHash = hash.digest('hex');
+    //
+    //     console.log(calculatedHash);
+    // });
 
-    stream.on('end', () => {
-        const calculatedHash = hash.digest('hex');
-
-        console.log(calculatedHash);
+    stream.pipe(hash).on('finish', () => {
+        console.log(hash.digest('hex'));
     });
 };
 

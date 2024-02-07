@@ -1,10 +1,16 @@
-import os from 'os';
+import { availableParallelism } from 'os';
 import { Worker } from 'node:worker_threads';
 import { getNecessaryPathInCurrentDir } from '../utils/helpers/path.helper.js';
 
+// I suppose better use promise look
+// form 46 minutes https://www.youtube.com/watch?v=Qe890s646zE&ab_channel=RSSchoolinEnglish
+
+// Promise.allSettled()
 const path = getNecessaryPathInCurrentDir(import.meta.url, '/worker.js');
 const count = 5;
-const numCores = os.cpus().length;
+
+// const numCores = os.cpus().length;
+const numCores = availableParallelism();
 
 const performCalculations = async () => {
     console.log('os.cpus(): ' + numCores);

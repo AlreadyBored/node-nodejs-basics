@@ -1,5 +1,4 @@
 import fs from 'node:fs/promises';
-import { existsSync } from 'node:fs';
 import { fsFailed } from '../utils/consts/consts.js';
 import { getNecessaryPathInCurrentDir } from '../utils/helpers/path.helper.js';
 
@@ -7,11 +6,11 @@ const wrongPath = getNecessaryPathInCurrentDir(import.meta.url, '/files/wrongFil
 const correctPath = getNecessaryPathInCurrentDir(import.meta.url, '/files/properFilename.md');
 
 const rename = async () => {
-    if (!existsSync(wrongPath) || existsSync(correctPath)) {
+    try {
+        await fs.rename(wrongPath, correctPath);
+    } catch {
         throw new Error(fsFailed);
     }
-
-    await fs.rename(wrongPath, correctPath);
 };
 
 await rename();
