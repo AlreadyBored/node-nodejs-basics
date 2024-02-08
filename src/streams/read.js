@@ -5,9 +5,7 @@ const read = async () => {
 	const { __dirname } = getFilePath(import.meta.url)
 	const fileToReadPath = path.join(__dirname, 'files', 'fileToRead.txt')
 	const readStream = fs.createReadStream(fileToReadPath)
-	readStream.on('data', (chunk) => {
-		process.stdout.write(chunk)
-	})
+	readStream.pipe(process.stdout)
 }
 
 await read()
