@@ -1,12 +1,16 @@
-import { existsSync } from 'fs'
 import fs from 'fs/promises'
-const filePath = './src/fs/files/'
-const filename = 'fileToRemove.txt'
+import path from 'path'
+import { getFilePath } from './tools/filepath.js'
 const remove = async () => {
-	if (!existsSync(`${filePath}${filename}`)) {
+	try {
+		const filename = 'fileToRemove.txt'
+		const { __dirname } = getFilePath(import.meta.url)
+		const fileToRemovePath = path.join(__dirname, 'files', filename)
+
+		await fs.rm(fileToRemovePath)
+	} catch {
 		throw new Error('FS operation failed')
 	}
-	await fs.unlink(`${filePath}${filename}`)
 }
 
 await remove().catch((err) => console.error(err))

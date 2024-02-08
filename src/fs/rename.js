@@ -1,16 +1,17 @@
-import { existsSync } from 'fs'
 import fs from 'fs/promises'
-const filePath = './src/fs/files/'
-const oldFilename = 'wrongFilename.txt'
-const newFilename = 'properFilename.md'
+import path from 'path'
+import { getFilePath } from './tools/filepath.js'
 
 const rename = async () => {
-	if (!existsSync(`${filePath}${oldFilename}`)) {
-		throw new Error('FS operation failed')
-	} else if (existsSync(`${filePath}${newFilename}`)) {
+	try {
+		const { __dirname } = getFilePath(import.meta.url)
+		const wrongFilePath = path.join(__dirname, 'files', 'wrongFileName.txt')
+		const properFilePath = path.join(__dirname, 'files', 'properFilename.md')
+
+		await fs.rename(wrongFilePath, properFilePath)
+	} catch {
 		throw new Error('FS operation failed')
 	}
-	await fs.rename(`${filePath}${oldFilename}`, `${filePath}${newFilename}`)
 }
 
 await rename().catch((err) => console.error(err))

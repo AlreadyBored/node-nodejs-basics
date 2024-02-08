@@ -1,17 +1,18 @@
 import fs from 'fs/promises'
-import { existsSync } from 'node:fs'
-const fileName = 'fresh.txt'
-const filePath = './src/fs/files/'
+import path from 'path'
+import { getFilePath } from './tools/filepath.js'
 
 const create = async () => {
-	if (existsSync(`${filePath}${fileName}`)) {
+	try {
+		const fileName = 'fresh.txt'
+		const { __dirname } = getFilePath(import.meta.url)
+		const fileToCreatePath = path.join(__dirname, 'files', fileName)
+		const content = 'Some content!'
+
+		await fs.writeFile(fileToCreatePath, content, { flag: 'wx' })
+	} catch {
 		throw new Error('FS operation failed')
 	}
-	// Content of the file
-	const content = 'Some content!'
-	// Create the file and write content
-	await fs.writeFile(`${filePath}${fileName}`, content)
-	console.log(`File "${fileName}" created successfully at "${filePath}"`)
 }
 
 await create().catch((err) => console.error(err))

@@ -1,6 +1,6 @@
 import fs from 'fs/promises'
 import path from 'path'
-import { getFilePath } from './filepath.js'
+import { getFilePath } from './tools/filepath.js'
 
 const copy = async () => {
 	try {

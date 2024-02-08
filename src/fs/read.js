@@ -1,15 +1,18 @@
-import { existsSync } from 'fs'
 import fs from 'fs/promises'
-const filePath = './src/fs/files/'
-const filename = 'fileToRead.txt'
+import path from 'path'
+import { getFilePath } from './tools/filepath.js'
 const read = async () => {
-	if (!existsSync(`${filePath}${filename}`)) {
+	try {
+		const filename = 'fileToRead.txt'
+		const { __dirname } = getFilePath(import.meta.url)
+		const fileToReadPath = path.join(__dirname, 'files', filename)
+		const data = await fs.readFile(fileToReadPath, {
+			encoding: 'utf8',
+		})
+		console.log(data)
+	} catch {
 		throw new Error('FS operation failed')
 	}
-	const data = await fs.readFile(`${filePath}${filename}`, {
-		encoding: 'utf8',
-	})
-	console.log(data)
 }
 
 await read().catch((err) => console.error(err))

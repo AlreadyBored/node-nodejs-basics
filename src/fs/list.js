@@ -1,13 +1,16 @@
-import { existsSync } from 'fs'
 import fs from 'fs/promises'
-const distPath = './src/fs/files'
+import path from 'path'
+import { getFilePath } from './tools/filepath.js'
 
 const list = async () => {
-	if (!existsSync(`${distPath}`)) {
+	try {
+		const { __dirname } = getFilePath(import.meta.url)
+		const distPath = path.join(__dirname, 'files')
+		const files = await fs.readdir(`${distPath}`)
+		console.log(files)
+	} catch {
 		throw new Error('FS operation failed')
 	}
-	const files = await fs.readdir(`${distPath}`)
-	console.log(files)
 }
 
 await list().catch((err) => console.error(err))
