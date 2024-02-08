@@ -2,12 +2,11 @@ import { argv } from 'node:process'
 
 const parseArgs = () => {
 	const cliArguments = argv.slice(2)
-	for (let i = 0; i < cliArguments.length; i = i + 2) {
-		const propName = cliArguments[i]
-		const value = cliArguments[i + 1]
-
-		process.stdout.write(`${propName} is ${value}, `)
-	}
+	const results = cliArguments
+		.filter((_, index) => index % 2 === 0)
+		.map((name, index) => `${name.slice(2)} is ${cliArguments[index * 2 + 1]}`)
+		.join(', ')
+	console.log(results)
 }
 
 parseArgs()
