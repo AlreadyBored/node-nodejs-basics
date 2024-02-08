@@ -1,6 +1,6 @@
 import fs from 'fs/promises'
 import path from 'path'
-import { getFilePath } from './tools/filepath.js'
+import { getFilePath } from '../tools/filepath.js'
 const remove = async () => {
 	try {
 		const filename = 'fileToRemove.txt'

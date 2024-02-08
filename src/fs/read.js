@@ -1,6 +1,6 @@
 import fs from 'fs/promises'
 import path from 'path'
-import { getFilePath } from './tools/filepath.js'
+import { getFilePath } from '../tools/filepath.js'
 const read = async () => {
 	try {
 		const filename = 'fileToRead.txt'
