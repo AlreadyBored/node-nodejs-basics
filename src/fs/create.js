@@ -1,10 +1,12 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { fileURLToPath } from 'url';
 const create = async () => {
     
     function createFreshFile() {
-        const currentDir = process.cwd();
-        const filesDir = path.join(currentDir, 'src', 'fs', 'files');
+        const __filename = fileURLToPath(import.meta.url);
+        const __dirname = path.dirname(__filename);
+        const filesDir = path.join(__dirname, 'files');
         const filePath = path.join(filesDir, 'fresh.txt');
     
         // Check if file already exists
