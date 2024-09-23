@@ -12,8 +12,14 @@ const dirPath = getDirPath(import.meta.url);
 
 let unknownObject;
 if (random > 0.5) {
+    // const { default: data } = await import(join(dirPath, './files/a.json'), { with: { type: "json" } });
+    // unknownObject = data;
+
     unknownObject = await fs.readFile(join(dirPath, './files/a.json'), 'utf-8');
 } else {
+    // const { default: data } = await import(join(dirPath, './files/b.json'), { with: { type: "json" } });
+    // unknownObject = data;
+
     unknownObject = await fs.readFile(join(dirPath, './files/b.json'), 'utf-8');
 }
 
