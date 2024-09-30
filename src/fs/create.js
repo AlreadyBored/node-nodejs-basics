@@ -12,9 +12,9 @@ const create = async () => {
            //console.log(descriptor);
             fs.write(descriptor, content, (err, bytes) => {          
                 if (err) {
-                    console.log("FS operation failed", err);
+                    console.error("FS operation failed", err);
                 } else {
-                    console.log("FS operation succeded");
+                    console.log("File created");
                 }
             })
         }
