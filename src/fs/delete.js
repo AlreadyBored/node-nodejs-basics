@@ -1,5 +1,19 @@
-const remove = async () => {
-    // Write your code here 
-};
+const fs = require('fs');
 
-await remove();
+const ERROR = 'FS operation failed';
+const DELETE_PATH = './src/fs/files/fileToRemove.txt';
+
+const remove = async () => {
+    const checkExist = fs.existsSync(DELETE_PATH);
+
+    if (!checkExist) {
+        return console.log(ERROR);
+    }
+
+    await fs.unlink(DELETE_PATH, (e) => {
+        if (e) {
+            console.log(ERROR);
+        }
+    })
+};
+remove();
