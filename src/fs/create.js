@@ -1,5 +1,5 @@
 import * as fsPromises from "node:fs/promises";
-import { getCurrentPath, checkIfFileExists, filesFolder, errorText } from "./utils.js";
+import { getCurrentPath, checkIfPathExists, filesFolder, errorText } from "./utils.js";
 
 const create = async () => {
   const fileName = 'fresh.txt';
@@ -8,7 +8,7 @@ const create = async () => {
   const currentUrl = getCurrentPath();
   const fullFilePath = `${currentUrl}${filesFolder}/${fileName}`;
   
-  if (checkIfFileExists(fullFilePath)) {
+  if (checkIfPathExists(fullFilePath)) {
     throw new Error(errorText);
   }
 

@@ -1,12 +1,12 @@
-import { getCurrentPath, checkIfFileExists, filesFolder, errorText } from "./utils.js";
+import { getCurrentPath, checkIfPathExists, errorText, getFilesList, getFilesFolderPath } from "./utils.js";
 import * as fsPromises from "node:fs/promises";
 
 const copy = async () => {
   const newFolderName = '/files_copy';
-  const oldFolderPath = getCurrentPath() + filesFolder;
+  const oldFolderPath = getFilesFolderPath();
   const newFolderPath = getCurrentPath() + newFolderName;
 
-  if (checkIfFileExists(newFolderPath) || !checkIfFileExists(oldFolderPath)) {
+  if (checkIfPathExists(newFolderPath) || !checkIfPathExists(oldFolderPath)) {
     throw new Error(errorText);
   }
 
@@ -17,7 +17,7 @@ const copy = async () => {
     await fsPromises.writeFile(`${newFolderPath}/${fileName}`, fileContent);
   };
 
-  const filesArray = await fsPromises.readdir(oldFolderPath);
+  const filesArray = await getFilesList();
 
   for (let file of filesArray) {
     await copyFile(file);
