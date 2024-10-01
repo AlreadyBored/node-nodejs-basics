@@ -1,7 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import { writeFile, access, constants, mkdir } from 'node:fs/promises';
 import { join, dirname, resolve } from 'node:path';
-import { exit } from 'node:process';
 
 
 const create = async () => {
