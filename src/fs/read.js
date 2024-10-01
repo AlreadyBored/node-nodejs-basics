@@ -1,9 +1,9 @@
-import { checkIfPathExists, errorText, getFilesFolderPath } from "./utils.js";
+import { checkIfPathExists, errorText, getFilesFolderPath } from "../utils.js";
 import * as fsPromises from "node:fs/promises";
 
 const read = async () => {
   const fileToReadName = 'fileToRead.txt';
-  const fileToReadPath = `${getFilesFolderPath()}/${fileToReadName}`;
+  const fileToReadPath = `${getFilesFolderPath('fs')}/${fileToReadName}`;
 
   if (!checkIfPathExists(fileToReadPath)) {
     throw new Error(errorText);

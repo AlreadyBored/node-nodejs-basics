@@ -1,11 +1,11 @@
-import { checkIfPathExists, errorText, getFilesFolderPath } from "./utils.js";
+import { checkIfPathExists, errorText, getFilesFolderPath } from "../utils.js";
 import * as fsPromises from "node:fs/promises";
 
 const rename = async () => {
   const originFileName = 'wrongFilename.txt';
   const newFileName = 'properFilename.md';
-  const originFilePath = `${getFilesFolderPath()}/${originFileName}`;
-  const newFilePath = `${getFilesFolderPath()}/${newFileName}`;
+  const originFilePath = `${getFilesFolderPath('fs')}/${originFileName}`;
+  const newFilePath = `${getFilesFolderPath('fs')}/${newFileName}`;
 
   if (!checkIfPathExists(originFilePath) || checkIfPathExists(newFilePath)) {
     throw new Error(errorText);

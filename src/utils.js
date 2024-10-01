@@ -6,18 +6,21 @@ import * as fsPromises from "node:fs/promises";
 export const filesFolder = '/files';
 export const errorText = 'FS operation failed';
 
-export const getCurrentPath = () => {
+export const getCurrentPath = (folder = '') => {
   const __filename = fileURLToPath(import.meta.url);
-  return path.dirname(__filename);
+  if (!folder) {
+    return path.dirname(__filename);
+  }
+  return `${path.dirname(__filename)}/${folder}`;
 };
 
-export const getFilesFolderPath = () => `${getCurrentPath()}${filesFolder}`;
+export const getFilesFolderPath = (folder = '') => `${getCurrentPath(folder)}${filesFolder}`;
 
 export const checkIfPathExists = (filePath) => {
   return fs.existsSync(filePath);
 };
 
-export const getFilesList = async () => {
-  const filesList = await fsPromises.readdir(getFilesFolderPath());
+export const getFilesList = async (folder = '') => {
+  const filesList = await fsPromises.readdir(getFilesFolderPath(folder));
   return filesList;
 }
