@@ -10,6 +10,8 @@ export const getCurrentPath = () => {
   return path.dirname(__filename);
 };
 
+export const getFilesFolderPath = () => `${getCurrentPath()}${filesFolder}`;
+
 export const checkIfFileExists = (filePath) => {
   return fs.existsSync(filePath);
 };
