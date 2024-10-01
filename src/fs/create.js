@@ -1,5 +1,32 @@
+import { fileURLToPath } from 'node:url';
+import { writeFile, access, constants, mkdir } from 'node:fs/promises';
+import { join, dirname, resolve } from 'node:path';
+import { exit } from 'node:process';
+
+
 const create = async () => {
-    // Write your code here 
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = dirname(__filename);
+
+    const directory = join(__dirname, 'files');
+    const fileName = 'fresh.txt';
+    const filePath = join(directory, fileName);
+    const fileContent = 'I am fresh and young';
+
+    try {
+        await access(filePath, constants.F_OK);
+
+        throw new Error('FS operation failed');
+    } catch (error) {
+        if (error.code === 'ENOENT') {
+            await mkdir(directory, { recursive: true });
+            await writeFile(filePath, fileContent, 'utf-8');
+            
+            console.log('File created successfully!');
+        } else {
+            console.error(error.message);
+        }
+    }
 };
 
 await create();
