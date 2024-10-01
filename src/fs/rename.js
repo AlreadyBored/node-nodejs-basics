@@ -1,4 +1,4 @@
-import { getCurrentPath, checkIfFileExists, filesFolder, errorText, getFilesFolderPath } from "./utils.js";
+import { checkIfFileExists, errorText, getFilesFolderPath } from "./utils.js";
 import * as fsPromises from "node:fs/promises";
 
 const rename = async () => {
