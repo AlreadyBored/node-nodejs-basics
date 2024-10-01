@@ -19,9 +19,7 @@ const create = async () => {
     } catch (error) {
         if (error.code === 'ENOENT') {
             await mkdir(directory, { recursive: true });
-            await writeFile(filePath, fileContent, 'utf-8');
-            
-            console.log('File created successfully!');
+            await writeFile(filePath, fileContent, 'utf-8');            
         } else {
             console.error(error.message);
         }
