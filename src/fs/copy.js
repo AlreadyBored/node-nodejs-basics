@@ -17,7 +17,7 @@ const copy = async () => {
                 // If the destination directory exists, throw an error
                 throw new Error("FS operation failed");
             } catch (e) {
-                if (e.code == "ENOENT") {
+                if (e.code === "ENOENT") {
                     // Create the destination directory
                     await fs.mkdir(copyDest);
 
