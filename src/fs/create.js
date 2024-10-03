@@ -1,5 +1,13 @@
+import * as fs from 'fs';
+
+
 const create = async () => {
-    // Write your code here 
+    const content = 'I am fresh and young';
+    fs.writeFile('fresh.txt', content, { flag: 'wx' }, err => {
+  if (err) {
+    console.error('FS operation failed');
+  }
+});
 };
 
 await create();
