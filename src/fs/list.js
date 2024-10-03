@@ -11,9 +11,7 @@ const list = async () => {
     try {
         const files = await readdir(directory);
 
-        for (const file of files) {
-            console.log(file);
-        }
+        console.log(files);
     } catch(error) {
         if (error.code === 'ENOENT') {
             throw new Error('FS operation failed');
