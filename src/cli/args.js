@@ -1,5 +1,19 @@
 const parseArgs = () => {
-    // Write your code here 
+  let args = process.argv.slice(2);
+
+  let results = [];
+
+  for (let i = 0; i < args.length; i++) {
+    if (args[i].startsWith("--")) {
+      let propName = args[i].slice(2);
+
+      let value = args[i + 1];
+      results.push(`${propName} ${value}`);
+      i++;
+    }
+  }
+
+  console.log(results.join(", "));
 };
 
 parseArgs();
