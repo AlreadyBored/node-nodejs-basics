@@ -8,7 +8,7 @@ const parseArgs = () => {
       let propName = args[i].slice(2);
 
       let value = args[i + 1];
-      results.push(`${propName} ${value}`);
+      results.push(`${propName} is ${value}`);
       i++;
     }
   }
