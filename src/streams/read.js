@@ -1,6 +1,5 @@
-import { pipeline } from "stream";
 import { getFilesFolderPath } from "../utils.js";
-import { createReadStream, createWriteStream } from 'fs';
+import { createReadStream } from 'fs';
 
 const read = async () => {
    const fileName = 'fileToRead.txt';
