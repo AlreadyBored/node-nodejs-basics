@@ -8,10 +8,10 @@ const read = async () => {
 
    const readStream = createReadStream(filePath);
 
-   readStream.on('error', (error) => {
-    console.error('Error reading the file:', error.message);
-  });
-
+   readStream.on('end', () => {
+    process.stdout.write('\n');
+   });
+ 
    readStream.pipe(process.stdout);
 };
 

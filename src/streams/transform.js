@@ -1,5 +1,9 @@
+import { createReadStream, createWriteStream } from 'fs';
+
 const transform = async () => {
-    // Write your code here 
+  // const readStream = createReadStream(process.stdin);
+  
+  process.stdin.pipe(process.stdout)
 };
 
 await transform();
