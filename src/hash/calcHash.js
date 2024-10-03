@@ -14,9 +14,15 @@ const calculateHash = async () => {
   //   process.stdout
   // );
 
-  readStream.on('end', () => process.stdout.write('/n'));
+  // readStream.on('end', () => process.stdout.write('/n'));
 
-  readStream.pipe(process.stdout)
+  // readStream.pipe(process.stdout)
+
+  readStream.on('end', () => {
+    process.stdout.write('\n');
+   });
+ 
+   readStream.pipe(createHash('SHA256')).setEncoding('hex').pipe(process.stdout);
 }   
 
 await calculateHash();
