@@ -1,4 +1,4 @@
-import { unlink } from 'node:fs';
+import { unlink } from 'fs';
 
 
 const remove = async () => {

@@ -9,7 +9,7 @@ const copy = async () => {
     if (fs.existsSync(path.join(__dirname, 'files'))) {
         await copyDir();
     } else {
-        console.error('FS operation failed');
+        throw new Error('FS operation failed');
     }
 };
 
@@ -37,7 +37,7 @@ async function copyDir() {
                     });
                 });
             } else {
-                console.error('FS operation failed');
+                throw new Error('FS operation failed');
             }
         });
     } catch (error) {
