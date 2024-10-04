@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { createGzip, gzip } from 'node:zlib';
+import { createGzip } from 'node:zlib';
 import { createReadStream, createWriteStream } from 'node:fs';
 import { pipeline } from 'node:stream';
 import { promisify } from 'node:util';
