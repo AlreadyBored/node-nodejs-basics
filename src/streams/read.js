@@ -1,5 +1,6 @@
 import { getFilesFolderPath } from "../utils.js";
 import { createReadStream } from 'fs';
+import { pipeline } from 'node:stream/promises';
 
 const read = async () => {
    const fileName = 'fileToRead.txt';
@@ -11,7 +12,10 @@ const read = async () => {
     process.stdout.write('\n');
    });
  
-   readStream.pipe(process.stdout);
+  await pipeline(
+    readStream,
+    process.stdout,
+  );
 };
 
 await read();
