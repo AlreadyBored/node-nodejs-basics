@@ -37,7 +37,7 @@ const performCalculations = async () => {
     promises.push(handleWorker(number));
   }
 
-  const result = await Promise.all(promises);
+  const result = await Promise.allSettled(promises);
 
   console.log(result);
 };
