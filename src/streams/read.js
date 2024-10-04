@@ -1,6 +1,7 @@
 
 import { promises as fs, createReadStream } from 'fs';
 import path from 'path';
+import { EOL } from 'os';
 
 import { getDirPath } from '../utils/getDirPath.js';
 
@@ -13,7 +14,7 @@ const read = async () => {
     readableStream.pipe(process.stdout);
     readableStream
         .on('end', () => {
-            process.stdout.write('\n');
+            process.stdout.write(EOL);
         })
         .on('error', (err) => {
             console.error(`Error occured while reading file: ${err.message}`);
