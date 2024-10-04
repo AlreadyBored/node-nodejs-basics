@@ -13,7 +13,7 @@ const read = async () => {
     stream.pipe(stdout);
 
     stream.on('end', () => {
-        stdout.write('\nFinished reading file.\n');
+        stdout.write('\n');
     });
 };
 
