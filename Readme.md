@@ -1,3 +1,3 @@
 # Node.js basics
 
-## Rs-School course
+## Rs-School course!
