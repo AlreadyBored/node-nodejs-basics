@@ -21,6 +21,7 @@ const create = async () => {
     throw new Error("FS operation failed");
   } catch (error) {
     // error is because the file does not exist
+    // ENOENT === the directory does not exist
     if (error.code === "ENOENT") {
       // Create the file and write content to it
       await fs.promises.writeFile(filePath, "I am fresh and young");
