@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c646471-6bb3-4518-aaf7-4056b324b7ae" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/modules/cjsToEsm.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/cjsToEsm.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/args.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/args.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/env.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/env.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +42,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.cli:env.executor&quot;: &quot;Run&quot;,
     &quot;npm.fs:copy.executor&quot;: &quot;Run&quot;,
     &quot;npm.fs:create.executor&quot;: &quot;Run&quot;,
     &quot;npm.fs:delete.executor&quot;: &quot;Run&quot;,
@@ -52,7 +55,17 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="npm.modules">
+  <component name="RunManager" selected="npm.cli:env">
+    <configuration name="cli:env" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="cli:env" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="fs:delete" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -83,16 +96,6 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="fs:rename" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="fs:rename" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <configuration name="modules" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -105,11 +108,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.cli:env" />
         <item itemvalue="npm.modules" />
         <item itemvalue="npm.fs:read" />
         <item itemvalue="npm.fs:list" />
         <item itemvalue="npm.fs:delete" />
-        <item itemvalue="npm.fs:rename" />
       </list>
     </recent_temporary>
   </component>
@@ -128,7 +131,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1728136826558</updated>
-      <workItem from="1728136829861" duration="7877000" />
+      <workItem from="1728136829861" duration="9001000" />
     </task>
     <servers />
   </component>
