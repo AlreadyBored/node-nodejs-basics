@@ -1,5 +1,16 @@
+import { unlink, rm } from 'fs/promises';
+import { customError, getPath } from './fs-constants.js';
+
+const deletedFile = getPath(import.meta.url, 'fileToRemove.txt');
+
 const remove = async () => {
-    // Write your code here 
+  try {
+    await rm(deletedFile);
+    // await unlink(deletedFile);
+  } catch {
+    throw new Error(customError);
+  }
+
 };
 
 await remove();
