@@ -19,4 +19,4 @@ const compress = async () => {
   writableStream.on("fisnish", () => {});
 };
 
-compress();
+await compress();

@@ -18,4 +18,4 @@ const calculateHash = async () => {
     .on("finish", () => {});
 };
 
-calculateHash();
+await calculateHash();

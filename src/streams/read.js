@@ -12,4 +12,4 @@ const read = async () => {
   readStream.setEncoding("utf-8").pipe(process.stdout);
 };
 
-read();
+await read();

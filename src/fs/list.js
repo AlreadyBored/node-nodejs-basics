@@ -14,4 +14,4 @@ const list = async () => {
   }
 };
 
-list();
+await list();

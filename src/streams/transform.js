@@ -11,4 +11,4 @@ const transform = async () => {
   process.stdin.pipe(reversedStream).pipe(process.stdout);
 };
 
-transform();
+await transform();

@@ -7,4 +7,4 @@ const parseEnv = () => {
   console.log(parsedRSSVars);
 };
 
-parseEnv();
+await parseEnv();

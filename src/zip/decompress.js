@@ -19,4 +19,4 @@ const decompress = async () => {
   writableStream.on("fisnish", () => {});
 };
 
-decompress();
+await decompress();

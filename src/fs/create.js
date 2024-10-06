@@ -13,4 +13,4 @@ const create = async () => {
   }
 };
 
-create();
+await create();

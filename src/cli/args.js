@@ -11,4 +11,4 @@ const parseArgs = () => {
   console.log(parsedArgs.join(", "));
 };
 
-parseArgs();
+await parseArgs();

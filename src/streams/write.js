@@ -14,4 +14,4 @@ const write = async () => {
   writableStream.on("finish", () => {});
 };
 
-write();
+await write();
