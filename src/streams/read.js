@@ -3,8 +3,8 @@ import path from "path";
 import { pipeline } from "stream/promises";
 import url from "url";
 
-const __fileName = url.fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__fileName);
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const filePath = path.resolve(__dirname, "files", "fileToRead.txt");
 
 const read = async () => {

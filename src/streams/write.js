@@ -3,8 +3,8 @@ import path from "path";
 import url from "url";
 import { pipeline } from "stream/promises";
 
-const __fileName = url.fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__fileName);
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const filePath = path.resolve(__dirname, "files", "fileToWrite.txt");
 
 const write = async () => {

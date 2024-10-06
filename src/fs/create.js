@@ -5,8 +5,8 @@ import url from "url";
 
 const writeFilePromise = util.promisify(fs.writeFile);
 
-const fileName = url.fileURLToPath(import.meta.url);
-const __dirname = path.dirname(fileName);
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const filePath = path.resolve(__dirname, "files", "fresh.txt");
 
 const content = "I am fresh and young";
