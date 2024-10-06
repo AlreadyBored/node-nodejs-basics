@@ -1,5 +1,14 @@
+import { Transform } from "stream";
+
 const transform = async () => {
-    // Write your code here 
+  const reverseStream = new Transform({
+    transform(chunk, encoding, cb) {
+      this.push(`${[...chunk.toString()].reverse().join("")}\n`);
+      cb();
+    },
+  });
+
+  process.stdin.pipe(reverseStream).pipe(process.stdout);
 };
 
 await transform();
