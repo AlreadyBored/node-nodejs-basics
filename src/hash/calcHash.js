@@ -4,11 +4,12 @@ import { createReadStream } from "node:fs";
 
 const calculateHash = async () => {
   const __dirname = import.meta.dirname;
-  const filePath = path.join(__dirname, "files", "fileToCalculateHashFor.txt");
   const hash = createHash("sha256");
 
   try {
-    const readStream = createReadStream(filePath);
+    const readStream = createReadStream(
+      path.join(__dirname, "files", "fileToCalculateHashFor.txt")
+    );
     readStream.on("data", (chunk) => {
       hash.update(chunk);
     });
