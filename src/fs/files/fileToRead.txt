@@ -1,7 +1,3 @@
-My content
-should
-be
-printed
-into
-console
-!
+aaaa ffff ggg
+k
+oleee
