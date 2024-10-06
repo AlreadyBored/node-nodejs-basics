@@ -1,4 +1,4 @@
-import { rm, access ,constants} from 'fs/promises';
+import { rm } from 'fs/promises';
 import {join} from 'path';
 import { errorMessage, pathToFolder } from '../lib/fs/constants.js';
 
@@ -7,8 +7,7 @@ const pathToFileForDelete = join(pathToFolder(), fileNameToDelete);
 
 const remove = async () => {
     try {
-        await access(pathToFileForDelete, constants.F_OK)
-        rm(pathToFileForDelete);
+        await rm(pathToFileForDelete);
     } catch(err) {
         throw new Error(errorMessage);
     }
