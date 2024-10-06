@@ -2,7 +2,7 @@ import fs from "fs/promises";
 import path from "path";
 
 const read = async () => {
-    const fileToReadPath = path.join(process.cwd(), 'files', 'fileToRead.txt');
+    const fileToReadPath = path.join(import.meta.dirname, 'files', 'fileToRead.txt');
     try {
         await fs.access(fileToReadPath);
         const content = await fs.readFile(fileToReadPath,'utf8');

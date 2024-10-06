@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 const create = async () => {
     const fileContent = 'I am fresh and young';
-    const filePath = path.join(process.cwd(), 'files', 'fresh.txt');
+    const filePath = path.join(import.meta.dirname, 'files', 'fresh.txt');
 
     try {
         await fs.access(filePath);

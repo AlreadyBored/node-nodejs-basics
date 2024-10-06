@@ -1,7 +1,7 @@
 import fs from "fs/promises";
 import path from "path";
 const list = async () => {
-    const filePath = path.join(process.cwd(),'files');
+    const filePath = path.join(import.meta.dirname,'files');
     try{
         await fs.access(filePath);
         const files = await fs.readdir(filePath);

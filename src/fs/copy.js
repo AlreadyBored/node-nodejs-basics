@@ -1,8 +1,8 @@
 import fs from 'fs/promises'
 import path from "path";
 const copy = async () => {
-    const to = path.join(process.cwd(),'files_copy');
-    const from = path.join(process.cwd(),'files');
+    const to = path.join(import.meta.dirname,'files_copy');
+    const from = path.join(import.meta.dirname,'files');
 
     try {
         await fs.access(to);
