@@ -1,11 +1,13 @@
 import { join } from 'path';
 import { cwd } from 'process';
 
-const modulePath = 'fs';
+const moduleName = 'fs';
 const filesFolder = 'files';
-const srcPath = 'src';
+const srcName = 'src';
 const errorMessage = "FS operation failed";
 
- const pathToFilesFolder = join(cwd(), srcPath, modulePath, filesFolder);
+ const pathToFolder = (folderName = filesFolder) => {
+    return join(cwd(), srcName, moduleName, folderName)
+};
 
- export { errorMessage, pathToFilesFolder}
+ export { errorMessage, pathToFolder}

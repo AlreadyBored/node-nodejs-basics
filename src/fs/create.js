@@ -1,13 +1,13 @@
 import { writeFile } from 'fs/promises';
 import { join } from 'path';
 
-import  { errorMessage, pathToFilesFolder} from '../lib/fs/constants.js';
+import  { errorMessage, pathToFolder} from '../lib/fs/constants.js';
 
 const content = 'I am fresh and young';
 const fileName = 'fresh.txt';
 
 const create = async () => {
-  const fullPath = join(pathToFilesFolder,fileName);
+  const fullPath = join(pathToFolder(),fileName);
       
     try {
         await writeFile(fullPath, content, {flag: 'wx'});
