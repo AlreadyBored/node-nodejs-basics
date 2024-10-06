@@ -1,9 +1,9 @@
-import fs from "node:fs/promises";
+import { writeFile } from "node:fs/promises";
 
 const create = async () => {
   try {
     const content = "I am fresh and young";
-    await fs.writeFile("src/fs/files/fresh.txt", content, { flag: "wx+" });
+    await writeFile("src/fs/files/fresh.txt", content, { flag: "wx+" });
   } catch (err) {
     throw new Error("FS operation failed");
   }

@@ -1,13 +1,13 @@
-import fs from "node:fs/promises";
+import { access, rename as renameFile, constants } from "node:fs/promises";
 
 const rename = async () => {
   try {
-    await fs.access("src/fs/files/wrongFilename.txt", fs.constants.F_OK);
+    await access("src/fs/files/wrongFilename.txt", constants.F_OK);
     try {
-      await fs.access("src/fs/files/properFilename.md", fs.constants.F_OK);
+      await access("src/fs/files/properFilename.md", constants.F_OK);
       throw new Error();
     } catch {
-      await fs.rename(
+      await renameFile(
         "src/fs/files/wrongFilename.txt",
         "src/fs/files/properFilename.md"
       );
