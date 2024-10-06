@@ -11,13 +11,12 @@ const performCalculations = async () => {
 
   const workers = [];
   const workPath = path.join(__dirname, "worker.js")
-  const workOpt = {
-    workerData: { num: i },
-  }
 
   for (let i = 10; i < workersSize + 10; i++) {
     const worker = new Promise((resolve, reject) => {
-      let worker = new Worker(workPath, workOpt);
+      let worker = new Worker(workPath, {
+        workerData: { num: i },
+      });
       worker.on("message", resolve);
       worker.on("error", reject);
     })
