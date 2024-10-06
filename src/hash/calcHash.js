@@ -4,10 +4,10 @@ import { createReadStream } from 'fs';
 const calculateHash = async () => {
     const getHash = path => new Promise((resolve, reject) => {
         const hash = createHash('sha256');
-        const rs = createReadStream(path);
-        rs.on('error', reject);
-        rs.on('data', chunk => hash.update(chunk));
-        rs.on('end', () => resolve(hash.digest('hex')));
+        const readStream = createReadStream(path);
+        readStream.on('error', reject);
+        readStream.on('data', chunk => hash.update(chunk));
+        readStream.on('end', () => resolve(hash.digest('hex')));
        })
        
        try {
