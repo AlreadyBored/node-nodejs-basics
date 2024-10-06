@@ -19,8 +19,6 @@ const copy = async () => {
    } catch (err) {        
         if (err.code === 'ENOENT') {
             const [filesIntoFilesFolder] = await Promise.all([readdir(pathToFilesFolder), mkdir(pathToFilesCopyFolder)]);
-            console.log(filesIntoFilesFolder);
-            
             const promises = filesIntoFilesFolder.map((fileName) => 
             copyFile(join(pathToFilesFolder,fileName), join(pathToFilesCopyFolder,fileName), constants.COPYFILE_EXCL));
             await Promise.all(promises);
