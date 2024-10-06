@@ -1,7 +1,6 @@
 import { createWriteStream  } from 'fs';
 import path from "path";
 import { pipeline } from 'stream';
-import readline from 'readline';
 
 const write = async () => {
     const filePath = path.join(process.cwd(), 'src/streams/files/fileToWrite.txt');
