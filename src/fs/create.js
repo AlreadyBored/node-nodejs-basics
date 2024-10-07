@@ -1,11 +1,11 @@
 import { open } from 'node:fs/promises';
 import { join } from 'node:path';
 import { ErrorToShow } from './libs.js';
+import { pathToFiles } from './envs.js';
 
 const FILE_CONTENT = 'I am fresh and young';
 const FILE_NAME_TO_CREATE = "fresh.txt"
-const fileDirectory = join(import.meta.dirname, '/files');
-const fileForCreating = join(fileDirectory, FILE_NAME_TO_CREATE);
+const fileForCreating = join(pathToFiles, FILE_NAME_TO_CREATE);
 
 const create = async () => {
     let fileHandler;

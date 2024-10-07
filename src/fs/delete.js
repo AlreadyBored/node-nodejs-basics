@@ -1,10 +1,10 @@
-import { cp, unlink } from 'node:fs/promises';
+import { unlink } from 'node:fs/promises';
 import { join } from 'node:path';
 import { ErrorToShow } from './libs.js';
+import { pathToFiles } from './envs.js';
 
 const FILE_NAME_TO_REMOVE = 'fileToRemove.txt';
-const fileDirectory = join(import.meta.dirname, '/files');
-const pathToRemove = join(fileDirectory, FILE_NAME_TO_REMOVE);
+const pathToRemove = join(pathToFiles, FILE_NAME_TO_REMOVE);
 
 const remove = async () => {
     try {

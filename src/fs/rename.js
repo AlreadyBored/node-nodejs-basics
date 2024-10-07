@@ -1,10 +1,10 @@
 import { cp, unlink } from 'node:fs/promises';
 import { join } from 'node:path';
 import { ErrorToShow } from './libs.js';
+import { pathToFiles } from './envs.js';
 
-const fileDirectory = join(import.meta.dirname, '/files');
-const fromFileName = join(fileDirectory, "wrongFileName.txt");
-const toFileName = join(fileDirectory, "properFilename.md");
+const fromFileName = join(pathToFiles, "wrongFileName.txt");
+const toFileName = join(pathToFiles, "properFilename.md");
 
 const rename = async () => {
     try {
