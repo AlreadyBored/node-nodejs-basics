@@ -1,10 +1,6 @@
 import { open } from 'node:fs/promises';
 import { ErrorToShow } from './libs.js';
 
-const ErrorToShow = {
-    'EEXIST':'FS operation failed'
-};
-
 const content = 'I am fresh and young';
 const fileName = "fresh.txt"
 const filePath = "src/fs/files/"
