@@ -1,5 +1,11 @@
+const fs = require('fs').promises;
+
 const remove = async () => {
-    // Write your code here 
+    try {
+        await fs.unlink('fileToRemove.txt');
+    } catch (error) {
+        console.error('fileToRemove.txt Error: FS operation failed');
+    }
 };
 
 await remove();
