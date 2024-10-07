@@ -3,7 +3,7 @@ const parseArgs = () => {
     const res = [];
 
     for (let i = 0; i < variables.length; i += 2) {
-        res.push(`${variables[i]} is ${variables[i + 1]}`);
+        res.push(`${variables[i].replaceAll('-', '')} is ${variables[i + 1]}`);
     }
 
     console.log(res.join(', '));
