@@ -1,26 +1,27 @@
 import fs from 'fs/promises';
 import path from 'path';
+import url from 'url';
 
-import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const create = async () => {
     // Write your code here
-    const filePath = path.join(__dirname, 'files', 'fresh.txt');;
-    const fileData = 'I am fresh and young';
+    const __filename = url.fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+    const file = path.join(__dirname, 'files', 'fresh.txt');;
+    const dataToWrite = 'I am fresh and young';
 
-    fs.access(filePath, fs.constants.F_OK)
-        .then(() => {
-            throw new Error();
-        })
-        .catch(async (error) => {
-            if (error) throw new Error('FS operation failed');;
-                
-            await fs.writeFile(filePath, fileData);
-            console.log('File created successfully');
-        });
+    try {
+        await fs.access(file);
+
+        throw new Error('FS operation failed');
+    } catch (error) {
+        if (error.code === 'ENOENT') {
+            await fs.writeFile(file, dataToWrite);
+        } else {
+            throw error;
+        }
+    }
 };
 
 await create();
