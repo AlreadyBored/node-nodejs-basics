@@ -21,7 +21,7 @@ const create = async () => {
             await mkdir(directory, { recursive: true });
             await writeFile(filePath, fileContent, 'utf-8');            
         } else {
-            console.error(error.message);
+            throw error;
         }
     }
 };
