@@ -1,7 +1,7 @@
 import fs from 'fs';
 
 const create = async () => {
-    const target = './files/fresh.txt';
+    const target = 'src/fs/files/fresh.txt';
 
     fs.readFile(target, (err, data) => {
         if (err?.code === 'ENOENT' && !data) {

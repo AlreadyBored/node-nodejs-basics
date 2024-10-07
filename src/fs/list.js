@@ -1,7 +1,7 @@
 import fs from 'fs';
 
 const list = async () => {
-    fs.readdir('./files', (err, files) => {
+    fs.readdir('src/fs/files', (err, files) => {
         if (files) {
             console.log(files);
         }
