@@ -14,4 +14,4 @@ const spawnChildProcess = async (args) => {
     forkChildProcess.stdout.pipe(process.stdout);
 }
 
-spawnChildProcess();
+spawnChildProcess(process.argv);
