@@ -1,16 +1,17 @@
-const path = require('path');
-const { release, version } = require('os');
-const { createServer: createServerHttp } = require('http');
-require('./files/c');
-
+import * as path from 'path';
+import { release, version } from 'os'
+import { createServer as createServerHttp } from 'http';
+import * as a from './files/a.js'
+import * as b from './files/b.js'
+import * as c from './files/c.js'
 const random = Math.random();
 
 let unknownObject;
 
 if (random > 0.5) {
-    unknownObject = require('./files/a.json');
+    unknownObject = a;
 } else {
-    unknownObject = require('./files/b.json');
+    unknownObject = b;
 }
 
 console.log(`Release ${release()}`);
