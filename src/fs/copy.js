@@ -1,11 +1,8 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const srcPath = path.join(__dirname, "files");
-const destPath = path.join(__dirname, "files_copy");
+const srcPath = new URL("./files/", import.meta.url).pathname;
+const destPath = new URL("./files_copy/", import.meta.url).pathname;
 
 const copyDirectory = async (src, dest) => {
   const entries = await fs.readdir(src, { withFileTypes: true });
