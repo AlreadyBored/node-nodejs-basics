@@ -3,9 +3,9 @@ import { join } from 'node:path';
 import { ErrorToShow } from './libs.js';
 
 const content = 'I am fresh and young';
-const fileName = "fresh.txt"
+const FILE_NAME_TO_CREATE = "fresh.txt"
 const fileDirectory = join(import.meta.dirname, '/files');
-const fileForCreating = join(fileDirectory, fileName);
+const fileForCreating = join(fileDirectory, FILE_NAME_TO_CREATE);
 
 const create = async () => {
     let fileHandler;
