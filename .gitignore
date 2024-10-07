@@ -2,3 +2,5 @@ fresh.txt
 files_copy
 properFilename.md
 .prettierrc
+
+.DS_Store
