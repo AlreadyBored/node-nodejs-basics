@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9c646471-6bb3-4518-aaf7-4056b324b7ae" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/streams/files/fileToWrite.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/streams/files/fileToWrite.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/streams/read.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/streams/read.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/streams/transform.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/streams/transform.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/streams/write.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/streams/write.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hash/calcHash.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hash/calcHash.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,8 +49,10 @@
     "npm.fs:list.executor": "Run",
     "npm.fs:read.executor": "Run",
     "npm.fs:rename.executor": "Run",
+    "npm.hash.executor": "Run",
     "npm.modules.executor": "Run",
     "npm.streams:read.executor": "Run",
+    "npm.streams:transform.executor": "Run",
     "npm.streams:write.executor": "Run",
     "npm.zip:compress.executor": "Run",
     "npm.zip:decompress.executor": "Run",
@@ -68,7 +67,17 @@
       <recent name="C:\Users\Elina\Desktop\JS\RS School NodeJS\node-nodejs-basics\src" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.streams:transform">
+  <component name="RunManager" selected="npm.hash">
+    <configuration name="hash" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="hash" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="streams:read" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -99,16 +108,6 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="zip:compress" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="zip:compress" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <configuration name="zip:decompress" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -121,11 +120,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.hash" />
+        <item itemvalue="npm.streams:read" />
         <item itemvalue="npm.streams:transform" />
         <item itemvalue="npm.streams:write" />
-        <item itemvalue="npm.streams:read" />
         <item itemvalue="npm.zip:decompress" />
-        <item itemvalue="npm.zip:compress" />
       </list>
     </recent_temporary>
   </component>
@@ -146,7 +145,7 @@
       <updated>1728136826558</updated>
       <workItem from="1728136829861" duration="9432000" />
       <workItem from="1728165952659" duration="671000" />
-      <workItem from="1728326756425" duration="4629000" />
+      <workItem from="1728326756425" duration="5356000" />
     </task>
     <servers />
   </component>
