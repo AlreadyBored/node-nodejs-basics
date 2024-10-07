@@ -1,22 +1,22 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import zlib from 'node:zlib';
-import { fileURLToPath } from 'node:url';
+import fs from 'fs';
+import zlib from 'zlib';
+import path from 'path';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const __dirname = path.resolve();
 
 const compress = async () => {
+    const fileToCompress = path.join(__dirname, 'files', 'fileToCompress.txt');
+    const archive = path.join(__dirname, 'files', 'archive.gz');
 
-    const file = path.join(__dirname, 'files','fileToCompress.txt');
-    const archive = path.join(__dirname, 'files','archive.gz');
+    if (!fs.existsSync(fileToCompress) || fs.existsSync(archive)){
+        throw new Error('FS operation failed');
+    }
 
+    const readFile = fs.createReadStream(fileToCompress);
+    const writeIntoArchive = fs.createWriteStream(archive);
+    const compressedZip = zlib.createGzip();
 
-    //
-    // const read = fs.createReadStream(file);
-    // const write = fs.createWriteStream(archive);
-    // const zip = zlib.createGzip();
-    //
-    // read.pipe(zip).pipe(write);
+    readFile.pipe(compressedZip).pipe(writeIntoArchive);
 };
 
 await compress();
