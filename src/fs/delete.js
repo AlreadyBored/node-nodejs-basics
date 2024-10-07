@@ -10,7 +10,6 @@ const remove = async () => {
     try {
         await unlink(pathToRemove);
     } catch(error) {   
-        console.log(error)
         let existingError = ErrorToShow[error.code];
         if (existingError) {
             throw new Error(existingError);
