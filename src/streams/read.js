@@ -2,9 +2,9 @@ import fs from 'node:fs';
 import { join } from 'node:path';
 
 const FILE_NAME = 'fileToRead.txt';
-export const FOLDER = '/files';
+const FOLDER = '/files';
 
-export const fullName = join(import.meta.dirname, FOLDER, FILE_NAME);
+const fullName = join(import.meta.dirname, FOLDER, FILE_NAME);
 
 const read = async () => {
   let readStream = fs.createReadStream(fullName, {
