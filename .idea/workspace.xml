@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9c646471-6bb3-4518-aaf7-4056b324b7ae" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli/args.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/args.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli/env.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/env.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/zip/compress.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/zip/compress.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/zip/decompress.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/zip/decompress.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/zip/files/fileToCompress.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,55 +33,54 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;20.17.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.16.10&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.cli:env.executor&quot;: &quot;Run&quot;,
-    &quot;npm.fs:copy.executor&quot;: &quot;Run&quot;,
-    &quot;npm.fs:create.executor&quot;: &quot;Run&quot;,
-    &quot;npm.fs:delete.executor&quot;: &quot;Run&quot;,
-    &quot;npm.fs:list.executor&quot;: &quot;Run&quot;,
-    &quot;npm.fs:read.executor&quot;: &quot;Run&quot;,
-    &quot;npm.fs:rename.executor&quot;: &quot;Run&quot;,
-    &quot;npm.modules.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.1.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "javascript.nodejs.core.library.configured.version": "20.18.0",
+    "javascript.nodejs.core.library.typings.version": "20.16.10",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.cli:args.executor": "Run",
+    "npm.cli:env.executor": "Run",
+    "npm.fs:copy.executor": "Run",
+    "npm.fs:create.executor": "Run",
+    "npm.fs:delete.executor": "Run",
+    "npm.fs:list.executor": "Run",
+    "npm.fs:read.executor": "Run",
+    "npm.fs:rename.executor": "Run",
+    "npm.modules.executor": "Run",
+    "npm.zip:compress.executor": "Run",
+    "npm.zip:decompress.executor": "Run",
+    "settings.editor.selected.configurable": "settings.nodejs",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.1.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="npm.cli:env">
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Elina\Desktop\JS\RS School NodeJS\node-nodejs-basics\src\fs" />
+      <recent name="C:\Users\Elina\Desktop\JS\RS School NodeJS\node-nodejs-basics\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.zip:decompress">
+    <configuration name="cli:args" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="cli:args" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="cli:env" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
         <script value="cli:env" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="fs:delete" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="fs:delete" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="fs:list" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="fs:list" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -96,11 +96,21 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="modules" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="zip:compress" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="modules" />
+        <script value="zip:compress" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="zip:decompress" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="zip:decompress" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -108,11 +118,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.cli:env" />
-        <item itemvalue="npm.modules" />
+        <item itemvalue="npm.zip:decompress" />
+        <item itemvalue="npm.zip:compress" />
         <item itemvalue="npm.fs:read" />
-        <item itemvalue="npm.fs:list" />
-        <item itemvalue="npm.fs:delete" />
+        <item itemvalue="npm.cli:args" />
+        <item itemvalue="npm.cli:env" />
       </list>
     </recent_temporary>
   </component>
@@ -131,7 +141,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1728136826558</updated>
-      <workItem from="1728136829861" duration="9001000" />
+      <workItem from="1728136829861" duration="9432000" />
+      <workItem from="1728165952659" duration="671000" />
+      <workItem from="1728326756425" duration="2308000" />
     </task>
     <servers />
   </component>
