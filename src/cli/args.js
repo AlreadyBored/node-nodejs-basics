@@ -9,6 +9,7 @@ export const parseArgs = () => {
         }
         return acc
     }, [])
+    
 
     console.log(cliArguments.join(', '))
 }
