@@ -42,5 +42,10 @@
   "homepage": "https://github.com/AlreadyBored/node-nodejs-basics#readme",
   "dependencies": {
     "node": "^20.18.0"
-  }
+  },
+  "configurations": [
+    {
+      "console": "integratedTerminal"
+    }
+  ]
 }
