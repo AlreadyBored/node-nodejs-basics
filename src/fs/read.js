@@ -15,6 +15,7 @@ const read = async () => {
         console.log(content);
     } catch (err) {
         if (err.code === 'ENOENT') {
+            console.error('FS operation failed');
             throw new Error('FS operation failed');
         } else {
             throw err;

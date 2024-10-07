@@ -12,6 +12,7 @@ const rename = async () => {
     try {
         await fs.access(currentPath);
         await fs.access(newPath).then(() => {
+            console.error('FS operation failed')
             throw new Error('FS operation failed');
         }).catch(async (err) => {
             if (err.code === 'ENOENT') {
@@ -23,6 +24,7 @@ const rename = async () => {
 
     } catch (err) {
         if (err.code === 'ENOENT') {
+            console.error('FS operation failed');
             throw new Error('FS operation failed');
         } else {
             throw err;

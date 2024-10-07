@@ -16,6 +16,7 @@ const list = async () => {
         });
     } catch (err) {
         if (err.code === 'ENOENT') {
+            console.error('FS operation failed')
             throw new Error('FS operation failed');
         } else {
             throw err;
