@@ -23,6 +23,14 @@ const performCalculations = async () => {
         }
       });
 
+      worker.on('error', () => {
+        results[i] = { status: 'error', data: null };
+
+        if (results.length === cpu_len) {
+          resolve(results);
+        }
+      });
+
       workers.push(worker);
     }
   });
