@@ -2,7 +2,7 @@ import { pipeline as streamPipeline } from 'stream/promises';
 import { Transform } from 'stream';
 
 function stringReverse(chunk) {
-    return chunk.toString().split('').reverse().join('');
+    return chunk.toString().split('').reverse().join('')+"\n";
 }
 
 const transform = async () => {
