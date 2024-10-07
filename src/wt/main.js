@@ -3,16 +3,17 @@ import os from "os";
 
 const performCalculations = async () => {
   const numCores = os.cpus().length;
-  const workers = [];
+  const workers = new Array(numCores);
   for (let i = 0; i < numCores; i++) {
     const numberToSend = 10 + i;
-    workers.push(runWorker(numberToSend));
+    workers[i] = runWorker(i, numberToSend);
   }
 
-  function runWorker(data) {
+  function runWorker(index, data) {
     return new Promise((resolve) => {
       const worker = new Worker("./worker.js");
       worker.postMessage(data);
+
       worker.on("message", (result) => {
         resolve({ status: "resolved", data: result });
         worker.terminate();
