@@ -9,7 +9,7 @@ const scriptFolder = 'files';
 const scriptFullPath = pathJoin(__dirname, scriptFolder, scriptFile);
 
 const spawnChildProcess = async (args) => {
-    const forkChildProcess = child_processFork(scriptFullPath, args, {silent: true});
+    const forkChildProcess = child_processFork(scriptFullPath, args.slice(2), {silent: true});
     process.stdin.pipe(forkChildProcess.stdin);
     forkChildProcess.stdout.pipe(process.stdout);
 }
