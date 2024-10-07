@@ -8,6 +8,7 @@ const fileName = 'fresh.txt';
 
 const create = async () => {
   const fullPath = join(pathToFolder(),fileName);
+    console.log(fullPath);
       
     try {
         await writeFile(fullPath, content, {flag: 'wx'});
