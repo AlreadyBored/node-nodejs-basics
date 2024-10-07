@@ -1,5 +1,19 @@
+import fs from 'fs';
+
 const rename = async () => {
-    // Write your code here 
+    const target = './files/properFilename.txt';
+
+    fs.readFile(target, (err) => {
+        if (err?.code === 'ENOENT') {
+            fs.rename('./files/wrongFilename.txt', target, (err) => {
+                if (err?.code === 'ENOENT') {
+                    throw Error ('FS operation failed');
+                } 
+            });
+        } else {
+            throw Error ('FS operation failed');
+        }
+    });
 };
 
 await rename();
