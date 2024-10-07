@@ -3,8 +3,6 @@ import { argv } from 'node:process';
 const parseArgs = () => {
   const args = argv.slice(2);
 
-  console.log(args);
-
   let result = [];
   args.forEach((arg, index) => {
     let next = index + 1;
