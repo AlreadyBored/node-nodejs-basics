@@ -1,5 +1,3 @@
-import util from 'node:util';
-
 const parseEnv = () => {
     for (let key in process.env) {
         if(key.startsWith("RSS_")) {
