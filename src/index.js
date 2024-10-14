@@ -13,11 +13,18 @@ console.log(
   "Dear reviewer. Somehow my npm or terminal doesn't accept additiopnal parameters prefixed with dashes.\n Neither '--username=name' nor '-- --username=name' so please use clear username=name as argument"
 );
 if (args[2].startsWith('username=')) user = args[2].slice(9);
+else {
+  console.log('Invalid username');
+}
 
 console.log('Welcome to the File Manager, ', '\x1b[36m', user, '!', '\x1b[0m');
 console.log(`You are currently in ${HOME_DIR}`);
 
 stdout.write('Enter your command:');
+process.on('SIGINT', () => {
+  console.log('Thank you for using File Manager,', user, ' goodbye!');
+  process.exit();
+});
 
 stdin.on('data', async function (chunk) {
   const data = chunk.replace(/\r\n/g, '');
