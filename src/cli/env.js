@@ -1,5 +1,8 @@
-const parseEnv = () => {
-    // Write your code here 
+const os = require('os');
+
+const envConfig = {
+  homeDir: os.homedir(),
+  eol: os.EOL
 };
 
-parseEnv();
+module.exports = envConfig;
