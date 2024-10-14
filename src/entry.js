@@ -65,8 +65,15 @@ const commands = {
       console.log("Directory does not exist.");
     }
   },
-  cat: (process, filePath) => {
+  cat: async (process, filePath) => {
     const fullPath = path.resolve(process.cwd(), filePath);
+
+    const stats = await fs.stat(fullPath);
+
+    if (stats.isDirectory()) {
+      console.log("The specified path is a directory, not a file.");
+      return;
+    }
 
     const stream = createReadStream(fullPath, "utf-8");
     stream.on("data", (chunk) => {
