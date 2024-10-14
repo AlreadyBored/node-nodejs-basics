@@ -22,7 +22,7 @@ const commands = {
     console.log(`Thank you for using File Manager, ${userName}, goodbye!`);
     process.exit();
   },
-  ls: (process) => {
+  ls: async (process) => {
     const files = fs.readdirSync(process.cwd());
 
     console.log("--------------------------------------------------");
@@ -40,18 +40,41 @@ const commands = {
     });
     console.log("--------------------------------------------------");
   },
+  up: async () => {
+    const currentDir = process.cwd();
+    const parentDir = path.dirname(currentDir);
+
+    if (currentDir === parentDir) {
+      console.log("You are already in the root directory.");
+    } else {
+      process.chdir(parentDir);
+      console.log(`Changed directory to ${parentDir}`);
+    }
+  },
+  cd: async (process, directoryPath) => {
+    if (!directoryPath) return console.log("Directory not provided");
+
+    const targetPath = path.resolve(process.cwd(), directoryPath); // Получаем полный путь
+    if (fs.existsSync(targetPath) && fs.statSync(targetPath).isDirectory()) {
+      process.chdir(targetPath);
+      console.log(`Changed directory to ${targetPath}`);
+    } else {
+      console.log("Directory does not exist.");
+    }
+  },
   error: (process) => {
     throw new Error("Simulated error");
   },
 };
 
-process.stdin.on("data", (data) => {
+process.stdin.on("data", async (data) => {
   const input = data.toString().trim();
+  const [command, ...args] = input.split(" ");
 
   console.log("");
-  if (commands[input]) {
+  if (commands[command]) {
     try {
-      commands[input](process);
+      await commands[command](process, ...args);
     } catch {
       console.log("Operation failed");
     }
