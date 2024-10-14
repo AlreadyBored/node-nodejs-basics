@@ -19,13 +19,20 @@ const commands = {
     console.log(`Thank you for using File Manager, ${userName}, goodbye!`);
     process.exit();
   },
+  error: (process) => {
+    throw new Error("Simulated error");
+  },
 };
 
 process.stdin.on("data", (data) => {
   const input = data.toString().trim();
 
   if (commands[input]) {
-    commands[input](process);
+    try {
+      commands[input](process);
+    } catch {
+      console.log("Operation failed");
+    }
   } else {
     console.log("Invalid input.");
   }
