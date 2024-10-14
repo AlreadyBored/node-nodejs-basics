@@ -54,13 +54,25 @@ const commands = {
   cd: async (process, directoryPath) => {
     if (!directoryPath) return console.log("Directory not provided");
 
-    const targetPath = path.resolve(process.cwd(), directoryPath); // Получаем полный путь
+    const targetPath = path.resolve(process.cwd(), directoryPath);
     if (fs.existsSync(targetPath) && fs.statSync(targetPath).isDirectory()) {
       process.chdir(targetPath);
       console.log(`Changed directory to ${targetPath}`);
     } else {
       console.log("Directory does not exist.");
     }
+  },
+  cat: (process, filePath) => {
+    const fullPath = path.resolve(process.cwd(), filePath);
+
+    const stream = fs.createReadStream(fullPath, "utf-8");
+    stream.on("data", (chunk) => {
+      process.stdout.write(chunk);
+    });
+    stream.on("error", () => {
+      console.log("Operation failed: Could not read the file.");
+      console.log("");
+    });
   },
   error: (process) => {
     throw new Error("Simulated error");
