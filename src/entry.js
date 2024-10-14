@@ -1,4 +1,5 @@
-import fs from "fs";
+import { createReadStream } from "fs";
+import fs from "fs/promises";
 import path from "path";
 
 const USERNAME_ARG = "username";
@@ -23,15 +24,15 @@ const commands = {
     process.exit();
   },
   ls: async (process) => {
-    const files = fs.readdirSync(process.cwd());
+    const files = await fs.readdir(process.cwd());
 
     console.log("--------------------------------------------------");
     console.log("  Index | Name                       | Type");
     console.log("--------------------------------------------------");
 
-    files.forEach((file, index) => {
+    files.forEach(async (file, index) => {
       const filePath = path.join(process.cwd(), file);
-      const stats = fs.statSync(filePath);
+      const stats = await fs.stat(filePath);
       const type = stats.isDirectory() ? "directory" : "file";
 
       console.log(
@@ -55,7 +56,9 @@ const commands = {
     if (!directoryPath) return console.log("Directory not provided");
 
     const targetPath = path.resolve(process.cwd(), directoryPath);
-    if (fs.existsSync(targetPath) && fs.statSync(targetPath).isDirectory()) {
+    const stats = await fs.stat(targetPath);
+
+    if (stats.isDirectory()) {
       process.chdir(targetPath);
       console.log(`Changed directory to ${targetPath}`);
     } else {
@@ -65,7 +68,7 @@ const commands = {
   cat: (process, filePath) => {
     const fullPath = path.resolve(process.cwd(), filePath);
 
-    const stream = fs.createReadStream(fullPath, "utf-8");
+    const stream = createReadStream(fullPath, "utf-8");
     stream.on("data", (chunk) => {
       process.stdout.write(chunk);
     });
