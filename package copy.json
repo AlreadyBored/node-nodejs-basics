@@ -1,0 +1,27 @@
+{
+  "name": "node-nodejs-basics",
+  "version": "1.0.0",
+  "description": "This repository is the part of nodejs-assignments https://github.com/AlreadyBored/nodejs-assignments",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node ./bin/file-manager.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlreadyBored/node-nodejs-basics.git"
+  },
+  "keywords": [
+    "nodejs",
+    "assignments",
+    "alreadybored"
+  ],
+  "author": "alreadybored",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlreadyBored/node-nodejs-basics/issues"
+  },
+  "homepage": "https://github.com/AlreadyBored/node-nodejs-basics#readme"
+}

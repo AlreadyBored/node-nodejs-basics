@@ -1,0 +1,1 @@
+export const getUserName = (cliUserName) => cliUserName.split('=')[1];
