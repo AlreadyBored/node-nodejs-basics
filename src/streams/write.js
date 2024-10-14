@@ -1,5 +1,9 @@
-const write = async () => {
-    // Write your code here 
+const fs = require('fs');
+
+const writeFileStream = (filePath, data) => {
+  const writeStream = fs.createWriteStream(filePath);
+  writeStream.write(data, 'utf8');
+  writeStream.end();
 };
 
-await write();
+module.exports = { writeFileStream };
