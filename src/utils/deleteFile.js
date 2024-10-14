@@ -2,6 +2,11 @@ import path from 'node:path'
 import { access, stat, rm } from 'fs/promises'
 
 export const deleteFile = async (currentPath, filepath) => {
+    if (!filepath) {
+        console.error('Invalid input')
+        return;
+    }
+
     const absfilepath = path.resolve(currentPath, filepath);
 
     const isCreated = await access(absfilepath).then(() => true).catch(() => false);

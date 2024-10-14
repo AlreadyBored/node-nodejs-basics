@@ -4,6 +4,11 @@ import { createHash } from 'node:crypto';
 import { createReadStream } from 'node:fs';
 
 export const printHash = async (currentPath, filepath) => {
+    if (!filepath) {
+        console.error('Invalid input')
+        return;
+    }
+
     const absfilepath = path.resolve(currentPath, filepath);
 
     const isCreated = await access(absfilepath).then(() => true).catch(() => false);

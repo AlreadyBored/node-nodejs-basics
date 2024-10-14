@@ -2,6 +2,11 @@ import { stat, rename, access } from 'fs/promises'
 import path from 'node:path'
 
 export const renameFile = async (currentPath, oldPath, newPath) => {
+    if (!oldPath || !newPath) {
+        console.error('Invalid input')
+        return;
+    }
+
     const absoldpath = path.resolve(currentPath, oldPath)
     const absnewpath = path.resolve(currentPath, newPath)
 

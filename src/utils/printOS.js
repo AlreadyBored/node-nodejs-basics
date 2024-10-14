@@ -1,6 +1,11 @@
 import os from 'node:os'
 
 export const printOS = (_, type) => {
+    if (!type) {
+        console.error('Invalid input')
+        return;
+    }
+
     switch (type) {
         case "--EOL": {
             console.log(`EOL is - ${JSON.stringify(os.EOL)}`)

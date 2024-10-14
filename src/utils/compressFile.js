@@ -5,6 +5,11 @@ import { access, stat } from 'fs/promises'
 import { createBrotliCompress } from 'node:zlib';
 
 export const compressFile = async (currentPath, oldname, newpath) => {
+    if (!oldname || !newpath) {
+        console.error('Invalid input')
+        return;
+    }
+
     const absoldpath = path.resolve(currentPath, oldname)
     const absnewpath = path.resolve(currentPath, newpath)
 

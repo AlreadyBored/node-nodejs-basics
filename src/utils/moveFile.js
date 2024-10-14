@@ -4,6 +4,11 @@ import { pipeline } from "node:stream/promises";
 import { access, stat, rm } from 'fs/promises'
 
 export const moveFile = async (currentPath, oldpath, newpath) => {
+    if (!oldpath || !newpath) {
+        console.error('Invalid input')
+        return;
+    }
+
     const absoldpath = path.resolve(currentPath, oldpath)
     const absnewpath = path.resolve(currentPath, newpath)
 

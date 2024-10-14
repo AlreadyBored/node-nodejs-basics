@@ -3,6 +3,11 @@ import { access } from 'fs/promises'
 import path from 'node:path'
 
 export const printFileContent = async (currentPath, filepath) => {
+    if (!filepath) {
+        console.error('Invalid input')
+        return;
+    }
+
     try {
         const absfilepath = path.resolve(currentPath, filepath);
         await access(absfilepath)

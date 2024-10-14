@@ -5,6 +5,11 @@ import { access, stat } from 'fs/promises'
 import { createBrotliDecompress } from 'node:zlib';
 
 export const decompressFile = async (currentPath, oldname, newpath) => {
+    if (!oldname || !newpath) {
+        console.error('Invalid input')
+        return;
+    }
+
     const arhivePath = path.resolve(currentPath, oldname)
     const decompressPath = path.resolve(currentPath, newpath)
 

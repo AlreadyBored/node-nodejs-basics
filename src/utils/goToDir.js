@@ -2,7 +2,12 @@ import path from 'node:path';
 import { stat, access } from 'fs/promises';
 import { homedir } from 'node:os';
 
-export const goToDir = async (currentPath, destinationPath = '') => {
+export const goToDir = async (currentPath, destinationPath) => {
+    if (!destinationPath) {
+        console.error('Invalid input')
+        return;
+    }
+    
     let newPath = path.resolve(currentPath, destinationPath)
     const relative = path.relative(homedir(), newPath);
 
