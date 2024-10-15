@@ -35,7 +35,6 @@ export const moveFile = async (currentPath, oldpath, newpath) => {
 
     const sourceReadStream = createReadStream(absoldpath)
     const destinationWritableStream = createWriteStream(absnewpath)
-    console.log(absoldpath, absnewpath)
     try {
         await pipeline(sourceReadStream, destinationWritableStream)
         await rm(absoldpath);
