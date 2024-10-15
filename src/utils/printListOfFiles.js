@@ -22,20 +22,5 @@ export const printListOfFiles = async (dirPath) => {
     const listOfDirectory = await Promise.all(formattedData)
 
     console.table(listOfDirectory.map(record => new Named(...record)));
-    // const filteredList = listOfDirectory.filter(record => record)
-    // const resultList = filteredList.map(async (currentPath) => {
-    //     try {
-    //         console.log(currentPath)
-    //         const pathStat = await stat(currentPath);
-    //         console.log(pa)
-    //         if (pathStat.isDirectory()) return 'directory'
-    //         if (pathStat.isFile()) return 'file'
-    //         return pathStat.isDirectory() ? 'directory' : 'file';
-    //     } catch(_) {
-    //         return null
-    //     }
-        
-    // });
-    // const result = await Promise.all(resultList)
-    // console.log(result)
+   
 }

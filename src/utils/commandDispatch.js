@@ -26,7 +26,7 @@ const commandList = {
 
     },
     "cd": async (currentPath, [destination]) => {
-        currentPath.path = await goToDir(currentPath.path, destination);
+        currentPath.path = await goToDisr(currentPath.path, destination);
     },
     "ls": async ({ path }) => {
         await printListOfFiles(path);
