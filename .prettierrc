@@ -1,0 +1,19 @@
+{
+	"endOfLine": "auto",
+	"semi": true,
+	"singleQuote": true,
+	"useTabs": true,
+	"tabWidth": 4,
+	"trailingComma": "es5",
+	"printWidth": 120,
+	"arrowParens": "always",
+	"singleAttributePerLine": false,
+	"overrides": [
+		{
+			"files": "*.sass",
+			"options": {
+				"parser": "sass"
+			}
+		}
+	]
+}
