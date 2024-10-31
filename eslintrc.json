@@ -1,0 +1,21 @@
+{
+	"type": "module",
+	"eslintConfig": {
+		"overrides": [
+			{
+				"languageOptions": {
+					"globals": { "node": true }
+				}
+			}
+		],
+		"extends": ["plugin:js/recommended"]
+	},
+	"dependencies": {
+		"eslint": "^8.x.x",
+		"eslint-plugin-js": "^1.x.x",
+		"globals": "^13.x.x"
+	},
+	"rules": {
+		"no-unused-vars": "off"
+	}
+}
