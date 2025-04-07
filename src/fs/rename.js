@@ -8,15 +8,19 @@ const rename = async () => {
     const pathOriginFile = join(dirName, 'files', 'wrongFilename.txt');
     const pathRenameFile = join(dirName, 'files', 'properFilename.md');
 
-    if ((!fs.existsSync(pathOriginFile)) || (fs.existsSync(pathRenameFile))) {
-        throw new Error('FS operation failed')
-    } else {
-        fs.rename(pathOriginFile, pathRenameFile, (error) => {
+    fs.access(pathOriginFile, fs.constants.F_OK, (error) => {
             if (error) {
-                throw new Error('FS operation failed')
+                throw new Error('FS operation failed');
             }
-        }) 
-    }
+    });
+
+    fs.access(pathRenameFile, fs.constants.F_OK, (error) => {
+        if (error) {
+            fs.rename(pathOriginFile, pathRenameFile, () => {})     
+        } else {
+            throw new Error('FS operation failed');
+        }
+    });
 };
 
 await rename();
