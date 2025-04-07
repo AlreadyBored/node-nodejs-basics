@@ -9,17 +9,25 @@ const copy = async () => {
     const sourcePath = join(dirName, 'files');
     const destPath = join(dirName, 'files_copy');
 
-    if ((!fs.existsSync(sourcePath)) || (fs.existsSync(destPath))) {
-        throw new Error('FS operation failed')
-    } else {
-        fs.mkdir(destPath, () => {
-            cp(sourcePath, destPath,
-                {
-                    errorOnExist: true,
-                    recursive: true,
-                })
-        });             
-    }
+    await fs.stat(sourcePath, (error)=> {
+        if (error) {
+            throw new Error('FS operation failed');
+        }
+    });
+
+    await fs.stat(destPath, (error) => {
+        if (error) {
+            fs.mkdir(destPath, () => {
+                cp(sourcePath, destPath,
+                    {
+                        errorOnExist: true,
+                        recursive: true,
+                    })
+            });     
+        } else {
+            throw new Error('FS operation failed')
+        }
+    })
 };
 
 await copy();
