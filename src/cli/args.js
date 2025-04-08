@@ -4,13 +4,16 @@ const parseArgs = () => {
     const processedArgs = [];
     for (let i = 0; i < args.length; i += 1) {
         if (args[i].startsWith('--')) {
-            const propName = args[i].slice(2);
+            const propName = args[i].replace('--', '');
+            const propValue = args[i + 1];
             processedArgs.push(
-                `${propName} is ${args[i + 1]}`
+                `${propName} is ${propValue}`
             );
         } 
     }
-    processedArgs.length && console.log(processedArgs.join(', '));
+    processedArgs.length
+        ? console.log(processedArgs.join(', '))
+        : console.log('There are no arguments with "--" prefix');
 };
 
 parseArgs();
