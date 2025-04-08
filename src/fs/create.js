@@ -1,7 +1,7 @@
 // implement function that creates new file fresh.txt with content I am fresh and young inside of the files folder (if file already exists Error with message FS operation failed must be thrown)
 import { resolve } from 'node:path';
 import { writeFile } from 'node:fs/promises';
-import { getDirName } from '../../utils/getDirName';
+import { getDirName } from '../../utils/getDirName.js';
 
 const create = async () => {
     const __dirname = getDirName(import.meta.url);
