@@ -1,49 +1,30 @@
 // implement function that calculates SHA256 hash for file fileToCalculateHashFor.txt and logs it into console as hex using Streams API
 import { pipeline } from 'node:stream/promises';
-import { createReadStream } from 'node:fs';
+import { createReadStream, constants } from 'node:fs';
 import { createHash } from 'node:crypto';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
+import { getDirName } from '../../utils/getDirName.js';
+import { checkIfFileExist } from '../../utils/checkIfFileExist.js';
 
-const calculateHash = async () => {
-    const hash = createHash('sha256');
-    hash.setEncoding('hex');
+const calculateHash = async () => {  
+    const __dirname = getDirName(import.meta.url);
+    const sourceFilePath = resolve(__dirname, 'files', 'fileToCalculateHashFor.txt');
+
+    const isExist = await checkIfFileExist(sourceFilePath, constants.R_OK);
+    if (!isExist) {
+        console.log(`Creating hash failed:\nFile ${sourceFilePath} doesn't exist.`);
+        return;
+    }
     
-    const __dirname = path.dirname(fileURLToPath(import.meta.url));
-    const fileToHashPath = path.resolve(__dirname, 'files', 'fileToCalculateHashFor.txt');
-    const fileToHashReadableStream = createReadStream(fileToHashPath);
-    fileToHashReadableStream.on('end', () => {
-        hash.end();
-        // hash reads data
-        console.log(hash.read());
-    });
+    const sourceReadableStream = createReadStream(sourceFilePath);
+    const hash = createHash('sha256');
 
-    // read file than pass data to hash 
     pipeline (
-        fileToHashReadableStream,
+        sourceReadableStream,
         hash
-    );
+    )
+        .then(() => console.log(`Hash: ${hash.digest('hex')}`))
+        .catch((err) => console.log(`Hash creation failed: ${err}`));
 };
 
 await calculateHash();
-
-const calculateHash2 = async () => {
-    const hash = createHash('sha256');
-
-    const __dirname = path.dirname(fileURLToPath(import.meta.url));
-    const fileToHashPath = path.resolve(__dirname, 'files', 'fileToCalculateHashFor.txt');
-    const fileToHashReadableStream = createReadStream(fileToHashPath);
-
-    fileToHashReadableStream.on('data', (chunck) => {
-        // Updates the hash content with the given data
-        hash.update(chunck)
-    })
-
-    fileToHashReadableStream.on('end', () => {
-        // Calculates the digest of all of the data passed to be hashed
-        const hexHash = hash.digest('hex')
-        console.log(hexHash);
-    });
-};
-
-await calculateHash2();

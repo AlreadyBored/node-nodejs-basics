@@ -1,19 +1,33 @@
 // implement function that compresses file fileToCompress.txt to archive.gz using zlib and Streams API
-import { pipeline } from 'node:stream';
-import { createReadStream, createWriteStream } from 'node:fs';
+import { resolve } from 'node:path';
+import { pipeline } from 'node:stream/promises';
+import { createReadStream, createWriteStream , constants} from 'node:fs';
 import { createGzip } from 'node:zlib';
+import { getDirName } from '../../utils/getDirName.js';
+import { checkIfFileExist } from '../../utils/checkIfFileExist.js';
 
 const compress = async () => {
     const gzip = createGzip();
-    const readable = createReadStream('./files/fileToCompress.txt');
-    const writable = createWriteStream('./files/archive.gz');
+    const __dirname = getDirName(import.meta.url);
+    const sourcePath = resolve(__dirname, 'files', 'fileToCompress.txt');
+
+    const isExist = await checkIfFileExist(sourcePath, constants.R_OK);
+    if (!isExist) {
+        console.log(`File compressing failed:\n\tFile ${sourcePath} doesn't exist.`);
+        return;
+    }
     
-    pipeline(
-        readable,
+    const destinationPath = resolve(__dirname, 'files', 'archive.gz');
+    const readableStream = createReadStream(sourcePath);
+    const writableStream = createWriteStream(destinationPath);
+    
+    await pipeline(
+        readableStream,
         gzip,
-        writable,
-        (err) => err && console.log(err)
-    );
+        writableStream
+    )
+        .then(() => console.log(`File is compressed in ${destinationPath}`))
+        .catch((er) => console.log(`File compressing failed: ${er}`));
 };
 
 await compress();

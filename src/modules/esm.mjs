@@ -1,6 +1,6 @@
-import * as path from 'node:path'
-import { release, version } from 'node:os'
-import { createServer as createServerHttp } from 'node:http'
+import * as path from 'node:path';
+import { release, version } from 'node:os';
+import { createServer as createServerHttp } from 'node:http';
 import './files/c.js';
 import aJson from './files/a.json' with { type: 'json' };
 import bJson from './files/b.json' with { type: 'json' };

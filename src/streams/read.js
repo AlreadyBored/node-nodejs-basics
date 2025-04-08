@@ -1,31 +1,28 @@
 // implement function that reads file fileToRead.txt content using Readable Stream and prints it's content into process.stdout
-import { createReadStream } from 'node:fs';
+import { resolve } from 'node:path';
+import { createReadStream, constants } from 'node:fs';
 import { pipeline } from 'node:stream/promises';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { getDirName } from '../../utils/getDirName.js';
+import { checkIfFileExist } from '../../utils/checkIfFileExist.js';
 
 const read = async () => {
-    const __dirname = path.dirname(fileURLToPath(import.meta.url));
-    const fileToReadPath = path.resolve(__dirname, 'files', 'fileToRead.txt');
-    
-    const readableStream = createReadStream(fileToReadPath);
-    readableStream.on('data', (chunck) => process.stdout.write(chunck));
-    readableStream.on('end', () => process.stdout.write('\n'));
-};
+    const __dirname = getDirName(import.meta.url);
+    const sourcePath = resolve(__dirname, 'files', 'fileToRead.txt');
 
-await read();
+    const isExist = await checkIfFileExist(sourcePath, constants.R_OK);
+    if (!isExist) {
+        console.log(`Reading of the file failed:\nFile ${sourcePath} doesn't exist.`);
+        return;
+    }
 
-const read2 = async () => {
-    const __dirname = path.dirname(fileURLToPath(import.meta.url));
-    const fileToReadPath = path.resolve(__dirname, 'files', 'fileToRead.txt');
-    
-    const readableStream = createReadStream(fileToReadPath);
+    const readableStream = createReadStream(sourcePath, { encoding: 'utf-8' });
     readableStream.on('end', () => process.stdout.write('\n'));
 
     await pipeline(
         readableStream,
         process.stdout
-    );
+    )
+        .catch(err => console.log(`Reading of the file failed: ${err}`));
 };
 
-// await read2();
+await read();

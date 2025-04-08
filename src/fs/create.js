@@ -1,11 +1,12 @@
 // implement function that creates new file fresh.txt with content I am fresh and young inside of the files folder (if file already exists Error with message FS operation failed must be thrown)
+import { resolve } from 'node:path';
 import { writeFile } from 'node:fs/promises';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { getDirName } from '../../utils/getDirName.js';
 
 const create = async () => {
-    const __dirname = path.dirname(fileURLToPath(import.meta.url));
-    const createdFilePath = path.resolve(__dirname, 'files', 'fresh.txt');
+    const __dirname = getDirName(import.meta.url);
+    const createdFilePath = resolve(__dirname, 'files', 'fresh.txt');
+
     try {
         // wx flag - fails if file exists
         await writeFile(createdFilePath, 'I am fresh and young ', { flag: 'wx' });
