@@ -1,10 +1,11 @@
-const fs = require('node:fs');
-const path = require('node:path');
+import fs from 'node:fs';
+import path from 'node:path';
 
-const folderName = 'files';
+const folderName = 'src/fs/files';
 const fileName = `fresh.txt`;
 const content = 'I am fresh and young';
 const errMsg = new Error('FS operation failed');
+const __dirname = path.resolve();
 
 const targetPath = path.join(__dirname, folderName, fileName);
 

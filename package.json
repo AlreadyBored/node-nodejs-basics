@@ -11,7 +11,7 @@
     "cli:env": "npx cross-env SOME=any RSS_foo=bar RSS_bar=baz node src/cli/env.js",
     "cp": "node src/cp/cp.js",
     "fs:copy": "node src/fs/copy.js",
-    "fs:create": "node src/fs/create.cjs",
+    "fs:create": "node src/fs/create.js",
     "fs:delete": "node src/fs/delete.js",
     "fs:list": "node src/fs/list.js",
     "fs:read": "node src/fs/read.js",
