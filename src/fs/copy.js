@@ -1,9 +1,10 @@
 import fs from "fs/promises";
+import path from "path";
 
 const copy = async () => {
   // Write your code here
-  const sourceDir = "./files";
-  const destDir = "./files_copy";
+  const sourceDir = path.resolve("./src/fs/files");
+  const destDir = path.resolve("./src/fs/files_copy");
   try {
     await fs.access(sourceDir);
   } catch (err) {
@@ -18,12 +19,12 @@ const copy = async () => {
   } catch (error) {
     if (error.code === "ENOENT") {
       // Variant #1
-      // await fs.mkdir("./files_copy");
+      // await fs.mkdir(destDir);
 
-      // const files = await fs.readdir("./files");
+      // const files = await fs.readdir(sourceDir));
 
       // files.forEach((fileName) => {
-      //   const source = "./files/" + fileName;
+      //   const source = sourceDir + "/" + fileName;
       //   const dest = destDir + "/" + fileName;
       //   fs.copyFile(source, dest);
       // });

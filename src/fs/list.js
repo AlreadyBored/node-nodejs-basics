@@ -1,11 +1,13 @@
 import fs from "fs/promises";
+import path from "path";
 
 const list = async () => {
   // Write your code here
   try {
-    await fs.access("./files");
+    const dirName = path.resolve("./src/fs/files");
+    await fs.access(dirName);
 
-    const files = await fs.readdir("./files");
+    const files = await fs.readdir(dirName);
 
     files.forEach((fileName) => {
       console.log(fileName);

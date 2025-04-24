@@ -1,10 +1,11 @@
 import fs from "fs/promises";
+import path from "path";
 
 const rename = async () => {
   // Write your code here
 
   try {
-    await fs.access("./files/wrongFilename.txt");
+    await fs.access(path.resolve("./src/fs/files/wrongFilename.txt"));
   } catch (error) {
     if (error.code === "ENOENT") {
       throw new Error("FS operation failed");
@@ -12,11 +13,14 @@ const rename = async () => {
   }
 
   try {
-    await fs.access("./files/properFilename.md");
+    await fs.access(path.resolve("./src/fs/files/properFilename.md"));
     throw new Error("FS operation failed");
   } catch (error) {
     if (error.code === "ENOENT") {
-      await fs.rename("./files/wrongFilename.txt", "./files/properFilename.md");
+      await fs.rename(
+        path.resolve("./src/fs/files/wrongFilename.txt"),
+        path.resolve("./src/fs/files/properFilename.md")
+      );
     } else {
       throw error;
     }
