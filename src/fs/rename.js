@@ -1,37 +1,32 @@
 import * as fs from "fs/promises";
-import * as fsSync from "fs"
 
 const rename = async () => {
     // Write your code here 
     const oldPath = './src/fs/files/wrongFilename.txt'
     const newPath = './src/fs/files/properFilename.md'
 
-    if (fileExists(oldPath)) {
-        if (fileExists(newPath)) {
-            console.log('Cannot rename. File allready exists: ', newPath)
-        }
-        else {
-            try {
-                await fs.rename(oldPath, newPath)
-                console.log('Rename complete')
-            } catch (error) {
-                console.log('Error: FS operation failed: ', error)
-            }
-        }
-    }
-    else {
-        console.log('Cannot rename. File does not exist: ', oldPath)
+    if (await fileExists(newPath) === true) {
+        throw new Error('FS operation failed', { cause: 'Cannot rename. File allready exists: ' + newPath })
     }
 
-};
+    if (await fileExists(oldPath) === false) {
+        throw new Error('FS operation failed', { cause: 'Cannot rename. File does not exists: ' + oldPath })
+    }
 
-function fileExists(fileName) {
     try {
-        const exist = fsSync.existsSync(fileName)
-        console.log('exist: ', exist, fileName )
-        return exist
+        await fs.rename(oldPath, newPath)
+        console.log('Rename complete')
     } catch (error) {
-        console.log('Error: FS operation failed: ', error)
+        throw new Error('FS operation failed', { cause: error })
+    }
+}
+
+async function fileExists(fileName) {
+    try {
+        await fs.stat(fileName)
+        return true
+    } catch (error) {
+        return false
     }
 }
 
