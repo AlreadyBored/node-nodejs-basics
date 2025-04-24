@@ -12,7 +12,6 @@ const compress = async () => {
     const fileToCompress = path.join(__dirname, 'files', 'fileToCompress.txt');
     const archive = path.join(__dirname, 'files', 'archive.gz');
 
-
     try {
         await fs.promises.access(fileToCompress, constants.F_OK);
 
@@ -20,14 +19,23 @@ const compress = async () => {
         const source = createReadStream(fileToCompress);
         const destination = createWriteStream(archive);
 
-        pipeline(source, gzip, destination, (err) => {
+        pipeline(source, gzip, destination, async (err) => {
             if (err) {
                 console.error(err);
                 process.exitCode = 1;
+            } else {
+                console.log('Compress completed to archive.gz');
+
+                try {
+                    await fs.promises.unlink(fileToCompress);
+                    console.log('fileToCompress.txt remove completed');
+                } catch (deleteError) {
+                    console.error(deleteError);
+                }
             }
         });
     } catch (error) {
-        console.error('FS operation failed');
+        throw new Error('FS operation failed');
     }
 };
 
