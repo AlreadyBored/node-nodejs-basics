@@ -1,11 +1,17 @@
-import { appendFile } from 'node:fs/promises';
-import { existsSync } from 'node:fs';
+import { writeFile, access } from 'fs/promises';
 const create = async () => {
-    if (existsSync('src/fs/files/fresh.txt')) {
-        throw new Error ('FS operation failed')
-    }
     let content = 'I am fresh and young'
-    await appendFile('src/fs/files/fresh.txt', content)
+    try {
+        await access('src/fs/files/fresh.txt');
+        throw new Error('FS operation failed: File already exists');
+      } catch (error) {
+        if (error.code === 'ENOENT') {
+          await writeFile("src/fs/files/fresh.txt", content);
+          console.log('File created successfully');
+        } else {
+          throw new Error('FS operation failed');
+        }
+      }
 };
 
 await create();

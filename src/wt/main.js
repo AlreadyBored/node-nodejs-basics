@@ -1,34 +1,24 @@
 import { Worker } from 'worker_threads';
 import os from 'os';
-import path from 'path';
+const numCPUs = os.cpus().length;
 const performCalculations = async () => {
-    const cpuCount = os.cpus().length;
-    const results = new Array(cpuCount)
-    const workers = []
-    const createWorker = (index, nums) => {
-        return new Promise((resolve) => {
-            const worker = new Worker(path.resolve('src/wt/worker.js'))
-            workers.push(worker)
-            worker.once('message', (message) => {
-              results[index] = message
-              resolve()
-            })
-            worker.once('error', () => {
-                results[index] = { status: 'error', data: null }
-                resolve()
-            })
-            worker.postMessage(nums)
-        })
-    }
-    const promises = [];
+  const workers = [];
 
-    for (let i = 0; i < cpuCount; i++) {
-      const number = 10 + i;
-      promises.push(createWorker(i, number));
-    }
+  for (let i = 0; i < numCPUs; i++) {
+    workers.push(new Worker('./src/wt/worker.js', { workerData: i + 10 }));
+  }
 
-    await Promise.all(promises);
-    console.log(results);
+  const results = await Promise.allSettled(workers.map(worker => {
+    return new Promise((resolve, reject) => {
+      worker.on('message', message => {
+        resolve({ status: 'resolved', data: message });
+      });
+      worker.on('error', error => {
+        reject({ status: 'error', data: null });
+      });
+    });
+  }));
+  console.log(results);
 };
 
 await performCalculations();

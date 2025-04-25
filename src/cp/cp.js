@@ -1,6 +1,6 @@
 import { spawn } from 'node:child_process';
 import path from 'path';
-import { dirname, resolve, } from 'path';
+import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 const spawnChildProcess = async (args) => {
     const __filename = fileURLToPath(import.meta.url);
@@ -12,5 +12,4 @@ const spawnChildProcess = async (args) => {
     child.stdout.pipe(process.stdout);
 };
 
-// Put your arguments in function call to test this functionality
 spawnChildProcess( ['foo', 'bar']);
