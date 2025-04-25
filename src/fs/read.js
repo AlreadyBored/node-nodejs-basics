@@ -3,7 +3,8 @@ import path from "path";
 
 const read = async () => {
   // Write your code here
-  const fileName = path.resolve("./src/fs/files/fileToRead.txt");
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
+  const fileName = path.resolve(__dirname, "./files/fileToRead.txt");
   try {
     await fs.access(fileName);
 

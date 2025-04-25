@@ -3,8 +3,10 @@ import path from "path";
 
 const list = async () => {
   // Write your code here
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
+  const dirName = path.resolve(__dirname, "./files");
+
   try {
-    const dirName = path.resolve("./src/fs/files");
     await fs.access(dirName);
 
     const files = await fs.readdir(dirName);

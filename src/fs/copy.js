@@ -3,8 +3,9 @@ import path from "path";
 
 const copy = async () => {
   // Write your code here
-  const sourceDir = path.resolve("./src/fs/files");
-  const destDir = path.resolve("./src/fs/files_copy");
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
+  const sourceDir = path.resolve(__dirname, "./files");
+  const destDir = path.resolve(__dirname, "./files_copy");
   try {
     await fs.access(sourceDir);
   } catch (err) {

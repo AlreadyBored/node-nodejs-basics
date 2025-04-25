@@ -3,7 +3,8 @@ import path from "path";
 
 const create = async () => {
   // Write your code here
-  const fileName = path.resolve("./src/fs/files/fresh.txt");
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
+  const fileName = path.resolve(__dirname, "./files/fresh.txt");
   const fileContent = "I am fresh and young";
 
   try {
