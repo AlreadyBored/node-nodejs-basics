@@ -9,7 +9,8 @@ const read = async () => {
   const filePath = path.join(__dirname, 'files', 'fileToRead.txt');
 
   const stream = fs.createReadStream(filePath);
-
+    
+  
   stream.on('error', () => {
     throw new Error('FS operation failed');
   });

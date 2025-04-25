@@ -8,7 +8,7 @@ const reverseTransform = new Transform({
     callback();
   },
 });
-
+        
 const transform = async () => {
   process.stdin.pipe(reverseTransform).pipe(process.stdout);
 };

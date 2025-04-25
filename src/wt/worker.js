@@ -8,3 +8,4 @@ const sendResult = () => {
 };
 
 sendResult();
+        

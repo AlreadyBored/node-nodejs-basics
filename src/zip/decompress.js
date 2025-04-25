@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
+      
 const decompress = async () => {
   const inputFile = path.join(__dirname, 'files', 'archive.gz');
   const outputFile = path.join(__dirname, 'files', 'fileToCompress.txt');

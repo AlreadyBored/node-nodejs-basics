@@ -6,10 +6,13 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+
+
+
 const copy = async () => {
   const from = path.join(__dirname, 'files');
   const to = path.join(__dirname, 'files_copy');
-
+           
   try {
     await fs.access(from);
 

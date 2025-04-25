@@ -6,5 +6,5 @@ const parseEnv = () => {
 
   console.log(envVars);
 };
-
+         
 parseEnv();

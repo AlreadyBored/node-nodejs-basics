@@ -10,6 +10,6 @@ const parseArgs = () => {
   
     console.log(result.join(', '));
   };
-  
-  parseArgs();
+        
+parseArgs();
   

@@ -8,8 +8,8 @@ const __dirname = path.dirname(__filename);
 const createFreshFile = async () => {
   const dirPath = path.join(__dirname, 'files'); // to‘g‘ri yo‘l
   const filePath = path.join(dirPath, 'fresh.txt');
-
-  try {
+          
+  try {    
     await fs.mkdir(dirPath, { recursive: true });
 
     await fs.access(filePath);
@@ -19,10 +19,12 @@ const createFreshFile = async () => {
       await fs.writeFile(filePath, 'I am fresh and young');
     } else if (err.message.startsWith('FS operation failed')) {
       throw err;
-    } else {
+    } else {     
       throw err;
-    }
-  }
-};
+    }  
 
+  }
+};      
 await createFreshFile();
+
+
