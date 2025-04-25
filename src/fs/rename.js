@@ -1,5 +1,21 @@
+import { rename as renameFs, access, stat } from 'node:fs/promises';
+
 const rename = async () => {
-    // Write your code here 
+    const oldName = './files/wrongFilename.txt'
+    const newName = './files/properFilename.md'
+    let existFile = null;
+    try {
+        existFile = await stat(newName)
+    } catch (error) {
+    }
+    if (existFile) throw new Error('FS operation failed');
+
+    try {
+        await access(oldName);
+    } catch (error) {
+        throw new Error('FS operation failed');
+    }
+    await renameFs(oldName, newName);
 };
 
 await rename();
