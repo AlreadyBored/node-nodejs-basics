@@ -5,8 +5,8 @@ import { createServer as createServerHttp } from 'http';
 import { createRequire } from 'module';
 import { pathToFileURL } from 'url';
 
-const require = createRequire(import.meta.url); // для імпорту .cjs файлів
-require('./files/c.cjs'); // правильно підключаємо c.cjs файл
+const require = createRequire(import.meta.url);
+require('./files/c.cjs');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
