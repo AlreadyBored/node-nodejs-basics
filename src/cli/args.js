@@ -6,7 +6,7 @@
 const parseArgs = () => {
     // Write your code here
     for (let i = 2; i < process.argv.length; i = i + 2) {
-        console.log(`${process.argv[i]} is ${process.argv[i + 1]}`);
+        console.log(`${process.argv[i].slice(2)} is ${process.argv[i + 1]}`);
     }
 };
 
