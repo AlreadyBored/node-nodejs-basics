@@ -1,6 +1,6 @@
-import { fileURLToPath } from 'url'
-import path from 'path'
-import { rename as fsRename, access, constants } from 'fs/promises'
+import { fileURLToPath } from 'url';
+import path from 'path';
+import { rename as fsRename, access, constants } from 'fs/promises';
 
 const rename = async () => {
   try {
@@ -24,6 +24,6 @@ const rename = async () => {
   } catch (error) {
     throw new Error('FS operation failed');
   }
-}
+};
 
-await rename()
+await rename();
