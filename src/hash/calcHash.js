@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 const filePath = path.join(path.join(__dirname, 'files'), 'fileToCalculateHashFor.txt');
 const calculateHash = async () => {
      var rS=fs.createReadStream(filePath);
-     var hash=crypto.createHash('sha1');
+     var hash=crypto.createHash('sha256');
      rS.pipe(hash).setEncoding('hex').pipe(stdout);
 };
 
