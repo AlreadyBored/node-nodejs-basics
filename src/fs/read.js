@@ -1,7 +1,7 @@
 import { access, readFile } from 'node:fs/promises';
 
 const read = async () => {
-    const fileRead = './files/fileToRead.txt';
+    const fileRead = 'src/fs/files/fileToRead.txt';
     try {
         await access(fileRead);
         const contents = await readFile(fileRead, { encoding: 'utf8' });

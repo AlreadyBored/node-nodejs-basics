@@ -1,8 +1,8 @@
 import {access, cp, mkdir} from 'node:fs/promises';
 
 const copy = async () => {
-    const copyFolder = './files'; 
-    const newFolder = './files_copy/';
+    const copyFolder = 'src/fs/files'; 
+    const newFolder = 'src/fs/files_copy/';
     try {
         await access(copyFolder);
         await mkdir(newFolder);

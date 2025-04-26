@@ -1,7 +1,7 @@
 import { open, writeFile } from 'node:fs/promises';
 
 const create = async () => {
-    const pFile = './files/fresh.txt';
+    const pFile = 'src/fs/files/fresh.txt';
     try {
         await open(pFile, 'wx');
         const content = 'I am fresh and young'

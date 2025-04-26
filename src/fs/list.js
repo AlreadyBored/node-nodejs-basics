@@ -1,8 +1,7 @@
 import { access, readdir} from 'node:fs/promises';
 
-
 const list = async () => {
-    const folder = './files';
+    const folder = 'src/fs/files';
     try {
         await access(folder)
         const listFiles = await readdir(folder);
