@@ -10,7 +10,7 @@ const transform = async () => {
   });
 
   console.log(
-    "Please enter text to reverse. Press 'Ctrl + D' to end the input."
+    "Please enter text to reverse. Press 'Enter' to transform. 'Ctrl + C' or 'Ctrl + D' to end the input."
   );
 
   process.stdin

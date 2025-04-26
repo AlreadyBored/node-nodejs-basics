@@ -1,6 +1,9 @@
 import fs from 'fs';
+import { pathToFileURL } from 'url';
 
 const write = async () => {
+
+  const path = pathToFileURL('./src/streams/files/fileToWrite.txt');
 
         function writeStdinToFile(filePath) {
           const writeStream = fs.createWriteStream(filePath);
@@ -17,7 +20,7 @@ const write = async () => {
           });
         }
 
-        writeStdinToFile('./src/streams/files/fileToWrite.txt');
+        writeStdinToFile(path);
 };
 
 await write();

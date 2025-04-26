@@ -1,6 +1,9 @@
 import fs from 'fs';
+import { pathToFileURL } from 'url';
 
 const read = async () => {
+
+  const path = pathToFileURL('./src/streams/files/fileToRead.txt');
 
     function readFileContent(filePath) {
       const readStream = fs.createReadStream(filePath);
@@ -18,7 +21,7 @@ const read = async () => {
       });
     }
 
-    readFileContent('./src/streams/files/fileToRead.txt');
+    readFileContent(path);
 
 };
 

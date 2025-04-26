@@ -1,25 +1,32 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const folderName = 'src/fs/files';
-const fileName = `fresh.txt`;
+const __dirname = path.resolve();
+const fileName = 'fresh.txt';
+const folderPath = path.join(__dirname, 'src', 'fs', 'files');;
+const targetPath = path.join(folderPath, fileName);
 const content = 'I am fresh and young';
 const errMsg = new Error('FS operation failed');
-const __dirname = path.resolve();
-
-const targetPath = path.join(__dirname, folderName, fileName);
 
 fs.stat(targetPath, (err, stats) => {
-  if (err) {
-    try {
-      fs.writeFile(targetPath, content, (err) => {
-        if (err) throw "Couldn't create file";
-        console.log('File created successfully');
-      });
-    } catch (err) {
-      console.error('Something went wrong');
-    }
-  } else if (stats) {
+  if (!err && stats.isFile()) {
     throw errMsg;
+  } else if (err && err.code !== 'ENOENT') {
+    console.error('Unexpected error:', err);
+  } else {
+    fs.mkdir(folderPath, { recursive: true }, (err) => {
+      if (err) {
+        console.error('Failed to create directory:', err);
+        return;
+      }
+
+      fs.writeFile(targetPath, content, (err) => {
+        if (err) {
+          console.error('Could not create file:', err);
+        } else {
+          console.log('File created successfully');
+        }
+      });
+    });
   }
 });

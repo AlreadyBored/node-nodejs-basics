@@ -1,28 +1,24 @@
 import fsPromises from 'node:fs/promises';
+import path from 'node:path';
 
-const folderPath = 'src/fs/files';
+const folderPath = path.join('src', 'fs', 'files');
 const error = new Error('FS operation failed');
 
 const rename = async () => {
   try {
-  await fsPromises
-    .readdir(folderPath)
-    .then((arr) => arr.map(async (name) =>  {
-      if (
-        name === 'properFilename.md' ||
-        (!arr.includes('wrongFilename.txt') &&
-          !arr.includes('properFilename.md'))
-      ) {
-        throw error;
-      }
-      else if (name === 'wrongFilename.txt')
-          await fsPromises.rename(
-            `${folderPath}/${name}`,
-            `${folderPath}/properFilename.md`
-          );
-    }));
+    const files = await fsPromises.readdir(folderPath);
+    if (
+      !files.includes('wrongFilename.txt') ||
+      files.includes('properFilename.md')
+    ) {
+      throw error;
+    }
+    await fsPromises.rename(
+      path.join(folderPath, 'wrongFilename.txt'),
+      path.join(folderPath, 'properFilename.md')
+    );
   } catch {
-    throw new Error (error)
+    throw error;
   }
 };
 

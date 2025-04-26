@@ -1,54 +1,38 @@
-import fsPromises from 'node:fs/promises';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
-const folderName = 'src/fs/files';
-const newFolderName = 'src/fs/files_copy';
+const folderName = path.join('src', 'fs', 'files');
+const newFolderName = path.join('src', 'fs', 'files_copy');
 const err = new Error('FS operation failed');
 
 const copy = async () => {
   try {
-    await fsPromises.stat(folderName);
-     try {
-      const copyFolterStat = (await fsPromises.stat(newFolderName)).isDirectory();
-      if (copyFolterStat) {
-        console.error(err);
-     }}
-      catch (e) {
-       if (e.code === 'ENOENT') {
-        try {await fsPromises.mkdir(newFolderName)
-               const files = await fsPromises.readdir(folderName);
-               await Promise.all(
-                 files.map(async (item) => {
-                   try {
-                     const result = await fsPromises.stat(
-                       `${folderName}/${item}`
-                     );
-                     if (result.isFile()) {
-                       try {
-                         const content = await fsPromises.readFile(
-                           `${folderName}/${item}`,
-                           { encoding: 'utf8' }
-                         );
-                         await fsPromises.writeFile(
-                           `${newFolderName}/${item}`,
-                           content
-                         );
-                       } catch (err) {
-                         console.log(err);
-                       }
-                     }
-                   } catch (e) {
-                     throw e;
-                   }
-                 })
-               );
-        } catch (e) {
-          console.error(e);
-        }
-       }
-     }
+    await fs.stat(folderName);
 
+    try {
+      await fs.stat(newFolderName);
+      throw err;
+    } catch (e) {
+      if (e.code !== 'ENOENT') throw err;
+    }
+
+    await fs.mkdir(newFolderName, { recursive: true });
+
+    const files = await fs.readdir(folderName);
+    await Promise.all(
+      files.map(async (file) => {
+        const srcPath = path.join(folderName, file);
+        const destPath = path.join(newFolderName, file);
+
+        const stat = await fs.stat(srcPath);
+        if (stat.isFile()) {
+          const content = await fs.readFile(srcPath, 'utf8');
+          await fs.writeFile(destPath, content);
+        }
+      })
+    );
   } catch {
-    console.error(err);
+    throw err;
   }
 };
 
