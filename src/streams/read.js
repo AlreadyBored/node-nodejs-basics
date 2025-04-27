@@ -11,8 +11,8 @@ const read = async () => {
     } catch (error) {
         console.error(`Error reading file: ${error.message}`);
     }
-
-    process.stdout.write(txt)
+    // npm does not flush if new line is missing in the content, adding new line fix this
+    process.stdout.write(txt + '\n');    
 };
 
 await read();
