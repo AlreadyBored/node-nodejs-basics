@@ -1,5 +1,5 @@
+import { readdir } from 'fs/promises';
 import path from 'node:path';
-import { readdir  } from 'fs/promises';
 import { pathExists } from '../../libs/fs/pathExists.js';
 import { ERROR_MSG, FILES_PATH } from '../constants.js';
 
