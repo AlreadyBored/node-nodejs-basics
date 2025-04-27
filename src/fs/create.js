@@ -10,10 +10,8 @@ const create = async () => {
   const filePath = join(__dirname, "files", "fresh.txt");
 
   try {
-    await writeFile(filePath, content, {flag: 'wx'});
-
+    await writeFile(filePath, content, { flag: "wx" });
   } catch (err) {
-
     throw new Error("FS operation failed");
   }
 };
