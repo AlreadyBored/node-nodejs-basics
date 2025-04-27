@@ -12,4 +12,4 @@ const spawnChildProcess = async (args) => {
     child.stdout.pipe(process.stdout);
 };
 
-spawnChildProcess(['arg1', 'arg2']);
+spawnChildProcess(['someArgument1', 'someArgument2']);
