@@ -37,7 +37,7 @@ const performCalculations = async () => {
         });
 
         promises.push(promise);
-        
+
         worker.postMessage(10 + i);
     }
 
