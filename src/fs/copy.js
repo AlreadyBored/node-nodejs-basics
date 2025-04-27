@@ -2,9 +2,12 @@ import {pathExists} from '../../libs/fs/pathExists.js';
 import path from 'node:path';
 import { copyFile, readdir, mkdir } from 'fs/promises';
 import {ERROR_MSG, FILES_PATH} from '../constants.js';
+
 const COPY_FOLDER_PATH = 'files_copy';
+
 const FOLDER_URL = path.join(import.meta.dirname, FILES_PATH);
 const COPY_FOLDER_URL = path.join(import.meta.dirname, COPY_FOLDER_PATH);
+
 const copy = async () => {
     try {
         if(!await pathExists(COPY_FOLDER_URL) || !(await pathExists(FOLDER_URL))){
