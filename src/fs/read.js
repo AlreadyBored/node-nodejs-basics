@@ -4,7 +4,7 @@ import { pathExists } from '../../libs/fs/pathExists.js';
 import { ERROR_MSG, FILES_PATH } from '../constants.js';
 
 
-const FILE_NAME = 'fileToRead.txt';
+const _NAME = 'fileToRead.txt';
 const FILE_URL = path.join(import.meta.dirname, FILES_PATH , FILE_NAME);
 
 
