@@ -8,15 +8,9 @@ const performCalculations = async () => {
     const cpuCount = cpus().length;
     const result = [];
     for (let i = 0; i < cpuCount; i++) {
-        runWorkers(START_NUM + i).then((fib) => result.push(fib));
+        result.push(runWorkers(START_NUM + i));
     }
-
-    const id = setInterval(() => {
-        if(result.length === cpuCount) {
-            console.log(result);
-            clearInterval(id);
-        }
-    }, 100)
+    console.log(await Promise.all(result));
 };
 
 const runWorkers = async (n) => {
