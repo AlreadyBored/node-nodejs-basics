@@ -10,7 +10,7 @@ const FILE_NAME = 'fileToRemove.txt';
 const remove = async () => {
     try {
         if(await pathExists(FOLDER_URL)) {
-            unlink(path.join(import.meta.dirname, FILES_PATH, FILE_NAME))
+            await unlink(path.join(import.meta.dirname, FILES_PATH, FILE_NAME))
         }
 
     }
