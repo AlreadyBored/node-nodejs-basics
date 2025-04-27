@@ -11,7 +11,7 @@ const filePathToUnzip=path.join(path.join(__dirname, 'files'), 'archive.gz');
 const filePathUnzipped=path.join(path.join(__dirname, 'files'), 'fileToCompress.txt');
 
 const decompress = async () => {
-    var gzip=zlib.createUnzip()
+    var gzip=zlib.createGunzip()
     const rS=fs.createReadStream(filePathToUnzip)
     const wZ=fs.createWriteStream(filePathUnzipped);
     rS.pipe(gzip).pipe(wZ);
