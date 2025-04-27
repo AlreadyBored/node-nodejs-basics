@@ -1,25 +1,20 @@
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
-import { createReadStream } from 'node:fs';
+import { readFile } from 'node:fs/promises';
 
 const calculateHash = async () => {
   const filePath = join('src', 'hash', 'files', 'fileToCalculateHashFor.txt');
 
-  const hash = createHash('sha256');
-  const fileStream = createReadStream(filePath);
+  try {
+    const fileBuffer = await readFile(filePath);
 
-  fileStream.on('data', (chunk) => {
-    hash.update(chunk);
-  });
-
-  fileStream.on('end', () => {
+    const hash = createHash('sha256');
+    hash.update(fileBuffer);
     const hexHash = hash.digest('hex');
     console.log(`SHA256 Hash: ${hexHash}`);
-  });
+  } catch (err) {
 
-  fileStream.on('error', (err) => {
-    console.error('Error reading file:', err);
-  });
+  }
 };
 
 await calculateHash();
