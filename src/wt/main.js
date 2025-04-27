@@ -28,9 +28,9 @@ const performCalculations = async () => {
         worker.on('error', (err) => {
             console.error(`Worker ${i} error:`, err);
             results[i] = { status: 'error', data: null };
-            completedWorkers++;
+            completed++;
             
-            if (completedWorkers === numWorkers) {
+            if (completed===coresCount) {
                 console.log(results);
             }
         });
@@ -39,9 +39,9 @@ const performCalculations = async () => {
             if (code !== 0 && !results[i]) {
                 console.error(`Worker ${i} exited with code ${code}`);
                 results[i] = { status: 'error', data: null };
-                completedWorkers++;
+                completed++;
                 
-                if (completedWorkers === numWorkers) {
+                if (completed===coresCount) {
                     console.log(results);
                 }
             }
