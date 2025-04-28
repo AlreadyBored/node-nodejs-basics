@@ -2,7 +2,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 
 const read = async () => {
-  const filePath = path.join('files', 'fresh.txt');
+  const filePath = path.join('files', 'fileToRead.txt');
 
   try {
     await fs.access(filePath);
