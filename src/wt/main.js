@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-       
+
 const performCalculations = async () => {
   const workerPath = path.join(__dirname, 'worker.js');
   const numCores = os.cpus().length;
@@ -21,16 +21,29 @@ const performCalculations = async () => {
         workerData: n,
       });
 
+      let isResolved = false;
+
       worker.once('message', (result) => {
-        resolve({ status: 'resolved', data: result });
+        if (!isResolved) {
+          isResolved = true;
+          if (result && typeof result === 'object' && result.error) {
+            resolve({ status: 'error', data: null });
+          } else {
+            resolve({ status: 'resolved', data: result });
+          }
+        }
       });
 
       worker.once('error', () => {
-        resolve({ status: 'error', data: null });
+        if (!isResolved) {
+          isResolved = true;
+          resolve({ status: 'error', data: null });
+        }
       });
 
       worker.once('exit', (code) => {
-        if (code !== 0) {
+        if (code !== 0 && !isResolved) {
+          isResolved = true;
           resolve({ status: 'error', data: null });
         }
       });
