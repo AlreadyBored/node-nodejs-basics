@@ -11,7 +11,7 @@ const create = async () => {
     const filePath = path.join(folderPath, "fresh.txt");
     const fileContent = "I am fresh and young";
 
-    access(filePath, constants.R_OK, (error) => {
+    access(filePath, constants.F_OK, (error) => {
         if (error && error.code === ERROR_CODE_NOT_EXIST) {
             writeFile(filePath, fileContent, (err) => {
                 if (err) throw err;
