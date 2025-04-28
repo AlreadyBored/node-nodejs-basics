@@ -2,7 +2,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 
 const remove = async () => {
-  const filePath = path.join('files', 'newFresh.md');
+  const filePath = path.join('files', 'fileToRemove.md');
 
   try {
     await fs.access(filePath);
