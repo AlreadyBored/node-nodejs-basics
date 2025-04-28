@@ -11,7 +11,7 @@ const write = async () => {
     const writeStream = createWriteStream(join(__dirname, 'files', 'fileToWrite.txt'));
     await pipeline(process.stdin, writeStream);
   } catch (error) {
-    throw new Error('FS operation failed');
+    throw new Error('Write operation failed');
   }
 };
 

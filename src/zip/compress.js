@@ -15,7 +15,7 @@ const compress = async () => {
 
     await pipeline(readStream, gzip, writeStream);
   } catch (error) {
-    console.error(error.message);
+    throw new Error('Compress operation failed');
   }
 };
 

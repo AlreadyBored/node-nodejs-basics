@@ -16,7 +16,7 @@ const transform = async () => {
 
     await pipeline(process.stdin, transform, process.stdout);
   } catch (error) {
-    throw new Error('FS operation failed');
+    throw new Error('transform operation failed');
   }
 };
 

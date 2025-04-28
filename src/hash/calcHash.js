@@ -12,15 +12,12 @@ const calculateHash = async () => {
     const hash = createHash('sha256');
     const filePath = join(__dirname, 'files', 'fileToCalculateHashFor.txt');
 
-    await pipeline(
-      createReadStream(filePath),
-      hash
-    );
-    
+    await pipeline(createReadStream(filePath), hash);
     const digest = hash.digest('hex');
+
     console.log(digest);
   } catch (error) {
-    throw new Error('FS operation failed');
+    throw new Error('calculateHash operation failed');
   }
 };
 

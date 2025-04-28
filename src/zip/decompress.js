@@ -15,7 +15,7 @@ const decompress = async () => {
 
     await pipeline(readStream, gunzip, writeStream);
   } catch (error) {
-    console.error(error.message);
+    throw new Error('Decompress operation failed');
   }
 };
 

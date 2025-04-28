@@ -13,12 +13,11 @@ const read = async () => {
     stream.on('data', (chunk) => {
       data += chunk;
     });
-
     stream.on('end', () => {
       process.stdout.write(data + '\n');
     });
   } catch (error) {
-    throw new Error('FS operation failed');
+    throw new Error('Read operation failed');
   }
 };
 
