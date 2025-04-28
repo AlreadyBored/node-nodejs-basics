@@ -1,4 +1,3 @@
-import { createHash } from 'crypto';
 import zlib  from 'zlib';
 import {createReadStream, createWriteStream} from 'fs';
 import path from 'node:path';
