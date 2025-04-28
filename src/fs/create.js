@@ -2,10 +2,9 @@ import { writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 const dirname = import.meta.dirname;
+const filePath = join(dirname, "files", "fresh.txt");
 
 const create = async () => {
-  const filePath = join(dirname, "files", "fresh.txt");
-
   try {
     await writeFile(filePath, "I am fresh and young", {
       encoding: "utf-8",

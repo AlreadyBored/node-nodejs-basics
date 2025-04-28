@@ -2,11 +2,10 @@ import { cp } from "node:fs/promises";
 import { join } from "node:path";
 
 const dirname = import.meta.dirname;
+const srcPath = join(dirname, "files");
+const dstPath = join(dirname, "files_copy");
 
 const copy = async () => {
-  const srcPath = join(dirname, "files");
-  const dstPath = join(dirname, "files_copy");
-
   try {
     await cp(srcPath, dstPath, {
       recursive: true,

@@ -2,10 +2,9 @@ import { readdir } from "node:fs/promises";
 import { join } from "node:path";
 
 const dirname = import.meta.dirname;
+const folderPath = join(dirname, "files");
 
 const list = async () => {
-  const folderPath = join(dirname, "files");
-
   try {
     const files = await readdir(folderPath);
     console.log(files);
