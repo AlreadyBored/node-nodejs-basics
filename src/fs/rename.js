@@ -2,8 +2,8 @@ import { promises as fs } from 'fs';
 import path from 'path';
 
 const rename = async () => {
-  const filePath = path.join('files', 'fresh.txt');
-  const newFilePath = path.join('files', 'newFresh.md');
+  const filePath = path.join('files', 'wrongFilename.txt');
+  const newFilePath = path.join('files', 'properFilename.md');
 
   try {
     await fs.access(filePath);
