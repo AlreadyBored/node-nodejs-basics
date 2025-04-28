@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'path';
 
 const rename = async () => {
-    const oldPath = path.join('fs', 'files', 'wrongFilename.txt');
-    const newPath = path.join('fs', 'files', 'properFilename.md');
+    const oldPath = path.join(import.meta.dirname, 'files', 'wrongFilename.txt');
+    const newPath = path.join(import.meta.dirname, 'files', 'properFilename.md');
 
     fs.access(newPath, fs.constants.R_OK, (err) => {
         if (!err) {

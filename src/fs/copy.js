@@ -1,8 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 const copy = async () => {
-    const sourceDir = path.join('fs', 'files');
-    const copyDir = path.join('fs', 'files_copy');
+    const sourceDir = path.join(import.meta.dirname, 'files');
+    const copyDir = path.join(import.meta.dirname, 'files_copy');
 
     fs.access(sourceDir, fs.constants.R_OK, (err) => {
         if (err && err.code === 'ENOENT')

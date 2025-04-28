@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 const create = async () => {
     // Write your code here
-    const filePath = path.join('fs', 'files', 'fresh.txt');
+    const filePath = path.join(import.meta.dirname, 'files', 'fresh.txt');
     const content = "I am fresh and young";
 
     fs.mkdir(path.dirname(filePath), { recursive: true }, err => {});
