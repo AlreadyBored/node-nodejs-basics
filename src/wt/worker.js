@@ -1,8 +1,19 @@
-// n should be received from main thread
-const nthFibonacci = (n) => n < 2 ? n : nthFibonacci(n - 1) + nthFibonacci(n - 2);
+import { isMainThread, workerData, parentPort } from 'node:worker_threads';
+
+const factorial = (n) => {
+    if (n < 0)  throw new Error('Factorial is not defined for negative numbers');
+    if (n === 0 || n === 1) return 1;
+
+    let result = 1;
+    for (let i = 2; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+};
 
 const sendResult = () => {
-    // This function sends result of nthFibonacci computations to main thread
+    if (isMainThread) return;
+    parentPort.postMessage(factorial(workerData));
 };
 
 sendResult();
