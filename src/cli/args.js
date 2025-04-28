@@ -1,5 +1,6 @@
 const parseArgs = () => {
-    // Write your code here 
-};
+        const args = process.argv.filter(arg => arg.toString())    
+     };
+
 
 parseArgs();
