@@ -1,10 +1,13 @@
 const parseArgs = () => {
-    const args = process.argv.slice(2);
-    const result = args
-        .map((arg) => arg
-            .replace(/^--/, '')
-            .replace('=', ' is '))
-        .join(', ');
+    const raw = process.argv.slice(2);
+
+    const result = [];
+    for (let i = 0; i < raw.length; i += 2) {
+        const key = raw[i].replace(/^--/, '');
+        const value = raw[i + 1];
+
+        result.push(`${key} is ${value}`);
+    }
 
     console.log(result.join(', '));
 };
