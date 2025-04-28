@@ -1,1 +1,1 @@
-console.log('Hello from c.cjs!');
+console.log('Hello from c.js!');
