@@ -1,0 +1,4 @@
+node read.js
+node write.js
+node transform.js
+
