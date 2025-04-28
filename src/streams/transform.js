@@ -32,4 +32,4 @@ const transform = async () => {
   }
 };
 
-await transform('Hello');
+await transform();
