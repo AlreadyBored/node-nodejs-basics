@@ -1,5 +1,23 @@
+import { pipeline } from 'stream/promises';
+import { Transform } from 'stream';
+
 const transform = async () => {
-    // Write your code here 
+  try {
+    const transform = new Transform({
+      transform (chunk, encoding, callback) {
+        const chunkStringified = chunk.toString().trim();
+        const reversedString = chunkStringified.split('').reverse().join('');
+
+        this.push(reversedString + '\n');
+
+        callback();
+      },
+    });
+
+    await pipeline(process.stdin, transform, process.stdout);
+  } catch (error) {
+    throw new Error('FS operation failed');
+  }
 };
 
 await transform();
