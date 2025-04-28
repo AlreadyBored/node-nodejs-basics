@@ -1,9 +1,12 @@
 import { createHash } from 'crypto';
 import { createReadStream } from 'fs';
-import { join } from 'path';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+
+const DIRNAME = dirname(fileURLToPath(import.meta.url));
 
 const calculateHash = async () => {
-    const filesPath = join('files', 'fileToCalculateHashFor.txt');
+    const filesPath = join(DIRNAME, 'files', 'fileToCalculateHashFor.txt');
     const hash = createHash('sha256');
     const stream = createReadStream(filesPath);
 

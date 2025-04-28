@@ -1,10 +1,12 @@
 import { promises as fs } from 'fs';
-import { join } from 'path';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+
+const DIRNAME = dirname(fileURLToPath(import.meta.url));
 
 const rename = async () => {
-    const filesPath = 'files';
-    const wrongFilenamePath = join(filesPath, 'wrongFilename.txt');
-    const properFilenamePath = join(filesPath, 'properFilename.md');
+    const wrongFilenamePath = join(DIRNAME, 'files', 'wrongFilename.txt');
+    const properFilenamePath = join(DIRNAME, 'files', 'properFilename.md');
 
     try {
         await fs.access(wrongFilenamePath);

@@ -1,10 +1,9 @@
 import { Worker } from 'worker_threads';
 import os from 'os';
-import path from 'path';
+import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const DIRNAME = dirname(fileURLToPath(import.meta.url));
 
 const performCalculations = async () => {
     const numCores = os.cpus().length;
@@ -15,7 +14,7 @@ const performCalculations = async () => {
         const n = baseValue + i;
 
         tasks.push(new Promise(resolve => {
-            const worker = new Worker(path.join(__dirname, 'worker.js'));
+            const worker = new Worker(join(DIRNAME, 'worker.js'));
 
             worker.once('message', result => resolve({status: 'resolved', data: result}));
             worker.once('error', () => resolve({status: 'error', data: null}));

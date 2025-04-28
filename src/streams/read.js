@@ -1,8 +1,11 @@
 import { createReadStream } from 'fs';
-import { join } from 'path';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+
+const DIRNAME = dirname(fileURLToPath(import.meta.url));
 
 const read = async () => {
-    const filesPath = join('files', 'fileToRead.txt');
+    const filesPath = join(DIRNAME, 'files', 'fileToRead.txt');
     const stream = createReadStream(filesPath);
 
     stream.on('error', () => {
