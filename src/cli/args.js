@@ -1,4 +1,4 @@
-const parseEnv = () => {
+const parseArgs = () => {
   const args = process.argv.slice(2);
   const result = [];
 
@@ -10,4 +10,4 @@ const parseEnv = () => {
   console.log(result.join(", "));
 };
 
-parseEnv();
+parseArgs();
