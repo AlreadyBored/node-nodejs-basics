@@ -10,3 +10,4 @@ const echoInput = (chunk) => {
 };
 
 process.stdin.on('data', echoInput);
+process.send('Test string');
