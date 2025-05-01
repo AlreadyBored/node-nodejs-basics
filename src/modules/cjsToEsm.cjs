@@ -1,6 +1,6 @@
-const path = require('path');
-const { release, version } = require('os');
-const { createServer: createServerHttp } = require('http');
+const path = require('node:path');
+const { release, version } = require('node:os');
+const { createServer: createServerHttp } = require('node:http');
 require('./files/c.cjs');
 
 const random = Math.random();
