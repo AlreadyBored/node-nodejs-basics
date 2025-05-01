@@ -1,17 +1,12 @@
 const path = require('node:path');
 const { release, version } = require('node:os');
 const { createServer: createServerHttp } = require('node:http');
+
 require('./files/c.cjs');
 
 const random = Math.random();
 
-let unknownObject;
-
-if (random > 0.5) {
-  unknownObject = require('./files/a.json');
-} else {
-  unknownObject = require('./files/b.json');
-}
+const unknownObject = random > 0.5 ? require('./files/a.json') : require('./files/b.json');
 
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
