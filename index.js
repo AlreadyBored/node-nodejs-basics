@@ -21,18 +21,24 @@ const getUsername = () => {
   return username
 }
 
-const logCurrencyPath = () => {
+const printCurrencyPath = () => {
   console.log(`You are currently in ${process.cwd()}`)
+  process.stdout.write('> ')
 }
 
-const logGreeting = () => {
+const printGreeting = () => {
   console.log(`Welcome to the File Manager, ${username}!`)
+  printCurrencyPath()
+}
+
+const printInvalidInputError = () => {
+  console.log('Invalid input')
+  printCurrencyPath()
 }
 
 const username = getUsername()
 
-logGreeting()
-logCurrencyPath()
+printGreeting()
 
 process.stdin.setEncoding('utf-8')
 process.stdin.on('data', (data) => {
@@ -40,9 +46,9 @@ process.stdin.on('data', (data) => {
 
   if (input === '.exit') {
     exitProgram()
+  } else {
+    printInvalidInputError()
   }
-
-  logCurrencyPath()
 })
 
 process.on('SIGINT', exitProgram)
