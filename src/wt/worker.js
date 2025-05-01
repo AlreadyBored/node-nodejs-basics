@@ -1,5 +1,14 @@
 // n should be received from main thread
-const nthFibonacci = (n) => n < 2 ? n : nthFibonacci(n - 1) + nthFibonacci(n - 2);
+const nthFibonacci = (n) => {
+  let a = 0;
+  let b = 1;
+
+  for (let i = 0; i < n; i += 1) {
+    [a, b] = [b, a + b];
+  }
+
+  return a;
+};
 
 const sendResult = () => {
   // This function sends result of nthFibonacci computations to main thread
