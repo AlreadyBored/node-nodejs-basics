@@ -1,4 +1,3 @@
-//GREETING
 const getUsername = () => {
   const args = process.argv.slice(2)
   const usernameArg = args.find((arg) => arg.startsWith('--username='))
@@ -18,14 +17,20 @@ const getUsername = () => {
   return username
 }
 
+const logCurrencyPath = () => {
+  console.log(`You are currently in ${process.cwd()}`)
+}
+
+const logGreeting = () => {
+  console.log(`Welcome to the File Manager, ${username}!`)
+}
+
 const username = getUsername()
 
-console.log(`Welcome to the File Manager, ${username}!`)
+logGreeting()
+logCurrencyPath()
 
-
-//process input and interrupt
 process.stdin.setEncoding('utf-8')
-
 process.stdin.on('data', (data) => {
   const input = data.trim()
 
@@ -33,7 +38,7 @@ process.stdin.on('data', (data) => {
     exitProgram()
   }
 
-  console.log(`Username ${username} input: ${data}`)
+  logCurrencyPath()
 })
 
 process.on('SIGINT', exitProgram)
