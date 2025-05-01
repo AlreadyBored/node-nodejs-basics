@@ -1,3 +1,7 @@
+import os from 'node:os'
+
+process.chdir(os.homedir())
+
 const getUsername = () => {
   const args = process.argv.slice(2)
   const usernameArg = args.find((arg) => arg.startsWith('--username='))

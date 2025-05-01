@@ -2,6 +2,7 @@
   "name": "node-file-manager",
   "version": "1.0.0",
   "description": "task: file-manager",
+  "type": "module",
   "scripts": {
     "start": "node index.js"
   }
