@@ -1,5 +1,5 @@
 const parseArgs = () => {
-    // Write your code here 
+  // Write your code here
 };
 
 parseArgs();
