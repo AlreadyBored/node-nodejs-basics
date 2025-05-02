@@ -2,7 +2,7 @@ import os from 'node:os'
 
 import { getUsername } from './modules/args.js'
 import { printGreeting, printInvalidInputError } from './modules/output.js'
-import { handleCdCommand } from './modules/navigation.js'
+import { handleCdCommand, handleUpCommand } from './modules/navigation.js'
 
 process.chdir(os.homedir())
 
@@ -18,6 +18,8 @@ process.stdin.on('data', (data) => {
     exitProgram()
   } else if (input.startsWith('cd ')) {
     handleCdCommand(input)
+  } else if (input === 'up') {
+    handleUpCommand()
   } else {
     printInvalidInputError()
   }

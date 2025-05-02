@@ -14,4 +14,16 @@ const handleCdCommand = (input) => {
   printCurrencyPath()
 }
 
-export { handleCdCommand }
+const handleUpCommand = () => {
+  const resolvedPath = path.resolve(process.cwd(), '../')
+
+  try {
+    process.chdir(resolvedPath)
+  } catch (err) {
+    console.error('\nOperation failed:', err.message, '\n')
+  }
+
+  printCurrencyPath()
+}
+
+export { handleCdCommand, handleUpCommand }
