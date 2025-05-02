@@ -1,0 +1,31 @@
+import os from 'node:os'
+
+import { getUsername } from './modules/args.js'
+import { printGreeting, printInvalidInputError } from './modules/output.js'
+import { handleCdCommand } from './modules/navigation.js'
+
+process.chdir(os.homedir())
+
+const username = getUsername()
+
+printGreeting(username)
+
+process.stdin.setEncoding('utf-8')
+process.stdin.on('data', (data) => {
+  const input = data.trim()
+
+  if (input === '.exit') {
+    exitProgram()
+  } else if (input.startsWith('cd ')) {
+    handleCdCommand(input)
+  } else {
+    printInvalidInputError()
+  }
+})
+
+process.on('SIGINT', exitProgram)
+
+function exitProgram() {
+  console.log(`\nThank you for using File Manager, ${username}, goodbye!`)
+  process.exit(0)
+}

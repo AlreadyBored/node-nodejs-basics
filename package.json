@@ -4,6 +4,6 @@
   "description": "task: file-manager",
   "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "node src/index.js"
   }
 }
