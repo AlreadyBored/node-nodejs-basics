@@ -1,3 +1,4 @@
+import path from 'node:path'
 import os from 'node:os'
 
 process.chdir(os.homedir())
@@ -36,6 +37,19 @@ const printInvalidInputError = () => {
   printCurrencyPath()
 }
 
+const handleCdCommand = (input) => {
+  const targetPath = input.slice(3)
+  const resolvedPath = path.resolve(process.cwd(), targetPath)
+
+  try {
+    process.chdir(resolvedPath)
+  } catch (err) {
+    console.error('\nOperation failed:', err.message, '\n')
+  }
+  
+  printCurrencyPath()
+}
+
 const username = getUsername()
 
 printGreeting()
@@ -46,6 +60,8 @@ process.stdin.on('data', (data) => {
 
   if (input === '.exit') {
     exitProgram()
+  } else if (input.startsWith('cd ')) {
+    handleCdCommand(input)
   } else {
     printInvalidInputError()
   }
