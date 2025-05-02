@@ -1,4 +1,5 @@
 import path from 'node:path'
+
 import { printCurrencyPath } from './output.js'
 
 const handleCdCommand = (input) => {

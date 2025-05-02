@@ -1,7 +1,7 @@
 import os from 'node:os'
 
 import { getUsername } from './modules/args.js'
-import { printGreeting, printInvalidInputError } from './modules/output.js'
+import { printGreeting, printInvalidInputError, printLs } from './modules/output.js'
 import { handleCdCommand, handleUpCommand } from './modules/navigation.js'
 
 process.chdir(os.homedir())
@@ -20,6 +20,8 @@ process.stdin.on('data', (data) => {
     handleCdCommand(input)
   } else if (input === 'up') {
     handleUpCommand()
+  } else if (input === 'ls') {
+    printLs()
   } else {
     printInvalidInputError()
   }
