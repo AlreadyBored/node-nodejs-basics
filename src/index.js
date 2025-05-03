@@ -3,6 +3,7 @@ import os from 'node:os'
 import { getUsername } from './modules/args.js'
 import { printGreeting, printInvalidInputError, printLs } from './modules/output.js'
 import { handleCdCommand, handleUpCommand } from './modules/navigation.js'
+import { handleCatCommand } from './modules/fs.js'
 
 process.chdir(os.homedir())
 
@@ -22,6 +23,8 @@ process.stdin.on('data', (data) => {
     handleUpCommand()
   } else if (input === 'ls') {
     printLs()
+  } else if (input.startsWith('cat ')) {
+    handleCatCommand(input)
   } else {
     printInvalidInputError()
   }
