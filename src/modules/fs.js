@@ -4,9 +4,7 @@ import { printCurrencyPath } from './output.js'
 
 const handleCatCommand = (input) => {
   const filePath = input.slice(4).trim()
-
   const fullPath = path.resolve(process.cwd(), filePath)
-
   const readStream = fs.createReadStream(fullPath, 'utf-8')
 
   readStream.on('data', (chunk) => {
@@ -14,7 +12,6 @@ const handleCatCommand = (input) => {
   })
 
   readStream.on('end', () => {
-    console.log('\n')
     printCurrencyPath()
   })
 
@@ -24,4 +21,18 @@ const handleCatCommand = (input) => {
   })
 }
 
-export { handleCatCommand }
+const handleAddCommand = (input) => {
+  const fileName = input.slice(4).trim()
+  const filePath = process.cwd()
+
+  fs.writeFile(`${filePath}/${fileName}`, '', (err) => {
+    if (err) {
+      console.error('\nOperation failed:', err.message,)
+      printCurrencyPath()
+    }
+  })
+
+  printCurrencyPath()
+}
+
+export { handleCatCommand, handleAddCommand }

@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises'
 
 const printCurrencyPath = () => {
-  console.log(`You are currently in ${process.cwd()}`)
+  console.log(`\nYou are currently in ${process.cwd()}`)
   process.stdout.write('> ')
 }
 
