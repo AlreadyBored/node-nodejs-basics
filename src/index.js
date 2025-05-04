@@ -2,7 +2,14 @@ import os from 'node:os'
 
 import { getUsername } from './modules/args.js'
 import { handleCdCommand, handleUpCommand } from './modules/navigation.js'
-import { printGreeting, printInvalidInputError, printLs, printOsEol, printOsCpus } from './modules/output.js'
+import {
+  printGreeting,
+  printInvalidInputError,
+  printLs,
+  printOsEol,
+  printOsCpus,
+  printOsHomedir,
+} from './modules/output.js'
 import {
   handleCatCommand,
   handleAddCommand,
@@ -46,9 +53,11 @@ process.stdin.on('data', (data) => {
   } else if (input.startsWith('rm ')) {
     handleRmCommand(input)
   } else if (input === 'os --EOL') {
-    printOsEol(input)
+    printOsEol()
   } else if (input === 'os --cpus') {
-    printOsCpus(input)
+    printOsCpus()
+  } else if (input === 'os --homedir') {
+    printOsHomedir()
   } else {
     printInvalidInputError()
   }

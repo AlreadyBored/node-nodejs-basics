@@ -69,4 +69,11 @@ const printOsCpus = () => {
   printCurrencyPath()
 }
 
-export { printCurrencyPath, printGreeting, printInvalidInputError, printLs, printOsEol, printOsCpus }
+const printOsHomedir = () => {
+  const homeDir = os.homedir()
+
+  console.log(`Home directory: ${homeDir}`)
+  printCurrencyPath()
+}
+
+export { printCurrencyPath, printGreeting, printInvalidInputError, printLs, printOsEol, printOsCpus, printOsHomedir }
