@@ -20,6 +20,8 @@ import {
   handleCpCommand,
   handleMvCommand,
   handleRmCommand,
+  handleCompressCommand,
+  handleDecompressCommand
 } from './modules/fs.js'
 
 process.chdir(os.homedir())
@@ -66,6 +68,10 @@ process.stdin.on('data', (data) => {
     printOsArchitecture()
   } else if (input.startsWith('hash ')) {
     printCalculatedHash(input)
+  } else if (input.startsWith('compress ')) {
+    handleCompressCommand(input)
+  } else if (input.startsWith('decompress ')) {
+    handleDecompressCommand(input)
   } else {
     printInvalidInputError()
   }

@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import zlib from 'node:zlib'
 
 import { printCurrencyPath } from './output.js'
 
@@ -183,7 +184,7 @@ const handleRmCommand = (input) => {
   const filePath = input.slice(3).trim()
 
   if (!filePath) {
-    console.error('\nInvalid input. Usage: rm path_to_file')
+    console.error('\nOperation failed: \nInvalid input. Usage: rm path_to_file')
     printCurrencyPath()
     return
   }
@@ -193,10 +194,117 @@ const handleRmCommand = (input) => {
   fs.unlink(absPath, (err) => {
     if (err) {
       console.error('\nOperation failed:', err.message)
+      printCurrencyPath()
     }
 
     printCurrencyPath()
   })
+}
+
+const handleCompressCommand = (input) => {
+  const args = input.slice(8).trim().split(' ')
+  const [srcPath, destArg] = args
+
+  if (!srcPath || !destArg) {
+    console.error('\nOperation failed:\nInvalid input. Usage: compress path_to_file path_to_destination')
+    return
+  }
+
+  const source = path.resolve(srcPath)
+  const destPath = path.resolve(destArg)
+
+  if (!fs.existsSync(source) || !fs.statSync(source).isFile()) {
+    console.error('\nOperation failed:\nSource file does not exist or is not a file.')
+    return
+  }
+
+  let destination
+
+  try {
+    const stat = fs.statSync(destPath)
+
+    if (stat.isDirectory()) {
+      const fileName = path.basename(source) + '.br'
+      destination = path.join(destPath, fileName)
+    } else {
+      destination = destPath
+    }
+
+  } catch (err) {
+    destination = destPath
+  }
+
+  const readStream = fs.createReadStream(source)
+  const writeStream = fs.createWriteStream(destination)
+  const brotli = zlib.createBrotliCompress()
+
+  readStream.on('error', (err) => {
+    console.error('\nOperation failed:', err.message)
+    printCurrencyPath()
+  })
+
+  writeStream.on('error', (err) => {
+    console.error('\nOperation failed:', err.message)
+    printCurrencyPath()
+  })
+
+  writeStream.on('close', () => {
+    printCurrencyPath()
+  })
+
+  readStream.pipe(brotli).pipe(writeStream)
+}
+
+const handleDecompressCommand = (input) => {
+  const args = input.slice(10).trim().split(' ')
+  const [srcPath, destArg] = args
+
+  if (!srcPath || !destArg) {
+    console.error('\nOperation failed:\nInvalid input. Usage: decompress path_to_file path_to_destination')
+    return
+  }
+
+  const source = path.resolve(srcPath)
+  const destPath = path.resolve(destArg)
+
+  if (!fs.existsSync(source) || !fs.statSync(source).isFile()) {
+    console.error('\nOperation failed:\nSource file does not exist or is not a file.')
+    return
+  }
+
+  let destination
+
+  try {
+    const stat = fs.statSync(destPath)
+    if (stat.isDirectory()) {
+      const fileName = path.basename(source).replace(/\.br$/, '')
+      destination = path.join(destPath, fileName)
+    } else {
+      destination = destPath
+    }
+  } catch (err) {
+    destination = destPath
+  }
+
+  const readStream = fs.createReadStream(source)
+  const writeStream = fs.createWriteStream(destination)
+  const brotli = zlib.createBrotliDecompress()
+
+  readStream.on('error', (err) => {
+    console.error('\nOperation failed:', err.message)
+    printCurrencyPath()
+  })
+
+  writeStream.on('error', (err) => {
+    console.error('\nOperation failed:', err.message)
+    printCurrencyPath()
+  })
+
+  writeStream.on('close', () => {
+    printCurrencyPath()
+  })
+
+  readStream.pipe(brotli).pipe(writeStream)
 }
 
 export {
@@ -207,4 +315,6 @@ export {
   handleCpCommand,
   handleMvCommand,
   handleRmCommand,
+  handleCompressCommand,
+  handleDecompressCommand
 }
