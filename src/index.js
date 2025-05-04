@@ -10,6 +10,7 @@ import {
   handleRnCommand,
   handleCpCommand,
   handleMvCommand,
+  handleRmCommand,
 } from './modules/fs.js'
 
 process.chdir(os.homedir())
@@ -42,6 +43,8 @@ process.stdin.on('data', (data) => {
     handleCpCommand(input)
   } else if (input.startsWith('mv ')) {
     handleMvCommand(input)
+  } else if (input.startsWith('rm ')) {
+    handleRmCommand(input)
   } else {
     printInvalidInputError()
   }

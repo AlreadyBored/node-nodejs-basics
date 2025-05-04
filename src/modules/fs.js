@@ -85,7 +85,6 @@ const handleCpCommand = (input) => {
   const srcAbsPath = path.resolve(srcPath)
   const destAbsDir = path.resolve(destDir)
 
-  // Если копирование в ту же директорию
   let finalFileName = fileName
   if (path.dirname(srcAbsPath) === destAbsDir) {
     const ext = path.extname(fileName)
@@ -179,4 +178,32 @@ const handleMvCommand = (input) => {
   })
 }
 
-export { handleCatCommand, handleAddCommand, handleMkdirCommand, handleRnCommand, handleCpCommand, handleMvCommand }
+const handleRmCommand = (input) => {
+  const filePath = input.slice(3).trim()
+
+  if (!filePath) {
+    console.error('\nInvalid input. Usage: rm path_to_file')
+    printCurrencyPath()
+    return
+  }
+
+  const absPath = path.resolve(filePath)
+
+  fs.unlink(absPath, (err) => {
+    if (err) {
+      console.error('\nOperation failed:', err.message)
+    }
+
+    printCurrencyPath()
+  })
+}
+
+export {
+  handleCatCommand,
+  handleAddCommand,
+  handleMkdirCommand,
+  handleRnCommand,
+  handleCpCommand,
+  handleMvCommand,
+  handleRmCommand,
+}
