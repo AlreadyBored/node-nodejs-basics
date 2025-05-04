@@ -45,11 +45,28 @@ const printLs = async () => {
   printCurrencyPath()
 }
 
-const printOsEolCommand = () => {
+const printOsEol = () => {
   const eol = JSON.stringify(os.EOL)
 
   console.log(`Default system End-Of-Line: ${eol}`)
   printCurrencyPath()
 }
 
-export { printCurrencyPath, printGreeting, printInvalidInputError, printLs, printOsEolCommand }
+const printOsCpus = () => {
+  const cpus = os.cpus()
+
+  console.log(`\nOverall CPUs: ${cpus.length}\n`)
+
+  cpus.forEach((cpu, index) => {
+    const model = cpu.model
+    const speedGHz = (cpu.speed / 1000).toFixed(2)
+
+    console.log(`CPU ${index + 1}:`)
+    console.log(`  Model: ${model}`)
+    console.log(`  Clock Rate: ${speedGHz} GHz\n`)
+  })
+
+  printCurrencyPath()
+}
+
+export { printCurrencyPath, printGreeting, printInvalidInputError, printLs, printOsEol, printOsCpus }
