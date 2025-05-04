@@ -3,7 +3,7 @@ import os from 'node:os'
 import { getUsername } from './modules/args.js'
 import { printGreeting, printInvalidInputError, printLs } from './modules/output.js'
 import { handleCdCommand, handleUpCommand } from './modules/navigation.js'
-import { handleCatCommand, handleAddCommand, handleMkdirCommand } from './modules/fs.js'
+import { handleCatCommand, handleAddCommand, handleMkdirCommand, handleRnCommand } from './modules/fs.js'
 
 process.chdir(os.homedir())
 
@@ -29,6 +29,8 @@ process.stdin.on('data', (data) => {
     handleAddCommand(input)
   } else if (input.startsWith('mkdir ')) {
     handleMkdirCommand(input)
+  } else if (input.startsWith('rn ')) {
+    handleRnCommand(input)
   } else {
     printInvalidInputError()
   }

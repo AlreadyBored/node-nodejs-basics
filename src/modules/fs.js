@@ -27,7 +27,7 @@ const handleAddCommand = (input) => {
 
   fs.writeFile(`${filePath}/${fileName}`, '', (err) => {
     if (err) {
-      console.error('\nOperation failed:', err.message,)
+      console.error('\nOperation failed:', err.message)
       printCurrencyPath()
     }
   })
@@ -41,10 +41,35 @@ const handleMkdirCommand = (input) => {
 
   fs.mkdir(`${filePath}/${dirName}`, { recursive: true }, (err) => {
     if (err) {
-      console.error('\nOperation failed:', err.message,)
+      console.error('\nOperation failed:', err.message)
       printCurrencyPath()
     }
-  }); 
+  })
 }
 
-export { handleCatCommand, handleAddCommand, handleMkdirCommand }
+const handleRnCommand = (input) => {
+  const args = input.slice(3).trim().split(/\s+/)
+  
+  if (args.length < 2) {
+    console.error('\nOperation failed: expected format is `rn path_to_file new_filename`')
+    printCurrencyPath()
+    return
+  }
+
+  const [oldPath, newFilename] = args
+  const absoluteOldPath = path.resolve(process.cwd(), oldPath)
+  const dir = path.dirname(absoluteOldPath)
+  const absoluteNewPath = path.join(dir, newFilename)
+
+  fs.rename(absoluteOldPath, absoluteNewPath, (err) => {
+    if (err) {
+      console.error('\nOperation failed:', err.message)
+      printCurrencyPath()
+      return
+    }
+    console.log(`\nFile renamed to: ${newFilename}`)
+    printCurrencyPath()
+  })
+}
+
+export { handleCatCommand, handleAddCommand, handleMkdirCommand, handleRnCommand }
