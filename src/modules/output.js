@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises'
+import os from 'node:os'
 
 const printCurrencyPath = () => {
   console.log(`\nYou are currently in ${process.cwd()}`)
@@ -44,4 +45,11 @@ const printLs = async () => {
   printCurrencyPath()
 }
 
-export { printCurrencyPath, printGreeting, printInvalidInputError, printLs }
+const printOsEolCommand = () => {
+  const eol = JSON.stringify(os.EOL)
+
+  console.log(`Default system End-Of-Line: ${eol}`)
+  printCurrencyPath()
+}
+
+export { printCurrencyPath, printGreeting, printInvalidInputError, printLs, printOsEolCommand }

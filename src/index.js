@@ -1,8 +1,8 @@
 import os from 'node:os'
 
 import { getUsername } from './modules/args.js'
-import { printGreeting, printInvalidInputError, printLs } from './modules/output.js'
 import { handleCdCommand, handleUpCommand } from './modules/navigation.js'
+import { printGreeting, printInvalidInputError, printLs, printOsEolCommand } from './modules/output.js'
 import {
   handleCatCommand,
   handleAddCommand,
@@ -45,6 +45,8 @@ process.stdin.on('data', (data) => {
     handleMvCommand(input)
   } else if (input.startsWith('rm ')) {
     handleRmCommand(input)
+  } else if (input === 'os --EOL') {
+    printOsEolCommand(input)
   } else {
     printInvalidInputError()
   }
