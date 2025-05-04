@@ -61,6 +61,8 @@ process.stdin.on('data', (data) => {
     printOsHomedir()
   } else if (input === 'os --username') {
     printOsUsername()
+  } else if (input === 'os --architecture') {
+    printOsArchitecture()
   } else {
     printInvalidInputError()
   }

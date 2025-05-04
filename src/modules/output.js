@@ -85,6 +85,15 @@ const printOsUsername = () => {
   printCurrencyPath()
 }
 
+const printOsArchitecture = () => {
+  const architecture = os.arch()
+
+  console.log(`\nCPU architecture: ${architecture}`)
+
+  printCurrencyPath()
+}
+
+
 export {
   printCurrencyPath,
   printGreeting,
@@ -94,4 +103,5 @@ export {
   printOsCpus,
   printOsHomedir,
   printOsUsername,
+  printOsArchitecture
 }
