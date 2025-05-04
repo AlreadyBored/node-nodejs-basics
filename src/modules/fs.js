@@ -123,5 +123,60 @@ const handleCpCommand = (input) => {
   })
 }
 
-export { handleCatCommand, handleAddCommand, handleMkdirCommand, handleRnCommand, handleCpCommand }
-te
+const handleMvCommand = (input) => {
+  const args = input.slice(3).trim().split(' ')
+  const [srcPath, destDir] = args
+
+  if (!srcPath || !destDir) {
+    console.error('\nInvalid input. Usage: mv path_to_file path_to_new_directory')
+    printCurrencyPath()
+    return
+  }
+
+  const fileName = path.basename(srcPath)
+  const srcAbsPath = path.resolve(srcPath)
+  const destAbsDir = path.resolve(destDir)
+
+  let finalFileName = fileName
+  if (path.dirname(srcAbsPath) === destAbsDir) {
+    const ext = path.extname(fileName)
+    const nameWithoutExt = path.basename(fileName, ext)
+    finalFileName = `${nameWithoutExt}.copy${ext}`
+  }
+
+  const destPath = path.join(destDir, finalFileName)
+
+  fs.mkdir(destDir, { recursive: true }, (mkdirErr) => {
+    if (mkdirErr) {
+      console.error('\nOperation failed:', mkdirErr.message)
+      printCurrencyPath()
+      return
+    }
+
+    const readStream = fs.createReadStream(srcAbsPath)
+    const writeStream = fs.createWriteStream(destPath)
+
+    readStream.on('error', (err) => {
+      console.error('\nOperation failed:', err.message)
+      printCurrencyPath()
+    })
+
+    writeStream.on('error', (err) => {
+      console.error('\nOperation failed:', err.message)
+      printCurrencyPath()
+    })
+
+    writeStream.on('finish', () => {
+      fs.unlink(srcAbsPath, (unlinkErr) => {
+        if (unlinkErr) {
+          console.error('\nCopied, but failed to delete original file:', unlinkErr.message)
+        }
+        printCurrencyPath()
+      })
+    })
+
+    readStream.pipe(writeStream)
+  })
+}
+
+export { handleCatCommand, handleAddCommand, handleMkdirCommand, handleRnCommand, handleCpCommand, handleMvCommand }
