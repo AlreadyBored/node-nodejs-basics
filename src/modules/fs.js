@@ -35,4 +35,16 @@ const handleAddCommand = (input) => {
   printCurrencyPath()
 }
 
-export { handleCatCommand, handleAddCommand }
+const handleMkdirCommand = (input) => {
+  const dirName = input.slice(6).trim()
+  const filePath = process.cwd()
+
+  fs.mkdir(`${filePath}/${dirName}`, { recursive: true }, (err) => {
+    if (err) {
+      console.error('\nOperation failed:', err.message,)
+      printCurrencyPath()
+    }
+  }); 
+}
+
+export { handleCatCommand, handleAddCommand, handleMkdirCommand }
