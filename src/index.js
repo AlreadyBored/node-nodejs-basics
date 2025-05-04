@@ -33,47 +33,27 @@ printGreeting(username)
 process.stdin.setEncoding('utf-8')
 process.stdin.on('data', (data) => {
   const input = data.trim()
-
-  if (input === '.exit') {
-    exitProgram()
-  } else if (input.startsWith('cd ')) {
-    handleCdCommand(input)
-  } else if (input === 'up') {
-    handleUpCommand()
-  } else if (input === 'ls') {
-    printLs()
-  } else if (input.startsWith('cat ')) {
-    handleCatCommand(input)
-  } else if (input.startsWith('add ')) {
-    handleAddCommand(input)
-  } else if (input.startsWith('mkdir ')) {
-    handleMkdirCommand(input)
-  } else if (input.startsWith('rn ')) {
-    handleRnCommand(input)
-  } else if (input.startsWith('cp ')) {
-    handleCpCommand(input)
-  } else if (input.startsWith('mv ')) {
-    handleMvCommand(input)
-  } else if (input.startsWith('rm ')) {
-    handleRmCommand(input)
-  } else if (input === 'os --EOL') {
-    printOsEol()
-  } else if (input === 'os --cpus') {
-    printOsCpus()
-  } else if (input === 'os --homedir') {
-    printOsHomedir()
-  } else if (input === 'os --username') {
-    printOsUsername()
-  } else if (input === 'os --architecture') {
-    printOsArchitecture()
-  } else if (input.startsWith('hash ')) {
-    printCalculatedHash(input)
-  } else if (input.startsWith('compress ')) {
-    handleCompressCommand(input)
-  } else if (input.startsWith('decompress ')) {
-    handleDecompressCommand(input)
-  } else {
-    printInvalidInputError()
+  switch (true) {
+    case input === '.exit': exitProgram(); break
+    case input.startsWith('cd '): handleCdCommand(input); break
+    case input === 'up': handleUpCommand(); break
+    case input === 'ls': printLs(); break
+    case input.startsWith('cat '): handleCatCommand(input); break
+    case input.startsWith('add '): handleAddCommand(input); break
+    case input.startsWith('mkdir '): handleMkdirCommand(input); break
+    case input.startsWith('rn '): handleRnCommand(input); break
+    case input.startsWith('cp '): handleCpCommand(input); break
+    case input.startsWith('mv '): handleMvCommand(input); break
+    case input.startsWith('rm '): handleRmCommand(input); break
+    case input === 'os --EOL': printOsEol(); break
+    case input === 'os --cpus': printOsCpus(); break
+    case input === 'os --homedir': printOsHomedir(); break
+    case input === 'os --username': printOsUsername(); break
+    case input === 'os --architecture': printOsArchitecture(); break
+    case input.startsWith('hash '): printCalculatedHash(input); break
+    case input.startsWith('compress '): handleCompressCommand(input); break
+    case input.startsWith('decompress '): handleDecompressCommand(input); break
+    default: printInvalidInputError()
   }
 })
 
