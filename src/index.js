@@ -9,7 +9,8 @@ import {
   printOsEol,
   printOsCpus,
   printOsHomedir,
-  printOsUsername
+  printOsUsername,
+  printCalculatedHash
 } from './modules/output.js'
 import {
   handleCatCommand,
@@ -63,6 +64,8 @@ process.stdin.on('data', (data) => {
     printOsUsername()
   } else if (input === 'os --architecture') {
     printOsArchitecture()
+  } else if (input.startsWith('hash ')) {
+    printCalculatedHash(input)
   } else {
     printInvalidInputError()
   }
