@@ -9,6 +9,7 @@ import {
   printOsEol,
   printOsCpus,
   printOsHomedir,
+  printOsUsername
 } from './modules/output.js'
 import {
   handleCatCommand,
@@ -58,6 +59,8 @@ process.stdin.on('data', (data) => {
     printOsCpus()
   } else if (input === 'os --homedir') {
     printOsHomedir()
+  } else if (input === 'os --username') {
+    printOsUsername()
   } else {
     printInvalidInputError()
   }

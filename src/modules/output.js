@@ -72,8 +72,26 @@ const printOsCpus = () => {
 const printOsHomedir = () => {
   const homeDir = os.homedir()
 
-  console.log(`Home directory: ${homeDir}`)
+  console.log(`\nHome directory: ${homeDir}`)
+
   printCurrencyPath()
 }
 
-export { printCurrencyPath, printGreeting, printInvalidInputError, printLs, printOsEol, printOsCpus, printOsHomedir }
+const printOsUsername = () => {
+  const username = os.userInfo().username
+
+  console.log(`\nSystem username: ${username}`)
+
+  printCurrencyPath()
+}
+
+export {
+  printCurrencyPath,
+  printGreeting,
+  printInvalidInputError,
+  printLs,
+  printOsEol,
+  printOsCpus,
+  printOsHomedir,
+  printOsUsername,
+}
