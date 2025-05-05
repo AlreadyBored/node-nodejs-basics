@@ -1,5 +1,4 @@
 import { EOL } from 'node:os';
-
 import { argv, stdout, stdin, exit } from 'node:process';
 
 const args = argv.slice(2);
