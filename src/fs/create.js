@@ -11,6 +11,7 @@ const create = async () => {
   }
   let wstream = createWriteStream(file);
   wstream.write(data);
+  wstream.end();
 }
 
 await create();
