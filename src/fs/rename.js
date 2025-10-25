@@ -12,7 +12,7 @@ const rename = async () => {
     }
     await setNewName(oldFile, newFile);
   } catch (error) {
-    console.log(error);
+   throw error;
   }
 }
 
