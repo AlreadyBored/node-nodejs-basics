@@ -1,4 +1,4 @@
-import { createReadStream, createWriteStream } from 'fs';
+import { createReadStream, createWriteStream, existsSync } from 'fs';
 import { createGzip } from 'zlib';
 import { pipeline } from 'stream';
 import { join } from 'path';
@@ -10,6 +10,10 @@ const compress = async () => {
   const input = createReadStream(sourseFile, 'utf-8');
   const output = createWriteStream(gzipFile);
   const gzip = createGzip();
+
+ if (!existsSync(sourseFile)) {
+   throw new Error('FileToCompress.txt does not exist.');
+    }
 
   pipeline(
     input, 
