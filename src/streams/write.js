@@ -8,16 +8,8 @@ const write = async () => {
     join(__dirname, 'streams', 'files', 'fileToWrite.txt')
   )
   stdout.write('Write something:\n');
+  stdin.pipe(outputFile);
 
-  stdin.on('data', (chunk) => {
-    outputFile.write(chunk);
-  })
-
-  process.on('exit', () => stdout.write('Good bye!\n'));
-
-  process.on('SIGINT', () => {
-    process.exit();
-  })
 }
 
 await write();
