@@ -1,8 +1,12 @@
+import path from 'node:path';
 import fs from 'node:fs/promises';
+import { getDirInfo } from '../utils/getDirInfo.js';
+
+const { __dirname } = getDirInfo(import.meta.url);
 
 const copy = async () => {
-  const sourcePath = 'files';
-  const destinationPath = 'files_copy';
+  const sourcePath = path.join(__dirname, 'files');
+  const destinationPath = path.join(__dirname, 'files_copy');
 
   try {
     await fs.access(sourcePath);

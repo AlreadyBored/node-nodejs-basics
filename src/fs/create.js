@@ -1,7 +1,11 @@
+import path from 'node:path';
 import fs from 'node:fs/promises';
+import { getDirInfo } from '../utils/getDirInfo.js';
+
+const { __dirname } = getDirInfo(import.meta.url);
 
 const create = async () => {
-  const filePath = 'files/fresh.txt';
+  const filePath = path.join(__dirname, 'files', 'fresh.txt');
   const content = 'I am fresh and young!';
 
   try {

@@ -1,7 +1,11 @@
+import path from 'node:path';
 import fs from 'node:fs/promises';
+import { getDirInfo } from '../utils/getDirInfo.js';
+
+const { __dirname } = getDirInfo(import.meta.url);
 
 const list = async () => {
-  const folderPath = 'files';
+  const folderPath = path.join(__dirname, 'files');
 
   try {
     await fs.access(folderPath);

@@ -1,7 +1,11 @@
+import path from 'node:path';
 import fs from 'node:fs/promises';
+import { getDirInfo } from '../utils/getDirInfo.js';
+
+const { __dirname } = getDirInfo(import.meta.url);
 
 const read = async () => {
-  const fileToReadPath = 'files/fileToRead.txt';
+  const fileToReadPath = path.join(__dirname, 'files', 'fileToRead.txt');
 
   try {
     await fs.access(fileToReadPath);
