@@ -3,7 +3,6 @@ import { join } from 'path';
 import { __dirname } from '../utils.js';
 
 const read = async () => {
-  let data = ''
   const file = join(__dirname, 'fs', 'files', 'fileToRead.txt');
   if (!existsSync(file)) {
     throw new Error('FS operation failed');
@@ -16,4 +15,4 @@ const read = async () => {
 }
 
 await read();
- cv 
+ 
