@@ -10,6 +10,10 @@ const create = async () => {
     throw new Error('FS operation failed');
   }
   let wstream = createWriteStream(file);
+
+  wstream.on('error', (err) => console.log(`Err: ${err}`));
+  wstream.on('finish', () => console.log('Create'));
+
   wstream.write(data);
   wstream.end();
 }
