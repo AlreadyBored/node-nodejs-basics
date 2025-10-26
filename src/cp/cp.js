@@ -1,6 +1,17 @@
-const spawnChildProcess = async (args) => {
-  // Write your code here
-};
+import { fork } from 'child_process'
+import { __dirname } from '../utils.js'
+import { join } from 'path'
 
-// Put your arguments in function call to test this functionality
-spawnChildProcess( /* [someArgument1, someArgument2, ...] */);
+const spawnChildProcess = async (args=[]) => {
+  const myChildProcess = fork(join(__dirname, 'cp', 'files', 'script.js'),args, {stdio: ['pipe', 'pipe', 'inherit', 'ipc']}
+  )
+
+  process.stdin.pipe(myChildProcess.stdin);
+  myChildProcess.stdout.pipe(process.stdout);
+
+  myChildProcess.on('exit', (msg) => {
+    console.log(`Child process exited with code ${msg}`)
+  })
+}
+
+spawnChildProcess(['one', 'two', 'three'])
